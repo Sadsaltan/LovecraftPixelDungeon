@@ -450,7 +450,8 @@ public class LovecraftPixelDungeon extends Game {
 	public static Languages language() {
 		String code = Preferences.INSTANCE.getString(Preferences.KEY_LANG, null);
 		if (code == null){
-			return Languages.matchLocale(Locale.getDefault());
+			//return Languages.matchLocale(Locale.getDefault());
+			return Languages.matchCode(code);
 		} else {
 			return Languages.matchCode(code);
 		}
@@ -466,8 +467,7 @@ public class LovecraftPixelDungeon extends Game {
 	}
 
 	public static boolean classicFont(){
-		return Preferences.INSTANCE.getBoolean(Preferences.KEY_CLASSICFONT,
-				(language() != Languages.KOREAN && language() != Languages.CHINESE));
+		return Preferences.INSTANCE.getBoolean(Preferences.KEY_CLASSICFONT, true);
 	}
 
 	public static void lastClass( int value ) {
