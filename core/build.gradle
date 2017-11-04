@@ -5,10 +5,6 @@ android {
     buildToolsVersion "26.0.2"
 
     buildTypes {
-        debug {
-            applicationIdSuffix ".indev"
-            versionNameSuffix '-INDEV'
-        }
         release {
             shrinkResources true
             minifyEnabled true

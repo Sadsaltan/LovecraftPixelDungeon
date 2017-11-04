@@ -7,13 +7,13 @@ Based on the source code of Pixel Dungeon, by Watabou.
 Shattered Pixel Dungeon uses gradle and is most easily compiled/edited using Android Studio.
 
 Shattered Pixel Dungeon on Google Play:
-https://play.google.com/store/apps/details?id=com.shatteredpixel.shatteredpixeldungeon
+https://play.google.com/store/apps/details?id=lovecraftpixeldungeon
 
 On Amazon:
 https://www.amazon.com/Shattered-Pixel-Dungeon/dp/B00OH2C21M
 
 On F-Droid (Which compiles directly from this source code):
-https://f-droid.org/repository/browse/?fdid=com.shatteredpixel.shatteredpixeldungeon
+https://f-droid.org/repository/browse/?fdid=lovecraftpixeldungeon
 
 Official web-site: 
 http://www.shatteredpixel.com

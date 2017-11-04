@@ -29,7 +29,7 @@
 		android:allowBackup="false">
 		<activity
 			android:label="@string/app_name"
-			android:name=".ShatteredPixelDungeon"
+			android:name="com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon"
 			android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
 			android:screenOrientation="nosensor">
 			<intent-filter >
