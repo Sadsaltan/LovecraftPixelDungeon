@@ -1,22 +1,24 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2016 Evan Debenham
+ *
+ * Lovecraft Pixel Dungeon
+ * Copyright (C) 2016-2017 Leon Horn
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * This Program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without eben the implied warranty of
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * You should have have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
 package com.lovecraftpixel.lovecraftpixeldungeon;
@@ -32,8 +34,10 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Languages;
+import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.PixelScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.TitleScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.WelcomeScene;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.RenderedText;
@@ -522,6 +526,14 @@ public class LovecraftPixelDungeon extends Game {
 		Preferences.INSTANCE.put( Preferences.KEY_VERSION, value );
 	}
 
+	public static void playerName( String name ){
+		Preferences.INSTANCE.put( Preferences.KEY_PLAYERNAME, name );
+	}
+
+	public static String playerName( ){
+		return Preferences.INSTANCE.getString( Preferences.KEY_PLAYERNAME, "Jojo");
+	}
+
 	public static int version() {
 		return Preferences.INSTANCE.getInt( Preferences.KEY_VERSION, 0 );
 	}
@@ -531,6 +543,6 @@ public class LovecraftPixelDungeon extends Game {
 	 */
 
 	public static void reportException( Throwable tr ) {
-		Log.e("PD", Log.getStackTraceString(tr));
+		Log.e("LCPD", Log.getStackTraceString(tr));
 	}
 }

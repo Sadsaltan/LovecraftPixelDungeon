@@ -1,22 +1,24 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2016 Evan Debenham
+ *
+ * Lovecraft Pixel Dungeon
+ * Copyright (C) 2016-2017 Leon Horn
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * This Program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without eben the implied warranty of
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * You should have have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.hero;
@@ -26,6 +28,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Badges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Bones;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.GamesInProgress;
+import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.Statistics;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
@@ -104,6 +107,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.InterlevelScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.StartScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.SurfaceScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.HeroSprite;
@@ -158,6 +162,8 @@ public class Hero extends Char {
 	
 	public boolean resting = false;
 
+	public static String playername = LovecraftPixelDungeon.playerName();
+
 	public MissileWeapon rangedWeapon = null;
 	public Belongings belongings;
 	
@@ -179,6 +185,7 @@ public class Hero extends Char {
 	public Hero() {
 		super();
 		name = Messages.get(this, "name");
+		playername = StartScene.customName;
 		
 		HP = HT = 20;
 		STR = STARTING_STR;
@@ -215,6 +222,7 @@ public class Hero extends Char {
 	private static final String LEVEL		= "lvl";
 	private static final String EXPERIENCE	= "exp";
 	private static final String HTBOOST     = "htboost";
+	private static final String PLAYERNAME  = "playername";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -233,6 +241,8 @@ public class Hero extends Char {
 		bundle.put( EXPERIENCE, exp );
 		
 		bundle.put( HTBOOST, HTBoost );
+
+		bundle.put( PLAYERNAME, playername );
 
 		belongings.storeInBundle( bundle );
 	}
@@ -255,6 +265,8 @@ public class Hero extends Char {
 		exp = bundle.getInt( EXPERIENCE );
 		
 		HTBoost = bundle.getInt(HTBOOST);
+
+		playername = bundle.getString(PLAYERNAME);
 		
 		belongings.restoreFromBundle( bundle );
 	}

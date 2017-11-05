@@ -1,22 +1,24 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2016 Evan Debenham
+ *
+ * Lovecraft Pixel Dungeon
+ * Copyright (C) 2016-2017 Leon Horn
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * This Program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without eben the implied warranty of
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * You should have have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
 package com.lovecraftpixel.lovecraftpixeldungeon.ui;
@@ -153,21 +155,21 @@ public class StatusPane extends Component {
 		PixelScene.align(compass);
 
 		hp.x = shieldedHP.x = rawShielding.x = 30;
-		hp.y = shieldedHP.y = rawShielding.y = 3;
+		hp.y = shieldedHP.y = rawShielding.y = 4;
 
 		bossHP.setPos( 6 + (width - bossHP.width())/2, 20);
 
 		depth.x = width - 35.5f - depth.width() / 2f;
-		depth.y = 8f - depth.baseLine() / 2f;
+		depth.y = 9f - depth.baseLine() / 2f;
 		PixelScene.align(depth);
 
 		danger.setPos( width - danger.width(), 20 );
 
-		buffs.setPos( 31, 9 );
+		buffs.setPos( 34, 14 );
 
-		btnJournal.setPos( width - 42, 1 );
+		btnJournal.setPos( width - 42, 2 );
 
-		btnMenu.setPos( width - btnMenu.width(), 1 );
+		btnMenu.setPos( width - btnMenu.width(), 2 );
 	}
 
 	@Override
@@ -207,7 +209,7 @@ public class StatusPane extends Component {
 			level.text( Integer.toString( lastLvl ) );
 			level.measure();
 			level.x = 27.5f - level.width() / 2f;
-			level.y = 28.0f - level.baseLine() / 2f;
+			level.y = 29.0f - level.baseLine() / 2f;
 			PixelScene.align(level);
 		}
 

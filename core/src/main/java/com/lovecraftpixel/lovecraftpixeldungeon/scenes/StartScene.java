@@ -1,22 +1,24 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2016 Evan Debenham
+ *
+ * Lovecraft Pixel Dungeon
+ * Copyright (C) 2016-2017 Leon Horn
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * This Program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without eben the implied warranty of
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * You should have have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
 package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
@@ -38,10 +40,12 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.ExitButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Icons;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.RedButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.RenderedTextMultiline;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.NameGenerator;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndChallenges;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndClass;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndMessage;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndOptions;
+import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTextInput;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Group;
@@ -52,7 +56,9 @@ import com.watabou.noosa.particles.BitmaskEmitter;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.ui.Button;
 import com.watabou.utils.Callback;
+import com.watabou.utils.Random;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class StartScene extends PixelScene {
@@ -65,6 +71,8 @@ public class StartScene extends PixelScene {
 
 	private static final float WIDTH_L    = 224;
 	private static final float HEIGHT_L    = 124;
+
+	public static String customName = "Stroheim";
 
 	private static HashMap<HeroClass, ClassShield> shields = new HashMap<>();
 
@@ -130,13 +138,13 @@ public class StartScene extends PixelScene {
 						@Override
 						protected void onSelect( int index ) {
 							if (index == 0) {
-								startNewGame();
+								addChooseNameDialog();
 							}
 						}
 					} );
 
 				} else {
-					startNewGame();
+					addChooseNameDialog();
 				}
 			}
 		};
@@ -291,9 +299,30 @@ public class StartScene extends PixelScene {
 		}
 	}
 
+	private void addChooseNameDialog(){
+		WndTextInput textInput = new WndTextInput(Messages.get(TitleScene.class, "choosennametitle"),
+				Messages.get(TitleScene.class, "choosenameinitvalue"),
+				20, false, Messages.get(TitleScene.class, "okay"),
+				Messages.get(TitleScene.class, "randomname")){
+			@Override
+			protected void onSelect(boolean positive) {
+				super.onSelect(positive);
+				if(positive){
+					customName = this.getText();
+					startNewGame();
+				} else {
+					customName = getRandomName();
+					startNewGame();
+				}
+			}
+		};
+		this.add(textInput);
+	}
+
 	private void startNewGame() {
 
 		Dungeon.hero = null;
+
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 
 		if (LovecraftPixelDungeon.intro()) {
@@ -302,6 +331,35 @@ public class StartScene extends PixelScene {
 		} else {
 			Game.switchScene( InterlevelScene.class );
 		}
+	}
+
+	public static String getRandomName(){
+		String name;
+		String pathfile;
+		switch (Random.Int(0, 3)){
+			case 0:
+				pathfile = Assets.ELVEN_NAMES;
+				break;
+			case 1:
+				pathfile = Assets.GOBLIN_NAMES;
+				break;
+			case 2:
+				pathfile = Assets.ROMAN_NAMES;
+				break;
+			case 3:
+				pathfile = Assets.FANTASY_NAMES;
+				break;
+			default:
+				pathfile = Assets.FANTASY_NAMES;
+				break;
+		}
+		try {
+			name = new NameGenerator(pathfile, Game.instance).compose(Random.Int(3, 5));
+		} catch (IOException e) {
+			e.printStackTrace();
+			name = "Error";
+		}
+		return name;
 	}
 
 	@Override

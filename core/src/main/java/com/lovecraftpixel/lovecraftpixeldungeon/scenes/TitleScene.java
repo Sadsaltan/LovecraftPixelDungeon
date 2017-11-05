@@ -1,28 +1,31 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2016 Evan Debenham
+ *
+ * Lovecraft Pixel Dungeon
+ * Copyright (C) 2016-2017 Leon Horn
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * This Program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without eben the implied warranty of
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ * You should have have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
 package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
 import android.opengl.GLES20;
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.BannerSprites;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Fireball;
@@ -31,7 +34,9 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ChangesButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ExitButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.LanguageButton;
+import com.lovecraftpixel.lovecraftpixeldungeon.ui.PlayNameButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.PrefsButton;
+import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTextInput;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
@@ -44,6 +49,8 @@ import com.watabou.noosa.ui.Button;
 import javax.microedition.khronos.opengles.GL10;
 
 public class TitleScene extends PixelScene {
+
+	public static String yourname;
 	
 	@Override
 	public void create() {
