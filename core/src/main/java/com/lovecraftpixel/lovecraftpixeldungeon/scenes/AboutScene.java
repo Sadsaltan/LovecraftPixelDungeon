@@ -41,20 +41,19 @@ import com.watabou.noosa.TouchArea;
 
 public class AboutScene extends PixelScene {
 
-	private static final String TTL_SHPX = "Shattered Pixel Dungeon";
+	private static final String TTL_SHPX = "Lovecraft Pixel Dungeon";
 
 	private static final String TXT_SHPX =
-			"Design, Code, & Graphics: Evan";
+			"Design, Code, & Graphics: TypedScroll";
 
-	private static final String LNK_SHPX = "ShatteredPixel.com";
+	private static final String LNK_SHPX = "www.youtube.com/watch?v=oHg5SJYRHA0";
 
-	private static final String TTL_WATA = "Pixel Dungeon";
+	private static final String TTL_WATA = "Shattered Pixel Dungeon";
 
 	private static final String TXT_WATA =
-			"Code & Graphics: Watabou\n" +
-			"Music: Cube_Code";
+			"Design, Code & Graphics: 00Evan";
 	
-	private static final String LNK_WATA = "pixeldungeon.watabou.ru";
+	private static final String LNK_WATA = "shatteredpixel.tumblr.com";
 	
 	@Override
 	public void create() {
@@ -64,7 +63,7 @@ public class AboutScene extends PixelScene {
 		final float colTop = (Camera.main.height / 2) - (LovecraftPixelDungeon.landscape() ? 30 : 90);
 		final float wataOffset = LovecraftPixelDungeon.landscape() ? colWidth : 0;
 
-		Image shpx = Icons.SHPX.get();
+		Image shpx = Icons.WATA.get();
 		shpx.x = (colWidth - shpx.width()) / 2;
 		shpx.y = colTop;
 		align(shpx);
@@ -87,7 +86,7 @@ public class AboutScene extends PixelScene {
 		shpxtext.setPos((colWidth - shpxtext.width()) / 2, shpxtitle.y + shpxtitle.height() + 12);
 		align(shpxtext);
 
-		RenderedTextMultiline shpxlink = renderMultiline( LNK_SHPX, 8 );
+		RenderedTextMultiline shpxlink = renderMultiline( "lovecraftpixel.8chan.com", 8 );
 		shpxlink.maxWidth(shpxtext.maxWidth());
 		shpxlink.hardlight( Window.SHPX_COLOR );
 		add( shpxlink );
@@ -104,7 +103,7 @@ public class AboutScene extends PixelScene {
 		};
 		add( shpxhotArea );
 
-		Image wata = Icons.WATA.get();
+		Image wata = Icons.SHPX.get();
 		wata.x = wataOffset + (colWidth - wata.width()) / 2;
 		wata.y = LovecraftPixelDungeon.landscape() ?
 						colTop:
