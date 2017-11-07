@@ -178,6 +178,8 @@ public class Hero extends Char {
 	
 	private ArrayList<Mob> visibleEnemies;
 
+	public ArrayList<Class> seenEnemies;
+
 	//This list is maintained so that some logic checks can be skipped
 	// for enemies we know we aren't seeing normally, resultign in better performance
 	public ArrayList<Mob> mindVisionEnemies = new ArrayList<>();
@@ -223,6 +225,7 @@ public class Hero extends Char {
 	private static final String EXPERIENCE	= "exp";
 	private static final String HTBOOST     = "htboost";
 	private static final String PLAYERNAME  = "playername";
+	private static final String GRIMOIRE	= "seenenemies";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -243,6 +246,8 @@ public class Hero extends Char {
 		bundle.put( HTBOOST, HTBoost );
 
 		bundle.put( PLAYERNAME, playername );
+
+		bundle.put(GRIMOIRE, seenEnemies.toArray(new Class[seenEnemies.size()]));
 
 		belongings.storeInBundle( bundle );
 	}
@@ -267,6 +272,8 @@ public class Hero extends Char {
 		HTBoost = bundle.getInt(HTBOOST);
 
 		playername = bundle.getString(PLAYERNAME);
+
+		Collections.addAll(seenEnemies , bundle.getClassArray(GRIMOIRE));
 		
 		belongings.restoreFromBundle( bundle );
 	}
@@ -1004,6 +1011,9 @@ public class Hero extends Char {
 		for (Mob m : Dungeon.level.mobs.toArray(new Mob[0])) {
 			if (fieldOfView[ m.pos ] && m.alignment == Alignment.ENEMY) {
 				visible.add(m);
+				if(!seenEnemies.contains(m.getClass())){
+					seenEnemies.add(m.getClass());
+				}
 				if (!visibleEnemies.contains( m )) {
 					newMob = true;
 				}

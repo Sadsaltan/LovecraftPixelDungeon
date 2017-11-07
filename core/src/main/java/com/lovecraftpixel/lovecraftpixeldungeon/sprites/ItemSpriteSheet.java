@@ -48,6 +48,7 @@ public class ItemSpriteSheet {
 	public static final int POTION_HOLDER   = PLACEHOLDERS+6;
 	public static final int SCROLL_HOLDER   = PLACEHOLDERS+7;
 	public static final int SOMETHING       = PLACEHOLDERS+8;
+	public static final int MOBS       		= PLACEHOLDERS+9;
 	static{
 		assignItemRect(NULLWARN,        16, 7);
 		assignItemRect(WEAPON_HOLDER,   14, 14);
@@ -58,6 +59,7 @@ public class ItemSpriteSheet {
 		assignItemRect(POTION_HOLDER,   10, 14);
 		assignItemRect(SCROLL_HOLDER,   15, 14);
 		assignItemRect(SOMETHING,       8,  13);
+		assignItemRect(MOBS,		    13, 12);
 	}
 
 	private static final int UNCOLLECTIBLE  =                               xy(1, 2);   //16 slots

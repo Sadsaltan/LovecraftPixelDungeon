@@ -358,7 +358,8 @@ public class WndJournal extends WndTabbed {
 	}
 	
 	private static class CatalogTab extends Component{
-		
+
+		private RedButton grimoire;
 		private RedButton[] itemButtons;
 		private static final int NUM_BUTTONS = 7;
 		
@@ -390,6 +391,15 @@ public class WndJournal extends WndTabbed {
 				};
 				itemButtons[i].icon(new ItemSprite(ItemSpriteSheet.WEAPON_HOLDER + i, null));
 				add( itemButtons[i] );
+
+				grimoire = new RedButton(""){
+					@Override
+					protected void onClick() {
+						GameScene.show(new WndGrimoire());
+					}
+				};
+				grimoire.icon(new ItemSprite(ItemSpriteSheet.MOBS, null));
+				add(grimoire);
 			}
 			
 			list = new ScrollPane( new Component() ) {
