@@ -23,11 +23,13 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
-import com.pluginpixel.pluginpixeldungeon.Dungeon;
-import com.pluginpixel.pluginpixeldungeon.Plugins;
-import com.pluginpixel.pluginpixeldungeon.actors.Char;
-import com.pluginpixel.pluginpixeldungeon.plants.Icecap;
-import com.pluginpixel.pluginpixeldungeon.sprites.mods.LivingIcecapPlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Freezing;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Icecap;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingIcecapPlantSprite;
 
 public class LivingPlantIceCap extends LivingPlant {
 
@@ -39,9 +41,7 @@ public class LivingPlantIceCap extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Icecap.Seed(), pos);
-        if(Dungeon.plugins.contains(Plugins.MOREGASESPLUGIN)){
-            //GameScene.add(Blob.seed(pos, 500, IceStorm.class));
-        }
+        GameScene.add(Blob.seed(pos, 500, Freezing.class));
     }
 
     @Override
