@@ -36,5 +36,4 @@ public class ClothArmor extends Armor {
 	public ClothArmor() {
 		super( 1 );
 	}
-
 }
