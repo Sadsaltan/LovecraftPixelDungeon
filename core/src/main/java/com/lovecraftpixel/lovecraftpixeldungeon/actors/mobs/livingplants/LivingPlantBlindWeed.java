@@ -23,11 +23,11 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
-import com.pluginpixel.pluginpixeldungeon.Dungeon;
-import com.pluginpixel.pluginpixeldungeon.Plugins;
-import com.pluginpixel.pluginpixeldungeon.actors.Char;
-import com.pluginpixel.pluginpixeldungeon.plants.Blindweed;
-import com.pluginpixel.pluginpixeldungeon.sprites.mods.LivingBlindweedPlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Blindness;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingBlindweedPlantSprite;
 
 public class LivingPlantBlindWeed extends LivingPlant {
 
@@ -39,13 +39,11 @@ public class LivingPlantBlindWeed extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Blindweed.Seed(), pos);
-        if(Dungeon.plugins.contains(Plugins.MOREGASESPLUGIN)){
-            //GameScene.add(Blob.seed(pos, 500, Smoke.class));
-        }
     }
 
     @Override
     public int attackProc(Char enemy, int damage) {
+        enemy.add(new Blindness());
         return super.attackProc(enemy, damage);
     }
 }

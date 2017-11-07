@@ -23,11 +23,10 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
-import com.pluginpixel.pluginpixeldungeon.Dungeon;
-import com.pluginpixel.pluginpixeldungeon.Plugins;
-import com.pluginpixel.pluginpixeldungeon.actors.Char;
-import com.pluginpixel.pluginpixeldungeon.plants.Stormvine;
-import com.pluginpixel.pluginpixeldungeon.sprites.mods.LivingStormvinePlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingStormvinePlantSprite;
 
 public class LivingPlantStormVine extends LivingPlant {
 
@@ -39,9 +38,7 @@ public class LivingPlantStormVine extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Stormvine.Seed(), pos);
-        if(Dungeon.plugins.contains(Plugins.MOREGASESPLUGIN)){
-            //GameScene.add(Blob.seed(pos, 500, Storm.class));
-        }
+        //GameScene.add(Blob.seed(pos, 500, Storm.class));
     }
 
     @Override

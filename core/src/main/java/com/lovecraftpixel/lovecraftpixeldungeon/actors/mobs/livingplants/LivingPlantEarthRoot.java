@@ -23,17 +23,16 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
-import com.pluginpixel.pluginpixeldungeon.Dungeon;
-import com.pluginpixel.pluginpixeldungeon.Plugins;
-import com.pluginpixel.pluginpixeldungeon.actors.Char;
-import com.pluginpixel.pluginpixeldungeon.actors.blobs.Blob;
-import com.pluginpixel.pluginpixeldungeon.actors.blobs.ParalyticGas;
-import com.pluginpixel.pluginpixeldungeon.actors.buffs.Buff;
-import com.pluginpixel.pluginpixeldungeon.actors.buffs.Roots;
-import com.pluginpixel.pluginpixeldungeon.plants.Earthroot;
-import com.pluginpixel.pluginpixeldungeon.scenes.GameScene;
-import com.pluginpixel.pluginpixeldungeon.sprites.mods.LivingEarthrootPlantSprite;
-import com.watabou.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ParalyticGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Roots;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingEarthrootPlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class LivingPlantEarthRoot extends LivingPlant {
 
@@ -45,14 +44,12 @@ public class LivingPlantEarthRoot extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Earthroot.Seed(), pos);
-        if(Dungeon.plugins.contains(Plugins.MOREGASESPLUGIN)){
-            GameScene.add(Blob.seed(pos, 500, ParalyticGas.class));
-        }
+        GameScene.add(Blob.seed(pos, 500, ParalyticGas.class));
     }
 
     @Override
     public int attackProc(Char enemy, int damage) {
-        if(Random.randomBoolean()) Buff.affect(enemy, Roots.class);
+        if(RandomL.randomBoolean()) Buff.affect(enemy, Roots.class);
         return super.attackProc(enemy, damage);
     }
 }

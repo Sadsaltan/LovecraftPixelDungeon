@@ -23,10 +23,9 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
-import com.pluginpixel.pluginpixeldungeon.Dungeon;
-import com.pluginpixel.pluginpixeldungeon.items.Dewdrop;
-import com.pluginpixel.pluginpixeldungeon.levels.Level;
-import com.pluginpixel.pluginpixeldungeon.sprites.mods.LivingDewCatcherPlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.Dewdrop;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingDewCatcherPlantSprite;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
@@ -49,7 +48,7 @@ public class LivingPlantDewCatcher extends LivingPlant {
 
         ArrayList<Integer> candidates = new ArrayList<Integer>();
         for (int i : PathFinder.NEIGHBOURS8){
-            if (Level.passable[pos+i]){
+            if (Dungeon.level.passable[pos+i]){
                 candidates.add(pos+i);
             }
         }
