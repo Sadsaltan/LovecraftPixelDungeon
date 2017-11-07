@@ -32,7 +32,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Firebloom;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingFirebloomPlantSprite;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class LivingPlantFireBloom extends LivingPlant {
 
@@ -49,7 +49,7 @@ public class LivingPlantFireBloom extends LivingPlant {
 
     @Override
     public int attackProc(Char enemy, int damage) {
-        if(Random.randomBoolean()) Buff.affect(enemy, Burning.class).reignite(enemy);
+        if(RandomL.randomBoolean()) Buff.affect(enemy, Burning.class).reignite(enemy);
         return super.attackProc(enemy, damage);
     }
 }

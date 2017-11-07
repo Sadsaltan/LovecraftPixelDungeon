@@ -30,6 +30,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Regrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantDewCatcher;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantSeedPod;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.MagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Dewdrop;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
@@ -43,6 +45,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Callback;
 import com.watabou.utils.ColorMath;
@@ -263,7 +266,14 @@ public class WandOfRegrowth extends Wand {
 
 		@Override
 		public void activate() {
+			if (RandomL.randomBoolean()){
+				spawnLivingPlant(new LivingPlantDewCatcher());
+			} else {
+				effectChar();
+			}
+		}
 
+		private void effectChar(){
 			int nDrops = Random.NormalIntRange(3, 6);
 
 			ArrayList<Integer> candidates = new ArrayList<Integer>();
@@ -278,7 +288,6 @@ public class WandOfRegrowth extends Wand {
 				Dungeon.level.drop(new Dewdrop(), c).sprite.drop(pos);
 				candidates.remove(c);
 			}
-
 		}
 
 		//seed is never dropped, only care about plant class
@@ -297,7 +306,14 @@ public class WandOfRegrowth extends Wand {
 
 		@Override
 		public void activate() {
+			if (RandomL.randomBoolean()){
+				spawnLivingPlant(new LivingPlantSeedPod());
+			} else {
+				effectChar();
+			}
+		}
 
+		private void effectChar(){
 			int nSeeds = Random.NormalIntRange(2, 4);
 
 			ArrayList<Integer> candidates = new ArrayList<Integer>();
@@ -312,7 +328,6 @@ public class WandOfRegrowth extends Wand {
 				Dungeon.level.drop(Generator.random(Generator.Category.SEED), c).sprite.drop(pos);
 				candidates.remove(c);
 			}
-
 		}
 
 		//seed is never dropped, only care about plant class

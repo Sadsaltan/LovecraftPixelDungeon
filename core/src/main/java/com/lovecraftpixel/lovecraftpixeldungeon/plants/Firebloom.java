@@ -26,11 +26,13 @@ package com.lovecraftpixel.lovecraftpixeldungeon.plants;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Fire;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantFireBloom;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.FlameParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Firebloom extends Plant {
 	
@@ -40,9 +42,16 @@ public class Firebloom extends Plant {
 	
 	@Override
 	public void activate() {
-		
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantFireBloom());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		GameScene.add( Blob.seed( pos, 2, Fire.class ) );
-		
+
 		if (Dungeon.level.heroFOV[pos]) {
 			CellEmitter.get( pos ).burst( FlameParticle.FACTORY, 5 );
 		}

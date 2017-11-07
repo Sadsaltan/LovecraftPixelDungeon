@@ -28,10 +28,12 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Poison;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantSorrowMoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.PoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfToxicGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Sorrowmoss extends Plant {
 
@@ -41,12 +43,20 @@ public class Sorrowmoss extends Plant {
 	
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantSorrowMoss());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
-		
+
 		if (ch != null) {
 			Buff.affect( ch, Poison.class ).set( Poison.durationFactor( ch ) * (4 + Dungeon.depth / 2) );
 		}
-		
+
 		if (Dungeon.level.heroFOV[pos]) {
 			CellEmitter.center( pos ).burst( PoisonParticle.SPLASH, 3 );
 		}

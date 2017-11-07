@@ -28,9 +28,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Bless;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantStarFlower;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfExperience;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Starflower extends Plant {
 
@@ -40,11 +41,19 @@ public class Starflower extends Plant {
 
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantStarFlower());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
 
 		if (ch != null) Buff.prolong(ch, Bless.class, Bless.DURATION);
 
-		if (Random.Int(5) == 0){
+		if (RandomL.Int(5) == 0){
 			Dungeon.level.drop(new Seed(), pos).sprite.drop();
 		}
 	}

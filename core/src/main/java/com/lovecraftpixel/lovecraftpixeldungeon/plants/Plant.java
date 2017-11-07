@@ -32,7 +32,11 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Barkskin;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.HeroSubClass;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlant;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.Pushing;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.LeafParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Dewdrop;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
@@ -40,10 +44,14 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.SandalsOfNature;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.features.Door;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -100,6 +108,36 @@ public abstract class Plant implements Bundlable {
 			}
 			if (Random.Int( 5 - naturalismLevel ) == 0) {
 				Dungeon.level.drop( new Dewdrop(), pos ).sprite.drop();
+			}
+		}
+	}
+
+	public void spawnLivingPlant(LivingPlant livingPlant){
+		ArrayList<Integer> spawnPoints = new ArrayList<>();
+
+		for (int i = 0; i < PathFinder.NEIGHBOURS8.length; i++) {
+			int p = pos + PathFinder.NEIGHBOURS8[i];
+			if (Actor.findChar( p ) == null && (Dungeon.level.passable[p] || Dungeon.level.avoid[p]) && !Dungeon.level.pit[p]) {
+				spawnPoints.add( p );
+			}
+		}
+
+		if (spawnPoints.size() > 0) {
+			Mob livingPlantMob;
+			livingPlantMob = livingPlant;
+			livingPlantMob.pos = RandomL.element( spawnPoints );
+
+			GameScene.add(livingPlantMob);
+			Actor.addDelayed( new Pushing( livingPlantMob, pos, livingPlantMob.pos ), -1 );
+			if (Dungeon.level.map[livingPlantMob.pos] == Terrain.DOOR) {
+				Door.enter( livingPlantMob.pos );
+			}
+
+			if (Dungeon.level.heroFOV[pos]) {
+				CellEmitter.get( pos ).burst( Speck.factory( Speck.LIGHT ), 4 );
+			}
+			if (Dungeon.level.heroFOV[livingPlantMob.pos]) {
+				CellEmitter.get( livingPlantMob.pos ).burst( Speck.factory( Speck.LIGHT ), 4 );
 			}
 		}
 	}

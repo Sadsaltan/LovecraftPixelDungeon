@@ -28,12 +28,14 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.FlavourBuff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantEarthRoot;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.EarthParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfParalyticGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.BuffIndicator;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Image;
 import com.watabou.utils.Bundle;
@@ -46,12 +48,20 @@ public class Earthroot extends Plant {
 	
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantEarthRoot());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
-		
+
 		if (ch == Dungeon.hero) {
 			Buff.affect( ch, Armor.class ).level(ch.HT);
 		}
-		
+
 		if (Dungeon.level.heroFOV[pos]) {
 			CellEmitter.bottom( pos ).start( EarthParticle.FACTORY, 0.05f, 8 );
 			Camera.main.shake( 1, 0.4f );

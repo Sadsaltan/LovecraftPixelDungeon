@@ -26,9 +26,11 @@ package com.lovecraftpixel.lovecraftpixeldungeon.plants;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Fire;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Freezing;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantIceCap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfFrost;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.PathFinder;
 
 public class Icecap extends Plant {
@@ -39,11 +41,18 @@ public class Icecap extends Plant {
 	
 	@Override
 	public void activate() {
-		
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantIceCap());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		PathFinder.buildDistanceMap( pos, BArray.not( Dungeon.level.losBlocking, null ), 1 );
-		
+
 		Fire fire = (Fire)Dungeon.level.blobs.get( Fire.class );
-		
+
 		for (int i=0; i < PathFinder.distance.length; i++) {
 			if (PathFinder.distance[i] < Integer.MAX_VALUE) {
 				Freezing.affect( i, fire );

@@ -27,8 +27,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Vertigo;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantStormVine;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLevitation;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Stormvine extends Plant {
 
@@ -38,6 +40,14 @@ public class Stormvine extends Plant {
 
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantStormVine());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
 
 		if (ch != null) {

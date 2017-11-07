@@ -36,10 +36,12 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Vertigo;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Weakness;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantDreamFoil;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfPurity;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Dreamfoil extends Plant {
 
@@ -49,6 +51,14 @@ public class Dreamfoil extends Plant {
 
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantDreamFoil());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
 
 		if (ch != null) {

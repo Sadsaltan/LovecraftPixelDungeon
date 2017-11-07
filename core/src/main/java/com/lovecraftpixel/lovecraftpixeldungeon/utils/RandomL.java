@@ -28,7 +28,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class Random {
+public class RandomL {
 
 	private static java.util.Random rand = new java.util.Random();
 

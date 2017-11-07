@@ -30,24 +30,33 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Blindness;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Cripple;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantBlindWeed;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfInvisibility;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Blindweed extends Plant {
-	
+
 	{
 		image = 3;
 	}
 	
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantBlindWeed());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
-		
+
 		if (ch != null) {
-			int len = Random.Int( 5, 10 );
+			int len = RandomL.Int( 5, 10 );
 			Buff.prolong( ch, Blindness.class, len );
 			Buff.prolong( ch, Cripple.class, len );
 			if (ch instanceof Mob) {
@@ -55,12 +64,12 @@ public class Blindweed extends Plant {
 				((Mob)ch).beckon( Dungeon.level.randomDestination() );
 			}
 		}
-		
+
 		if (Dungeon.level.heroFOV[pos]) {
 			CellEmitter.get( pos ).burst( Speck.factory( Speck.LIGHT ), 4 );
 		}
 	}
-	
+
 	public static class Seed extends Plant.Seed {
 		{
 			image = ItemSpriteSheet.SEED_BLINDWEED;

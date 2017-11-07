@@ -209,7 +209,7 @@ public class CursedWand {
 	private static void uncommonEffect(final Wand wand, final Hero user, final Ballistica bolt){
 		switch(Random.Int(4)){
 
-			//Random plant
+			//RandomL plant
 			case 0:
 				cursedFX(user, bolt, new Callback() {
 					public void call() {

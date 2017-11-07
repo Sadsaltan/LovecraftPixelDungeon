@@ -28,11 +28,13 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantFadeLeaf;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class Fadeleaf extends Plant {
 	
@@ -42,13 +44,21 @@ public class Fadeleaf extends Plant {
 	
 	@Override
 	public void activate() {
+		if (RandomL.randomBoolean()){
+			spawnLivingPlant(new LivingPlantFadeLeaf());
+		} else {
+			effectChar();
+		}
+	}
+
+	private void effectChar(){
 		Char ch = Actor.findChar(pos);
-		
+
 		if (ch instanceof Hero) {
-			
+
 			ScrollOfTeleportation.teleportHero( (Hero)ch );
 			((Hero)ch).curAction = null;
-			
+
 		} else if (ch instanceof Mob && !ch.properties().contains(Char.Property.IMMOVABLE)) {
 
 			int count = 10;
@@ -59,18 +69,18 @@ public class Fadeleaf extends Plant {
 					break;
 				}
 			} while (newPos == -1);
-			
+
 			if (newPos != -1 && !Dungeon.bossLevel()) {
-			
+
 				ch.pos = newPos;
 				if (((Mob) ch).state == ((Mob) ch).HUNTING) ((Mob) ch).state = ((Mob) ch).WANDERING;
 				ch.sprite.place( ch.pos );
 				ch.sprite.visible = Dungeon.level.heroFOV[ch.pos];
-				
+
 			}
 
 		}
-		
+
 		if (Dungeon.level.heroFOV[pos]) {
 			CellEmitter.get( pos ).start( Speck.factory( Speck.LIGHT ), 0.2f, 3 );
 		}
