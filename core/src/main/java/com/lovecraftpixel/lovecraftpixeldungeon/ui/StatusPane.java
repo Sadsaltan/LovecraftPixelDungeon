@@ -58,6 +58,7 @@ public class StatusPane extends Component {
 	private Image rawShielding;
 	private Image shieldedHP;
 	private Image hp;
+	private Image mp;
 	private Image exp;
 
 	private BossHealthBar bossHP;
@@ -115,6 +116,9 @@ public class StatusPane extends Component {
 		hp = new Image( Assets.HP_BAR );
 		add( hp );
 
+		mp = new Image( Assets.MP_BAR );
+		add( mp );
+
 		exp = new Image( Assets.XP_BAR );
 		add( exp );
 
@@ -157,6 +161,9 @@ public class StatusPane extends Component {
 		hp.x = shieldedHP.x = rawShielding.x = 30;
 		hp.y = shieldedHP.y = rawShielding.y = 4;
 
+		mp.x = 30;
+		mp.y = 9;
+
 		bossHP.setPos( 6 + (width - bossHP.width())/2, 20);
 
 		depth.x = width - 35.5f - depth.width() / 2f;
@@ -177,8 +184,10 @@ public class StatusPane extends Component {
 		super.update();
 
 		float health = Dungeon.hero.HP;
+		float mentalhealth = Dungeon.hero.MHP;
 		float shield = Dungeon.hero.SHLD;
 		float max = Dungeon.hero.HT;
+		float mentalmax = Dungeon.hero.MHT;
 
 		if (!Dungeon.hero.isAlive()) {
 			avatar.tint(0x000000, 0.5f);
@@ -191,6 +200,7 @@ public class StatusPane extends Component {
 		}
 
 		hp.scale.x = Math.max( 0, (health-shield)/max);
+		mp.scale.x = Math.max( 0, (mentalhealth)/mentalmax);
 		shieldedHP.scale.x = health/max;
 		rawShielding.scale.x = shield/max;
 

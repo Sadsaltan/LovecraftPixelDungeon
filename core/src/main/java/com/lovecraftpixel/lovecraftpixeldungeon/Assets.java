@@ -44,8 +44,10 @@ public class Assets {
 	public static final String STATUS	= "ui/status_pane.png";
 	public static final String MENU		= "ui/menu_button.png";
 	public static final String HP_BAR	= "ui/hp_bar.png";
+	public static final String MP_BAR	= "ui/mp_bar.png";
 	public static final String SHLD_BAR = "ui/shield_bar.png";
 	public static final String XP_BAR	= "ui/exp_bar.png";
+	public static final String KN_BAR	= "ui/knowledge_bar.png";
 	public static final String TOOLBAR	= "ui/toolbar.png";
 	public static final String SHADOW   = "ui/shadow.png";
 	public static final String BOSSHP   = "ui/boss_hp.png";

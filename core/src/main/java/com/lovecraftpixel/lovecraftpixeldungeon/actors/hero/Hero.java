@@ -168,6 +168,9 @@ public class Hero extends Char {
 	public Belongings belongings;
 	
 	public int STR;
+
+	public int MHP;
+	public int MHT;
 	
 	public float awareness;
 	
@@ -190,11 +193,27 @@ public class Hero extends Char {
 		playername = StartScene.customName;
 		
 		HP = HT = 20;
+		MHP = MHT = 10;
 		STR = STARTING_STR;
 		
 		belongings = new Belongings( this );
 		
 		visibleEnemies = new ArrayList<Mob>();
+		seenEnemies = new ArrayList<Class>();
+	}
+
+	public void reduceMentalHealt(int value){
+		MHT -= value;
+		if(MHT <= 0){
+			MHT = 0;
+		}
+	}
+
+	public void increaseMentalHealt(int value){
+		MHT += value;
+		if(MHT >= MHP){
+			MHP = MHT;
+		}
 	}
 	
 	public void updateHT( boolean boostHP ){
@@ -226,6 +245,8 @@ public class Hero extends Char {
 	private static final String HTBOOST     = "htboost";
 	private static final String PLAYERNAME  = "playername";
 	private static final String GRIMOIRE	= "seenenemies";
+	private static final String MENTALP		= "mhp";
+	private static final String MENTALT		= "mht";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -248,6 +269,9 @@ public class Hero extends Char {
 		bundle.put( PLAYERNAME, playername );
 
 		bundle.put(GRIMOIRE, seenEnemies.toArray(new Class[seenEnemies.size()]));
+
+		bundle.put(MENTALP, MHP);
+		bundle.put(MENTALT, MHT);
 
 		belongings.storeInBundle( bundle );
 	}
@@ -274,6 +298,9 @@ public class Hero extends Char {
 		playername = bundle.getString(PLAYERNAME);
 
 		Collections.addAll(seenEnemies , bundle.getClassArray(GRIMOIRE));
+
+		MHP = bundle.getInt(MENTALP);
+		MHT = bundle.getInt(MENTALT);
 		
 		belongings.restoreFromBundle( bundle );
 	}
@@ -484,6 +511,13 @@ public class Hero extends Char {
 		busy();
 		spend( time );
 		next();
+	}
+
+	public Boolean isInsane(){
+		if(MHP <= 0){
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
@@ -1439,6 +1473,16 @@ public class Hero extends Char {
 
 	@Override
 	public void move( int step ) {
+		if(isInsane()){
+			sprite.interruptMotion();
+			int newPos = pos + PathFinder.NEIGHBOURS8[Random.Int( 8 )];
+			if (!(Dungeon.level.passable[newPos] || Dungeon.level.avoid[newPos]) || Actor.findChar( newPos ) != null)
+				return;
+			else {
+				sprite.move(pos, newPos);
+				step = newPos;
+			}
+		}
 		super.move( step );
 		
 		if (!flying) {

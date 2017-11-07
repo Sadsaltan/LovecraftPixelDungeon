@@ -356,15 +356,15 @@ public class WndJournal extends WndTabbed {
 		}
 		
 	}
-	
+
 	private static class CatalogTab extends Component{
 
 		private RedButton grimoire;
 		private RedButton[] itemButtons;
-		private static final int NUM_BUTTONS = 7;
-		
+		private static int NUM_BUTTONS = 7;
+
 		private static int currentItemIdx   = 0;
-		
+
 		private static final int WEAPON_IDX = 0;
 		private static final int ARMOR_IDX  = 1;
 		private static final int WAND_IDX   = 2;
@@ -372,11 +372,11 @@ public class WndJournal extends WndTabbed {
 		private static final int ARTIF_IDX  = 4;
 		private static final int POTION_IDX = 5;
 		private static final int SCROLL_IDX = 6;
-		
+
 		private ScrollPane list;
-		
+
 		private ArrayList<CatalogItem> items = new ArrayList<>();
-		
+
 		@Override
 		protected void createChildren() {
 			itemButtons = new RedButton[NUM_BUTTONS];
@@ -391,17 +391,17 @@ public class WndJournal extends WndTabbed {
 				};
 				itemButtons[i].icon(new ItemSprite(ItemSpriteSheet.WEAPON_HOLDER + i, null));
 				add( itemButtons[i] );
+			}
 
-				grimoire = new RedButton(""){
-					@Override
-					protected void onClick() {
+			grimoire = new RedButton(""){
+				@Override
+				protected void onClick() {
 						GameScene.show(new WndGrimoire());
 					}
 				};
-				grimoire.icon(new ItemSprite(ItemSpriteSheet.MOBS, null));
-				add(grimoire);
-			}
-			
+			grimoire.icon(new ItemSprite(ItemSpriteSheet.MOBS, null));
+			add(grimoire);
+
 			list = new ScrollPane( new Component() ) {
 				@Override
 				public void onClick( float x, float y ) {
@@ -415,30 +415,34 @@ public class WndJournal extends WndTabbed {
 			};
 			add( list );
 		}
-		
+
 		private static final int BUTTON_HEIGHT = 17;
-		
+
 		@Override
 		protected void layout() {
 			super.layout();
-			
-			int perRow = NUM_BUTTONS;
+
+			int perRow = NUM_BUTTONS + 1;
+
 			float buttonWidth = width()/perRow;
-			
+
 			for (int i = 0; i < NUM_BUTTONS; i++) {
 				itemButtons[i].setRect((i%perRow) * (buttonWidth), (i/perRow) * (BUTTON_HEIGHT + 1),
 						buttonWidth, BUTTON_HEIGHT);
 				PixelScene.align(itemButtons[i]);
 			}
-			
+			grimoire.setRect((7%perRow) * (buttonWidth), (7/perRow) * (BUTTON_HEIGHT + 1),
+					buttonWidth, BUTTON_HEIGHT);
+			PixelScene.align(grimoire);
+
 			list.setRect(0, itemButtons[NUM_BUTTONS-1].bottom() + 1, width,
 					height - itemButtons[NUM_BUTTONS-1].bottom() - 1);
 		}
-		
+
 		private void updateList() {
-			
+
 			items.clear();
-			
+
 			for (int i = 0; i < NUM_BUTTONS; i++){
 				if (i == currentItemIdx){
 					itemButtons[i].icon().color(TITLE_COLOR);
@@ -446,11 +450,11 @@ public class WndJournal extends WndTabbed {
 					itemButtons[i].icon().resetColor();
 				}
 			}
-			
+
 			Component content = list.content();
 			content.clear();
 			list.scrollTo( 0, 0 );
-			
+
 			ArrayList<Class<? extends Item>> itemClasses;
 			final HashMap<Class<?  extends Item>, Boolean> known = new HashMap<>();
 			if (currentItemIdx == WEAPON_IDX) {
@@ -477,22 +481,22 @@ public class WndJournal extends WndTabbed {
 			} else {
 				itemClasses = new ArrayList<>();
 			}
-			
+
 			Collections.sort(itemClasses, new Comparator<Class<? extends Item>>() {
 				@Override
 				public int compare(Class<? extends Item> a, Class<? extends Item> b) {
 					int result = 0;
-					
+
 					//specifically known items appear first, then seen items, then unknown items.
 					if (known.get(a) && Catalog.isSeen(a)) result -= 2;
 					if (known.get(b) && Catalog.isSeen(b)) result += 2;
 					if (Catalog.isSeen(a))                 result --;
 					if (Catalog.isSeen(b))                 result ++;
-					
+
 					return result;
 				}
 			});
-			
+
 			float pos = 0;
 			for (Class<? extends Item> itemClass : itemClasses) {
 				try{
@@ -500,28 +504,28 @@ public class WndJournal extends WndTabbed {
 					item.setRect( 0, pos, width, ITEM_HEIGHT );
 					content.add( item );
 					items.add( item );
-					
+
 					pos += item.height();
 				} catch (Exception e) {
 					LovecraftPixelDungeon.reportException(e);
 				}
 			}
-			
+
 			content.setSize( width, pos );
 			list.setSize( list.width(), list.height() );
 		}
-		
+
 		private static class CatalogItem extends ListItem {
-			
+
 			private Item item;
 			private boolean seen;
-			
+
 			public CatalogItem(Item item, boolean IDed, boolean seen ) {
 				super( new ItemSprite(item), Messages.titleCase(item.trueName()));
-				
+
 				this.item = item;
 				this.seen = seen;
-				
+
 				if (!seen) {
 					icon.copy( new ItemSprite( ItemSpriteSheet.WEAPON_HOLDER + currentItemIdx, null) );
 					label.text("???");
@@ -530,20 +534,20 @@ public class WndJournal extends WndTabbed {
 					icon.copy( new ItemSprite( ItemSpriteSheet.WEAPON_HOLDER + currentItemIdx, null) );
 					label.hardlight( 0xCCCCCC );
 				}
-				
+
 			}
-			
+
 			public boolean onClick( float x, float y ) {
 				if (inside( x, y ) && seen) {
 					GameScene.show(new WndTitledMessage( new Image(icon),
-								Messages.titleCase(item.trueName()), item.desc() ));
+							Messages.titleCase(item.trueName()), item.desc() ));
 					return true;
 				} else {
 					return false;
 				}
 			}
 		}
-		
+
 	}
 	
 }

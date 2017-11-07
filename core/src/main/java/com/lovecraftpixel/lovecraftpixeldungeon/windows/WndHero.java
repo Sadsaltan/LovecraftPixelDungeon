@@ -49,7 +49,7 @@ import java.util.Locale;
 public class WndHero extends WndTabbed {
 	
 	private static final int WIDTH		= 115;
-	private static final int HEIGHT		= 100;
+	private static final int HEIGHT		= 130;
 	
 	private StatsTab stats;
 	private BuffsTab buffs;
@@ -114,6 +114,7 @@ public class WndHero extends WndTabbed {
 			statSlot( Messages.get(this, "str"), hero.STR() );
 			if (hero.SHLD > 0) statSlot( Messages.get(this, "health"), hero.HP + "+" + hero.SHLD + "/" + hero.HT );
 			else statSlot( Messages.get(this, "health"), (hero.HP) + "/" + hero.HT );
+			statSlot( Messages.get(this, "mentalhealth"), (hero.MHP) + "/" + hero.MHT );
 			statSlot( Messages.get(this, "exp"), hero.exp + "/" + hero.maxExp() );
 
 			pos += GAP;

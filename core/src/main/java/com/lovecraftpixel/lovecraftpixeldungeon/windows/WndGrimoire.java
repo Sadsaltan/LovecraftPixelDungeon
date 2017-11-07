@@ -71,9 +71,9 @@ public class WndGrimoire extends Window {
 			mobs.add(mob);
 			pos += mob.height();
 		}
-		
+
 		content.setSize( WIDTH, pos );
-		
+
 		list = new ScrollPane( content ){
 			@Override
 			public void onClick( float x, float y ) {

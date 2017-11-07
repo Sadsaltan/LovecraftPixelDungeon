@@ -56,6 +56,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.FrostTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.Trap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.WornDartTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -386,7 +387,7 @@ public abstract class RegularLevel extends Level {
 			drop( p, cell );
 		}
 
-		int plants = Random.Int(6, 8);
+		int plants = RandomL.Int(6, 8);
 		for(int i = plants; i > 0; i--){
 			Plant.Seed seed = (Plant.Seed) Generator.random(Generator.Category.SEED);
 			plant(seed, randomPlant());
