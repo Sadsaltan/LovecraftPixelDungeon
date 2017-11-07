@@ -40,12 +40,15 @@ public class PotionOfMight extends Potion {
 		setKnown();
 		
 		hero.STR++;
+		hero.MHP++;
 		hero.HTBoost += 5;
 		hero.updateHT( true );
 		hero.sprite.showStatus( CharSprite.POSITIVE, Messages.get(this, "msg_1") );
 		GLog.p( Messages.get(this, "msg_2") );
 
 		Badges.validateStrengthAttained();
+
+		hero.increaseMentalHealth(3);
 	}
 	
 	@Override

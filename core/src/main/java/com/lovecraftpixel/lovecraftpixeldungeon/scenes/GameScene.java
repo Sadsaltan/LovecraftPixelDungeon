@@ -342,7 +342,7 @@ public class GameScene extends PixelScene {
 			break;
 		case DESCEND:
 			switch (Dungeon.depth) {
-			case 1:
+			case 2:
 				WndStory.showChapter( WndStory.ID_SEWERS );
 				break;
 			case 6:
@@ -389,12 +389,16 @@ public class GameScene extends PixelScene {
 		if (InterlevelScene.mode != InterlevelScene.Mode.NONE) {
 			if (Dungeon.depth == Statistics.deepestFloor
 					&& (InterlevelScene.mode == InterlevelScene.Mode.DESCEND || InterlevelScene.mode == InterlevelScene.Mode.FALL)) {
-				GLog.h(Messages.get(this, "descend"), Dungeon.depth);
+				if(Dungeon.depth != 1){
+					GLog.h(Messages.get(this, "descend"), Dungeon.depth-1);
+				}
 				Sample.INSTANCE.play(Assets.SND_DESCEND);
 			} else if (InterlevelScene.mode == InterlevelScene.Mode.RESET) {
 				GLog.h(Messages.get(this, "warp"));
 			} else {
-				GLog.h(Messages.get(this, "return"), Dungeon.depth);
+				if(Dungeon.depth != 1){
+					GLog.h(Messages.get(this, "return"), Dungeon.depth-1);
+				}
 			}
 
 			switch (Dungeon.level.feeling) {

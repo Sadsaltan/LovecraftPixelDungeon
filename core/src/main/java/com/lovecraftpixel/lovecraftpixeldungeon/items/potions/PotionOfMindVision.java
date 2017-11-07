@@ -47,6 +47,8 @@ public class PotionOfMindVision extends Potion {
 		} else {
 			GLog.i( Messages.get(this, "see_none") );
 		}
+
+		hero.reduceMentalHealth(1);
 	}
 	
 	@Override

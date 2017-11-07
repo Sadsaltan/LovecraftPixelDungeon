@@ -103,6 +103,7 @@ public class PotionOfPurity extends Potion {
 		GLog.w( Messages.get(this, "protected") );
 		Buff.prolong( hero, BlobImmunity.class, BlobImmunity.DURATION );
 		setKnown();
+		hero.increaseMentalHealth(1);
 	}
 	
 	@Override

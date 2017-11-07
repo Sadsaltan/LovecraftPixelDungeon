@@ -48,6 +48,7 @@ public class PotionOfHealing extends Potion {
 		Buff.affect( hero, Healing.class ).setHeal((int)(0.8f*hero.HT + 14), 0.333f, 0);
 		cure( hero );
 		GLog.p( Messages.get(this, "heal") );
+		hero.increaseMentalHealth(3);
 	}
 	
 	public static void cure( Hero hero ) {

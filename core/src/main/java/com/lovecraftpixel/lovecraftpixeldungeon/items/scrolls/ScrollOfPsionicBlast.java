@@ -64,6 +64,8 @@ public class ScrollOfPsionicBlast extends Scroll {
 		Dungeon.observe();
 		
 		setKnown();
+
+		curUser.reduceMentalHealth(3);
 		
 		readAnimation();
 
@@ -87,6 +89,8 @@ public class ScrollOfPsionicBlast extends Scroll {
 		}
 		
 		setKnown();
+
+		curUser.reduceMentalHealth(3);
 		
 		readAnimation();
 	}

@@ -59,6 +59,7 @@ public class PotionOfLevitation extends Potion {
 		setKnown();
 		Buff.affect( hero, Levitation.class, Levitation.DURATION );
 		GLog.i( Messages.get(this, "float") );
+		hero.reduceMentalHealth(1);
 	}
 	
 	@Override

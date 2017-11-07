@@ -55,6 +55,8 @@ public class ScrollOfTeleportation extends Scroll {
 		teleportHero( curUser );
 		setKnown();
 
+		curUser.reduceMentalHealth(4);
+
 		readAnimation();
 	}
 	

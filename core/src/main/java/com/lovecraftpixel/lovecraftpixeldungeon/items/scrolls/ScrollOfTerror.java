@@ -73,6 +73,8 @@ public class ScrollOfTerror extends Scroll {
 		}
 		setKnown();
 
+		curUser.reduceMentalHealth(3);
+
 		readAnimation();
 	}
 	

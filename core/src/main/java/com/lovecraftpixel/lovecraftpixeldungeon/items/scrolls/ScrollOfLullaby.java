@@ -60,6 +60,8 @@ public class ScrollOfLullaby extends Scroll {
 
 		setKnown();
 
+		curUser.reduceMentalHealth(1);
+
 		readAnimation();
 	}
 	

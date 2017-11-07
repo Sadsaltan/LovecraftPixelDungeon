@@ -59,6 +59,7 @@ public class ScrollOfMirrorImage extends Scroll {
 		Invisibility.dispel();
 		
 		readAnimation();
+		curUser.reduceMentalHealth(3);
 	}
 	
 	@Override

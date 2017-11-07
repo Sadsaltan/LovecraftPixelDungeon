@@ -55,6 +55,8 @@ public class ScrollOfRecharging extends Scroll {
 		SpellSprite.show( curUser, SpellSprite.CHARGE );
 		setKnown();
 
+		curUser.increaseMentalHealth(1);
+
 		readAnimation();
 	}
 	

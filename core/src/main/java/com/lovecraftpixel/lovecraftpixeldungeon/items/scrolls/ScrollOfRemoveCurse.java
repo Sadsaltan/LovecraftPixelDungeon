@@ -54,6 +54,7 @@ public class ScrollOfRemoveCurse extends InventoryScroll {
 		}
 		Sample.INSTANCE.play( Assets.SND_READ );
 		Invisibility.dispel();
+		curUser.increaseMentalHealth(1);
 		doRead();
 	}
 	

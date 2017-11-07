@@ -28,7 +28,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
-import com.lovecraftpixel.lovecraftpixeldungeon.messages.Languages;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
@@ -56,11 +55,8 @@ public class StoneOfEnchantment extends InventoryStone {
 		
 		curUser.sprite.emitter().start( Speck.factory( Speck.LIGHT ), 0.1f, 5 );
 		Enchanting.show( curUser, item );
-		
-		//FIXME add this to translations
-		if (Messages.lang() == Languages.ENGLISH) {
-			GLog.w("your %s glows in the dark", item.name());
-		}
+
+		GLog.w(Messages.get(this, "enchantmessage", item.name()));
 		
 	}
 }

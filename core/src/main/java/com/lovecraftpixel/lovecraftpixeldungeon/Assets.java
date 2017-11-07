@@ -111,11 +111,12 @@ public class Assets {
 	public static final String ITEMS	        = "ui/items.png";
 	public static final String TERRAIN_FEATURES	= "tiles/terrain_features.png";
 	
-	public static final String TILES_SEWERS	= "tiles/tiles_sewers.png";
-	public static final String TILES_PRISON	= "tiles/tiles_prison.png";
-	public static final String TILES_CAVES	= "tiles/tiles_caves.png";
-	public static final String TILES_CITY	= "tiles/tiles_city.png";
-	public static final String TILES_HALLS	= "tiles/tiles_halls.png";
+	public static final String TILES_SEWERS		= "tiles/tiles_sewers.png";
+	public static final String TILES_PRISON		= "tiles/tiles_prison.png";
+	public static final String TILES_CAVES		= "tiles/tiles_caves.png";
+	public static final String TILES_CITY		= "tiles/tiles_city.png";
+	public static final String TILES_HALLS		= "tiles/tiles_halls.png";
+	public static final String TILES_OVERWORLD	= "tiles/tiles_overworld.png";
 	
 	public static final String WATER_SEWERS	= "tiles/water0.png";
 	public static final String WATER_PRISON	= "tiles/water1.png";

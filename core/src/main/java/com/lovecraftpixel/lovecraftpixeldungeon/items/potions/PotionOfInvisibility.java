@@ -43,6 +43,7 @@ public class PotionOfInvisibility extends Potion {
 		Buff.affect( hero, Invisibility.class, Invisibility.DURATION );
 		GLog.i( Messages.get(this, "invisible") );
 		Sample.INSTANCE.play( Assets.SND_MELD );
+		hero.reduceMentalHealth(1);
 	}
 	
 	@Override

@@ -69,6 +69,8 @@ public class ScrollOfRage extends Scroll {
 		Sample.INSTANCE.play( Assets.SND_CHALLENGE );
 		Invisibility.dispel();
 
+		curUser.reduceMentalHealth(2);
+
 		readAnimation();
 	}
 	

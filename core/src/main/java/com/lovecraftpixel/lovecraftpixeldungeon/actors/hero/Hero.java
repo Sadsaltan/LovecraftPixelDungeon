@@ -117,7 +117,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndAlchemy;
-import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndMessage;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndResurrect;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTradeItem;
 import com.watabou.noosa.Camera;
@@ -202,14 +201,14 @@ public class Hero extends Char {
 		seenEnemies = new ArrayList<Class>();
 	}
 
-	public void reduceMentalHealt(int value){
+	public void reduceMentalHealth(int value){
 		MHT -= value;
 		if(MHT <= 0){
 			MHT = 0;
 		}
 	}
 
-	public void increaseMentalHealt(int value){
+	public void increaseMentalHealth(int value){
 		MHT += value;
 		if(MHT >= MHP){
 			MHP = MHT;
@@ -893,7 +892,7 @@ public class Hero extends Char {
 			if (Dungeon.depth == 1) {
 				
 				if (belongings.getItem( Amulet.class ) == null) {
-					GameScene.show( new WndMessage( Messages.get(this, "leave") ) );
+					//GameScene.show( new WndMessage( Messages.get(this, "leave") ) );
 					ready();
 				} else {
 					Dungeon.win( Amulet.class );
