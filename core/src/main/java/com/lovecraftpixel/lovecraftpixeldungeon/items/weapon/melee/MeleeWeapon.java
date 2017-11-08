@@ -91,24 +91,24 @@ public class MeleeWeapon extends Weapon {
 		poisonTurnsRemaining = 0;
 	}
 
-	private static final String TURNS			= "potiontype";
-	private static final String SEED			= "seedtype";
-	private static final String POIS			= "poisontype";
+	private static final String TURNS			= "turns";
+	private static final String SEED			= "seed";
+	private static final String TYPE			= "type";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
 		bundle.put(TURNS, poisonTurnsRemaining);
 		bundle.put(SEED, seedTypeUsed);
-		bundle.put(POIS, poisonType);
+		bundle.put(TYPE, poisonType);
 	}
 
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		super.restoreFromBundle(bundle);
 		poisonTurnsRemaining = bundle.getInt(TURNS);
-		bundle.getClass(SEED).cast(seedTypeUsed);
-		bundle.getClass(POIS).cast(poisonType);
+		seedTypeUsed = (Plant.Seed) bundle.get(SEED);
+		poisonType = (Potion) bundle.get(TYPE);
 	}
 
 	@Override
