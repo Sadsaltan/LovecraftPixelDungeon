@@ -26,6 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Blindness;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingBlindweedPlantSprite;
 
@@ -43,7 +44,7 @@ public class LivingPlantBlindWeed extends LivingPlant {
 
     @Override
     public int attackProc(Char enemy, int damage) {
-        enemy.add(new Blindness());
+        Buff.affect(enemy, Blindness.class);
         return super.attackProc(enemy, damage);
     }
 }

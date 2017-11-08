@@ -66,7 +66,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.scenes.StartScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.DungeonSeed;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.NameGenerator;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndResurrect;
 import com.watabou.noosa.Game;
 import com.watabou.utils.Bundlable;
@@ -171,10 +170,6 @@ public class Dungeon {
 	public static Hero hero;
 	public static Level level;
 
-	public static Integer year;
-
-	public static ArrayList<String> histoticFigs;
-
 	public static QuickSlot quickslot = new QuickSlot();
 
 	public static int depth;
@@ -217,10 +212,6 @@ public class Dungeon {
 		
 		depth = 0;
 		gold = 0;
-
-		for(int i = year/2; i > 0; i--){
-			histoticFigs.add(NameGenerator.getRandomName());
-		}
 
 		droppedItems = new SparseArray<ArrayList<Item>>();
 
