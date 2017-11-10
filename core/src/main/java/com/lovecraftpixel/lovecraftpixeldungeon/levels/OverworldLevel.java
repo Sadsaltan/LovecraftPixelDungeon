@@ -24,21 +24,15 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.levels;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.effects.Halo;
-import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.GreenFlameParticle;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.GrippingTrap;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.Trap;
-import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.tiles.DungeonTilemap;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.tiles.CustomTiledVisual;
 import com.watabou.noosa.Group;
-import com.watabou.noosa.particles.Emitter;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
-import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 public class OverworldLevel extends Level {
@@ -81,22 +75,16 @@ public class OverworldLevel extends Level {
 		entrance = 9+2*16;
 		exit = 7+8*16;
 
-		resetTraps();
-
 		return true;
 	}
 
-	private void resetTraps(){
-		traps.clear();
-
-		for (int i = 0; i < length(); i++){
-			if (map[i] == Terrain.INACTIVE_TRAP) {
-				Trap t = new GrippingTrap().reveal();
-				t.active = false;
-				setTrap(t, i);
-				map[i] = Terrain.INACTIVE_TRAP;
-			}
-		}
+	@Override
+	public Group addVisuals() {
+		CustomTiledVisual vis = new ExtraTiles();
+		vis.pos(0, 0);
+		customTiles.add(vis);
+		((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+		return super.addVisuals();
 	}
 
 	@Override
@@ -120,41 +108,13 @@ public class OverworldLevel extends Level {
 
 	@Override
 	public void press( int cell, Char ch ) {
+
 		super.press(cell, ch);
 	}
 
 	@Override
 	public int randomRespawnCell() {
 		return 10+2*16 + PathFinder.NEIGHBOURS8[Random.Int(8)];
-	}
-
-	@Override
-	public String tileName( int tile ) {
-		switch (tile) {
-			case Terrain.WATER:
-				return Messages.get(SewerLevel.class, "water_name");
-			default:
-				return super.tileName( tile );
-		}
-	}
-
-	@Override
-	public String tileDesc(int tile) {
-		switch (tile) {
-			case Terrain.EMPTY_DECO:
-				return Messages.get(SewerLevel.class, "empty_deco_desc");
-			case Terrain.BOOKSHELF:
-				return Messages.get(SewerLevel.class, "bookshelf_desc");
-			default:
-				return super.tileDesc( tile );
-		}
-	}
-
-	@Override
-	public Group addVisuals() {
-		super.addVisuals();
-		addLevelVisuals(this, visuals);
-		return visuals;
 	}
 
 	@Override
@@ -166,69 +126,64 @@ public class OverworldLevel extends Level {
 		}
 	}
 
-	private static final int W = Terrain.WALL;
-	private static final int B = Terrain.BARRICADE;
-	private static final int e = Terrain.EMPTY;
-	private static final int S = Terrain.STATUE;
+	private static final int e = Terrain.WATER;
+	private static final int w = Terrain.EMPTY;
 	private static final int s = Terrain.STATUE_SP;
-	private static final int w = Terrain.WATER;
-
-	private static final int T = Terrain.INACTIVE_TRAP;
 
 	private static final int X = Terrain.EXIT;
 
-	private static final int M = Terrain.WALL_DECO;
-
 	private static final int[] MAP_START =
 			{       //1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
-				/*1*/ W, W, W, W, W, W, W, B, B, B, B, W, W, W, W, W,
-				/*2*/ W, W, W, W, W, W, W, T, e, e, T, W, W, W, W, W,
-				/*3*/ W, W, W, W, W, W, W, e, w, e, e, W, W, W, W, W,
-				/*4*/ W, W, W, W, W, W, W, T, w, e, T, W, W, W, W, W,
-				/*5*/ s, e, T, e, e, e, e, e, e, e, e, W, W, W, W, W,
-				/*6*/ s, e, w, w, w, e, e, w, w, w, w, e, w, w, T, S,
-				/*7*/ s, e, e, e, e, e, e, e, e, e, e, e, e, e, e, S,
-				/*8*/ s, e, w, w, e, W, W, W, W, W, e, w, e, e, e, S,
-				/*9*/ W, W, W, e, e, W, e, X, e, W, e, w, W, W, W, W,
-				/*10*/W, W, W, e, e, W, e, e, e, W, e, e, W, W, W, W,
-				/*11*/W, W, W, w, e, W, M, e, M, W, e, w, W, W, W, W,
-				/*12*/W, W, W, w, e, e, e, e, e, e, e, w, W, W, W, W,
-				/*13*/W, W, W, w, e, e, e, e, e, e, e, w, W, W, W, W,
-				/*14*/s, e, T, e, e, e, w, w, e, e, e, w, e, e, e, S,
-				/*15*/s, e, e, e, e, w, w, e, e, e, e, e, e, e, e, S,
-				/*16*/W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+				/*1*/ s, s, s, s, s, s, s, w, w, w, w, s, s, s, s, s,
+				/*2*/ s, s, s, s, s, s, s, e, e, e, e, s, s, s, s, s,
+				/*3*/ s, s, s, s, s, s, s, e, e, e, e, s, s, s, s, s,
+				/*4*/ s, s, s, s, s, s, s, e, e, e, e, s, s, s, s, s,
+				/*5*/ w, e, e, e, e, e, e, e, e, e, e, s, s, s, s, s,
+				/*6*/ w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
+				/*7*/ w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
+				/*8*/ w, e, e, e, e, s, s, s, s, s, e, e, e, e, e, w,
+				/*9*/ s, s, s, e, e, s, e, X, e, s, e, e, s, s, s, s,
+				/*10*/s, s, s, e, e, s, e, e, e, s, e, e, s, s, s, s,
+				/*11*/s, s, s, e, e, s, s, e, s, s, e, e, s, s, s, s,
+				/*12*/s, s, s, e, e, e, e, e, e, e, e, e, s, s, s, s,
+				/*13*/s, s, s, e, e, e, e, e, e, e, e, e, s, s, s, s,
+				/*14*/w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
+				/*15*/w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
+				/*16*/w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w,
 			};
 
-	public static void addLevelVisuals(Level level, Group group){
-		for (int i=0; i < level.length(); i++) {
-			if (level.map[i] == Terrain.WALL_DECO) {
-				group.add( new Torch( i ) );
-			}
-		}
-	}
+	private static final int[] MAP_WITCH =
+			{       //1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
+				/*1*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*2*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*3*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*4*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*5*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*6*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*7*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*8*/ s, s, s, s, s, s, w, w, w, w, w, w, s, s, s, s,
+				/*9*/ s, s, s, s, s, s, s, s, w, s, w, w, s, s, s, s,
+				/*10*/s, s, s, s, s, s, s, s, w, w, w, s, s, s, s, s,
+				/*11*/s, s, s, s, s, s, w, w, w, w, w, s, s, s, s, s,
+				/*12*/s, s, s, s, s, s, w, w, w, w, w, s, s, s, s, s,
+				/*13*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*14*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*15*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+			};
 
-	public static class Torch extends Emitter {
+	public static class ExtraTiles extends CustomTiledVisual {
 
-		private int pos;
-
-		public Torch( int pos ) {
-			super();
-
-			this.pos = pos;
-
-			PointF p = DungeonTilemap.tileCenterToWorld( pos );
-			pos( p.x - 1, p.y + 2, 2, 0 );
-
-			pour( GreenFlameParticle.FACTORY, 0.15f );
-
-			add( new Halo( 12, 0x289F10, 0.4f ).point( p.x, p.y + 1 ) );
+		public ExtraTiles(){
+			super(Assets.OVERWORLD);
 		}
 
 		@Override
-		public void update() {
-			if (visible = (pos < Dungeon.level.heroFOV.length && Dungeon.level.heroFOV[pos])) {
-				super.update();
-			}
+		public CustomTiledVisual create() {
+			tileH = 16;
+			tileW = 16;
+			mapSimpleImage(0, 0);
+			return super.create();
 		}
 	}
 
