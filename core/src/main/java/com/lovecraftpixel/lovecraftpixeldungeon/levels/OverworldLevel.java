@@ -24,12 +24,16 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.levels;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.tiles.CustomTiledVisual;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.watabou.noosa.Group;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
@@ -42,6 +46,13 @@ public class OverworldLevel extends Level {
 		color2 = 0x161414;
 	}
 
+	private enum State{
+		START,
+		WITCH
+	}
+
+	private State state;
+
 	@Override
 	public String tilesTex() {
 		return Assets.TILES_OVERWORLD;
@@ -52,13 +63,17 @@ public class OverworldLevel extends Level {
 		return Assets.WATER_CAVES;
 	}
 
+	private static final String STATE	        = "state";
+
 	@Override
 	public void storeInBundle( Bundle bundle ) {
+		bundle.put( STATE, state );
 		super.storeInBundle(bundle);
 	}
 
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
+		state = bundle.getEnum( STATE, State.class );
 		super.restoreFromBundle(bundle);
 	}
 
@@ -72,6 +87,7 @@ public class OverworldLevel extends Level {
 		buildFlagMaps();
 		cleanWalls();
 
+		state = State.START;
 		entrance = 9+2*16;
 		exit = 7+8*16;
 
@@ -80,10 +96,18 @@ public class OverworldLevel extends Level {
 
 	@Override
 	public Group addVisuals() {
-		CustomTiledVisual vis = new ExtraTiles();
-		vis.pos(0, 0);
-		customTiles.add(vis);
-		((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+		if(state == State.START){
+			CustomTiledVisual vis = new ExtraTilesTown();
+			vis.pos(0, 0);
+			customTiles.add(vis);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+		}
+		if(state == State.WITCH){
+			CustomTiledVisual vis = new ExtraTilesWitch();
+			vis.pos(0, 0);
+			customTiles.add(vis);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+		}
 		return super.addVisuals();
 	}
 
@@ -108,7 +132,16 @@ public class OverworldLevel extends Level {
 
 	@Override
 	public void press( int cell, Char ch ) {
-
+		if (ch == Dungeon.hero){
+			if (state == State.START
+					&& ((Room)new Room().set(0, 12, 2, 14)).inside(cellToPoint(cell))){
+				progress();
+			}
+			if (state == State.WITCH
+					&& ((Room)new Room().set(10, 8, 12, 10)).inside(cellToPoint(cell))){
+				progress();
+			}
+		}
 		super.press(cell, ch);
 	}
 
@@ -123,6 +156,45 @@ public class OverworldLevel extends Level {
 			for(int y = 0; y < 15; y++){
 				fieldOfView[x+y*16] = true;
 			}
+		}
+	}
+
+	private void changeMap(int[] map){
+		this.map = map.clone();
+		buildFlagMaps();
+		cleanWalls();
+
+		exit = entrance = 0;
+		for (int i = 0; i < length(); i ++)
+			if (map[i] == Terrain.ENTRANCE)
+				entrance = i;
+			else if (map[i] == Terrain.EXIT)
+				exit = i;
+
+		BArray.setFalse(visited);
+		BArray.setFalse(mapped);
+
+		for (Blob blob: blobs.values()){
+			blob.fullyClear();
+		}
+		addVisuals(); //this also resets existing visuals
+
+		GameScene.resetMap();
+		Dungeon.observe();
+	}
+
+	public void progress(){
+		switch (state){
+			case START:
+				state = State.WITCH;
+				Dungeon.hero.pos = 11+8*16;
+				changeMap(MAP_WITCH);
+				break;
+			case WITCH:
+				state = State.START;
+				Dungeon.hero.pos = 13+2*16;
+				changeMap(MAP_START);
+				break;
 		}
 	}
 
@@ -172,10 +244,25 @@ public class OverworldLevel extends Level {
 				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 			};
 
-	public static class ExtraTiles extends CustomTiledVisual {
+	public static class ExtraTilesTown extends CustomTiledVisual {
 
-		public ExtraTiles(){
+		public ExtraTilesTown(){
 			super(Assets.OVERWORLD);
+		}
+
+		@Override
+		public CustomTiledVisual create() {
+			tileH = 16;
+			tileW = 16;
+			mapSimpleImage(0, 0);
+			return super.create();
+		}
+	}
+
+	public static class ExtraTilesWitch extends CustomTiledVisual {
+
+		public ExtraTilesWitch(){
+			super(Assets.OVERWORLDW);
 		}
 
 		@Override
