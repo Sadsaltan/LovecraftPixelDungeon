@@ -33,7 +33,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.tiles.CustomTiledVisual;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.watabou.noosa.Group;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
@@ -97,16 +96,16 @@ public class OverworldLevel extends Level {
 	@Override
 	public Group addVisuals() {
 		if(state == State.START){
-			CustomTiledVisual vis = new ExtraTilesTown();
-			vis.pos(0, 0);
-			customTiles.add(vis);
-			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+			CustomTiledVisual town = new ExtraTilesTown();
+			town.pos(0, 0);
+			customTiles.add(town);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(town);
 		}
 		if(state == State.WITCH){
-			CustomTiledVisual vis = new ExtraTilesWitch();
-			vis.pos(0, 0);
-			customTiles.add(vis);
-			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(vis);
+			CustomTiledVisual witch = new ExtraTilesWitch();
+			witch.pos(0, 0);
+			customTiles.add(witch);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(witch);
 		}
 		return super.addVisuals();
 	}
@@ -138,7 +137,7 @@ public class OverworldLevel extends Level {
 				progress();
 			}
 			if (state == State.WITCH
-					&& ((Room)new Room().set(10, 8, 12, 10)).inside(cellToPoint(cell))){
+					&& ((Room)new Room().set(0, 13, 2, 15)).inside(cellToPoint(cell))){
 				progress();
 			}
 		}
@@ -165,19 +164,11 @@ public class OverworldLevel extends Level {
 		cleanWalls();
 
 		exit = entrance = 0;
-		for (int i = 0; i < length(); i ++)
-			if (map[i] == Terrain.ENTRANCE)
-				entrance = i;
-			else if (map[i] == Terrain.EXIT)
-				exit = i;
-
-		BArray.setFalse(visited);
-		BArray.setFalse(mapped);
 
 		for (Blob blob: blobs.values()){
 			blob.fullyClear();
 		}
-		addVisuals(); //this also resets existing visuals
+		addVisuals();
 
 		GameScene.resetMap();
 		Dungeon.observe();
@@ -187,12 +178,10 @@ public class OverworldLevel extends Level {
 		switch (state){
 			case START:
 				state = State.WITCH;
-				Dungeon.hero.pos = 11+8*16;
 				changeMap(MAP_WITCH);
 				break;
 			case WITCH:
 				state = State.START;
-				Dungeon.hero.pos = 13+2*16;
 				changeMap(MAP_START);
 				break;
 		}
@@ -233,14 +222,14 @@ public class OverworldLevel extends Level {
 				/*5*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 				/*6*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 				/*7*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-				/*8*/ s, s, s, s, s, s, w, w, w, w, w, w, s, s, s, s,
-				/*9*/ s, s, s, s, s, s, s, s, w, s, w, w, s, s, s, s,
-				/*10*/s, s, s, s, s, s, s, s, w, w, w, s, s, s, s, s,
-				/*11*/s, s, s, s, s, s, w, w, w, w, w, s, s, s, s, s,
-				/*12*/s, s, s, s, s, s, w, w, w, w, w, s, s, s, s, s,
-				/*13*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-				/*14*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-				/*15*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*8*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*9*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*10*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*11*/s, w, w, w, w, w, w, s, s, s, s, s, s, s, s, s,
+				/*12*/s, s, s, w, s, w, w, s, s, s, s, s, s, s, s, s,
+				/*13*/s, s, s, w, w, w, s, s, s, s, s, s, s, s, s, s,
+				/*14*/s, w, w, w, w, w, s, s, s, s, s, s, s, s, s, s,
+				/*15*/s, w, w, w, w, w, s, s, s, s, s, s, s, s, s, s,
 				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 			};
 
