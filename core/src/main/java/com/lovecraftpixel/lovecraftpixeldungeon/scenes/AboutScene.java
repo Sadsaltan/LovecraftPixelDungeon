@@ -25,6 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
 import android.content.Intent;
 import android.net.Uri;
+
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Flare;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
@@ -38,6 +39,7 @@ import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.TouchArea;
+import com.watabou.utils.Random;
 
 public class AboutScene extends PixelScene {
 
@@ -69,7 +71,9 @@ public class AboutScene extends PixelScene {
 		align(shpx);
 		add( shpx );
 
-		new Flare( 7, 64 ).color( 0x225511, true ).show( shpx, 0 ).angularSpeed = +20;
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( shpx, 0 ).angularSpeed = +Random.Int(-60, 60);
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( shpx, 0 ).angularSpeed = +Random.Int(-60, 60);
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( shpx, 0 ).angularSpeed = +Random.Int(-60, 60);
 
 		RenderedText shpxtitle = renderText( TTL_SHPX, 8 );
 		shpxtitle.hardlight( Window.SHPX_COLOR );
@@ -111,7 +115,9 @@ public class AboutScene extends PixelScene {
 		align(wata);
 		add( wata );
 
-		new Flare( 7, 64 ).color( 0x112233, true ).show( wata, 0 ).angularSpeed = +20;
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( wata, 0 ).angularSpeed = +Random.Int(-60, 60);
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( wata, 0 ).angularSpeed = +Random.Int(-60, 60);
+		new Flare( Random.Int(14, 28), Random.Int(50, 100) ).color(Random.Int(0x000000, 0xFFFFFF), true ).show( wata, 0 ).angularSpeed = +Random.Int(-60, 60);
 
 		RenderedText wataTitle = renderText( TTL_WATA, 8 );
 		wataTitle.hardlight(Window.TITLE_COLOR);
