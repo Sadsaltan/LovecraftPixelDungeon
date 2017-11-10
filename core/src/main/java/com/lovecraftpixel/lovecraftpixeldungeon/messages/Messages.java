@@ -69,6 +69,7 @@ public class Messages {
 			"com.lovecraftpixel.lovecraftpixeldungeon.messages.plants.plants",
 			"com.lovecraftpixel.lovecraftpixeldungeon.messages.scenes.scenes",
 			"com.lovecraftpixel.lovecraftpixeldungeon.messages.ui.ui",
+			"com.lovecraftpixel.lovecraftpixeldungeon.messages.utils.utils",
 			"com.lovecraftpixel.lovecraftpixeldungeon.messages.windows.windows",
 			"com.lovecraftpixel.lovecraftpixeldungeon.messages.misc.misc"
 	};

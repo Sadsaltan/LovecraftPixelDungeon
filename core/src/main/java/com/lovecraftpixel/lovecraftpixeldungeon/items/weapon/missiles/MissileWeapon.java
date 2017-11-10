@@ -35,11 +35,15 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfSharpshooting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Projecting;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
+import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
 abstract public class MissileWeapon extends Weapon {
+
+	public String flavourtext;
 
 	{
 		stackable = true;
@@ -47,6 +51,21 @@ abstract public class MissileWeapon extends Weapon {
 
 		defaultAction = AC_THROW;
 		usesTargeting = true;
+		flavourtext = new ItemsFlavourText().getText(this);
+	}
+
+	private static final String FLAVOUR			= "flavour";
+
+	@Override
+	public void storeInBundle( Bundle bundle ) {
+		super.storeInBundle( bundle );
+		bundle.put(FLAVOUR, flavourtext);
+	}
+
+	@Override
+	public void restoreFromBundle( Bundle bundle ) {
+		super.restoreFromBundle(bundle);
+		flavourtext = bundle.getString(FLAVOUR);
 	}
 	
 	@Override
@@ -157,6 +176,8 @@ abstract public class MissileWeapon extends Weapon {
 		} else if (cursedKnown && cursed) {
 			info += "\n\n" + Messages.get(Weapon.class, "cursed");
 		}
+
+		info += "\n\n" + flavourtext;
 
 		info += "\n\n" + Messages.get(MissileWeapon.class, "distance");
 		

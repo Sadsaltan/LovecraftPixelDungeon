@@ -31,6 +31,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.KindofMisc;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -56,6 +57,12 @@ public class Artifact extends KindofMisc {
 
 	//used by some artifacts to keep track of duration of effects or cooldowns to use.
 	protected int cooldown = 0;
+
+	public String flavourtext;
+
+	{
+		flavourtext = new ItemsFlavourText().getText(this);
+	}
 
 	@Override
 	public boolean doEquip( final Hero hero ) {
@@ -126,13 +133,15 @@ public class Artifact extends KindofMisc {
 
 	@Override
 	public String info() {
+		String info = desc();
+		info +=  "\n\n" + flavourtext;
 		if (cursed && cursedKnown && !isEquipped( Dungeon.hero )) {
 
-			return desc() + "\n\n" + Messages.get(Artifact.class, "curse_known");
+			return info + "\n\n" + Messages.get(Artifact.class, "curse_known");
 
 		} else {
 
-			return desc();
+			return info;
 
 		}
 	}
@@ -222,6 +231,7 @@ public class Artifact extends KindofMisc {
 	private static final String EXP = "exp";
 	private static final String CHARGE = "charge";
 	private static final String PARTIALCHARGE = "partialcharge";
+	private static final String FLAVOUR			= "flavour";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -229,6 +239,7 @@ public class Artifact extends KindofMisc {
 		bundle.put( EXP , exp );
 		bundle.put( CHARGE , charge );
 		bundle.put( PARTIALCHARGE , partialCharge );
+		bundle.put(FLAVOUR, flavourtext);
 	}
 
 	@Override
@@ -237,5 +248,6 @@ public class Artifact extends KindofMisc {
 		exp = bundle.getInt( EXP );
 		charge = bundle.getInt( CHARGE );
 		partialCharge = bundle.getFloat( PARTIALCHARGE );
+		flavourtext = bundle.getString(FLAVOUR);
 	}
 }

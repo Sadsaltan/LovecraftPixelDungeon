@@ -57,6 +57,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.sprites.HeroSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
@@ -76,14 +77,18 @@ public class Armor extends EquipableItem {
 	
 	public Glyph glyph;
 	private BrokenSeal seal;
+
+	public String flavourtext;
 	
 	public Armor( int tier ) {
 		this.tier = tier;
+		flavourtext = new ItemsFlavourText().getText(this);
 	}
 
 	private static final String UNFAMILIRIARITY	= "unfamiliarity";
 	private static final String GLYPH			= "glyph";
 	private static final String SEAL            = "seal";
+	private static final String FLAVOUR			= "flavour";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -91,6 +96,7 @@ public class Armor extends EquipableItem {
 		bundle.put( UNFAMILIRIARITY, hitsToKnow );
 		bundle.put( GLYPH, glyph );
 		bundle.put( SEAL, seal);
+		bundle.put(FLAVOUR, flavourtext);
 	}
 
 	@Override
@@ -101,6 +107,7 @@ public class Armor extends EquipableItem {
 		}
 		inscribe((Glyph) bundle.get(GLYPH));
 		seal = (BrokenSeal)bundle.get(SEAL);
+		flavourtext = bundle.getString(FLAVOUR);
 	}
 
 	@Override
@@ -314,6 +321,8 @@ public class Armor extends EquipableItem {
 		} else if (seal != null) {
 			info += "\n\n" + Messages.get(Armor.class, "seal_attached");
 		}
+
+		info += "\n\n" + flavourtext;
 		
 		return info;
 	}

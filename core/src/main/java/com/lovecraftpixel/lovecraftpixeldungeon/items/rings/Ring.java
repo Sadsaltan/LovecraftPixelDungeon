@@ -35,6 +35,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.journal.Catalog;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -47,6 +48,8 @@ public class Ring extends KindofMisc {
 	private static final int TICKS_TO_KNOW    = 200;
 	
 	protected Buff buff;
+
+	public String flavourtext;
 	
 	private static final Class<?>[] rings = {
 		RingOfAccuracy.class,
@@ -106,6 +109,7 @@ public class Ring extends KindofMisc {
 	public Ring() {
 		super();
 		reset();
+		flavourtext = new ItemsFlavourText().getText(this);
 	}
 	
 	public void reset() {
@@ -170,6 +174,8 @@ public class Ring extends KindofMisc {
 			desc += "\n\n" + Messages.get(Ring.class, "curse_known");
 
 		}
+
+		desc += "\n\n" + flavourtext;
 
 		return desc;
 	}
@@ -250,11 +256,13 @@ public class Ring extends KindofMisc {
 	}
 
 	private static final String UNFAMILIRIARITY    = "unfamiliarity";
+	private static final String FLAVOUR			= "flavour";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
 		bundle.put( UNFAMILIRIARITY, ticksToKnow );
+		bundle.put(FLAVOUR, flavourtext);
 	}
 
 	@Override
@@ -263,6 +271,7 @@ public class Ring extends KindofMisc {
 		if ((ticksToKnow = bundle.getInt( UNFAMILIRIARITY )) == 0) {
 			ticksToKnow = TICKS_TO_KNOW;
 		}
+		flavourtext = bundle.getString(FLAVOUR);
 		
 		//pre-0.6.1 saves
 		if (level() < 0){

@@ -29,8 +29,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndBag;
 import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
 
@@ -38,11 +40,28 @@ public abstract class InventoryStone extends Runestone {
 	
 	protected String inventoryTitle = Messages.get(this, "inv_title");
 	protected WndBag.Mode mode = WndBag.Mode.ALL;
+
+	public String flavourtext;
 	
 	{
 		defaultAction = AC_USE;
+		flavourtext = new ItemsFlavourText().getText(this);
 	}
-	
+
+	private static final String FLAVOUR			= "flavour";
+
+	@Override
+	public void storeInBundle(Bundle bundle) {
+		super.storeInBundle(bundle);
+		bundle.put(FLAVOUR, flavourtext);
+	}
+
+	@Override
+	public void restoreFromBundle(Bundle bundle) {
+		super.restoreFromBundle(bundle);
+		flavourtext = bundle.getString(FLAVOUR);
+	}
+
 	public static final String AC_USE	= "USE";
 	
 	@Override
@@ -71,8 +90,17 @@ public abstract class InventoryStone extends Runestone {
 		curUser.busy();
 		curUser.sprite.operate(curUser.pos);
 	}
-	
-	protected abstract void onItemSelected( Item item );
+
+	@Override
+	public String desc() {
+		String info = desc();
+
+		info += "\n\n" + flavourtext;
+
+		return info;
+	}
+
+	protected abstract void onItemSelected(Item item );
 	
 	protected static WndBag.Listener itemSelector = new WndBag.Listener() {
 		@Override

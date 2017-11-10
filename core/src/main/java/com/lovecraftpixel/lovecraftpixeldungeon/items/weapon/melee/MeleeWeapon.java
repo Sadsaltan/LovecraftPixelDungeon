@@ -69,6 +69,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndBag;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.utils.Bundle;
@@ -84,16 +85,19 @@ public class MeleeWeapon extends Weapon {
 	public Potion poisonType = null;
 	public Plant.Seed seedTypeUsed = null;
 	public int poisonTurnsRemaining = 0;
+	public String flavourtext;
 
 	{
 		poisonType = null;
 		seedTypeUsed = null;
 		poisonTurnsRemaining = 0;
+		flavourtext = new ItemsFlavourText().getText(this);
 	}
 
 	private static final String TURNS			= "turns";
 	private static final String SEED			= "seed";
 	private static final String TYPE			= "type";
+	private static final String FLAVOUR			= "flavour";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -101,6 +105,7 @@ public class MeleeWeapon extends Weapon {
 		bundle.put(TURNS, poisonTurnsRemaining);
 		bundle.put(SEED, seedTypeUsed);
 		bundle.put(TYPE, poisonType);
+		bundle.put(FLAVOUR, flavourtext);
 	}
 
 	@Override
@@ -109,6 +114,7 @@ public class MeleeWeapon extends Weapon {
 		poisonTurnsRemaining = bundle.getInt(TURNS);
 		seedTypeUsed = (Plant.Seed) bundle.get(SEED);
 		poisonType = (Potion) bundle.get(TYPE);
+		flavourtext = bundle.getString(FLAVOUR);
 	}
 
 	@Override
@@ -290,6 +296,8 @@ public class MeleeWeapon extends Weapon {
 		} else if (cursedKnown && cursed) {
 			info += "\n\n" + Messages.get(Weapon.class, "cursed");
 		}
+
+		info += "\n\n" + flavourtext;
 
 		if(poisonType != null){
 			info += "\n\n" + Messages.get(this, "poisoninfo", seedTypeUsed.name(), poisonTurnsRemaining);

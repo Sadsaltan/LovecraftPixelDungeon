@@ -48,6 +48,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
@@ -75,10 +76,13 @@ public abstract class Wand extends Item {
 	protected int usagesToKnow = USAGES_TO_KNOW;
 
 	protected int collisionProperties = Ballistica.MAGIC_BOLT;
+
+	public String flavourtext;
 	
 	{
 		defaultAction = AC_ZAP;
 		usesTargeting = true;
+		flavourtext = new ItemsFlavourText().getText(this);
 	}
 	
 	@Override
@@ -187,6 +191,8 @@ public abstract class Wand extends Item {
 
 		if (cursed && cursedKnown)
 			desc += "\n\n" + Messages.get(Wand.class, "cursed");
+
+		desc += "\n\n" + flavourtext;
 
 		return desc;
 	}
@@ -322,6 +328,7 @@ public abstract class Wand extends Item {
 	private static final String CUR_CHARGES			= "curCharges";
 	private static final String CUR_CHARGE_KNOWN	= "curChargeKnown";
 	private static final String PARTIALCHARGE 		= "partialCharge";
+	private static final String FLAVOUR			= "flavour";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -330,6 +337,7 @@ public abstract class Wand extends Item {
 		bundle.put( CUR_CHARGES, curCharges );
 		bundle.put( CUR_CHARGE_KNOWN, curChargeKnown );
 		bundle.put( PARTIALCHARGE , partialCharge );
+		bundle.put(FLAVOUR, flavourtext);
 	}
 	
 	@Override
@@ -341,6 +349,7 @@ public abstract class Wand extends Item {
 		curCharges = bundle.getInt( CUR_CHARGES );
 		curChargeKnown = bundle.getBoolean( CUR_CHARGE_KNOWN );
 		partialCharge = bundle.getFloat( PARTIALCHARGE );
+		flavourtext = bundle.getString(FLAVOUR);
 	}
 	
 	protected static CellSelector.Listener zapper = new  CellSelector.Listener() {
