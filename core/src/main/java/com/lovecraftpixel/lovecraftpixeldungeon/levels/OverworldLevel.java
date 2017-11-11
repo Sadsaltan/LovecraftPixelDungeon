@@ -48,7 +48,8 @@ public class OverworldLevel extends Level {
 	private enum State{
 		START,
 		WITCH,
-		BAR
+		BAR,
+		LIB
 	}
 
 	private State state;
@@ -114,6 +115,12 @@ public class OverworldLevel extends Level {
 			customTiles.add(bar);
 			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(bar);
 		}
+		if(state == State.LIB){
+			CustomTiledVisual lib = new ExtraTilesLib();
+			lib.pos(0, 0);
+			customTiles.add(lib);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(lib);
+		}
 		return super.addVisuals();
 	}
 
@@ -147,6 +154,10 @@ public class OverworldLevel extends Level {
 					&& ((Room)new Room().set(4, 3, 6, 6)).inside(cellToPoint(cell))){
 				progress('b');
 			}
+			if (state == State.START
+					&& ((Room)new Room().set(12, 12, 14, 14)).inside(cellToPoint(cell))){
+				progress('l');
+			}
 
 			if (state == State.WITCH
 					&& ((Room)new Room().set(0, 13, 2, 15)).inside(cellToPoint(cell))){
@@ -154,6 +165,10 @@ public class OverworldLevel extends Level {
 			}
 			if (state == State.BAR
 					&& ((Room)new Room().set(4, 4, 6, 7)).inside(cellToPoint(cell))){
+				progress('t');
+			}
+			if (state == State.LIB
+					&& ((Room)new Room().set(12, 13, 14, 15)).inside(cellToPoint(cell))){
 				progress('t');
 			}
 		}
@@ -167,7 +182,7 @@ public class OverworldLevel extends Level {
 
 	@Override
 	public void updateFieldOfView(Char c, boolean[] fieldOfView) {
-		for(int x = 0; x < 15; x++){
+		for(int x = 0; x < 16; x++){
 			for(int y = 0; y < 15; y++){
 				fieldOfView[x+y*16] = true;
 			}
@@ -202,6 +217,10 @@ public class OverworldLevel extends Level {
 				state = State.START;
 				changeMap(MAP_START);
 				break;
+			case 'l':
+				state = State.LIB;
+				changeMap(MAP_LIB);
+				break;
 		}
 	}
 
@@ -228,7 +247,7 @@ public class OverworldLevel extends Level {
 				/*13*/s, s, s, e, e, e, e, e, e, e, e, e, s, s, s, s,
 				/*14*/w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
 				/*15*/w, e, e, e, e, e, e, e, e, e, e, e, e, e, e, w,
-				/*16*/w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w,
+				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 			};
 
 	private static final int[] MAP_WITCH =
@@ -271,6 +290,26 @@ public class OverworldLevel extends Level {
 				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 			};
 
+	private static final int[] MAP_LIB =
+			{       //1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
+				/*1*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*2*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*3*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*4*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*5*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*6*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*7*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*8*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*9*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*10*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*11*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*12*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*13*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*14*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*15*/s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+			};
+
 	public static class ExtraTilesTown extends CustomTiledVisual {
 
 		public ExtraTilesTown(){
@@ -305,6 +344,21 @@ public class OverworldLevel extends Level {
 
 		public ExtraTilesBar(){
 			super(Assets.OVERWORLDB);
+		}
+
+		@Override
+		public CustomTiledVisual create() {
+			tileH = 16;
+			tileW = 16;
+			mapSimpleImage(0, 0);
+			return super.create();
+		}
+	}
+
+	public static class ExtraTilesLib extends CustomTiledVisual {
+
+		public ExtraTilesLib(){
+			super(Assets.OVERWORLDL);
 		}
 
 		@Override
