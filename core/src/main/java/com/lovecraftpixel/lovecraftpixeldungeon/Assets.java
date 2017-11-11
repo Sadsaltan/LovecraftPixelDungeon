@@ -129,6 +129,7 @@ public class Assets {
 	public static final String PRISON_EXIT  = "custom_tiles/prison_exit.png";
 	public static final String OVERWORLD  	= "custom_tiles/overworld_extra_tiles.png";
 	public static final String OVERWORLDW  	= "custom_tiles/overworld_extra_tiles_1.png";
+	public static final String OVERWORLDB  	= "custom_tiles/overworld_extra_tiles_2.png";
 	
 	public static final String BUFFS_SMALL	= "ui/buffs.png";
 	public static final String BUFFS_LARGE	= "ui/large_buffs.png";
