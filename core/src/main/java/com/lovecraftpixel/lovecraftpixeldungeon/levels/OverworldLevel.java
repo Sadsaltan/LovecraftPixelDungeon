@@ -49,7 +49,8 @@ public class OverworldLevel extends Level {
 		START,
 		WITCH,
 		BAR,
-		LIB
+		LIB,
+		SHOP
 	}
 
 	private State state;
@@ -121,6 +122,12 @@ public class OverworldLevel extends Level {
 			customTiles.add(lib);
 			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(lib);
 		}
+		if(state == State.SHOP){
+			CustomTiledVisual shop = new ExtraTilesShop();
+			shop.pos(0, 0);
+			customTiles.add(shop);
+			((GameScene) LovecraftPixelDungeon.scene()).addCustomTile(shop);
+		}
 		return super.addVisuals();
 	}
 
@@ -158,6 +165,10 @@ public class OverworldLevel extends Level {
 					&& ((Room)new Room().set(12, 12, 14, 14)).inside(cellToPoint(cell))){
 				progress('l');
 			}
+			if (state == State.START
+					&& ((Room)new Room().set(11, 4, 13, 6)).inside(cellToPoint(cell))){
+				progress('s');
+			}
 
 			if (state == State.WITCH
 					&& ((Room)new Room().set(0, 13, 2, 15)).inside(cellToPoint(cell))){
@@ -169,6 +180,10 @@ public class OverworldLevel extends Level {
 			}
 			if (state == State.LIB
 					&& ((Room)new Room().set(12, 13, 14, 15)).inside(cellToPoint(cell))){
+				progress('t');
+			}
+			if (state == State.SHOP
+					&& ((Room)new Room().set(11, 5, 13, 7)).inside(cellToPoint(cell))){
 				progress('t');
 			}
 		}
@@ -220,6 +235,10 @@ public class OverworldLevel extends Level {
 			case 'l':
 				state = State.LIB;
 				changeMap(MAP_LIB);
+				break;
+			case 's':
+				state = State.SHOP;
+				changeMap(MAP_SHOP);
 				break;
 		}
 	}
@@ -310,6 +329,26 @@ public class OverworldLevel extends Level {
 				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
 			};
 
+	private static final int[] MAP_SHOP =
+			{       //1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
+				/*1*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*2*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*3*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*4*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*5*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*6*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*7*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*8*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*9*/ s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*10*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*11*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*12*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*13*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*14*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*15*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+				/*16*/s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+			};
+
 	public static class ExtraTilesTown extends CustomTiledVisual {
 
 		public ExtraTilesTown(){
@@ -359,6 +398,21 @@ public class OverworldLevel extends Level {
 
 		public ExtraTilesLib(){
 			super(Assets.OVERWORLDL);
+		}
+
+		@Override
+		public CustomTiledVisual create() {
+			tileH = 16;
+			tileW = 16;
+			mapSimpleImage(0, 0);
+			return super.create();
+		}
+	}
+
+	public static class ExtraTilesShop extends CustomTiledVisual {
+
+		public ExtraTilesShop(){
+			super(Assets.OVERWORLDS);
 		}
 
 		@Override

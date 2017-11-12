@@ -131,6 +131,7 @@ public class Assets {
 	public static final String OVERWORLDW  	= "custom_tiles/overworld_extra_tiles_1.png";
 	public static final String OVERWORLDB  	= "custom_tiles/overworld_extra_tiles_2.png";
 	public static final String OVERWORLDL  	= "custom_tiles/overworld_extra_tiles_3.png";
+	public static final String OVERWORLDS  	= "custom_tiles/overworld_extra_tiles_4.png";
 	
 	public static final String BUFFS_SMALL	= "ui/buffs.png";
 	public static final String BUFFS_LARGE	= "ui/large_buffs.png";
