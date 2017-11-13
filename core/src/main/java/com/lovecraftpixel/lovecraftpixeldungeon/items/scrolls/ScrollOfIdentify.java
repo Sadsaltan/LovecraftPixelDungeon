@@ -25,8 +25,10 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.Badges;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Identification;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.journal.Catalog;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndBag;
@@ -69,6 +71,10 @@ public class ScrollOfIdentify extends InventoryScroll {
 		
 		item.identify();
 		GLog.i( Messages.get(this, "it_is", item) );
+		if (Dungeon.hero != null && Dungeon.hero.isAlive()) {
+			Dungeon.hero.gainKnowl(2);
+			Catalog.setSeen(getClass());
+		}
 		
 		Badges.validateItemLevelAquired( item );
 

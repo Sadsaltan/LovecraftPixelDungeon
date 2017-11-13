@@ -116,6 +116,7 @@ public class WndHero extends WndTabbed {
 			else statSlot( Messages.get(this, "health"), (hero.HP) + "/" + hero.HT );
 			statSlot( Messages.get(this, "mentalhealth"), (hero.MHP) + "/" + hero.MHT );
 			statSlot( Messages.get(this, "exp"), hero.exp + "/" + hero.maxExp() );
+			statSlot( Messages.get(this, "knowl"), hero.knowl + "/" + hero.maxKnowl() );
 
 			pos += GAP;
 

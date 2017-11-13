@@ -31,6 +31,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.ItemStatusHandler;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.UnstableSpellbook;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Catalog;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.HeroSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
@@ -136,6 +137,12 @@ public abstract class Scroll extends Item {
 		super.execute( hero, action );
 
 		if (action.equals( AC_READ )) {
+
+			if(hero.knowl <= 0){
+				GLog.n( Messages.get(this, "lacking_knowl") );
+				hero.sprite.showStatus( CharSprite.NEGATIVE, "?" );
+				return;
+			}
 			
 			if (hero.buff( Blindness.class ) != null) {
 				GLog.w( Messages.get(this, "blinded") );

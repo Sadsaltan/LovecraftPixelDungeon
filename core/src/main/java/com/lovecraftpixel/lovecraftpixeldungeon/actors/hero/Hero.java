@@ -175,6 +175,7 @@ public class Hero extends Char {
 	
 	public int lvl = 1;
 	public int exp = 0;
+	public int knowl = 0;
 	
 	public int HTBoost = 0;
 	
@@ -241,6 +242,7 @@ public class Hero extends Char {
 	private static final String STRENGTH	= "STR";
 	private static final String LEVEL		= "lvl";
 	private static final String EXPERIENCE	= "exp";
+	private static final String KNOWLEDGE	= "knowl";
 	private static final String HTBOOST     = "htboost";
 	private static final String PLAYERNAME  = "playername";
 	private static final String GRIMOIRE	= "seenenemies";
@@ -262,6 +264,7 @@ public class Hero extends Char {
 		
 		bundle.put( LEVEL, lvl );
 		bundle.put( EXPERIENCE, exp );
+		bundle.put( KNOWLEDGE, knowl );
 		
 		bundle.put( HTBOOST, HTBoost );
 
@@ -291,6 +294,7 @@ public class Hero extends Char {
 		
 		lvl = bundle.getInt( LEVEL );
 		exp = bundle.getInt( EXPERIENCE );
+		knowl = bundle.getInt( KNOWLEDGE );
 		
 		HTBoost = bundle.getInt(HTBOOST);
 
@@ -1295,9 +1299,26 @@ public class Hero extends Char {
 			Badges.validateLevelReached();
 		}
 	}
+
+	public void gainKnowl( int knowl ) {
+		int knowlint = this.knowl;
+		if(knowlint + knowl >= maxKnowl()){
+			this.knowl = maxKnowl();
+		} else {
+			this.knowl += knowl;
+		}
+
+		GLog.p( Messages.get(this, "gained_knowl", knowl) );
+		sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlplus", knowl) );
+		Sample.INSTANCE.play( Assets.SND_LEVELUP );
+	}
 	
 	public int maxExp() {
 		return 5 + lvl * 5;
+	}
+
+	public int maxKnowl() {
+		return 3 + lvl * 3;
 	}
 	
 	public boolean isStarving() {
@@ -1622,6 +1643,10 @@ public class Hero extends Char {
 							ScrollOfMagicMapping.discover( p );
 							
 							smthFound = true;
+
+							if (isAlive()) {
+								gainKnowl(2);
+							}
 	
 							if (foresight != null && !foresight.isCursed())
 								foresight.charge();

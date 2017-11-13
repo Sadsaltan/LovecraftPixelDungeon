@@ -60,6 +60,7 @@ public class StatusPane extends Component {
 	private Image hp;
 	private Image mp;
 	private Image exp;
+	private Image knowl;
 
 	private BossHealthBar bossHP;
 
@@ -121,6 +122,9 @@ public class StatusPane extends Component {
 
 		exp = new Image( Assets.XP_BAR );
 		add( exp );
+
+		knowl = new Image( Assets.KN_BAR );
+		add( knowl );
 
 		bossHP = new BossHealthBar();
 		add( bossHP );
@@ -205,6 +209,8 @@ public class StatusPane extends Component {
 		rawShielding.scale.x = shield/max;
 
 		exp.scale.x = (width / exp.width) * Dungeon.hero.exp / Dungeon.hero.maxExp();
+		knowl.y = 1;
+		knowl.scale.x = (width / knowl.width) * Dungeon.hero.knowl / Dungeon.hero.maxKnowl();
 
 		if (Dungeon.hero.lvl != lastLvl) {
 
