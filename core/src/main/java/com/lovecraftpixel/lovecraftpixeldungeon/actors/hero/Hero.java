@@ -1312,6 +1312,14 @@ public class Hero extends Char {
 		sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlplus", knowl) );
 		Sample.INSTANCE.play( Assets.SND_LEVELUP );
 	}
+
+	public void loseKnowl( int knowl ) {
+		if(knowl >= this.knowl){
+			this.knowl = 0;
+		} else {
+			this.knowl = this.knowl - knowl;
+		}
+	}
 	
 	public int maxExp() {
 		return 5 + lvl * 5;

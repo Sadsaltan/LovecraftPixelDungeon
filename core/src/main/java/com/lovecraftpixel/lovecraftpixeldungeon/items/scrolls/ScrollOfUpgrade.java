@@ -50,6 +50,7 @@ public class ScrollOfUpgrade extends InventoryScroll {
 		upgrade( curUser );
 
 		curUser.increaseMentalHealth(1);
+		curUser.gainKnowl(1);
 
 		//logic for telling the user when item properties change from upgrades
 		//...yes this is rather messy

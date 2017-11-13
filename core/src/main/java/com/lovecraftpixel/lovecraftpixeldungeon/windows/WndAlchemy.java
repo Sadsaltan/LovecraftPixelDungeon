@@ -255,7 +255,8 @@ public class WndAlchemy extends Window {
 			if (result instanceof PotionOfHealing) {
 				Dungeon.LimitedDrops.COOKING_HP.count++;
 			}
-			
+
+			Dungeon.hero.gainKnowl(3);
 			Statistics.potionsCooked++;
 			Badges.validatePotionsCooked();
 			
@@ -263,6 +264,7 @@ public class WndAlchemy extends Window {
 		} else if (fruits.size() == 1 && seeds.size() == 1) {
 			result = fruits.get(0);
 			((Blandfruit)result).cook(seeds.get(0));
+			Dungeon.hero.gainKnowl(3);
 		}
 		
 		if (result != null){
