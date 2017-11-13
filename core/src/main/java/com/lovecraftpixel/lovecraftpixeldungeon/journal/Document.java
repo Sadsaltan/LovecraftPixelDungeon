@@ -67,20 +67,30 @@ public enum Document {
 		return Messages.get( this, name() + "." + page + ".body");
 	}
 
-	public static final String GUIDE_INTRO_PAGE = "Intro";
-	public static final String GUIDE_SEARCH_PAGE = "Examining_and_Searching";
+	public static final String GUIDE_INTRO_PAGE 	= "Intro";
+	public static final String GUIDE_SEARCH_PAGE 	= "Examining_and_Searching";
+	public static final String GUIDE_KNOWLEDGE 		= "Knowledge";
+	public static final String GUIDE_ID 			= "Identifying";
+	public static final String GUIDE_STR 			= "Strength";
+	public static final String GUIDE_FOOD 			= "Food";
+	public static final String GUIDE_LEVEL 			= "Levelling";
+	public static final String GUIDE_SURATT 		= "Surprise_Attacks";
+	public static final String GUIDE_DIE 			= "Dieing";
+	public static final String GUIDE_LOOT 			= "Looting";
+	public static final String GUIDE_MAGIC 			= "Magic";
 	
 	static {
 		ADVENTURERS_GUIDE.pages.put(GUIDE_INTRO_PAGE, 	false);
-		ADVENTURERS_GUIDE.pages.put("Identifying", 		false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_KNOWLEDGE, 	false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_ID, 			false);
 		ADVENTURERS_GUIDE.pages.put(GUIDE_SEARCH_PAGE, 	false);
-		ADVENTURERS_GUIDE.pages.put("Strength", 		false);
-		ADVENTURERS_GUIDE.pages.put("Food", 			false);
-		ADVENTURERS_GUIDE.pages.put("Levelling", 		false);
-		ADVENTURERS_GUIDE.pages.put("Surprise_Attacks", false);
-		ADVENTURERS_GUIDE.pages.put("Dieing", 			false);
-		ADVENTURERS_GUIDE.pages.put("Looting", 		    false);
-		ADVENTURERS_GUIDE.pages.put("Magic", 			false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_STR, 			false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_FOOD, 		false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_LEVEL, 		false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_SURATT, 		false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_DIE, 			false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_LOOT, 		false);
+		ADVENTURERS_GUIDE.pages.put(GUIDE_MAGIC, 		false);
 	}
 	
 	private static final String DOCUMENTS = "documents";
