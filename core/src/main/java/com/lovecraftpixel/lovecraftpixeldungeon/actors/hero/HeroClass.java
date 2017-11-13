@@ -33,8 +33,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.CloakOfShadows;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Food;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfHealing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfIdentify;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfLullaby;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
@@ -92,10 +90,6 @@ public enum HeroClass {
 
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
-
-		new ScrollOfIdentify().identify().collect();
-		new ScrollOfMagicMapping().collect();
-		new ScrollOfLullaby().collect();
 	}
 
 	public Badges.Badge masteryBadge() {
