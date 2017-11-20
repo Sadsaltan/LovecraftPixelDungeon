@@ -44,7 +44,7 @@ public class Sunlight extends Blob {
 				if(Random.Int(3) == 2){
 					cell = i + j * Dungeon.level.width();
 					if(Dungeon.level.map[cell] == Terrain.EMBERS){
-						Dungeon.level.map[cell] = Terrain.GRASS;
+						Dungeon.level.map[cell] = Terrain.EMPTY;
 					} else if(Dungeon.level.map[cell] == Terrain.GRASS){
 						Dungeon.level.map[cell] = Terrain.HIGH_GRASS;
 					} else if(Dungeon.level.map[cell] == Terrain.EMPTY_DECO){
@@ -52,8 +52,8 @@ public class Sunlight extends Blob {
 					} else if(Dungeon.level.map[cell] == Terrain.EMPTY){
 						Dungeon.level.map[cell] = Terrain.EMPTY_DECO;
 					} else if(Dungeon.level.map[cell] == Terrain.HIGH_GRASS){
-						int rand = Random.Int(0, 2);
-						if(rand == 0){
+						int rand = Random.Int(0, 100);
+						if(Random.Int(0, 100) == rand){
 							Dungeon.level.plant((Plant.Seed) Generator.random(Generator.Category.SEED), cell);
 							Dungeon.level.map[cell] = Terrain.EMPTY_DECO;
 						} else {
