@@ -60,7 +60,7 @@ public class EntranceRoom extends StandardRoom {
 		} while (level.findMob(level.entrance) != null);
 		Painter.set( level, level.entrance, Terrain.ENTRANCE );
 
-		if (Dungeon.depth == 1 && !Document.ADVENTURERS_GUIDE.hasPage(Document.GUIDE_INTRO_PAGE)){
+		if (Dungeon.depth == 2 && !Document.ADVENTURERS_GUIDE.hasPage(Document.GUIDE_INTRO_PAGE)){
 			int pos;
 			do {
 				//can't be on bottom row of tiles
