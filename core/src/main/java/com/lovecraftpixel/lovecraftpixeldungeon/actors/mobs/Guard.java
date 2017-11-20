@@ -61,6 +61,8 @@ public class Guard extends Mob {
 		properties.add(Property.DEMONIC);
 		
 		HUNTING = new Hunting();
+
+		horrorlvl = 1;
 	}
 
 	@Override

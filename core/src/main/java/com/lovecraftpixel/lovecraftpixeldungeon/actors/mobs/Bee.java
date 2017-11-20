@@ -45,6 +45,8 @@ public class Bee extends Mob {
 		
 		flying = true;
 		state = WANDERING;
+
+		horrorlvl = 0;
 	}
 
 	private int level;

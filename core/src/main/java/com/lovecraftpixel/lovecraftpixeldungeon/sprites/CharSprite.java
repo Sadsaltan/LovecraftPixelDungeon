@@ -67,6 +67,8 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	public static final int NEUTRAL		= 0xFFFF00;
 	public static final int KNOWLEDGE	= 0x3439FF;
 	public static final int BOOK		= 0x98DB98;
+	public static final int LIGHT		= 0xFFFEA7;
+	public static final int MENTAL		= 0x2E3F7B;
 	
 	private static final float MOVE_INTERVAL	= 0.1f;
 	private static final float FLASH_INTERVAL	= 0.05f;

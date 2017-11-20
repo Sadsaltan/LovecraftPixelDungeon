@@ -204,6 +204,9 @@ public class Hero extends Char {
 	}
 
 	public void reduceMentalHealth(int value){
+		if(value > 0){
+			sprite.showStatus(CharSprite.MENTAL, "-");
+		}
 		MHT -= value;
 		if(MHT <= 0){
 			MHT = 0;
@@ -211,6 +214,9 @@ public class Hero extends Char {
 	}
 
 	public void increaseMentalHealth(int value){
+		if(value > 0){
+			sprite.showStatus(CharSprite.MENTAL, "+");
+		}
 		MHT += value;
 		if(MHT >= MHP){
 			MHP = MHT;

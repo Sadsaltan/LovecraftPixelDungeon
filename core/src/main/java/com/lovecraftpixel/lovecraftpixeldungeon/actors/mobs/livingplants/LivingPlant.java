@@ -41,6 +41,7 @@ public class LivingPlant extends Mob {
         baseSpeed = 3f;
         EXP = 1;
         HUNTING = new Hunting();
+        horrorlvl = 1;
     }
 
     private class Hunting extends Mob.Hunting{

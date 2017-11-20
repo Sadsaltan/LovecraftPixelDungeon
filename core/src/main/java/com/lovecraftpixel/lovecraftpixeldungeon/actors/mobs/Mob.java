@@ -66,6 +66,8 @@ public abstract class Mob extends Char {
 		actPriority = 2; //hero gets priority over mobs.
 		
 		alignment = Alignment.ENEMY;
+
+		horrorlvl = 0;
 	}
 	
 	private static final String	TXT_DIED	= "You hear something died in the distance";
@@ -89,6 +91,8 @@ public abstract class Mob extends Char {
 	
 	public int EXP = 1;
 	public int maxLvl = Hero.MAX_LEVEL;
+
+	public int horrorlvl;
 	
 	protected Char enemy;
 	protected boolean enemySeen;
@@ -460,6 +464,11 @@ public abstract class Mob extends Char {
 	@Override
 	public void onAttackComplete() {
 		attack( enemy );
+		if(enemy.equals(Dungeon.hero)){
+			if(Random.Int(0, Dungeon.hero.knowl + ((Dungeon.hero.HP+2)/Dungeon.hero.lvl)) < 2){
+				Dungeon.hero.reduceMentalHealth(this.horrorlvl);
+			}
+		}
 		super.onAttackComplete();
 	}
 	

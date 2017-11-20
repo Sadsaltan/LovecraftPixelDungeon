@@ -66,6 +66,8 @@ public class Goo extends Mob {
 
 		properties.add(Property.BOSS);
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 3;
 	}
 
 	private int pumpedUp = 0;

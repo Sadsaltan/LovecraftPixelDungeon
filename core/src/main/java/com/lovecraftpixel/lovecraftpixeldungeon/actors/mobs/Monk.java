@@ -53,6 +53,8 @@ public class Monk extends Mob {
 		lootChance = 0.083f;
 
 		properties.add(Property.UNDEAD);
+
+		horrorlvl = 2;
 	}
 	
 	@Override

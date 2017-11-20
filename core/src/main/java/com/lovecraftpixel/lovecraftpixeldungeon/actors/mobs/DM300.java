@@ -67,6 +67,8 @@ public class DM300 extends Mob {
 		lootChance = 0.333f;
 
 		properties.add(Property.BOSS);
+
+		horrorlvl = 3;
 	}
 	
 	@Override

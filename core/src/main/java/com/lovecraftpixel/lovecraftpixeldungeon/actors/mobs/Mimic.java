@@ -53,6 +53,8 @@ public class Mimic extends Mob {
 		spriteClass = MimicSprite.class;
 
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 2;
 	}
 	
 	public ArrayList<Item> items;

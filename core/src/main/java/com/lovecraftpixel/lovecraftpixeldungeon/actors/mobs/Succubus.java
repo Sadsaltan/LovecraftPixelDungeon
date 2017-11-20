@@ -63,6 +63,8 @@ public class Succubus extends Mob {
 		lootChance = 0.05f;
 
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 1;
 	}
 	
 	@Override

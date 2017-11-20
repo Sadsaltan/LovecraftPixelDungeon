@@ -55,6 +55,8 @@ public class GnollTrickster extends Gnoll {
 		lootChance = 1f;
 
 		properties.add(Property.MINIBOSS);
+
+		horrorlvl = 2;
 	}
 
 	private int combo = 0;

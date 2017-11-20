@@ -69,6 +69,8 @@ public class King extends Mob {
 
 		properties.add(Property.BOSS);
 		properties.add(Property.UNDEAD);
+
+		horrorlvl = 3;
 	}
 	
 	private boolean nextPedestal = true;
@@ -257,6 +259,8 @@ public class King extends Mob {
 			state = WANDERING;
 
 			properties.add(Property.UNDEAD);
+
+			horrorlvl = 1;
 		}
 		
 		@Override

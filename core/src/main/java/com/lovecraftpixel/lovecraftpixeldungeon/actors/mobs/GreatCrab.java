@@ -47,6 +47,8 @@ public class GreatCrab extends Crab {
 		state = WANDERING;
 
 		properties.add(Property.MINIBOSS);
+
+		horrorlvl = 3;
 	}
 
 	private int moving = 0;

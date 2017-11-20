@@ -50,6 +50,8 @@ public class Piranha extends Mob {
 		EXP = 0;
 		
 		HUNTING = new Hunting();
+
+		horrorlvl = 2;
 	}
 	
 	public Piranha() {

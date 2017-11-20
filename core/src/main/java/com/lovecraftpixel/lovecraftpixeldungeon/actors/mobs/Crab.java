@@ -42,6 +42,8 @@ public class Crab extends Mob {
 		
 		loot = new MysteryMeat();
 		lootChance = 0.167f;
+
+		horrorlvl = 2;
 	}
 	
 	@Override

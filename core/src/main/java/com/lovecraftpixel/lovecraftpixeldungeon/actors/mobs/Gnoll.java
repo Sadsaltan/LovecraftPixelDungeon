@@ -41,6 +41,8 @@ public class Gnoll extends Mob {
 		
 		loot = Gold.class;
 		lootChance = 0.5f;
+
+		horrorlvl = 1;
 	}
 	
 	@Override

@@ -27,14 +27,17 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Bless;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Invisibility;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Light;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.LockedFloor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Recharging;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.SoulMark;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.HeroClass;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.HeroSubClass;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.Flare;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.MagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.Bag;
@@ -46,6 +49,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.mechanics.Ballistica;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
@@ -62,6 +66,7 @@ public abstract class Wand extends Item {
 	private static final int USAGES_TO_KNOW    = 20;
 
 	public static final String AC_ZAP	= "ZAP";
+	public static final String AC_LIGHT	= "LIGHT";
 
 	private static final float TIME_TO_ZAP	= 1f;
 	
@@ -91,6 +96,9 @@ public abstract class Wand extends Item {
 		if (curCharges > 0 || !curChargeKnown) {
 			actions.add( AC_ZAP );
 		}
+		if (hero.knowl >= 5) {
+			actions.add( AC_LIGHT );
+		}
 
 		return actions;
 	}
@@ -106,6 +114,15 @@ public abstract class Wand extends Item {
 			curItem = this;
 			GameScene.selectCell( zapper );
 			
+		}
+
+		if (action.equals( AC_LIGHT )) {
+			hero.loseKnowl(5);
+			new Flare(12, 12).color(0x000000, true).show(hero.sprite, 5f).angularSpeed = -30;
+			new Flare(12, 12).color(0xFFFFFF, true).show(hero.sprite, 5f).angularSpeed = 30;
+			hero.sprite.showStatus( CharSprite.LIGHT, Messages.get(Hero.class, "youshallnotpass") );
+			Buff.prolong(hero, Light.class, Bless.DURATION/2);
+			Buff.prolong(hero, Bless.class, Bless.DURATION/2);
 		}
 	}
 	

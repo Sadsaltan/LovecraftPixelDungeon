@@ -66,6 +66,8 @@ public class Tengu extends Mob {
 		flying = true; //doesn't literally fly, but he is fleet-of-foot enough to avoid hazards
 
 		properties.add(Property.BOSS);
+
+		horrorlvl = 2;
 	}
 	
 	@Override

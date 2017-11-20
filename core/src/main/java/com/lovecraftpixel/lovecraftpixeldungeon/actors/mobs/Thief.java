@@ -62,6 +62,8 @@ public class Thief extends Mob {
 		FLEEING = new Fleeing();
 
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 0;
 	}
 
 	private static final String ITEM = "item";

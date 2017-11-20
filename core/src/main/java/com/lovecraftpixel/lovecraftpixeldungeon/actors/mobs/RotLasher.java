@@ -49,6 +49,8 @@ public class RotLasher extends Mob {
 		state = WANDERING = new Waiting();
 
 		properties.add(Property.IMMOVABLE);
+
+		horrorlvl = 3;
 	}
 
 	@Override

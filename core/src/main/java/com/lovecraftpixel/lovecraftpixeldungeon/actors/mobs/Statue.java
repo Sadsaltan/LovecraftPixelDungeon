@@ -46,6 +46,8 @@ public class Statue extends Mob {
 
 		EXP = 0;
 		state = PASSIVE;
+
+		horrorlvl = 3;
 	}
 	
 	protected Weapon weapon;

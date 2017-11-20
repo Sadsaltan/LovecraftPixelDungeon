@@ -51,6 +51,8 @@ public class Wraith extends Mob {
 		flying = true;
 
 		properties.add(Property.UNDEAD);
+
+		horrorlvl = 2;
 	}
 	
 	private static final String LEVEL = "level";

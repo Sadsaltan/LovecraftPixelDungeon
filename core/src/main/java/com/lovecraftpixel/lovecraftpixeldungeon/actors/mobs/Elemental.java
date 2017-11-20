@@ -53,6 +53,8 @@ public class Elemental extends Mob {
 		lootChance = 0.1f;
 
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 3;
 	}
 	
 	@Override

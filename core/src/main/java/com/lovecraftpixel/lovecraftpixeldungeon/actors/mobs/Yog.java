@@ -75,6 +75,8 @@ public class Yog extends Mob {
 		properties.add(Property.BOSS);
 		properties.add(Property.IMMOVABLE);
 		properties.add(Property.DEMONIC);
+
+		horrorlvl = 5;
 	}
 	
 	public Yog() {
@@ -218,6 +220,8 @@ public class Yog extends Mob {
 
 			properties.add(Property.BOSS);
 			properties.add(Property.DEMONIC);
+
+			horrorlvl = 4;
 		}
 		
 		@Override
@@ -294,6 +298,8 @@ public class Yog extends Mob {
 
 			properties.add(Property.BOSS);
 			properties.add(Property.DEMONIC);
+
+			horrorlvl = 4;
 		}
 		
 		@Override
@@ -392,6 +398,8 @@ public class Yog extends Mob {
 			state = HUNTING;
 
 			properties.add(Property.DEMONIC);
+
+			horrorlvl = 2;
 		}
 		
 		@Override

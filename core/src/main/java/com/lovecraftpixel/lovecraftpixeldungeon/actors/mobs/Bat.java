@@ -48,6 +48,8 @@ public class Bat extends Mob {
 		
 		loot = new PotionOfHealing();
 		lootChance = 0.1667f; //by default, see die()
+
+		horrorlvl = 2;
 	}
 	
 	@Override
