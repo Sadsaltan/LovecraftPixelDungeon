@@ -107,6 +107,10 @@ public enum HeroClass {
 	}
 
 	private static void initWarrior( Hero hero ) {
+
+		hero.HP = hero.HT = 25;
+		hero.MHP = hero.MHT = 5;
+
 		(hero.belongings.weapon = new WornShortsword()).identify();
 		Dart darts = new Dart( 8 );
 		darts.identify().collect();
@@ -128,6 +132,10 @@ public enum HeroClass {
 	}
 
 	private static void initMage( Hero hero ) {
+
+		hero.HP = hero.HT = 15;
+		hero.MHP = hero.MHT = 15;
+
 		MagesStaff staff;
 
 		if ( Badges.isUnlocked(Badges.Badge.TUTORIAL_MAGE) ){
