@@ -319,7 +319,7 @@ public class OverworldLevel extends Level {
 				/*6*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
 				/*7*/ s, s, s, s, s, s, s, s, s, s, w, s, s, s, w, s,
 				/*8*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
-				/*9*/ s, s, s, s, s, s, s, s, s, s, w, w, w, w, w, s,
+				/*9*/ s, s, s, s, s, s, s, s, s, s, w, s, w, s, w, s,
 				/*10*/s, s, s, s, s, s, s, s, s, s, w, s, w, s, w, s,
 				/*11*/s, s, s, s, s, s, s, s, s, s, w, s, w, s, w, s,
 				/*12*/s, s, s, s, s, s, s, s, s, s, w, s, w, s, w, s,

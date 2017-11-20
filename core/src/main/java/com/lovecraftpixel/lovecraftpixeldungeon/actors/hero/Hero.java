@@ -207,9 +207,9 @@ public class Hero extends Char {
 		if(value > 0){
 			sprite.showStatus(CharSprite.MENTAL, "-");
 		}
-		MHT -= value;
-		if(MHT <= 0){
-			MHT = 0;
+		MHP -= value;
+		if(MHP <= 0){
+			MHP = 0;
 		}
 	}
 
@@ -217,8 +217,8 @@ public class Hero extends Char {
 		if(value > 0){
 			sprite.showStatus(CharSprite.MENTAL, "+");
 		}
-		MHT += value;
-		if(MHT >= MHP){
+		MHP += value;
+		if(MHP >= MHT){
 			MHP = MHT;
 		}
 	}

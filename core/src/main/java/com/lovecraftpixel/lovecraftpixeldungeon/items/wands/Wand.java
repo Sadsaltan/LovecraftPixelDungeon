@@ -32,6 +32,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Invisibility;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Light;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.LockedFloor;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.MentalStrenght;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Recharging;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.SoulMark;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
@@ -123,6 +124,7 @@ public abstract class Wand extends Item {
 			hero.sprite.showStatus( CharSprite.LIGHT, Messages.get(Hero.class, "youshallnotpass") );
 			Buff.prolong(hero, Light.class, Bless.DURATION/2);
 			Buff.prolong(hero, Bless.class, Bless.DURATION/2);
+			Buff.prolong(hero, MentalStrenght.class, Bless.DURATION/2);
 		}
 	}
 	

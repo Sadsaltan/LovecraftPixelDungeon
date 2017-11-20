@@ -29,6 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Frost;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.KindSpirit;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mimic;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Wraith;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
@@ -138,6 +139,12 @@ public class Heap implements Bundlable {
 					}
 					Sample.INSTANCE.play( Assets.SND_CURSED );
 					break;
+				} else {
+					if (KindSpirit.spawnAt( pos ) == null) {
+						hero.sprite.emitter().burst( ShadowParticle.UP, 3 );
+						hero.increaseMentalHealth(5);
+					}
+					Sample.INSTANCE.play( Assets.SND_GHOST );
 				}
 			}
 			break;

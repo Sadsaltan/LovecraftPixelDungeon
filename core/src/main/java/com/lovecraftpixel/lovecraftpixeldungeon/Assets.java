@@ -84,6 +84,7 @@ public class Assets {
 	public static final String SPINNER		= "mobs/spinner.png";
 	public static final String DM300		= "mobs/dm300.png";
 	public static final String WRAITH		= "mobs/wraith.png";
+	public static final String SPIRIT		= "mobs/kindspirit.png";
 	public static final String ELEMENTAL	= "mobs/elemental.png";
 	public static final String MONK			= "mobs/monk.png";
 	public static final String WARLOCK		= "mobs/warlock.png";
