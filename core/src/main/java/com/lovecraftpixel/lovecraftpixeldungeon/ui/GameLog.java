@@ -90,6 +90,10 @@ public class GameLog extends Component implements Signal.Listener<String> {
 		if (text.startsWith( GLog.BOOK )) {
 			text = text.substring( GLog.BOOK.length() );
 			color = CharSprite.BOOK;
+		} else
+		if (text.startsWith( GLog.KNOWL )) {
+			text = text.substring( GLog.KNOWL.length() );
+			color = CharSprite.KNOWLEDGE;
 		}
 
 		if (lastEntry != null && color == lastColor && lastEntry.nLines < MAX_LINES) {

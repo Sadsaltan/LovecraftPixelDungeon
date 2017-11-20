@@ -1316,7 +1316,7 @@ public class Hero extends Char {
 			this.knowl += knowl;
 		}
 
-		GLog.p( Messages.get(this, "gained_knowl", knowl) );
+		GLog.k( Messages.get(this, "gained_knowl", knowl) );
 		sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlplus", knowl) );
 		Sample.INSTANCE.play( Assets.SND_LEVELUP );
 	}
