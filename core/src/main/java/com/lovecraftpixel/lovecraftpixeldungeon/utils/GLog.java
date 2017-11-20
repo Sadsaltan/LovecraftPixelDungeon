@@ -24,6 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.utils;
 
 import android.util.Log;
+
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.watabou.utils.Signal;
 
@@ -35,6 +36,7 @@ public class GLog {
 	public static final String NEGATIVE		= "-- ";
 	public static final String WARNING		= "** ";
 	public static final String HIGHLIGHT	= "@@ ";
+	public static final String BOOK			= "†† ";
 	
 	public static Signal<String> update = new Signal<String>();
 	
@@ -62,5 +64,9 @@ public class GLog {
 	
 	public static void h( String text, Object... args ) {
 		i( HIGHLIGHT + text, args );
+	}
+
+	public static void b( String text, Object... args ) {
+		i( BOOK + text, args );
 	}
 }

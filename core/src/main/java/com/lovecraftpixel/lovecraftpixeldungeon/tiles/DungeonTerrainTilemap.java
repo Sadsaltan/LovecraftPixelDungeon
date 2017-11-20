@@ -61,7 +61,7 @@ public class DungeonTerrainTilemap extends DungeonTilemap {
 			if ((DungeonTileSheet.doorTile(tile))) {
 				return DungeonTileSheet.getRaisedDoorTile(tile, map[pos - mapWidth]);
 			} else if (tile == Terrain.WALL || tile == Terrain.WALL_DECO
-					|| tile == Terrain.SECRET_DOOR || tile == Terrain.BOOKSHELF){
+					|| tile == Terrain.SECRET_DOOR || tile == Terrain.BOOKSHELF || tile == Terrain.EMPTY_BOOKSHELF){
 				return DungeonTileSheet.getRaisedWallTile(
 						tile,
 						pos,

@@ -58,6 +58,8 @@ public class Terrain {
 	public static final int ALCHEMY			= 28;
 
 	public static final int WATER		    = 29;
+
+	public static final int EMPTY_BOOKSHELF = 30;
 	
 	public static final int PASSABLE		= 0x01;
 	public static final int LOS_BLOCKING	= 0x02;
@@ -70,38 +72,39 @@ public class Terrain {
 	
 	public static final int[] flags = new int[256];
 	static {
-		flags[CHASM]		= AVOID	| PIT;
-		flags[EMPTY]		= PASSABLE;
-		flags[GRASS]		= PASSABLE | FLAMABLE;
-		flags[EMPTY_WELL]	= PASSABLE;
-		flags[WATER]		= PASSABLE | LIQUID;
-		flags[WALL]			= LOS_BLOCKING | SOLID;
-		flags[DOOR]			= PASSABLE | LOS_BLOCKING | FLAMABLE | SOLID;
-		flags[OPEN_DOOR]	= PASSABLE | FLAMABLE;
-		flags[ENTRANCE]		= PASSABLE/* | SOLID*/;
-		flags[EXIT]			= PASSABLE;
-		flags[EMBERS]		= PASSABLE;
-		flags[LOCKED_DOOR]	= LOS_BLOCKING | SOLID;
-		flags[PEDESTAL]		= PASSABLE;
-		flags[WALL_DECO]	= flags[WALL];
-		flags[BARRICADE]	= FLAMABLE | SOLID | LOS_BLOCKING;
-		flags[EMPTY_SP]		= flags[EMPTY];
-		flags[HIGH_GRASS]	= PASSABLE | LOS_BLOCKING | FLAMABLE;
+		flags[CHASM]			= AVOID	| PIT;
+		flags[EMPTY]			= PASSABLE;
+		flags[GRASS]			= PASSABLE | FLAMABLE;
+		flags[EMPTY_WELL]		= PASSABLE;
+		flags[WATER]			= PASSABLE | LIQUID;
+		flags[WALL]				= LOS_BLOCKING | SOLID;
+		flags[DOOR]				= PASSABLE | LOS_BLOCKING | FLAMABLE | SOLID;
+		flags[OPEN_DOOR]		= PASSABLE | FLAMABLE;
+		flags[ENTRANCE]			= PASSABLE/* | SOLID*/;
+		flags[EXIT]				= PASSABLE;
+		flags[EMBERS]			= PASSABLE;
+		flags[LOCKED_DOOR]		= LOS_BLOCKING | SOLID;
+		flags[PEDESTAL]			= PASSABLE;
+		flags[WALL_DECO]		= flags[WALL];
+		flags[BARRICADE]		= FLAMABLE | SOLID | LOS_BLOCKING;
+		flags[EMPTY_SP]			= flags[EMPTY];
+		flags[HIGH_GRASS]		= PASSABLE | LOS_BLOCKING | FLAMABLE;
 
-		flags[SECRET_DOOR]  = flags[WALL]  | SECRET;
-		flags[SECRET_TRAP]  = flags[EMPTY] | SECRET;
-		flags[TRAP]         = AVOID;
-		flags[INACTIVE_TRAP]= flags[EMPTY];
+		flags[SECRET_DOOR]  	= flags[WALL]  | SECRET;
+		flags[SECRET_TRAP]  	= flags[EMPTY] | SECRET;
+		flags[TRAP]         	= AVOID;
+		flags[INACTIVE_TRAP]	= flags[EMPTY];
 
-		flags[EMPTY_DECO]	= flags[EMPTY];
-		flags[LOCKED_EXIT]	= SOLID;
-		flags[UNLOCKED_EXIT]= PASSABLE;
-		flags[SIGN]			= PASSABLE | FLAMABLE;
-		flags[WELL]			= AVOID;
-		flags[STATUE]		= SOLID;
-		flags[STATUE_SP]	= flags[STATUE];
-		flags[BOOKSHELF]	= flags[BARRICADE];
-		flags[ALCHEMY]		= SOLID;
+		flags[EMPTY_DECO]		= flags[EMPTY];
+		flags[LOCKED_EXIT]		= SOLID;
+		flags[UNLOCKED_EXIT]	= PASSABLE;
+		flags[SIGN]				= PASSABLE | FLAMABLE;
+		flags[WELL]				= AVOID;
+		flags[STATUE]			= SOLID;
+		flags[STATUE_SP]		= flags[STATUE];
+		flags[BOOKSHELF]		= flags[BARRICADE];
+		flags[ALCHEMY]			= SOLID;
+		flags[EMPTY_BOOKSHELF]	= flags[BARRICADE];
 
 	};
 

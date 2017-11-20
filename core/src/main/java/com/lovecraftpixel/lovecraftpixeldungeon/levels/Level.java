@@ -971,6 +971,8 @@ public abstract class Level implements Bundlable {
 	public String tileName( int tile ) {
 		
 		switch (tile) {
+			case Terrain.EMPTY_BOOKSHELF:
+				return Messages.get(Level.class, "empty_bookshelf_name");
 			case Terrain.CHASM:
 				return Messages.get(Level.class, "chasm_name");
 			case Terrain.EMPTY:
@@ -1031,6 +1033,8 @@ public abstract class Level implements Bundlable {
 	public String tileDesc( int tile ) {
 		
 		switch (tile) {
+			case Terrain.EMPTY_BOOKSHELF:
+				return Messages.get(Level.class, "empty_bookshelf_desc");
 			case Terrain.CHASM:
 				return Messages.get(Level.class, "chasm_desc");
 			case Terrain.WATER:

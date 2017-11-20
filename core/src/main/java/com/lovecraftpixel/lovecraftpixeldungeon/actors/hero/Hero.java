@@ -115,6 +115,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.AttackIndicator;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.BuffIndicator;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.BookTitles;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndAlchemy;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndResurrect;
@@ -1204,6 +1205,13 @@ public class Hero extends Char {
 			
 			curAction = new HeroAction.Alchemy( cell );
 			
+		} else if(Dungeon.level.map[cell] == Terrain.BOOKSHELF && cell != pos){
+			this.gainKnowl(1);
+
+			GLog.b(BookTitles.getRandomTitle());
+
+			Level.set(cell, Terrain.EMPTY_BOOKSHELF);
+			GameScene.updateMap( cell );
 		} else if (fieldOfView[cell] && (ch = Actor.findChar( cell )) instanceof Mob) {
 
 			if (ch instanceof NPC) {
@@ -1326,7 +1334,7 @@ public class Hero extends Char {
 	}
 
 	public int maxKnowl() {
-		return 3 + lvl * 3;
+		return 5 + lvl * 5;
 	}
 	
 	public boolean isStarving() {
