@@ -84,6 +84,12 @@ public class WandOfTransfusion extends Wand {
 
 			processSoulMark(ch, chargesPerCast());
 
+			//player looses health points in exchange for mental health points
+			if(((Mob) ch).horrorlvl > 0 && ((Mob) ch).horrorlvl < curUser.HP){
+				curUser.HP = curUser.HP - ((Mob) ch).horrorlvl;
+				curUser.increaseMentalHealth(((Mob) ch).horrorlvl);
+			}
+
 			//heals an ally, or a charmed enemy
 			if (ch.alignment == Char.Alignment.ALLY || ch.buff(Charm.class) != null){
 
