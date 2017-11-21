@@ -75,6 +75,8 @@ public class Food extends Item {
 			
 			(hero.buff( Hunger.class )).satisfy( energy );
 			GLog.i( message );
+
+			hero.increaseMentalHealth(1);
 			
 			switch (hero.heroClass) {
 			case WARRIOR:

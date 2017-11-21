@@ -117,6 +117,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BookTitles;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndAlchemy;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndResurrect;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTradeItem;
@@ -204,21 +205,21 @@ public class Hero extends Char {
 	}
 
 	public void reduceMentalHealth(int value){
-		if(value > 0){
-			sprite.showStatus(CharSprite.MENTAL, "-");
-		}
 		MHP -= value;
 		if(MHP <= 0){
+			if(value > 0){
+				sprite.showStatus(CharSprite.MENTAL, "-");
+			}
 			MHP = 0;
 		}
 	}
 
 	public void increaseMentalHealth(int value){
-		if(value > 0){
-			sprite.showStatus(CharSprite.MENTAL, "+");
-		}
 		MHP += value;
 		if(MHP >= MHT){
+			if(value > 0){
+				sprite.showStatus(CharSprite.MENTAL, "+");
+			}
 			MHP = MHT;
 		}
 	}
@@ -1334,6 +1335,14 @@ public class Hero extends Char {
 			this.knowl = this.knowl - knowl;
 		}
 	}
+
+	public void loseExp( int exp ) {
+		if(exp >= this.exp){
+			this.exp = 0;
+		} else {
+			this.exp = this.exp - exp;
+		}
+	}
 	
 	public int maxExp() {
 		return 5 + lvl * 5;
@@ -1516,6 +1525,21 @@ public class Hero extends Char {
 	@Override
 	public void move( int step ) {
 		if(isInsane()){
+			if(RandomL.randomBoolean()){
+				if(knowl > 0){
+					if(RandomL.randomBoolean()){
+						loseKnowl(1);
+						increaseMentalHealth(1);
+					}
+				} else {
+					if(exp > 0){
+						if(RandomL.randomBoolean()){
+							loseExp(1);
+							increaseMentalHealth(1);
+						}
+					}
+				}
+			}
 			sprite.interruptMotion();
 			int newPos = pos + PathFinder.NEIGHBOURS8[Random.Int( 8 )];
 			if (!(Dungeon.level.passable[newPos] || Dungeon.level.avoid[newPos]) || Actor.findChar( newPos ) != null)

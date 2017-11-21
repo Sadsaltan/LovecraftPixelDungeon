@@ -31,7 +31,9 @@ import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.Random;
 
 public class Dewdrop extends Item {
 	
@@ -51,6 +53,12 @@ public class Dewdrop extends Item {
 			vial.collectDew( this );
 			
 		} else {
+
+			if(Random.Int(0, hero.knowl) > hero.lvl){
+				if(RandomL.randomBoolean()){
+					hero.increaseMentalHealth(1);
+				}
+			}
 			
 			//20 drops for a full heal normally, 15 for the warden
 			float healthPercent = hero.subClass == HeroSubClass.WARDEN ? 0.0667f : 0.05f;
