@@ -56,9 +56,6 @@ public class Sunlight extends Blob {
 						if(Random.Int(0, 100) == rand){
 							Dungeon.level.plant((Plant.Seed) Generator.random(Generator.Category.SEED), cell);
 							Dungeon.level.map[cell] = Terrain.EMPTY_DECO;
-						} else {
-							Dungeon.level.drop(Generator.random(Generator.Category.SEED), cell);
-							Dungeon.level.map[cell] = Terrain.EMPTY_DECO;
 						}
 					}
 				}

@@ -464,7 +464,7 @@ public abstract class Mob extends Char {
 	@Override
 	public void onAttackComplete() {
 		attack( enemy );
-		if(enemy.equals(Dungeon.hero)){
+		if(enemy instanceof Hero){
 			if(Random.Int(0, Dungeon.hero.knowl + ((Dungeon.hero.HP+2)/Dungeon.hero.lvl)) < 2){
 				Dungeon.hero.reduceMentalHealth(this.horrorlvl);
 			}
