@@ -1525,15 +1525,17 @@ public class Hero extends Char {
 	@Override
 	public void move( int step ) {
 		if(isInsane()){
-			if(RandomL.randomBoolean()){
+			if(Random.Int(0, 5) == 1){
 				if(knowl > 0){
 					if(RandomL.randomBoolean()){
+						damage(1, this);
 						loseKnowl(1);
 						increaseMentalHealth(1);
 					}
 				} else {
 					if(exp > 0){
 						if(RandomL.randomBoolean()){
+							damage(1, this);
 							loseExp(1);
 							increaseMentalHealth(1);
 						}
