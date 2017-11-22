@@ -299,6 +299,14 @@ public abstract class RegularLevel extends Level {
 	
 	@Override
 	protected void createItems() {
+
+		int plants = RandomL.Int(6, 8);
+		for(int i = plants; i > 0; i--){
+			Plant.Seed seed = (Plant.Seed) Generator.random(Generator.Category.SEED);
+			int plantcell = randomPlant();
+			plant(seed, plantcell);
+			map[plantcell] = Terrain.EMPTY_DECO;
+		}
 		
 		// drops 3/4/5 items 60%/30%/10% of the time
 		int nItems = 3 + Random.chances(new float[]{6, 3, 1});
@@ -385,12 +393,6 @@ public abstract class RegularLevel extends Level {
 				losBlocking[cell] = false;
 			}
 			drop( p, cell );
-		}
-
-		int plants = RandomL.Int(6, 8);
-		for(int i = plants; i > 0; i--){
-			Plant.Seed seed = (Plant.Seed) Generator.random(Generator.Category.SEED);
-			plant(seed, randomPlant());
 		}
 
 	}
