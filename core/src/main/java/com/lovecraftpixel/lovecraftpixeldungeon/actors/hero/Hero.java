@@ -1306,6 +1306,10 @@ public class Hero extends Char {
 		}
 		
 		if (levelUp) {
+
+			if(knowl > 1){
+				loseKnowl(knowl/2);
+			}
 			
 			GLog.p( Messages.get(this, "new_level"), lvl );
 			sprite.showStatus( CharSprite.POSITIVE, Messages.get(Hero.class, "level_up") );
