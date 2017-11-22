@@ -25,7 +25,10 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Storm;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingStormvinePlantSprite;
 
 public class LivingPlantStormVine extends LivingPlant {
@@ -38,7 +41,7 @@ public class LivingPlantStormVine extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Stormvine.Seed(), pos);
-        //GameScene.add(Blob.seed(pos, 500, Storm.class));
+        GameScene.add(Blob.seed(pos, 500, Storm.class));
     }
 
     @Override
