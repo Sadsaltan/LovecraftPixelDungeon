@@ -95,6 +95,8 @@ public class Stylus extends Item {
 
 		GLog.w( Messages.get(this, "inscribed"));
 
+		curUser.knowl = 0;
+
 		armor.inscribe();
 		
 		curUser.sprite.operate(curUser.pos);
