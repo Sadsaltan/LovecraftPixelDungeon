@@ -1321,11 +1321,10 @@ public class Hero extends Char {
 			this.knowl = maxKnowl();
 		} else {
 			this.knowl += knowl;
+			GLog.k( Messages.get(this, "gained_knowl", knowl) );
+			sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlplus", knowl) );
+			Sample.INSTANCE.play( Assets.SND_LEVELUP );
 		}
-
-		GLog.k( Messages.get(this, "gained_knowl", knowl) );
-		sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlplus", knowl) );
-		Sample.INSTANCE.play( Assets.SND_LEVELUP );
 	}
 
 	public void loseKnowl( int knowl ) {
