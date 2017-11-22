@@ -1603,7 +1603,6 @@ public class Hero extends Char {
 			
 			Level.set( doorCell, door == Terrain.LOCKED_DOOR ? Terrain.DOOR : Terrain.UNLOCKED_EXIT );
 			GameScene.updateMap( doorCell );
-			gainKnowl(1);
 			
 		} else if (curAction instanceof HeroAction.OpenChest) {
 
@@ -1617,7 +1616,7 @@ public class Hero extends Char {
 			}
 			GameScene.updateKeyDisplay();
 			heap.open( this );
-			gainKnowl(2);
+			gainKnowl(1);
 		}
 		curAction = null;
 
