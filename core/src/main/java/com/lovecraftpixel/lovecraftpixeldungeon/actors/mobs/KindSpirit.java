@@ -26,6 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Storm;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Corruption;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Terror;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.ShadowParticle;
@@ -69,7 +70,7 @@ public class KindSpirit extends Mob {
 		level = bundle.getInt( LEVEL );
 		adjustStats( level );
 	}
-	
+
 	@Override
 	public int damageRoll() {
 		return Random.NormalIntRange( 1 + level/2, 2 + level );
@@ -90,10 +91,6 @@ public class KindSpirit extends Mob {
 	public boolean reset() {
 		state = WANDERING;
 		return true;
-	}
-
-	{
-		immunities.add(Corruption.class);
 	}
 	
 	public static KindSpirit spawnAt(int pos ) {
@@ -121,5 +118,7 @@ public class KindSpirit extends Mob {
 	{
 		immunities.add( Grim.class );
 		immunities.add( Terror.class );
+		immunities.add( Storm.class );
+		immunities.add( Corruption.class );
 	}
 }
