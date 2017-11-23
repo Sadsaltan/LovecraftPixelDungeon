@@ -25,9 +25,12 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Spores;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Blindness;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingBlindweedPlantSprite;
 
 public class LivingPlantBlindWeed extends LivingPlant {
@@ -40,6 +43,7 @@ public class LivingPlantBlindWeed extends LivingPlant {
     public void die(Object cause) {
         super.die(cause);
         Dungeon.level.drop(new Blindweed.Seed(), pos);
+        GameScene.add(Blob.seed(pos, 500, Spores.class));
     }
 
     @Override
