@@ -43,6 +43,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.effects.SpellSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Honeypot;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.FoodBag;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.PotionBandolier;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.ScrollHolder;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.SeedPouch;
@@ -898,6 +899,8 @@ public class GameScene extends PixelScene {
 					WndBag.getBag( ScrollHolder.class, listener, mode, title ) :
 				mode == Mode.POTION ?
 					WndBag.getBag( PotionBandolier.class, listener, mode, title ) :
+						mode == Mode.FOOD ?
+								WndBag.getBag( FoodBag.class, listener, mode, title ) :
 				mode == Mode.WAND ?
 					WndBag.getBag( WandHolster.class, listener, mode, title ) :
 				WndBag.lastBag( listener, mode, title );

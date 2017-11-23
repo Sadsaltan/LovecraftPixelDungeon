@@ -35,6 +35,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Gold;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.Bag;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.FoodBag;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.PotionBandolier;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.ScrollHolder;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.SeedPouch;
@@ -139,6 +140,7 @@ public class WndBag extends WndTabbed {
 			stuff.getItem( SeedPouch.class ),
 			stuff.getItem( ScrollHolder.class ),
 			stuff.getItem( PotionBandolier.class ),
+                stuff.getItem( FoodBag.class ),
 			stuff.getItem( WandHolster.class )};
 
 		for (Bag b : bags) {
@@ -311,7 +313,9 @@ public class WndBag extends WndTabbed {
 				return Icons.get( Icons.WAND_HOLSTER );
 			} else if (bag instanceof PotionBandolier) {
 				return Icons.get( Icons.POTION_BANDOLIER );
-			} else {
+			} else if (bag instanceof FoodBag) {
+                return Icons.get( Icons.FOODBAG );
+            } else {
 				return Icons.get( Icons.BACKPACK );
 			}
 		}

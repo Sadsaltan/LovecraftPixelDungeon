@@ -29,6 +29,7 @@ import com.watabou.noosa.Image;
 
 public enum Icons {
 
+	FOODBAG,
 	SKULL,
 	BUSY,
 	COMPASS,
@@ -69,6 +70,9 @@ public enum Icons {
 	public static Image get( Icons type ) {
 		Image icon = new Image( Assets.ICONS );
 		switch (type) {
+			case FOODBAG:
+				icon.frame( icon.texture.uvRect( 110, 53, 121, 63 ) );
+				break;
 		case SKULL:
 			icon.frame( icon.texture.uvRect( 0, 0, 8, 8 ) );
 			break;
