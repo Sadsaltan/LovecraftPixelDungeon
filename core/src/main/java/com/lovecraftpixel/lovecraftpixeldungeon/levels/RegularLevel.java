@@ -303,9 +303,12 @@ public abstract class RegularLevel extends Level {
 		int plants = RandomL.Int(6, 8);
 		for(int i = plants; i > 0; i--){
 			Plant.Seed seed = (Plant.Seed) Generator.random(Generator.Category.SEED);
-			int plantcell = randomPlant();
+			int plantcell = randomDestination();
 			plant(seed, plantcell);
-			map[plantcell] = Terrain.EMPTY_DECO;
+			if (map[plantcell] == Terrain.HIGH_GRASS) {
+				map[plantcell] = Terrain.GRASS;
+				losBlocking[plantcell] = false;
+			}
 		}
 		
 		// drops 3/4/5 items 60%/30%/10% of the time
@@ -395,20 +398,6 @@ public abstract class RegularLevel extends Level {
 			drop( p, cell );
 		}
 
-	}
-
-	protected int randomPlant() {
-		int tries = 0;
-		while (true) {
-			int pos = randomDestination();
-			if (map[pos] == Terrain.EMPTY_DECO || map[pos] == Terrain.EMPTY) {
-				return pos;
-			}
-			tries++;
-			if(tries >= 20){
-				return randomDestination();
-			}
-		}
 	}
 	
 	protected Room randomRoom( Class<?extends Room> type ) {
