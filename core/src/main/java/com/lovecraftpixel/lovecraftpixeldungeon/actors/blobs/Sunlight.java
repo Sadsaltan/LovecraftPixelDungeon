@@ -29,6 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.watabou.utils.Random;
 
 public class Sunlight extends Blob {
@@ -58,6 +59,7 @@ public class Sunlight extends Blob {
 							Dungeon.level.map[cell] = Terrain.EMPTY_DECO;
 						}
 					}
+					GameScene.updateMap();
 				}
 			}
 		}
