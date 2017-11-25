@@ -75,7 +75,7 @@ public class Storm extends Blob {
 	public void use( BlobEmitter emitter ) {
 		super.use( emitter );
 		
-		emitter.start(RainParticle.FACTORY, 0.03f, 10);
+		emitter.pour(RainParticle.FACTORY, 1f);
 	}
 	
 	@Override
