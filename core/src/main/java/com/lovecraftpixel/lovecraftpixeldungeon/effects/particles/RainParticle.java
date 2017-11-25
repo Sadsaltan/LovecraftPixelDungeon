@@ -43,8 +43,8 @@ public class RainParticle extends PixelParticle {
 	public RainParticle() {
 		super();
 		color(0x005FC9);
-		lifespan = 0.5f;
-		speed.set( 20, 40 );
+		lifespan = 2f;
+		speed.set( 0, 10 );
 		angle = 45;
 	}
 

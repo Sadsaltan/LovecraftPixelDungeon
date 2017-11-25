@@ -305,10 +305,6 @@ public abstract class RegularLevel extends Level {
 			Plant.Seed seed = (Plant.Seed) Generator.random(Generator.Category.SEED);
 			int plantcell = randomDestination();
 			plant(seed, plantcell);
-			if (map[plantcell] == Terrain.HIGH_GRASS) {
-				map[plantcell] = Terrain.GRASS;
-				losBlocking[plantcell] = false;
-			}
 		}
 		
 		// drops 3/4/5 items 60%/30%/10% of the time
