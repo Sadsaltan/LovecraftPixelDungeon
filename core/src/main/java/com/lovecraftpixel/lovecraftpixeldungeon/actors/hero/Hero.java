@@ -208,7 +208,8 @@ public class Hero extends Char {
 		MHP -= value;
 		if(MHP <= 0){
 			if(value > 0){
-				sprite.showStatus(CharSprite.MENTAL, "-");
+				sprite.showStatus(CharSprite.MENTAL, Messages.get(this, "redmentalh", value));
+				GLog.m(Messages.get(this, "redmentalh", value));
 			}
 			MHP = 0;
 		}
@@ -218,7 +219,8 @@ public class Hero extends Char {
 		MHP += value;
 		if(MHP >= MHT){
 			if(value > 0){
-				sprite.showStatus(CharSprite.MENTAL, "+");
+				sprite.showStatus(CharSprite.MENTAL,  Messages.get(this, "incmentalh", value));
+				GLog.m(Messages.get(this, "incmentalh", value));
 			}
 			MHP = MHT;
 		}
@@ -1335,7 +1337,9 @@ public class Hero extends Char {
 		if(knowl >= this.knowl){
 			this.knowl = 0;
 		} else {
-			this.knowl = this.knowl - knowl;
+			GLog.k( Messages.get(this, "lose_knowl", knowl) );
+			sprite.showStatus( CharSprite.KNOWLEDGE, Messages.get(Hero.class, "knowlminus", knowl) );
+			this.knowl -= knowl;
 		}
 	}
 

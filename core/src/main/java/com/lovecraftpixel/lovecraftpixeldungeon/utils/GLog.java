@@ -38,6 +38,7 @@ public class GLog {
 	public static final String HIGHLIGHT	= "@@ ";
 	public static final String BOOK			= "†† ";
 	public static final String KNOWL		= "ΩΩ ";
+	public static final String MENTAL		= "ππ ";
 	
 	public static Signal<String> update = new Signal<String>();
 	
@@ -73,5 +74,9 @@ public class GLog {
 
 	public static void k( String text, Object... args ) {
 		i( KNOWL + text, args );
+	}
+
+	public static void m( String text, Object... args ) {
+		i( MENTAL + text, args );
 	}
 }
