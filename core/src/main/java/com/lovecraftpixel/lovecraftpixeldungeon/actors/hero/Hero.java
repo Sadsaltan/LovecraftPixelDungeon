@@ -1549,6 +1549,13 @@ public class Hero extends Char {
 					}
 				}
 			}
+			if(knowl <= 0 && exp <= 0){
+				if(HP >= 2){
+					damage(1, this);
+				} else {
+					die(this);
+				}
+			}
 			sprite.interruptMotion();
 			int newPos = pos + PathFinder.NEIGHBOURS8[Random.Int( 8 )];
 			if (!(Dungeon.level.passable[newPos] || Dungeon.level.avoid[newPos]) || Actor.findChar( newPos ) != null)

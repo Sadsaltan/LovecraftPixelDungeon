@@ -31,7 +31,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -81,7 +81,7 @@ public class EntranceRoom extends StandardRoom {
 			level.drop( p, pos );
 		}
 
-		level.plant(new Stormvine.Seed(), plantPos(level));
+		level.plant(new Blindweed.Seed(), plantPos(level));
 
 		if (Dungeon.depth == 2){
 			if (!Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_1)){

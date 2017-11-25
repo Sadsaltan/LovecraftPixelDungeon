@@ -46,7 +46,7 @@ public class SporeParticle extends PixelParticle.Shrinking {
 		color( 0xffffff );
 		lifespan = 1f;
 		
-		acc.set( 0, -80 );
+		acc.set( 0, 80 );
 	}
 	
 	public void reset( float x, float y ) {

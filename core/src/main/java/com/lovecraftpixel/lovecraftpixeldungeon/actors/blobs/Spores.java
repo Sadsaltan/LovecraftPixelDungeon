@@ -51,16 +51,17 @@ public class Spores extends Blob {
 					if (!ch.immunities().contains(this.getClass())) {
 						Buff.prolong(ch, Blindness.class, 2);
 						if(ch instanceof Hero){
-							if(RandomL.randomBoolean()){
-								((Hero) ch).reduceMentalHealth(1);
-							} else {
-								((Hero) ch).loseKnowl(1);
+							if(Random.Int(0, ((Hero) ch).MHP) < 1){
+								if(RandomL.randomBoolean()){
+									((Hero) ch).reduceMentalHealth(1);
+								} else {
+									((Hero) ch).loseKnowl(1);
+								}
 							}
 						}
 						if(!(ch instanceof Hero)){
 							ch.resistances().add(this.getClass());
 						}
-						ch.sprite.burst(0xffffff, Random.Int(10, 50));
 					}
 				}
 			}
