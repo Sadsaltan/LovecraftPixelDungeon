@@ -33,6 +33,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
+import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
 public class Storm extends Blob {
@@ -61,8 +62,11 @@ public class Storm extends Blob {
 						Dungeon.level.map[cell] == Terrain.EMPTY_SP ||
 						Dungeon.level.map[cell] == Terrain.GRASS ||
 						Dungeon.level.map[cell] == Terrain.INACTIVE_TRAP){
-					Dungeon.level.map[cell] = Terrain.WATER;
-					GameScene.updateMap();
+						Dungeon.level.map[cell] = Terrain.WATER;
+					for (int n : PathFinder.NEIGHBOURS8) {
+						int pos = cell+n;
+						GameScene.updateMap(pos);
+					}
 				}
 				if(Dungeon.level.map[cell] == Terrain.SECRET_TRAP){
 					Dungeon.level.disarmTrap(Dungeon.level.map[cell]);
