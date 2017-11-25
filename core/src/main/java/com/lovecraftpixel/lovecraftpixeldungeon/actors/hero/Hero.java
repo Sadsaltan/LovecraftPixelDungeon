@@ -1550,8 +1550,9 @@ public class Hero extends Char {
 				}
 			}
 			if(knowl <= 0 && exp <= 0){
-				if(HP >= 2){
-					damage(1, this);
+				if(HP >= 3){
+					damage(2, this);
+					increaseMentalHealth(1);
 				} else {
 					die(this);
 				}
