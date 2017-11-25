@@ -31,7 +31,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -45,14 +44,6 @@ public class EntranceRoom extends StandardRoom {
 	@Override
 	public int minHeight() {
 		return Math.max(super.minHeight(), 5);
-	}
-
-	private int plantPos( Level level ){
-		int pos;
-		do{
-			pos = level.pointToCell(random());
-		} while (level.plants.get(pos) != null);
-		return pos;
 	}
 
 	public void paint( Level level ) {
@@ -80,8 +71,6 @@ public class EntranceRoom extends StandardRoom {
 			p.page(Document.GUIDE_INTRO_PAGE);
 			level.drop( p, pos );
 		}
-
-		level.plant(new Blindweed.Seed(), plantPos(level));
 
 		if (Dungeon.depth == 2){
 			if (!Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_1)){
