@@ -36,8 +36,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfHealing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
@@ -94,9 +92,6 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
 			new FoodBag().collect();
-
-		new Scissors().collect();
-		new Tincturebottle().collect();
 	}
 
 	public Badges.Badge masteryBadge() {
