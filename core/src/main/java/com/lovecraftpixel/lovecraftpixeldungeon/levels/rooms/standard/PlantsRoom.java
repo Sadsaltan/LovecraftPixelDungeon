@@ -23,11 +23,9 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -97,10 +95,5 @@ public class PlantsRoom extends StandardRoom {
 		}
 		
 		super.paint(level);
-	}
-	
-	//TODO: sungrass, blandfruit, and starflower seeds can grow here, perhaps that's too good.
-	private static Plant.Seed randomSeed(){
-		return (Plant.Seed) Generator.random(Generator.Category.SEED);
 	}
 }

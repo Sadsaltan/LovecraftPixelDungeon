@@ -69,6 +69,10 @@ public class FissureRoom extends StandardRoom {
 				}
 			}
 		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 	
 }

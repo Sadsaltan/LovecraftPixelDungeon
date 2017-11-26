@@ -78,6 +78,10 @@ public class PitRoom extends SpecialRoom {
 		for (int i=0; i < n; i++) {
 			level.drop( prize( level ), remains );
 		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 	
 	private static Item prize( Level level ) {

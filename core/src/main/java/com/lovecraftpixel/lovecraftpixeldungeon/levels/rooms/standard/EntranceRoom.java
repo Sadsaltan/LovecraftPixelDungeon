@@ -60,6 +60,10 @@ public class EntranceRoom extends StandardRoom {
 		} while (level.findMob(level.entrance) != null);
 		Painter.set( level, level.entrance, Terrain.ENTRANCE );
 
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
+
 		if (Dungeon.depth == 2 && !Document.ADVENTURERS_GUIDE.hasPage(Document.GUIDE_INTRO_PAGE)){
 			int pos;
 			do {

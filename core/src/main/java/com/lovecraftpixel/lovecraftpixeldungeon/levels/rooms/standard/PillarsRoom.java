@@ -104,5 +104,9 @@ public class PillarsRoom extends StandardRoom {
 			Painter.fill(level, left + 1 + pillarInset, bottom - pillarSize - pillarInset - Math.round(percentSkew*ySpaces), pillarSize, pillarSize, Terrain.WALL);
 			
 		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 }

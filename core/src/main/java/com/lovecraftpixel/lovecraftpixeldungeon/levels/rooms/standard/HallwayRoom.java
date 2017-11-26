@@ -91,6 +91,10 @@ public class HallwayRoom extends EmptyRoom {
 		for (Door door : connected.values()) {
 			door.set( Door.Type.REGULAR );
 		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 
 	//returns the space which all doors must connect to (usually 1 cell, but can be more)

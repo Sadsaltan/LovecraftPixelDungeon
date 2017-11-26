@@ -31,6 +31,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.ShopRoom;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
 
 //shops probably shouldn't extend special room, because of cases like this.
 public class ImpShopRoom extends ShopRoom {
@@ -69,6 +70,10 @@ public class ImpShopRoom extends ShopRoom {
 			placeShopkeeper(level);
 		} else {
 			impSpawned = false;
+		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
 		}
 
 	}

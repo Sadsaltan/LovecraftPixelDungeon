@@ -62,5 +62,9 @@ public class SuspiciousChestRoom extends EmptyRoom {
 		} else {
 			level.drop(i, center).type = Heap.Type.CHEST;
 		}
+
+		for(int a = Random.Int(0, 1); a > 0; a--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 }

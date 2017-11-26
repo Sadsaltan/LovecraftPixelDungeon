@@ -56,5 +56,9 @@ public class GrassyGraveRoom extends StandardRoom {
 					(left + 2 + Random.Int( w-2 )) + (top + 1 + shift + i * 2) * level.width();
 			level.drop( i == index ? Generator.random() : new Gold().random(), pos ).type = Heap.Type.TOMB;
 		}
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 }

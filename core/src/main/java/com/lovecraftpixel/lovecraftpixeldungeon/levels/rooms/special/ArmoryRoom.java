@@ -67,6 +67,10 @@ public class ArmoryRoom extends SpecialRoom {
 		
 		entrance.set( Door.Type.LOCKED );
 		level.addItemToSpawn( new IronKey( Dungeon.depth ) );
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 	
 	private static Item prize( Level level ) {

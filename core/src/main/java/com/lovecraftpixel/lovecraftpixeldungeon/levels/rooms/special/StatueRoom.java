@@ -30,6 +30,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.watabou.utils.Point;
+import com.watabou.utils.Random;
 
 public class StatueRoom extends SpecialRoom {
 
@@ -72,5 +73,9 @@ public class StatueRoom extends SpecialRoom {
 		Statue statue = new Statue();
 		statue.pos = cx + cy * level.width();
 		level.mobs.add( statue );
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 }

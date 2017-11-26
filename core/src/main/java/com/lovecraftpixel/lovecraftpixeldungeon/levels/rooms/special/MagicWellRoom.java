@@ -61,5 +61,9 @@ public class MagicWellRoom extends SpecialRoom {
 		WellWater.seed(c.x + level.width() * c.y, 1, waterClass, level);
 		
 		entrance().set( Door.Type.REGULAR );
+
+		for(int i = Random.Int(0, 1); i > 0; i--){
+			level.plant( randomSeed(), level.pointToCell(random()));
+		}
 	}
 }
