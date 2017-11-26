@@ -134,6 +134,12 @@ public class ItemSpriteSheet {
 		assignItemRect(AMULET,          16, 16);
 	}
 
+	private static final int TOOLS     			=                           xy(1, 5);   //16 slots
+	public static final int SCISSORS            = TOOLS+0;
+	static{
+		assignItemRect(SCISSORS,        11, 15);
+	}
+
 	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
@@ -410,6 +416,26 @@ public class ItemSpriteSheet {
 	public static final int SEED_BLANDFRUIT = SEEDS+11;
 	static{
 		for (int i = SEEDS; i < SEEDS+16; i++)
+			assignItemRect(i, 10, 10);
+	}
+
+	private static final int PLANT_ITEMS          =                               xy(1, 24);  //16 slots
+	public static final int PLANT_ITEMS_FIREBLOOM   = PLANT_ITEMS+0;
+	public static final int PLANT_ITEMS_ICECAP   	= PLANT_ITEMS+1;
+	public static final int PLANT_ITEMS_SORROWMOSS  = PLANT_ITEMS+2;
+	public static final int PLANT_ITEMS_BLINDWEED  	= PLANT_ITEMS+3;
+	public static final int PLANT_ITEMS_SUNGRASS  	= PLANT_ITEMS+4;
+	public static final int PLANT_ITEMS_EARTHROOT  	= PLANT_ITEMS+5;
+	public static final int PLANT_ITEMS_FADELEAF  	= PLANT_ITEMS+6;
+	public static final int PLANT_ITEMS_ROTBERRY  	= PLANT_ITEMS+7;
+	public static final int PLANT_ITEMS_BLANDFRUIT  = PLANT_ITEMS+8;
+	public static final int PLANT_ITEMS_STORMVINE  	= PLANT_ITEMS+9;
+	public static final int PLANT_ITEMS_DREAMFOIL  	= PLANT_ITEMS+10;
+	public static final int PLANT_ITEMS_STARFLOWER  = PLANT_ITEMS+11;
+	public static final int PLANT_ITEMS_DEWCATCHER  = PLANT_ITEMS+12;
+	public static final int PLANT_ITEMS_SEEDPOD  	= PLANT_ITEMS+13;
+	static{
+		for (int i = PLANT_ITEMS; i < PLANT_ITEMS+16; i++)
 			assignItemRect(i, 10, 10);
 	}
 
