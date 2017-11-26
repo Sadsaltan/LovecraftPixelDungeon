@@ -66,10 +66,6 @@ public class PlatformRoom extends StandardRoom {
 			door.set( Door.Type.REGULAR );
 			Painter.drawInside(level, this, door, 2, Terrain.EMPTY_SP);
 		}
-
-		for(int i = Random.Int(0, 1); i > 0; i--){
-			level.plant( randomSeed(), level.pointToCell(random()));
-		}
 		
 	}
 	

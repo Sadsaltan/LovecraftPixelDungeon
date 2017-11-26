@@ -27,7 +27,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
-import com.watabou.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class ExitRoom extends StandardRoom {
 	
@@ -53,7 +53,7 @@ public class ExitRoom extends StandardRoom {
 		level.exit = level.pointToCell(random( 2 ));
 		Painter.set( level, level.exit, Terrain.EXIT );
 
-		for(int i = Random.Int(0, 1); i > 0; i--){
+		if(RandomL.randomBoolean()){
 			level.plant( randomSeed(), level.pointToCell(random()));
 		}
 	}

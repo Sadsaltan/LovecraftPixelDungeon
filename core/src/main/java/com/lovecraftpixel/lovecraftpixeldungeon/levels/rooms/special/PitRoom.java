@@ -31,6 +31,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -79,7 +80,7 @@ public class PitRoom extends SpecialRoom {
 			level.drop( prize( level ), remains );
 		}
 
-		for(int i = Random.Int(0, 1); i > 0; i--){
+		if(RandomL.randomBoolean()){
 			level.plant( randomSeed(), level.pointToCell(random()));
 		}
 	}

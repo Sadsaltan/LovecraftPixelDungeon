@@ -29,6 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class SuspiciousChestRoom extends EmptyRoom {
@@ -63,7 +64,7 @@ public class SuspiciousChestRoom extends EmptyRoom {
 			level.drop(i, center).type = Heap.Type.CHEST;
 		}
 
-		for(int a = Random.Int(0, 1); a > 0; a--){
+		if(RandomL.randomBoolean()){
 			level.plant( randomSeed(), level.pointToCell(random()));
 		}
 	}

@@ -32,8 +32,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Point;
-import com.watabou.utils.Random;
 
 public class CryptRoom extends SpecialRoom {
 
@@ -71,7 +71,7 @@ public class CryptRoom extends SpecialRoom {
 		
 		level.drop( prize( level ), cx + cy * level.width() ).type = Heap.Type.TOMB;
 
-		for(int i = Random.Int(0, 1); i > 0; i--){
+		if(RandomL.randomBoolean()){
 			level.plant( randomSeed(), level.pointToCell(random()));
 		}
 	}
