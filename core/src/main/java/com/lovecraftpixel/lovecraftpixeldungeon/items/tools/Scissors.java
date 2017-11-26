@@ -24,7 +24,13 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.items.tools;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Bleeding;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.BloodParticle;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.LeafParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfRegrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
@@ -64,7 +70,7 @@ import java.util.ArrayList;
 
 public class Scissors extends Item {
 
-	public static final String AC_CUT = "CUT PLANT";
+	public static final String AC_CUT = "CUT";
 
 	{
 		image = ItemSpriteSheet.SCISSORS;
@@ -103,8 +109,9 @@ public class Scissors extends Item {
 			if(Dungeon.depth != 1 &&
 					!Dungeon.level.plants.get(cell).equals(null) &&
 					!Dungeon.level.solid[cell]){
-				Dungeon.level.uproot(cell);
 				Plant plant = Dungeon.level.plants.get(cell);
+				Dungeon.level.uproot(cell);
+				CellEmitter.get( cell ).burst(LeafParticle.GENERAL, 4);
 				if(plant instanceof BlandfruitBush){
 					Dungeon.level.drop(new BlandfruitItem(), cell);
 				} else if(plant instanceof Blindweed){
@@ -134,8 +141,12 @@ public class Scissors extends Item {
 				} else if(plant instanceof Sungrass){
 					Dungeon.level.drop(new SungrassItem(), cell);
 				}
+			} else if(Actor.findChar(cell) != null){
+				Buff.affect(Actor.findChar(cell), Bleeding.class).set(1);
+				CellEmitter.get( cell ).burst(BloodParticle.BURST, 4);
+				curUser.reduceMentalHealth(1);
 			} else {
-				GLog.n(Messages.get(Scissors.class, "nothing"));
+				GLog.i(Messages.get(Scissors.class, "nothing"));
 			}
 		}
 		@Override

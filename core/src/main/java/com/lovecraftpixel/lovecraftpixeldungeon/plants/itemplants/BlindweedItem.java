@@ -41,8 +41,6 @@ public class BlindweedItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(Blindweed.class, "desc");
-        return info;
+        return Messages.get(Blindweed.class, "desc");
     }
 }

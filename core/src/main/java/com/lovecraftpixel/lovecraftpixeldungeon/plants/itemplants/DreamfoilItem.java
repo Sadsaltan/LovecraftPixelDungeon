@@ -41,8 +41,6 @@ public class DreamfoilItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(Dreamfoil.class, "desc");
-        return info;
+        return Messages.get(Dreamfoil.class, "desc");
     }
 }

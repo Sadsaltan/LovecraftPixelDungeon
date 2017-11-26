@@ -41,8 +41,6 @@ public class EarthrootItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(Earthroot.class, "desc");
-        return info;
+        return Messages.get(Earthroot.class, "desc");
     }
 }

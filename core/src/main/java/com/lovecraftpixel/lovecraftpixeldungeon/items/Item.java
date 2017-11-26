@@ -95,7 +95,7 @@ public class Item implements Bundlable {
 			return Generator.Category.order( lhs ) - Generator.Category.order( rhs );
 		}
 	};
-	
+
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = new ArrayList<String>();
 		actions.add( AC_DROP );

@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
@@ -41,9 +40,9 @@ public class PlantItem extends Item {
         defaultAction = AC_PLANT;
     }
 
-    public static final String AC_PLANT = "PLANT";
+    public Plant.Seed seed;
 
-    public static Plant.Seed seed;
+    public static final String AC_PLANT = "PLANT";
 
     @Override
     public boolean isUpgradable() {
@@ -72,17 +71,18 @@ public class PlantItem extends Item {
         }
     }
 
-    private static CellSelector.Listener informer = new CellSelector.Listener() {
+    private CellSelector.Listener informer = new CellSelector.Listener() {
+
         @Override
         public void onSelect( Integer cell ) {
             if(Dungeon.depth != 1){
                 Dungeon.level.plant(seed, cell);
-
+                curItem.detach(curUser.belongings.backpack);
             }
         }
         @Override
         public String prompt() {
-            return Messages.get(Scissors.class, "plant");
+            return Messages.get(PlantItem.class, "plant");
         }
     };
 

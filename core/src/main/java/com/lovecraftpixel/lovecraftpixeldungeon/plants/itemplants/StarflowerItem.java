@@ -41,8 +41,6 @@ public class StarflowerItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(Starflower.class, "desc");
-        return info;
+        return Messages.get(Starflower.class, "desc");
     }
 }

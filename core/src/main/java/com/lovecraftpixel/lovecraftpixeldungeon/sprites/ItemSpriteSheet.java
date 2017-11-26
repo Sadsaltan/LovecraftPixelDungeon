@@ -436,7 +436,7 @@ public class ItemSpriteSheet {
 	public static final int PLANT_ITEMS_SEEDPOD  	= PLANT_ITEMS+13;
 	static{
 		for (int i = PLANT_ITEMS; i < PLANT_ITEMS+16; i++)
-			assignItemRect(i, 10, 10);
+			assignItemRect(i, 16, 16);
 	}
 
 	                                                                                    //16 free slots

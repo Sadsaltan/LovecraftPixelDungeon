@@ -41,8 +41,6 @@ public class SeedpodItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(WandOfRegrowth.Seedpod.class, "desc");
-        return info;
+        return Messages.get(WandOfRegrowth.Seedpod.class, "desc");
     }
 }

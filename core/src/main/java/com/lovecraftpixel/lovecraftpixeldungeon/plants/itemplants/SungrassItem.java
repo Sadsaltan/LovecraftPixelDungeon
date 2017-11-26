@@ -41,8 +41,6 @@ public class SungrassItem extends PlantItem {
 
     @Override
     public String desc() {
-        String info = super.desc();
-        info = info + "\n\n" + Messages.get(Sungrass.class, "desc");
-        return info;
+        return Messages.get(Sungrass.class, "desc");
     }
 }
