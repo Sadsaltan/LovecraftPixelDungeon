@@ -37,6 +37,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
@@ -45,20 +46,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortswor
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlindweedItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DewcatcherItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DreamfoilItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.EarthrootItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FadeleafItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FirebloomItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.IcecapItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.watabou.utils.Bundle;
 
 public enum HeroClass {
@@ -109,22 +96,7 @@ public enum HeroClass {
 			new FoodBag().collect();
 
 		new Scissors().collect();
-
-		new BlandfruitItem().collect();
-		new BlindweedItem().collect();
-		new DewcatcherItem().collect();
-		new DreamfoilItem().collect();
-		new EarthrootItem().collect();
-		new FadeleafItem().collect();
-		new FirebloomItem().collect();
-		new FirebloomItem().collect();
-		new IcecapItem().collect();
-		new RotberryItem().collect();
-		new SeedpodItem().collect();
-		new SorrowmossItem().collect();
-		new StarflowerItem().collect();
-		new StormvineItem().collect();
-		new SungrassItem().collect();
+		new Tincturebottle().collect();
 	}
 
 	public Badges.Badge masteryBadge() {

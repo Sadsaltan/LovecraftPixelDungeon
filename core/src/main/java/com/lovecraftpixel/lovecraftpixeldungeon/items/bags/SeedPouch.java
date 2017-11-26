@@ -25,6 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items.bags;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.PlantItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 
 public class SeedPouch extends Bag {
@@ -32,12 +33,12 @@ public class SeedPouch extends Bag {
 	{
 		image = ItemSpriteSheet.POUCH;
 		
-		size = 12;
+		size = 16;
 	}
 	
 	@Override
 	public boolean grab( Item item ) {
-		return item instanceof Plant.Seed;
+		return item instanceof Plant.Seed || item instanceof PlantItem;
 	}
 	
 	@Override

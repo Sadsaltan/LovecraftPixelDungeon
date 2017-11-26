@@ -25,6 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items.bags;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Food;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.Herb;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 
 public class FoodBag extends Bag {
@@ -32,12 +33,12 @@ public class FoodBag extends Bag {
 	{
 		image = ItemSpriteSheet.FOODBAG;
 		
-		size = 12;
+		size = 16;
 	}
 	
 	@Override
 	public boolean grab( Item item ) {
-		return item instanceof Food;
+		return item instanceof Food || item instanceof Herb;
 	}
 	
 	@Override

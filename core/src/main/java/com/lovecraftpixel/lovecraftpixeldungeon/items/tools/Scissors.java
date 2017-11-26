@@ -74,6 +74,8 @@ public class Scissors extends Item {
 
 	{
 		image = ItemSpriteSheet.SCISSORS;
+		defaultAction = AC_CUT;
+		stackable = false;
 	}
 	
 	@Override
@@ -103,11 +105,20 @@ public class Scissors extends Item {
 		}
 	}
 
+	public static Boolean getPlantOnCell(Integer cell){
+		for(Plant plant : Dungeon.level.plants.values()){
+			if(plant.pos == cell){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
 			if(Dungeon.depth != 1 &&
-					!Dungeon.level.plants.get(cell).equals(null) &&
+					getPlantOnCell(cell) &&
 					!Dungeon.level.solid[cell]){
 				Plant plant = Dungeon.level.plants.get(cell);
 				Dungeon.level.uproot(cell);

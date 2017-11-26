@@ -51,6 +51,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.BlandfruitBush;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant.Seed;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.PlantItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.PixelScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
@@ -85,7 +86,8 @@ public class WndBag extends WndTabbed {
 		SCROLL,
 		UNIDED_POTION_OR_SCROLL,
 		EQUIPMENT,
-		ALCHEMY
+		ALCHEMY,
+        PLANTITEM
 	}
 
 	protected static final int COLS_P    = 4;
@@ -407,6 +409,7 @@ public class WndBag extends WndTabbed {
 						mode == Mode.ENCHANTABLE && (item instanceof MeleeWeapon || item instanceof Boomerang || item instanceof Armor) ||
 						mode == Mode.WAND && (item instanceof Wand) ||
 						mode == Mode.SEED && (item instanceof Seed) ||
+                                mode == Mode.PLANTITEM && (item instanceof PlantItem) ||
 						mode == Mode.FOOD && (item instanceof Food) ||
 						mode == Mode.POTION && (item instanceof Potion) ||
 						mode == Mode.SCROLL && (item instanceof Scroll) ||

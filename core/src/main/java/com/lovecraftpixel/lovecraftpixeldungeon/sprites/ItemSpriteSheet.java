@@ -136,8 +136,10 @@ public class ItemSpriteSheet {
 
 	private static final int TOOLS     			=                           xy(1, 5);   //16 slots
 	public static final int SCISSORS            = TOOLS+0;
+	public static final int TINCTUREBOTTLE      = TOOLS+1;
 	static{
 		assignItemRect(SCISSORS,        11, 15);
+		assignItemRect(TINCTUREBOTTLE,  8,  13);
 	}
 
 	                                                                                    //32 free slots
@@ -480,6 +482,26 @@ public class ItemSpriteSheet {
 		assignItemRect(ORE,     15, 15);
 		assignItemRect(TOKEN,   12, 12);
 
+	}
+
+	private static final int HERBS  =                                       xy(1, 27);  //32 slots
+	public static final int FIREBLOOM_HERB   	= HERBS+0;
+	public static final int ICECAP_HERB    		= HERBS+1;
+	public static final int SORROWMOSS_HERB  	= HERBS+2;
+	public static final int BLINDWEED_HERB   	= HERBS+3;
+	public static final int SUNGRASS_HERB 		= HERBS+4;
+	public static final int EARTHROOT_HERB     	= HERBS+5;
+	public static final int FADELEAF_HERB   	= HERBS+6;
+	public static final int ROTBERRY_HERB   	= HERBS+7;
+	public static final int BLANDFRUIT_HERB   	= HERBS+8;
+	public static final int STORMVINE_HERB  	= HERBS+9;
+	public static final int DREAMFOIL_HERB   	= HERBS+10;
+	public static final int STARFLOWER_HERB   	= HERBS+11;
+	public static final int DEWCATCHER_HERB   	= HERBS+12;
+	public static final int SEEDPOD_HERB   		= HERBS+13;
+	static{
+		for (int i = HERBS; i < HERBS+16; i++)
+			assignItemRect(i, 15, 12);
 	}
 
 	private static final int BAGS       =                                   xy(1, 28);  //16 slots
