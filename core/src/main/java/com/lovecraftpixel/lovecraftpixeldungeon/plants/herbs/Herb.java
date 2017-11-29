@@ -23,7 +23,12 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.EarthImbue;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.FireImbue;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Hunger;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.ToxicImbue;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.BlindweedPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.DreamfoilPoisonParticle;
@@ -38,6 +43,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.StormVinePoiso
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.SunGrassPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.Potion;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLiquidFlame;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfParalyticGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfToxicGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Dreamfoil;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
@@ -50,6 +59,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.particles.Emitter;
 
 import java.util.ArrayList;
@@ -86,11 +96,34 @@ public class Herb extends Item {
 
     @Override
     public void execute(Hero hero, String action) {
-        super.execute(hero);
         if (action.equals( AC_EAT )) {
             hero.buff( Hunger.class ).satisfy( energy );
+            this.detach(hero.belongings.backpack);
+            if(RandomL.randomBoolean()){
+                hero.increaseMentalHealth(2);
+                hero.loseKnowl(2);
+            } else {
+                hero.reduceMentalHealth(2);
+                hero.gainKnowl(2);
+            }
+            eatEffect(hero);
+            try {
+                Potion potion = (Potion) seed.alchemyClass.newInstance();
+                if(potion instanceof PotionOfLiquidFlame){
+                    Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION);
+                } else
+                if(potion instanceof PotionOfToxicGas){
+                    Buff.affect(hero, ToxicImbue.class).set(ToxicImbue.DURATION);
+                } else
+                if(potion instanceof PotionOfParalyticGas){
+                    Buff.affect(hero, EarthImbue.class, EarthImbue.DURATION);
+                } else {
+                    potion.apply(hero);
+                }
+            } catch (Exception e) {
+                LovecraftPixelDungeon.reportException(e);
+            }
         }
-        eatEffect(hero);
     }
 
     public void eatEffect(Hero hero){

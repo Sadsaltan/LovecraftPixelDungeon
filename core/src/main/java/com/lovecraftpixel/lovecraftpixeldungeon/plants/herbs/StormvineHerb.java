@@ -23,25 +23,16 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ConfusionGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.BlobImmunity;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.EarthImbue;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.FireImbue;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.ToxicImbue;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.Potion;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLiquidFlame;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfParalyticGas;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfToxicGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class StormvineHerb extends Herb {
 
@@ -56,31 +47,6 @@ public class StormvineHerb extends Herb {
 
     @Override
     public void eatEffect(Hero hero) {
-        curItem.detach(hero.belongings.backpack);
-        if(RandomL.randomBoolean()){
-            hero.increaseMentalHealth(2);
-            hero.loseKnowl(2);
-        } else {
-            hero.reduceMentalHealth(2);
-            hero.gainKnowl(2);
-        }
-        try {
-            Potion potion = (Potion) seed.alchemyClass.newInstance();
-            if(potion instanceof PotionOfLiquidFlame){
-                Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION);
-            } else
-            if(potion instanceof PotionOfToxicGas){
-                Buff.affect(hero, ToxicImbue.class).set(ToxicImbue.DURATION);
-            } else
-            if(potion instanceof PotionOfParalyticGas){
-                Buff.affect(hero, EarthImbue.class, EarthImbue.DURATION);
-            } else {
-                potion.apply(hero);
-            }
-        } catch (Exception e) {
-            LovecraftPixelDungeon.reportException(e);
-        }
-
         Buff.prolong( hero, BlobImmunity.class, BlobImmunity.DURATION*2);
         GameScene.add(Blob.seed(hero.pos, 500, ConfusionGas.class));
     }
