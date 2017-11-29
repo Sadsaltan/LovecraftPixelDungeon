@@ -173,6 +173,6 @@ public class Scissors extends Item {
 	
 	@Override
 	public int price() {
-		return 10 * quantity;
+		return 0;
 	}
 }

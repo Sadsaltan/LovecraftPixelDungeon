@@ -57,39 +57,34 @@ public class DewcatcherHerb extends Herb {
     }
 
     @Override
-    public void execute(final Hero hero, String action ) {
-
-        super.execute( hero, action );
-
-        if (action.equals( AC_EAT )) {
-            curItem.detach(hero.belongings.backpack);
-            if(RandomL.randomBoolean()){
-                hero.increaseMentalHealth(2);
-                hero.loseKnowl(2);
-            } else {
-                hero.reduceMentalHealth(2);
-                hero.gainKnowl(2);
-            }
-            try {
-                Potion potion = (Potion) seed.alchemyClass.newInstance();
-                if(potion instanceof PotionOfLiquidFlame){
-                    Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION);
-                } else
-                if(potion instanceof PotionOfToxicGas){
-                    Buff.affect(hero, ToxicImbue.class).set(ToxicImbue.DURATION);
-                } else
-                if(potion instanceof PotionOfParalyticGas){
-                    Buff.affect(hero, EarthImbue.class, EarthImbue.DURATION);
-                } else {
-                    potion.apply(hero);
-                }
-            } catch (Exception e) {
-                LovecraftPixelDungeon.reportException(e);
-            }
-
-            effectChar(hero.pos);
-            hero.reduceMentalHealth(1);
+    public void eatEffect(Hero hero) {
+        curItem.detach(hero.belongings.backpack);
+        if(RandomL.randomBoolean()){
+            hero.increaseMentalHealth(2);
+            hero.loseKnowl(2);
+        } else {
+            hero.reduceMentalHealth(2);
+            hero.gainKnowl(2);
         }
+        try {
+            Potion potion = (Potion) seed.alchemyClass.newInstance();
+            if(potion instanceof PotionOfLiquidFlame){
+                Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION);
+            } else
+            if(potion instanceof PotionOfToxicGas){
+                Buff.affect(hero, ToxicImbue.class).set(ToxicImbue.DURATION);
+            } else
+            if(potion instanceof PotionOfParalyticGas){
+                Buff.affect(hero, EarthImbue.class, EarthImbue.DURATION);
+            } else {
+                potion.apply(hero);
+            }
+        } catch (Exception e) {
+            LovecraftPixelDungeon.reportException(e);
+        }
+
+        effectChar(hero.pos);
+        hero.reduceMentalHealth(1);
     }
 
     private void effectChar(int pos){

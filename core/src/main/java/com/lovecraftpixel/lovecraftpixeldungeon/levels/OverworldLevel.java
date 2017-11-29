@@ -30,13 +30,19 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Gardner;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.tiles.CustomTiledVisual;
 import com.watabou.noosa.Group;
+import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class OverworldLevel extends Level {
 
@@ -55,6 +61,10 @@ public class OverworldLevel extends Level {
 
 	private State state;
 
+	private Gardner gardner;
+
+	private ArrayList<Item> storedItems = new ArrayList<>();
+
 	@Override
 	public String tilesTex() {
 		return Assets.TILES_OVERWORLD;
@@ -66,16 +76,24 @@ public class OverworldLevel extends Level {
 	}
 
 	private static final String STATE	        = "state";
+	private static final String GARDNER	        = "gardner";
+	private static final String STORED_ITEMS    = "storeditems";
 
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		bundle.put( STATE, state );
+		bundle.put( GARDNER, gardner );
+		bundle.put( STORED_ITEMS, storedItems);
 		super.storeInBundle(bundle);
 	}
 
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		state = bundle.getEnum( STATE, State.class );
+		gardner = (Gardner) bundle.get( GARDNER );
+		for (Bundlable item : bundle.getCollection(STORED_ITEMS)){
+			storedItems.add( (Item)item );
+		}
 		super.restoreFromBundle(bundle);
 	}
 
@@ -84,12 +102,13 @@ public class OverworldLevel extends Level {
 
 		setSize(16, 16);
 
-		map = MAP_START.clone();
+		state = State.START;
+
+		map = MAP_START;
 
 		buildFlagMaps();
 		cleanWalls();
 
-		state = State.START;
 		entrance = 9+2*16;
 		exit = 7+8*16;
 
@@ -147,12 +166,18 @@ public class OverworldLevel extends Level {
 
 	@Override
 	protected void createItems() {
-
 	}
 
 	@Override
 	public void press( int cell, Char ch ) {
 		if (ch == Dungeon.hero){
+			if(state == State.START){
+				if(!Dungeon.level.mobs.contains(gardner)){
+					gardner = new Gardner();
+					gardner.pos = 9+8*16;
+					GameScene.add(gardner);
+				}
+			}
 			if (state == State.START
 					&& ((Room)new Room().set(0, 12, 2, 14)).inside(cellToPoint(cell))){
 				progress('w');
@@ -215,32 +240,62 @@ public class OverworldLevel extends Level {
 		addVisuals();
 
 		GameScene.resetMap();
+
 		Dungeon.observe();
+	}
+
+	private void storeItemsFromPreviousLevel(){
+		for (Heap heap : heaps.values()){
+			for (Item item : heap.items)
+				storedItems.add(item);
+			heap.destroy();
+		}
+	}
+
+	private void dumpStoredItems(){
+		for(Item item : storedItems){
+			Dungeon.level.drop(item, 10+8*16);
+		}
+		storedItems.clear();
 	}
 
 	public void progress(Character character){
 		switch (character){
 			case 'w':
-				state = State.WITCH;
-				changeMap(MAP_WITCH);
+				storeItemsFromPreviousLevel();
+				setMap(State.WITCH, MAP_WITCH);
+				gardner.destroy();
+				gardner.sprite.remove();
 				break;
 			case 'b':
-				state = State.BAR;
-				changeMap(MAP_BAR);
+				storeItemsFromPreviousLevel();
+				setMap(State.BAR, MAP_BAR);
+				gardner.destroy();
+				gardner.sprite.remove();
 				break;
 			case 't':
-				state = State.START;
-				changeMap(MAP_START);
+				storeItemsFromPreviousLevel();
+				setMap(State.START, MAP_START);
+				dumpStoredItems();
 				break;
 			case 'l':
-				state = State.LIB;
-				changeMap(MAP_LIB);
+				storeItemsFromPreviousLevel();
+				setMap(State.LIB, MAP_LIB);
+				gardner.destroy();
+				gardner.sprite.remove();
 				break;
 			case 's':
-				state = State.SHOP;
-				changeMap(MAP_SHOP);
+				storeItemsFromPreviousLevel();
+				setMap(State.SHOP, MAP_SHOP);
+				gardner.destroy();
+				gardner.sprite.remove();
 				break;
 		}
+	}
+
+	public void setMap(State mapstate, int[] map){
+		state = mapstate;
+		changeMap(map);
 	}
 
 	private static final int e = Terrain.WATER;

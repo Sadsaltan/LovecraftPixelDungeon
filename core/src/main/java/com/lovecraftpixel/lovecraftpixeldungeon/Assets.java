@@ -102,6 +102,7 @@ public class Assets {
 	public static final String LARVA		= "mobs/larva.png";
 	public static final String GHOST		= "npcs/ghost.png";
 	public static final String MAKER		= "npcs/wandmaker.png";
+	public static final String GARDNER		= "npcs/gardner.png";
 	public static final String TROLL		= "npcs/blacksmith.png";
 	public static final String IMP			= "mobs/demon.png";
 	public static final String RATKING		= "mobs/ratking.png";
@@ -140,6 +141,8 @@ public class Assets {
 	public static final String BUFFS_LARGE	= "ui/large_buffs.png";
 	public static final String SPELL_ICONS	= "ui/spell_icons.png";
 	public static final String CONS_ICONS   = "ui/consumable_icons.png";
+
+	public static final String HELP_GRADNER   = "helppictures/gardnerhelp.png";
 	
 	public static final String PIXELFONT    = "fonts/pixel_font.png";
 	public static final String FONT1X       = "fonts/font1x.png";

@@ -59,6 +59,8 @@ public class Herb extends Item {
     public static final String AC_EAT = "EAT";
     public float energy = Hunger.HUNGRY;
 
+    ArrayList<Herb> herbs = new ArrayList<Herb>();
+
     {
         stackable = false;
     }
@@ -88,6 +90,11 @@ public class Herb extends Item {
         if (action.equals( AC_EAT )) {
             hero.buff( Hunger.class ).satisfy( energy );
         }
+        eatEffect(hero);
+    }
+
+    public void eatEffect(Hero hero){
+
     }
 
     @Override
