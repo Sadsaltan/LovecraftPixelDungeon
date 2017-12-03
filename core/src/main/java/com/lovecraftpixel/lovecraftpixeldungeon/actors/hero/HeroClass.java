@@ -28,8 +28,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Badges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Challenges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.BrokenSeal;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.ClothArmor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.CloakOfShadows;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.FoodBag;
@@ -46,25 +44,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortswor
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.BlandfruitHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.BlindweedHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.DewcatcherHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.DreamfoilHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.EarthrootHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FirebloomHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.Herb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.IcecapHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.RotberryHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SeedpodHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SorrowmossHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StarflowerHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StormvineHerb;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SungrassHerb;
 import com.watabou.utils.Bundle;
-
-import java.util.ArrayList;
 
 public enum HeroClass {
 
@@ -112,25 +92,6 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
 			new FoodBag().collect();
-
-		ArrayList<Herb> herbs = new ArrayList<>();
-		herbs.add(new BlandfruitHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new BlindweedHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new DewcatcherHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new DreamfoilHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new EarthrootHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new FadeleafHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new FirebloomHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new IcecapHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new RotberryHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new SeedpodHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new SorrowmossHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new StarflowerHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new StormvineHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		herbs.add(new SungrassHerb().setSeed((Plant.Seed) Generator.random(Generator.Category.SEED)));
-		for(Item item : herbs){
-			hero.belongings.backpack.items.add(item);
-		}
 	}
 
 	public Badges.Badge masteryBadge() {
