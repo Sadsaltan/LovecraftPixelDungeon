@@ -473,6 +473,7 @@ public class ItemSpriteSheet {
 	public static final int PICKAXE = QUEST+4;
 	public static final int ORE     = QUEST+5;
 	public static final int TOKEN   = QUEST+6;
+	public static final int ELDERSIGN= QUEST+7;
 	static{
 		assignItemRect(SKULL,   16, 11);
 		assignItemRect(DUST,    12, 11);
@@ -481,7 +482,7 @@ public class ItemSpriteSheet {
 		assignItemRect(PICKAXE, 14, 14);
 		assignItemRect(ORE,     15, 15);
 		assignItemRect(TOKEN,   12, 12);
-
+		assignItemRect(ELDERSIGN,15, 14);
 	}
 
 	private static final int HERBS  =                                       xy(1, 27);  //32 slots

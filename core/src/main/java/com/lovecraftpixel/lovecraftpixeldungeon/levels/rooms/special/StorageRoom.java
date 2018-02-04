@@ -61,7 +61,10 @@ public class StorageRoom extends SpecialRoom {
 		level.addItemToSpawn( new PotionOfLiquidFlame() );
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 	}
 	

@@ -63,7 +63,10 @@ public class CirclePitRoom extends StandardRoom {
 		Painter.fillEllipse( level, this, 3 , Terrain.CHASM );
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 	}
 }

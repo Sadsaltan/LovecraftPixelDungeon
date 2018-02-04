@@ -29,6 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.connection.MazeConn
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.secret.SecretRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.GardenerRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.ShopRoom;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ElderSignRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.EntranceRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ExitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.StandardRoom;
@@ -84,6 +85,7 @@ public abstract class RegularBuilder extends Builder {
 	protected Room exit = null;
 	protected Room shop = null;
 	protected Room garden = null;
+	protected Room eldersign = null;
 	
 	protected ArrayList<Room> multiConnections = new ArrayList<>();
 	protected ArrayList<Room> singleConnections = new ArrayList<>();
@@ -93,7 +95,7 @@ public abstract class RegularBuilder extends Builder {
 			r.setEmpty();
 		}
 		
-		entrance = exit = shop = garden = null;
+		entrance = exit = shop = garden = eldersign =  null;
 		singleConnections.clear();
 		multiConnections.clear();
 		for (Room r : rooms){
@@ -105,6 +107,8 @@ public abstract class RegularBuilder extends Builder {
 				shop = r;
 			} else if (r instanceof GardenerRoom && r.maxConnections(Room.ALL) == 1){
 				garden = r;
+			} else if (r instanceof ElderSignRoom && r.maxConnections(Room.ALL) == 1){
+				eldersign = r;
 			} else if (r.maxConnections(Room.ALL) > 1){
 				multiConnections.add(r);
 			} else if (r.maxConnections(Room.ALL) == 1){

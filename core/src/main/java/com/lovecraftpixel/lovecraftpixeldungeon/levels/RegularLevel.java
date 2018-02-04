@@ -45,6 +45,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.GardenerRoo
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.PitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.ShopRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.SpecialRoom;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ElderSignRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.EntranceRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ExitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.StandardRoom;
@@ -114,6 +115,9 @@ public abstract class RegularLevel extends Level {
 
 		if (Dungeon.gardenOnLevel())
 			initRooms.add(new GardenerRoom());
+
+		if (Dungeon.elderSignOnLevel())
+			initRooms.add(new ElderSignRoom());
 		
 		int specials = specialRooms();
 		SpecialRoom.initForFloor();

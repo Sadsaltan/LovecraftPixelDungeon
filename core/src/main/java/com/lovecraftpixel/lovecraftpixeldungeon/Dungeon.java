@@ -346,6 +346,10 @@ public class Dungeon {
 	public static boolean gardenOnLevel() {
 		return depth == 1;
 	}
+
+	public static boolean elderSignOnLevel() {
+		return depth == 4 || depth == 9 || depth == 14 || depth == 19 || depth == 24;
+	}
 	
 	public static boolean bossLevel() {
 		return bossLevel( depth );

@@ -120,7 +120,6 @@ public class Assets {
 	public static final String TILES_CAVES		= "tiles/tiles_caves.png";
 	public static final String TILES_CITY		= "tiles/tiles_city.png";
 	public static final String TILES_HALLS		= "tiles/tiles_halls.png";
-	public static final String TILES_OVERWORLD	= "tiles/tiles_overworld.png";
 	
 	public static final String WATER_SEWERS	= "tiles/water0.png";
 	public static final String WATER_PRISON	= "tiles/water1.png";
@@ -130,12 +129,9 @@ public class Assets {
 
 	public static final String WEAK_FLOOR   = "custom_tiles/weak_floor.png";
 	public static final String PRISON_QUEST = "custom_tiles/prison_quests.png";
+	public static final String ELDER_SIGN = "custom_tiles/elder_sign.png";
+	public static final String YELLOW_SIGN = "custom_tiles/yellow_sign.png";
 	public static final String PRISON_EXIT  = "custom_tiles/prison_exit.png";
-	public static final String OVERWORLD  	= "custom_tiles/overworld_extra_tiles.png";
-	public static final String OVERWORLDW  	= "custom_tiles/overworld_extra_tiles_1.png";
-	public static final String OVERWORLDB  	= "custom_tiles/overworld_extra_tiles_2.png";
-	public static final String OVERWORLDL  	= "custom_tiles/overworld_extra_tiles_3.png";
-	public static final String OVERWORLDS  	= "custom_tiles/overworld_extra_tiles_4.png";
 	
 	public static final String BUFFS_SMALL	= "ui/buffs.png";
 	public static final String BUFFS_LARGE	= "ui/large_buffs.png";

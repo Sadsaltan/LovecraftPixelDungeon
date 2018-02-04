@@ -70,7 +70,10 @@ public class ArmoryRoom extends SpecialRoom {
 		level.addItemToSpawn( new IronKey( Dungeon.depth ) );
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 	}
 	

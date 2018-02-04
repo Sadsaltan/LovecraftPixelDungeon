@@ -62,7 +62,10 @@ public class SegmentedRoom extends StandardRoom {
 		createWalls( level, new Rect(left+1, top+1, right-1, bottom-1));
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 	}
 	

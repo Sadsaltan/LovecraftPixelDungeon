@@ -62,7 +62,10 @@ public class EntranceRoom extends StandardRoom {
 		Painter.set( level, level.entrance, Terrain.ENTRANCE );
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 
 		if (Dungeon.depth == 2 && !Document.ADVENTURERS_GUIDE.hasPage(Document.GUIDE_INTRO_PAGE)){

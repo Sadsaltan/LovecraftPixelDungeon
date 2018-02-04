@@ -54,7 +54,10 @@ public class ExitRoom extends StandardRoom {
 		Painter.set( level, level.exit, Terrain.EXIT );
 
 		if(RandomL.randomBoolean()){
-			level.plant( randomSeed(), level.pointToCell(random()));
+			int cell = level.pointToCell(random());
+			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
+				level.plant( randomSeed(), cell);
+			}
 		}
 	}
 	
