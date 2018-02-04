@@ -117,8 +117,7 @@ public class Scissors extends Item {
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
-			if(Dungeon.depth != 1 &&
-					getPlantOnCell(cell) &&
+			if(getPlantOnCell(cell) &&
 					!Dungeon.level.solid[cell]){
 				Plant plant = Dungeon.level.plants.get(cell);
 				Dungeon.level.uproot(cell);

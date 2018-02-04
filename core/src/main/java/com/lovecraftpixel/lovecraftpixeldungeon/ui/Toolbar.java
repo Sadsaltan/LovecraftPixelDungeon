@@ -281,9 +281,7 @@ public class Toolbar extends Component {
 		@Override
 		public void onSelect( Integer cell ) {
 			instance.examining = false;
-			if(Dungeon.depth != 1){
-				GameScene.examineCell( cell );
-			}
+			GameScene.examineCell( cell );
 		}
 		@Override
 		public String prompt() {

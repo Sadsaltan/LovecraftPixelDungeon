@@ -33,6 +33,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.GardnerSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndPicture;
+import com.watabou.utils.Bundle;
 
 public class Gardner extends NPC {
 
@@ -41,6 +42,8 @@ public class Gardner extends NPC {
 
 		properties.add(Property.IMMOVABLE);
 	}
+
+	public boolean hasgivenitems = false;
 	
 	@Override
 	protected boolean act() {
@@ -74,24 +77,43 @@ public class Gardner extends NPC {
 		
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		GameScene.show(new WndPicture(Assets.HELP_GRADNER, 1f));
-		for (Item i : Dungeon.hero.belongings.backpack.items){
-			if(i instanceof Scissors){
-				scissors = true;
+		if(!hasgivenitems){
+			for (Item i : Dungeon.hero.belongings.backpack.items){
+				if(i instanceof Scissors){
+					scissors = true;
+				}
 			}
-		}
-		for (Item i : Dungeon.hero.belongings.backpack.items){
-			if(i instanceof Tincturebottle){
-				tincture = true;
+			for (Item i : Dungeon.hero.belongings.backpack.items){
+				if(i instanceof Tincturebottle){
+					tincture = true;
+				}
 			}
-		}
 
-		if(scissors == false){
-			new Scissors().collect();
-		}
-		if(tincture == false){
-			new Tincturebottle().collect();
+			if(scissors == false){
+				new Scissors().collect();
+			}
+			if(tincture == false){
+				new Tincturebottle().collect();
+			}
+			if(scissors == false && tincture == false){
+				hasgivenitems = true;
+			}
 		}
 
 		return false;
+	}
+
+	private static final String HASGIVENITEMS = "hasgivenitems";
+
+	@Override
+	public void storeInBundle(Bundle bundle) {
+		super.storeInBundle(bundle);
+		bundle.put( HASGIVENITEMS, hasgivenitems );
+	}
+
+	@Override
+	public void restoreFromBundle(Bundle bundle) {
+		super.restoreFromBundle(bundle);
+		hasgivenitems = bundle.getBoolean(HASGIVENITEMS);
 	}
 }

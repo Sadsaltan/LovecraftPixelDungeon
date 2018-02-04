@@ -25,8 +25,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Blindness;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.BlobEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.RainParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
@@ -50,9 +48,8 @@ public class Storm extends Blob {
 				cell = i + j*Dungeon.level.width();
 				if (cur[cell] > 0 && (ch = Actor.findChar( cell )) != null) {
 					if (!ch.immunities().contains(this.getClass())) {
-						Buff.affect(ch, Blindness.class);
-						if(Random.Int(0, (int) ch.speed()*2) == 0 && RandomL.randomBoolean()){
-							GameScene.add(Blob.seed(cell, 3, Electricity.class));
+						if(Random.Int(0, (int) ch.speed()*2) == 0 && RandomL.randomBoolean() && RandomL.randomBoolean()){
+							GameScene.add(Blob.seed(cell, 1, Electricity.class));
 						}
 					}
 				}
