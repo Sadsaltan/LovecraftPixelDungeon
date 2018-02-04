@@ -53,7 +53,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.HallsLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.LastLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.LastShopLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.OverworldLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.PrisonBossLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.PrisonLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.SewerBossLevel;
@@ -258,8 +257,6 @@ public class Dungeon {
 		Level level;
 		switch (depth) {
 			case 1:
-				level = new OverworldLevel();
-				break;
 			case 2:
 			case 3:
 			case 4:
