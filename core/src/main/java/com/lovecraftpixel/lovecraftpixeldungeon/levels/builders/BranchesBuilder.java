@@ -57,6 +57,10 @@ public class BranchesBuilder extends RegularBuilder {
 		if (eldersign != null){
 			placeRoom(branchable, exit, eldersign, Random.Float(360f));
 		}
+
+		if (yellowsign != null){
+			placeRoom(branchable, exit, yellowsign, Random.Float(360f));
+		}
 		
 		ArrayList<Room> roomsToBranch = new ArrayList<>();
 		roomsToBranch.addAll(multiConnections);

@@ -111,6 +111,7 @@ public class Assets {
 	public static final String ROT_LASH 	= "mobs/rot_lasher.png";
 	public static final String ROT_HEART	= "mobs/rot_heart.png";
 	public static final String GUARD    	= "mobs/guard.png";
+	public static final String ELDERTHING   = "mobs/elderthing.png";
 
 	public static final String ITEMS	        = "ui/items.png";
 	public static final String TERRAIN_FEATURES	= "tiles/terrain_features.png";

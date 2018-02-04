@@ -33,6 +33,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ElderSignR
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.EntranceRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ExitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.StandardRoom;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.YellowSignRoom;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public abstract class RegularBuilder extends Builder {
 	protected Room shop = null;
 	protected Room garden = null;
 	protected Room eldersign = null;
+	protected Room yellowsign = null;
 	
 	protected ArrayList<Room> multiConnections = new ArrayList<>();
 	protected ArrayList<Room> singleConnections = new ArrayList<>();
@@ -95,7 +97,7 @@ public abstract class RegularBuilder extends Builder {
 			r.setEmpty();
 		}
 		
-		entrance = exit = shop = garden = eldersign =  null;
+		entrance = exit = shop = garden = eldersign = yellowsign = null;
 		singleConnections.clear();
 		multiConnections.clear();
 		for (Room r : rooms){
@@ -107,6 +109,8 @@ public abstract class RegularBuilder extends Builder {
 				shop = r;
 			} else if (r instanceof GardenerRoom && r.maxConnections(Room.ALL) == 1){
 				garden = r;
+			} else if (r instanceof YellowSignRoom && r.maxConnections(Room.ALL) == 1){
+				yellowsign = r;
 			} else if (r instanceof ElderSignRoom && r.maxConnections(Room.ALL) == 1){
 				eldersign = r;
 			} else if (r.maxConnections(Room.ALL) > 1){

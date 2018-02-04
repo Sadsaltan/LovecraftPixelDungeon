@@ -49,6 +49,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ElderSignR
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.EntranceRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ExitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.StandardRoom;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.YellowSignRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.BlazingTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.BurningTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.ChillingTrap;
@@ -118,6 +119,9 @@ public abstract class RegularLevel extends Level {
 
 		if (Dungeon.elderSignOnLevel())
 			initRooms.add(new ElderSignRoom());
+
+		if (Dungeon.yellowSignOnLevel())
+			initRooms.add(new YellowSignRoom());
 		
 		int specials = specialRooms();
 		SpecialRoom.initForFloor();

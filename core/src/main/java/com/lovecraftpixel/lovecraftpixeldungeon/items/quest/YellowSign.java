@@ -43,12 +43,12 @@ import com.watabou.utils.Random;
 import java.util.ArrayList;
 
 
-public class ElderSign extends Item {
+public class YellowSign extends Item {
 
 	public static int ritualPos;
 
 	{
-		image = ItemSpriteSheet.ELDERSIGN;
+		image = ItemSpriteSheet.YELLOWSIGN;
 
 		defaultAction = AC_THROW;
 
@@ -83,11 +83,11 @@ public class ElderSign extends Item {
 
 		if (middle != null){
 
-			if (middle.peek() instanceof ElderSign ){
+			if (middle.peek() instanceof YellowSign){
 
 				middle.pickUp();
 
-				ElderThing elderbeing = new ElderThing();
+				ElderThing yellowking = new ElderThing();
 				Char ch = Actor.findChar( ritualPos );
 				if (ch != null) {
 					ArrayList<Integer> candidates = new ArrayList<>();
@@ -98,14 +98,14 @@ public class ElderSign extends Item {
 						}
 					}
 					if (candidates.size() > 0) {
-						elderbeing.pos = Random.element( candidates );
+						yellowking.pos = Random.element( candidates );
 					} else {
-						elderbeing.pos = ritualPos;
+						yellowking.pos = ritualPos;
 					}
 				} else {
-					elderbeing.pos = ritualPos;
+					yellowking.pos = ritualPos;
 				}
-				GameScene.add(elderbeing, 1);
+				GameScene.add(yellowking, 1);
 
 				for (int i : PathFinder.NEIGHBOURS9){
 					CellEmitter.get(ritualPos+i).burst(ElmoParticle.FACTORY, 10);

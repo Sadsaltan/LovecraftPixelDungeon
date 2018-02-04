@@ -348,7 +348,11 @@ public class Dungeon {
 	}
 
 	public static boolean elderSignOnLevel() {
-		return depth == 4 || depth == 9 || depth == 14 || depth == 19 || depth == 24;
+		return depth == 4;
+	}
+
+	public static boolean yellowSignOnLevel() {
+		return depth == 14;
 	}
 	
 	public static boolean bossLevel() {
