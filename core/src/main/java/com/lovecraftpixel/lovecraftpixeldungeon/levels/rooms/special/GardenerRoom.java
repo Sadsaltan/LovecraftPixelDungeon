@@ -34,16 +34,10 @@ import com.watabou.utils.Random;
 public class GardenerRoom extends SpecialRoom {
 	
 	@Override
-	public int minWidth() { return 4; }
+	public int minWidth() { return 6; }
 	
 	@Override
-	public int minHeight() { return 4; }
-
-	@Override
-	public int maxHeight() { return 4; }
-
-	@Override
-	public int maxWidth() { return 4; }
+	public int minHeight() { return 6; }
 
 	public void paint(Level level ) {
 
@@ -51,7 +45,7 @@ public class GardenerRoom extends SpecialRoom {
 		entrance.set(Door.Type.UNLOCKED);
 
 		Painter.fill(level, this, Terrain.WALL);
-		Painter.fill(level, this, 1, Terrain.GRASS);
+		Painter.fill( level, left + 1, top+1, width() - 2, 1 , Terrain.GRASS );
 
 
 		int heartX = Random.IntRange(left+1, right-1);
@@ -73,12 +67,10 @@ public class GardenerRoom extends SpecialRoom {
 	private static void placePlant(Level level, int pos, Mob gardner){
 		gardner.pos = pos;
 		level.mobs.add( gardner );
-		int plants = 0;
 
 		for(int i : PathFinder.NEIGHBOURS8) {
-			if (level.map[pos + i] == Terrain.GRASS && plants < 2){
+			if (level.map[pos + i] == Terrain.GRASS){
 				level.plant( randomSeed(), pos + i);
-				plants++;
 			}
 		}
 	}
