@@ -117,48 +117,51 @@ public class Scissors extends Item {
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
-			if(getPlantOnCell(cell) &&
-					!Dungeon.level.solid[cell]){
-				Plant plant = Dungeon.level.plants.get(cell);
-				Dungeon.level.uproot(cell);
-				CellEmitter.get( cell ).burst(LeafParticle.GENERAL, 4);
-				if(plant instanceof BlandfruitBush){
-					Dungeon.level.drop(new BlandfruitItem(), cell);
-				} else if(plant instanceof Blindweed){
-					Dungeon.level.drop(new BlindweedItem(), cell);
-				} else if(plant instanceof WandOfRegrowth.Dewcatcher){
-					Dungeon.level.drop(new DewcatcherItem(), cell);
-				} else if(plant instanceof Dreamfoil){
-					Dungeon.level.drop(new DreamfoilItem(), cell);
-				} else if(plant instanceof Earthroot){
-					Dungeon.level.drop(new EarthrootItem(), cell);
-				} else if(plant instanceof Fadeleaf){
-					Dungeon.level.drop(new FadeleafItem(), cell);
-				} else if(plant instanceof Firebloom){
-					Dungeon.level.drop(new FirebloomItem(), cell);
-				} else if(plant instanceof Icecap){
-					Dungeon.level.drop(new IcecapItem(), cell);
-				} else if(plant instanceof Rotberry){
-					Dungeon.level.drop(new RotberryItem(), cell);
-				} else if(plant instanceof WandOfRegrowth.Seedpod){
-					Dungeon.level.drop(new SeedpodItem(), cell);
-				} else if(plant instanceof Sorrowmoss){
-					Dungeon.level.drop(new SorrowmossItem(), cell);
-				} else if(plant instanceof Starflower){
-					Dungeon.level.drop(new StarflowerItem(), cell);
-				} else if(plant instanceof Stormvine){
-					Dungeon.level.drop(new StormvineItem(), cell);
-				} else if(plant instanceof Sungrass){
-					Dungeon.level.drop(new SungrassItem(), cell);
+			if(cell != null){
+				if(getPlantOnCell(cell) &&
+						!Dungeon.level.solid[cell]){
+					Plant plant = Dungeon.level.plants.get(cell);
+					Dungeon.level.uproot(cell);
+					CellEmitter.get( cell ).burst(LeafParticle.GENERAL, 4);
+					if(plant instanceof BlandfruitBush){
+						Dungeon.level.drop(new BlandfruitItem(), cell);
+					} else if(plant instanceof Blindweed){
+						Dungeon.level.drop(new BlindweedItem(), cell);
+					} else if(plant instanceof WandOfRegrowth.Dewcatcher){
+						Dungeon.level.drop(new DewcatcherItem(), cell);
+					} else if(plant instanceof Dreamfoil){
+						Dungeon.level.drop(new DreamfoilItem(), cell);
+					} else if(plant instanceof Earthroot){
+						Dungeon.level.drop(new EarthrootItem(), cell);
+					} else if(plant instanceof Fadeleaf){
+						Dungeon.level.drop(new FadeleafItem(), cell);
+					} else if(plant instanceof Firebloom){
+						Dungeon.level.drop(new FirebloomItem(), cell);
+					} else if(plant instanceof Icecap){
+						Dungeon.level.drop(new IcecapItem(), cell);
+					} else if(plant instanceof Rotberry){
+						Dungeon.level.drop(new RotberryItem(), cell);
+					} else if(plant instanceof WandOfRegrowth.Seedpod){
+						Dungeon.level.drop(new SeedpodItem(), cell);
+					} else if(plant instanceof Sorrowmoss){
+						Dungeon.level.drop(new SorrowmossItem(), cell);
+					} else if(plant instanceof Starflower){
+						Dungeon.level.drop(new StarflowerItem(), cell);
+					} else if(plant instanceof Stormvine){
+						Dungeon.level.drop(new StormvineItem(), cell);
+					} else if(plant instanceof Sungrass){
+						Dungeon.level.drop(new SungrassItem(), cell);
+					}
+				} else if(Actor.findChar(cell) != null){
+					Buff.affect(Actor.findChar(cell), Bleeding.class).set(1);
+					CellEmitter.get( cell ).burst(BloodParticle.BURST, 4);
+					curUser.reduceMentalHealth(1);
+				} else {
+					GLog.i(Messages.get(Scissors.class, "nothing"));
 				}
-			} else if(Actor.findChar(cell) != null){
-				Buff.affect(Actor.findChar(cell), Bleeding.class).set(1);
-				CellEmitter.get( cell ).burst(BloodParticle.BURST, 4);
-				curUser.reduceMentalHealth(1);
-			} else {
-				GLog.i(Messages.get(Scissors.class, "nothing"));
 			}
 		}
+
 		@Override
 		public String prompt() {
 			return Messages.get(Scissors.class, "plant_cut");

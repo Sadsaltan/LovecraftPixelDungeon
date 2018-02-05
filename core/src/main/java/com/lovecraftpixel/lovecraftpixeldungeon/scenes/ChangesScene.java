@@ -23,37 +23,12 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.Badges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Chrome;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
-import com.lovecraftpixel.lovecraftpixeldungeon.effects.BadgeBanner;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.DewVial;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantFireBloom;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Stylus;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Torch;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.PlateArmor;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.CloakOfShadows;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.DriedRose;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.EtherealChains;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.HornOfPlenty;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.TimekeepersHourglass;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.UnstableSpellbook;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Blandfruit;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Food;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfHealing;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfEnergy;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfMight;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfWealth;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.stones.StoneOfEnchantment;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfCorruption;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Flail;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greataxe;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Longsword;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Quarterstaff;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
@@ -132,6 +107,20 @@ public class ChangesScene extends PixelScene {
 		
 		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Custom Names",
 				"You now have to give your hero a name before you start a new game, it can also be a random generated name."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Mental Health",
+				"Your Mental Health is very important. It can be a hard task keeping your sanity in the dungeons..."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Knowledge",
+				"Discovering Secrets raises your knowledge. Knowledge can be used in multiple ways."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.ARTIFACT_SPELLBOOK, null), "Grimoire",
+				"You now have to give your hero a name before you start a new game, it can also be a random generated name."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.WEAPON).image, null), "Poisoned Weapon",
+				"You now have the ability to poison your weapons with seeds."));
+
+		changes.addButton( new ChangeButton(new LivingPlantFireBloom().sprite(), "Living Plants", "Living Plants look like normal plants. If you step on a Living Plant, it wakes up and attacks everything around it. When slain, they drop their respective seed and have some other nasty or helpful effects."));
 
 		Component content = list.content();
 		content.clear();

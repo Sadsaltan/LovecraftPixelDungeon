@@ -45,6 +45,7 @@ public class GardenerRoom extends SpecialRoom {
 		entrance.set(Door.Type.UNLOCKED);
 
 		Painter.fill(level, this, Terrain.WALL);
+		Painter.fill(level, this, 1, Terrain.EMPTY);
 		Painter.fill( level, left + 1, top+1, width() - 2, 1 , Terrain.GRASS );
 
 
