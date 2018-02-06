@@ -25,18 +25,25 @@ package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Chrome;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.livingplants.LivingPlantFireBloom;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Gardner;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.quest.ElderSign;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.quest.YellowSign;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.GardnerSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingFirebloomPlantSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ExitButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Icons;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.RenderedTextMultiline;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ScrollPane;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Window;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.BookTitles;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTitledMessage;
 import com.watabou.input.Touchscreen;
 import com.watabou.noosa.Camera;
@@ -105,22 +112,75 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight(Window.TITLE_COLOR);
 		infos.add(changes);
 		
-		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Custom Names",
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_GOLD, null), "Custom Names",
 				"You now have to give your hero a name before you start a new game, it can also be a random generated name."));
 
-		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Mental Health",
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_PURPLE, null), "Mental Health",
 				"Your Mental Health is very important. It can be a hard task keeping your sanity in the dungeons..."));
 
-		changes.addButton( new ChangeButton( Icons.get(Icons.PREFS), "Knowledge",
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_BLUE, null), "Knowledge",
 				"Discovering Secrets raises your knowledge. Knowledge can be used in multiple ways."));
 
-		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.ARTIFACT_SPELLBOOK, null), "Grimoire",
-				"You now have to give your hero a name before you start a new game, it can also be a random generated name."));
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_RED, null), "Flavour Text",
+				"All kinds of items have now colorful quotes randomly assigned to them."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_BROWN, null), "Grimoire",
+				"You now can fill a book about all the creatures you encountered. It works just like a Pokedex."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.MASTERY), "Book Titles",
+				"Clicking on bookshelfs now gives you a random flavour booktitle just like this one: \n\n" + BookTitles.getRandomTitle()));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.BOOK_GREEN, null), "Wells",
+				"Wells grant a mental health and knowledge boost."));
+
+		changes = new ChangeInfo("Mobs", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new LivingFirebloomPlantSprite(), "Living Plants", "Living Plants look like normal plants. If you step on a Living Plant, it wakes up and attacks everything around it. When slain, they drop their respective seed and have some other nasty or helpful effects."));
+
+		changes.addButton( new ChangeButton(new GardnerSprite(), new Gardner().name, new Gardner().description()));
+
+		changes = new ChangeInfo("Items", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
 
 		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.WEAPON).image, null), "Poisoned Weapon",
 				"You now have the ability to poison your weapons with seeds."));
 
-		changes.addButton( new ChangeButton(new LivingPlantFireBloom().sprite(), "Living Plants", "Living Plants look like normal plants. If you step on a Living Plant, it wakes up and attacks everything around it. When slain, they drop their respective seed and have some other nasty or helpful effects."));
+		changes.addButton( new ChangeButton( Icons.get(Icons.FOODBAG), "Food Bag",
+				"The Food Bag stores your food, simple as that."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(new Scissors().image, null), "Scissors",
+				"Scissors let you cut plants and store them in your inventory."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(new Tincturebottle().image, null), "Tincture Bottle",
+				"Can be used to combine seeds and cut plants into Herbs."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.PLANT).image, null), "Cut Plants",
+				"Plants can be cut and used to make Herbs."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.HERBS).image, null), "Herbs",
+				"Herbs are brewed with seeds and cut plants."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(new YellowSign().image, null), new YellowSign().name(),
+				"Opens a portal to Aldebaran."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(new ElderSign().image, null), new ElderSign().name(),
+				"Opens a portal to Neu Schwabenland."));
+
+		changes = new ChangeInfo("Blobs", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.BUSY), "Sunlight",
+				"Sunlight lets grass and flowers grow in the dungeon."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.BUSY), "Storm",
+				"Storms flood the dungeon and lets lightning strikes."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.BUSY), "Spores",
+				"Spores reduce your mental health."));
 
 		Component content = list.content();
 		content.clear();

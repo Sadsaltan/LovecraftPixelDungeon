@@ -321,6 +321,16 @@ public class ItemSpriteSheet {
 	public static final int ARTIFACT_ROSE1      = ARTIFACTS+20;
 	public static final int ARTIFACT_ROSE2      = ARTIFACTS+21;
 	public static final int ARTIFACT_ROSE3      = ARTIFACTS+22;
+
+	public static final int BOOK_DARK_BLUE      = ARTIFACTS+23;
+	public static final int BOOK_LIME_GREEN     = ARTIFACTS+24;
+	public static final int BOOK_BLOOD      	= ARTIFACTS+25;
+	public static final int BOOK_GREEN      	= ARTIFACTS+26;
+	public static final int BOOK_BROWN      	= ARTIFACTS+27;
+	public static final int BOOK_RED      		= ARTIFACTS+28;
+	public static final int BOOK_BLUE      		= ARTIFACTS+29;
+	public static final int BOOK_PURPLE      	= ARTIFACTS+30;
+	public static final int BOOK_GOLD      		= ARTIFACTS+31;
 	static{
 		assignItemRect(ARTIFACT_CLOAK,      9,  15);
 		assignItemRect(ARTIFACT_ARMBAND,    16, 13);
@@ -345,6 +355,16 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_ROSE1,      14, 14);
 		assignItemRect(ARTIFACT_ROSE2,      14, 14);
 		assignItemRect(ARTIFACT_ROSE3,      14, 14);
+
+		assignItemRect(BOOK_DARK_BLUE,      14, 16);
+		assignItemRect(BOOK_LIME_GREEN,     14, 16);
+		assignItemRect(BOOK_BLOOD,      	14, 16);
+		assignItemRect(BOOK_GREEN,      	14, 16);
+		assignItemRect(BOOK_BROWN,      	14, 16);
+		assignItemRect(BOOK_RED,      		14, 16);
+		assignItemRect(BOOK_BLUE,      		14, 16);
+		assignItemRect(BOOK_PURPLE,      	14, 16);
+		assignItemRect(BOOK_GOLD,      		14, 16);
 	}
 
 	                                                                                    //32 free slots

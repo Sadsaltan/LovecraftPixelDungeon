@@ -145,6 +145,36 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.BlandfruitHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.BlindweedHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.DewcatcherHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.DreamfoilHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.EarthrootHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FirebloomHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.Herb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.IcecapHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.RotberryHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SeedpodHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SorrowmossHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StarflowerHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StormvineHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SungrassHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlindweedItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DewcatcherItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DreamfoilItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.EarthrootItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FadeleafItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FirebloomItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.IcecapItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.PlantItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.GameMath;
 import com.watabou.utils.Random;
@@ -170,6 +200,8 @@ public class Generator {
 		ARTIFACT( 1,    Artifact.class),
 		SEED	( 0,    Plant.Seed.class ),
 		FOOD	( 0,    Food.class ),
+		PLANT	( 0,    PlantItem.class ),
+		HERBS	( 0,    Herb.class ),
 		GOLD	( 25,   Gold.class );
 		
 		public Class<?>[] classes;
@@ -317,6 +349,40 @@ public class Generator {
 					Pasty.class,
 					MysteryMeat.class };
 			FOOD.probs = new float[]{ 4, 1, 0 };
+
+			PLANT.classes = new Class<?>[]{
+					BlandfruitItem.class,
+					BlindweedItem.class,
+					DewcatcherItem.class,
+					DreamfoilItem.class,
+					EarthrootItem.class,
+					FadeleafItem.class,
+					FirebloomItem.class,
+					IcecapItem.class,
+					RotberryItem.class,
+					SeedpodItem.class,
+					SorrowmossItem.class,
+					StarflowerItem.class,
+					StormvineItem.class,
+					SungrassItem.class};
+			PLANT.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
+
+			HERBS.classes = new Class<?>[]{
+					BlandfruitHerb.class,
+					BlindweedHerb.class,
+					DewcatcherHerb.class,
+					DreamfoilHerb.class,
+					EarthrootHerb.class,
+					FadeleafHerb.class,
+					FirebloomHerb.class,
+					IcecapHerb.class,
+					RotberryHerb.class,
+					SeedpodHerb.class,
+					SorrowmossHerb.class,
+					StarflowerHerb.class,
+					StormvineHerb.class,
+					SungrassHerb.class};
+			HERBS.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
 			
 			RING.classes = new Class<?>[]{
 					RingOfAccuracy.class,
