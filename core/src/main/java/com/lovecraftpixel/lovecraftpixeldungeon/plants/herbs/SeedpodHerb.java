@@ -50,6 +50,7 @@ public class SeedpodHerb extends Herb {
     public void eatEffect(Hero hero) {
         effectChar(hero.pos);
         hero.damage(1, this);
+        super.eatEffect(hero);
     }
 
     private void effectChar(int pos){
@@ -76,6 +77,6 @@ public class SeedpodHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "desc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
     }
 }

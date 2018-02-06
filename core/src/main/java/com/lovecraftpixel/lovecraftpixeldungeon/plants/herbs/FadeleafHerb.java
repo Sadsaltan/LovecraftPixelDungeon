@@ -46,6 +46,7 @@ public class FadeleafHerb extends Herb {
     @Override
     public void eatEffect(Hero hero) {
         effectChar(hero);
+        super.eatEffect(hero);
     }
 
     private void effectChar(Char ch){
@@ -60,6 +61,6 @@ public class FadeleafHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "desc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
     }
 }

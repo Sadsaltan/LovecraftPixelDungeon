@@ -91,6 +91,7 @@ public class Hunger extends Buff implements Hero.Doom {
 					GLog.n( Messages.get(this, "onstarving") );
 					hero.resting = false;
 					hero.damage( 1, this );
+					hero.reduceMentalHealth(1);
 					statusUpdated = true;
 
 					hero.interrupt();

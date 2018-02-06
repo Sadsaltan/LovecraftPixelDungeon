@@ -45,6 +45,7 @@ public class FirebloomHerb extends Herb {
     @Override
     public void eatEffect(Hero hero) {
         Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION*2);
+        super.eatEffect(hero);
     }
 
     @Override
@@ -54,6 +55,6 @@ public class FirebloomHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "desc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
     }
 }

@@ -53,6 +53,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInf
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.Wand;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.PlantItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.noosa.audio.Sample;
@@ -250,6 +251,10 @@ public class Heap implements Bundlable {
 				evaporated = true;
 			} else if (item instanceof MysteryMeat) {
 				replace( item, ChargrilledMeat.cook( (MysteryMeat)item ) );
+				burnt = true;
+			} else if (item instanceof PlantItem) {
+				//TODO: Special Effects
+				items.remove(item);
 				burnt = true;
 			} else if (item instanceof Bomb) {
 				items.remove( item );

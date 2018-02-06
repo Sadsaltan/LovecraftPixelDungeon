@@ -466,7 +466,11 @@ public abstract class Mob extends Char {
 		attack( enemy );
 		if(enemy instanceof Hero){
 			if(Random.Int(0, Dungeon.hero.knowl + ((Dungeon.hero.HP+2)/Dungeon.hero.lvl)) < 2){
-				Dungeon.hero.reduceMentalHealth(this.horrorlvl);
+				if(Dungeon.hero.isStarving()){
+					Dungeon.hero.reduceMentalHealth(this.horrorlvl+Random.Int(0, 2));
+				} else {
+					Dungeon.hero.reduceMentalHealth(this.horrorlvl);
+				}
 			}
 		}
 		super.onAttackComplete();

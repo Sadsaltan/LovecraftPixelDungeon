@@ -30,6 +30,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.FireImbue;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Hunger;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.ToxicImbue;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.BlandFruitBushPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.BlindweedPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.DreamfoilPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.EarthrootPoisonParticle;
@@ -47,6 +48,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.Potion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfParalyticGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfToxicGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.BlandfruitBush;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Dreamfoil;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
@@ -111,12 +113,15 @@ public class Herb extends Item {
                 Potion potion = (Potion) seed.alchemyClass.newInstance();
                 if(potion instanceof PotionOfLiquidFlame){
                     Buff.affect(hero, FireImbue.class).set(FireImbue.DURATION);
+                    new PotionOfLiquidFlame().shatter(hero.pos);
                 } else
                 if(potion instanceof PotionOfToxicGas){
                     Buff.affect(hero, ToxicImbue.class).set(ToxicImbue.DURATION);
+                    new PotionOfToxicGas().shatter(hero.pos);
                 } else
                 if(potion instanceof PotionOfParalyticGas){
                     Buff.affect(hero, EarthImbue.class, EarthImbue.DURATION);
+                    new PotionOfParalyticGas().shatter(hero.pos);
                 } else {
                     potion.apply(hero);
                 }
@@ -166,6 +171,8 @@ public class Herb extends Item {
             emitter.pour(StormVinePoisonParticle.FACTORY, 1f);
         } else if(seed instanceof Sungrass.Seed){
             emitter.pour(SunGrassPoisonParticle.FACTORY, 1f);
+        } else if(seed instanceof BlandfruitBush.Seed){
+            emitter.pour(BlandFruitBushPoisonParticle.FACTORY, 1f);
         }
         return emitter;
     }

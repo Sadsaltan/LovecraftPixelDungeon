@@ -38,7 +38,7 @@ import com.watabou.noosa.Camera;
 public class EarthrootHerb extends Herb {
 
     {
-        image = ItemSpriteSheet.FIREBLOOM_HERB;
+        image = ItemSpriteSheet.EARTHROOT_HERB;
     }
 
     public Herb setSeed(Plant.Seed seed){
@@ -68,6 +68,6 @@ public class EarthrootHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "desc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
     }
 }

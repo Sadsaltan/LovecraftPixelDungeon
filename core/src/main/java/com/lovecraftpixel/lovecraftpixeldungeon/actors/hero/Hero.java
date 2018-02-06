@@ -206,26 +206,24 @@ public class Hero extends Char {
 		seenEnemies = new ArrayList<Class>();
 	}
 
-
-	//TODO: fix this shit
 	public void reduceMentalHealth(int value){
 		MHP -= value;
+		if(value > 0){
+			sprite.showStatus(CharSprite.MENTAL, Messages.get(this, "redmentalh", value));
+			GLog.m(Messages.get(this, "redmentalh", value));
+		}
 		if(MHP <= 0){
-			if(value > 0){
-				sprite.showStatus(CharSprite.MENTAL, Messages.get(this, "redmentalh", value));
-				GLog.m(Messages.get(this, "redmentalh", value));
-			}
 			MHP = 0;
 		}
 	}
 
 	public void increaseMentalHealth(int value){
 		MHP += value;
+		if(value > 0){
+			sprite.showStatus(CharSprite.MENTAL,  Messages.get(this, "incmentalh", value));
+			GLog.m(Messages.get(this, "incmentalh", value));
+		}
 		if(MHP >= MHT){
-			if(value > 0){
-				sprite.showStatus(CharSprite.MENTAL,  Messages.get(this, "incmentalh", value));
-				GLog.m(Messages.get(this, "incmentalh", value));
-			}
 			MHP = MHT;
 		}
 	}
@@ -1542,6 +1540,7 @@ public class Hero extends Char {
 				sprite.showStatus(CharSprite.MENTAL,GibberishGenerator.getRandomGibberish(Random.Int(5, 10))+"!");
 			}
 			if(knowl > 0 && exp > 0 && HP > 0){
+				this.interrupt();
 				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"),  Messages.get(this, "incantation"),  Messages.get(this, "meditate")){
 					@Override
 					protected void onSelect(int index) {
@@ -1556,6 +1555,7 @@ public class Hero extends Char {
 				});
 			} else
 			if(exp > 0 && HP > 0){
+				this.interrupt();
 				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"), Messages.get(this, "meditate")){
 					@Override
 					protected void onSelect(int index) {
@@ -1567,6 +1567,7 @@ public class Hero extends Char {
 				});
 			} else
 			if(knowl > 0 && HP > 0){
+				this.interrupt();
 				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"), Messages.get(this, "incantation")){
 					@Override
 					protected void onSelect(int index) {
@@ -1578,6 +1579,7 @@ public class Hero extends Char {
 				});
 			} else
 			if((knowl <= 0 && exp <= 0) && HP >= 3){
+				this.interrupt();
 				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane1op"),  Messages.get(this, "bloodsacrifice")){
 					@Override
 					protected void onSelect(int index) {

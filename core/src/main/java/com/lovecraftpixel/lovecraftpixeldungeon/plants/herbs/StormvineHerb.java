@@ -49,6 +49,7 @@ public class StormvineHerb extends Herb {
     public void eatEffect(Hero hero) {
         Buff.prolong( hero, BlobImmunity.class, BlobImmunity.DURATION*2);
         GameScene.add(Blob.seed(hero.pos, 500, ConfusionGas.class));
+        super.eatEffect(hero);
     }
 
     @Override
@@ -58,6 +59,6 @@ public class StormvineHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "desc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
     }
 }
