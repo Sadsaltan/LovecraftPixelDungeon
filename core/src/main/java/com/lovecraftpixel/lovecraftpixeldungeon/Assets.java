@@ -31,6 +31,7 @@ public class Assets {
 	public static final String ROMAN_NAMES		= "names/romannamegenerator.txt";
 
 	public static final String BOOKTITLES		= "excerpts/booktitles.txt";
+	public static final String GIBBERISH		= "gibberish/gibberish.txt";
 
 	public static final String ARCS_BG		= "ui/arcs1.png";
 	public static final String ARCS_FG		= "ui/arcs2.png";

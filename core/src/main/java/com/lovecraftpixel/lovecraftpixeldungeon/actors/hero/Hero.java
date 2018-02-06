@@ -117,8 +117,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.QuickSlotButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BArray;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.BookTitles;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.GibberishGenerator;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndAlchemy;
+import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndOptions;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndResurrect;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTradeItem;
 import com.watabou.noosa.Camera;
@@ -204,6 +206,8 @@ public class Hero extends Char {
 		seenEnemies = new ArrayList<Class>();
 	}
 
+
+	//TODO: fix this shit
 	public void reduceMentalHealth(int value){
 		MHP -= value;
 		if(MHP <= 0){
@@ -1532,38 +1536,70 @@ public class Hero extends Char {
 	@Override
 	public void move( int step ) {
 		if(isInsane()){
-			if(Random.Int(0, 5) == 1){
-				if(knowl > 0){
-					if(RandomL.randomBoolean()){
-						damage(1, this);
-						loseKnowl(1);
-						increaseMentalHealth(1);
-					}
-				} else {
-					if(exp > 0){
-						if(RandomL.randomBoolean()){
-							damage(1, this);
+			if(RandomL.randomBoolean()){
+				damage(1, this);
+			} else {
+				sprite.showStatus(CharSprite.MENTAL,GibberishGenerator.getRandomGibberish(Random.Int(5, 10))+"!");
+			}
+			if(knowl > 0 && exp > 0 && HP > 0){
+				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"),  Messages.get(this, "incantation"),  Messages.get(this, "meditate")){
+					@Override
+					protected void onSelect(int index) {
+						if (index == 0) {
+							loseKnowl(1);
+							increaseMentalHealth(1);
+						} else if (index == 1) {
 							loseExp(1);
 							increaseMentalHealth(1);
 						}
 					}
+				});
+			} else
+			if(exp > 0 && HP > 0){
+				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"), Messages.get(this, "meditate")){
+					@Override
+					protected void onSelect(int index) {
+						if (index == 0) {
+							loseExp(1);
+							increaseMentalHealth(1);
+						}
+					}
+				});
+			} else
+			if(knowl > 0 && HP > 0){
+				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane2op"), Messages.get(this, "incantation")){
+					@Override
+					protected void onSelect(int index) {
+						if (index == 0) {
+							loseKnowl(1);
+							increaseMentalHealth(1);
+						}
+					}
+				});
+			} else
+			if((knowl <= 0 && exp <= 0) && HP >= 3){
+				GameScene.show(new WndOptions(Messages.get(this, "insanetitle"), Messages.get(this, "insane1op"),  Messages.get(this, "bloodsacrifice")){
+					@Override
+					protected void onSelect(int index) {
+						if (index == 0) {
+							damage(2, this);
+							increaseMentalHealth(1);
+						}
+					}
+				});
+			} else
+			if((knowl <= 0 && exp <= 0) && (HP < 3 && HP > 0)){
+				if(RandomL.randomBoolean()){
+					damage(1, this);
 				}
-			}
-			if(knowl <= 0 && exp <= 0){
-				if(HP >= 3){
-					damage(2, this);
-					increaseMentalHealth(1);
-				} else {
-					die(this);
+				sprite.interruptMotion();
+				int newPos = pos + PathFinder.NEIGHBOURS8[Random.Int( 8 )];
+				if (!(Dungeon.level.passable[newPos] || Dungeon.level.avoid[newPos]) || Actor.findChar( newPos ) != null)
+					return;
+				else {
+					sprite.move(pos, newPos);
+					step = newPos;
 				}
-			}
-			sprite.interruptMotion();
-			int newPos = pos + PathFinder.NEIGHBOURS8[Random.Int( 8 )];
-			if (!(Dungeon.level.passable[newPos] || Dungeon.level.avoid[newPos]) || Actor.findChar( newPos ) != null)
-				return;
-			else {
-				sprite.move(pos, newPos);
-				step = newPos;
 			}
 		}
 		super.move( step );
