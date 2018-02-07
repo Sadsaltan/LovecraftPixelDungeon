@@ -25,6 +25,18 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ConfusionGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Fire;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Foliage;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Freezing;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ParalyticGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Regrowth;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Spores;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.StenchGas;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Storm;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Sunlight;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ToxicGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Frost;
@@ -53,7 +65,22 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInf
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.Wand;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlindweedItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DewcatcherItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DreamfoilItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.EarthrootItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FadeleafItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FirebloomItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.IcecapItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.PlantItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.noosa.audio.Sample;
@@ -253,8 +280,36 @@ public class Heap implements Bundlable {
 				replace( item, ChargrilledMeat.cook( (MysteryMeat)item ) );
 				burnt = true;
 			} else if (item instanceof PlantItem) {
-				//TODO: Special Effects
-				items.remove(item);
+				if(item instanceof BlandfruitItem){
+					GameScene.add( Blob.seed( pos, 10, Spores.class ) );
+				} else if(item instanceof BlindweedItem){
+					GameScene.add( Blob.seed( pos, 10, ConfusionGas.class ) );
+				} else if(item instanceof DewcatcherItem){
+					GameScene.add( Blob.seed( pos, 10, Regrowth.class ) );
+				} else if(item instanceof DreamfoilItem){
+					GameScene.add( Blob.seed( pos, 10, ConfusionGas.class ) );
+				} else if(item instanceof EarthrootItem){
+					GameScene.add( Blob.seed( pos, 10, ParalyticGas.class ) );
+				} else if(item instanceof FadeleafItem){
+					GameScene.add( Blob.seed( pos, 10, ConfusionGas.class ) );
+				} else if(item instanceof FirebloomItem){
+					GameScene.add( Blob.seed( pos, 10, Fire.class ) );
+				} else if(item instanceof IcecapItem){
+					GameScene.add( Blob.seed( pos, 10, Freezing.class ) );
+				} else if(item instanceof RotberryItem){
+					GameScene.add( Blob.seed( pos, 10, StenchGas.class ) );
+				} else if(item instanceof SeedpodItem){
+					GameScene.add( Blob.seed( pos, 10, Regrowth.class ) );
+				} else if(item instanceof SorrowmossItem){
+					GameScene.add( Blob.seed( pos, 10, ToxicGas.class ) );
+				} else if(item instanceof StarflowerItem){
+					GameScene.add( Blob.seed( pos, 10, Foliage.class ) );
+				} else if(item instanceof StormvineItem){
+					GameScene.add( Blob.seed( pos, 10, Storm.class ) );
+				} else if(item instanceof SungrassItem){
+					GameScene.add( Blob.seed( pos, 10, Sunlight.class ) );
+				}
+					items.remove(item);
 				burnt = true;
 			} else if (item instanceof Bomb) {
 				items.remove( item );
