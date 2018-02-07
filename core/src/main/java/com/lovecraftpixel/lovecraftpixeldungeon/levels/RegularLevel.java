@@ -209,7 +209,7 @@ public abstract class RegularLevel extends Level {
 	@Override
 	protected void createMobs() {
 		//on floor 2, 10 rats are created so the player can get level 2.
-		int mobsToSpawn = Dungeon.depth == 2 ? 10 : nMobs();
+		int mobsToSpawn = Dungeon.depth == 1 ? 10 : nMobs();
 
 		ArrayList<Room> stdRooms = new ArrayList<>();
 		for (Room room : rooms) {

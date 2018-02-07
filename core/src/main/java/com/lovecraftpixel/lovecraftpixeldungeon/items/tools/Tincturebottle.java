@@ -152,7 +152,6 @@ public class Tincturebottle extends Item {
 		public void onSelect( Item item ) {
 			if (item != null) {
 				plant = (PlantItem) item;
-				item.detach(curUser.belongings.backpack);
 				GameScene.selectItem( itemSelectorSeed, WndBag.Mode.SEED, Messages.get(Tincturebottle.class, "prompt_seed") );
 			}
 		}
@@ -164,6 +163,7 @@ public class Tincturebottle extends Item {
 			if (item != null) {
 				seed = (Plant.Seed) item;
 				item.detach(curUser.belongings.backpack);
+				plant.detach(curUser.belongings.backpack);
 				brew();
 			}
 		}

@@ -28,6 +28,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.WaterOfTransmutation;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -154,6 +155,7 @@ public class SpecialRoom extends Room {
 			try {
 				r = floorSpecials.get( index ).newInstance();
 			} catch (Exception e) {
+				GLog.i(floorSpecials.toString());
 				LovecraftPixelDungeon.reportException(e);
 			}
 

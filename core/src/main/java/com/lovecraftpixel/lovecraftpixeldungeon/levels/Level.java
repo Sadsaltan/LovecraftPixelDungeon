@@ -207,6 +207,7 @@ public abstract class Level implements Bundlable {
 				switch (Random.Int( 10 )) {
 				case 0:
 					if (!Dungeon.bossLevel( Dungeon.depth + 1 )) {
+
 						feeling = Feeling.CHASM;
 					}
 					break;
