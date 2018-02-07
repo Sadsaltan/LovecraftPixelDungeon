@@ -31,8 +31,35 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.BlobEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.FlameParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfRegrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.BlandfruitBush;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Blindweed;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Dreamfoil;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Fadeleaf;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Firebloom;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Icecap;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Rotberry;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlindweedItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DewcatcherItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.DreamfoilItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.EarthrootItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FadeleafItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.FirebloomItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.IcecapItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 
 public class Fire extends Blob {
@@ -111,6 +138,35 @@ public class Fire extends Blob {
 
 		Plant plant = Dungeon.level.plants.get( pos );
 		if (plant != null){
+			if(plant instanceof BlandfruitBush){
+				Dungeon.level.drop(new BlandfruitItem(), pos);
+			} else if(plant instanceof Blindweed){
+				Dungeon.level.drop(new BlindweedItem(), pos);
+			} else if(plant instanceof WandOfRegrowth.Dewcatcher){
+				Dungeon.level.drop(new DewcatcherItem(), pos);
+			} else if(plant instanceof Dreamfoil){
+				Dungeon.level.drop(new DreamfoilItem(), pos);
+			} else if(plant instanceof Earthroot){
+				Dungeon.level.drop(new EarthrootItem(), pos);
+			} else if(plant instanceof Fadeleaf){
+				Dungeon.level.drop(new FadeleafItem(), pos);
+			} else if(plant instanceof Firebloom){
+				Dungeon.level.drop(new FirebloomItem(), pos);
+			} else if(plant instanceof Icecap){
+				Dungeon.level.drop(new IcecapItem(), pos);
+			} else if(plant instanceof Rotberry){
+				Dungeon.level.drop(new RotberryItem(), pos);
+			} else if(plant instanceof WandOfRegrowth.Seedpod){
+				Dungeon.level.drop(new SeedpodItem(), pos);
+			} else if(plant instanceof Sorrowmoss){
+				Dungeon.level.drop(new SorrowmossItem(), pos);
+			} else if(plant instanceof Starflower){
+				Dungeon.level.drop(new StarflowerItem(), pos);
+			} else if(plant instanceof Stormvine){
+				Dungeon.level.drop(new StormvineItem(), pos);
+			} else if(plant instanceof Sungrass){
+				Dungeon.level.drop(new SungrassItem(), pos);
+			}
 			plant.wither();
 		}
 	}
