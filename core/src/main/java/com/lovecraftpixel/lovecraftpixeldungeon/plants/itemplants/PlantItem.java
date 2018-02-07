@@ -75,8 +75,10 @@ public class PlantItem extends Item {
 
         @Override
         public void onSelect( Integer cell ) {
-            Dungeon.level.plant(seed, cell);
-            curItem.detach(curUser.belongings.backpack);
+            if(cell != null){
+                Dungeon.level.plant(seed, cell);
+                curItem.detach(curUser.belongings.backpack);
+            }
         }
         @Override
         public String prompt() {
