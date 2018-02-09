@@ -339,7 +339,7 @@ public class PrisonBossLevel extends Level {
 
 				GameScene.flash(0xFFFFFF);
 				Sample.INSTANCE.play(Assets.SND_BLAST);
-				Class<? extends Trap> trapClass = null;
+				Class<? extends Trap> trapClass;
 				for(Point p : maze.getPoints()) {
 					int cell = Dungeon.level.pointToCell(p);
 					if (Dungeon.level.map[cell] == Terrain.TRAP){
