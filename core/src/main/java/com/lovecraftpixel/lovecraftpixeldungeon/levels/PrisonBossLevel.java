@@ -37,7 +37,16 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.MazeRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.AlarmTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.BurningTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.ChillingTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.ConfusionTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.FlockTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.GrippingTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.OozeTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.PoisonDartTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.ShockingTrap;
+import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.ToxicTrap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.traps.Trap;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
@@ -50,6 +59,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
+import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -329,6 +339,18 @@ public class PrisonBossLevel extends Level {
 
 				GameScene.flash(0xFFFFFF);
 				Sample.INSTANCE.play(Assets.SND_BLAST);
+				Class<? extends Trap> trapClass = null;
+				for(Point p : maze.getPoints()) {
+					int cell = Dungeon.level.pointToCell(p);
+					if (Dungeon.level.map[cell] == Terrain.TRAP){
+						trapClass = (Class<? extends Trap>) Random.oneOf(trapClasses());
+						try {
+							Dungeon.level.setTrap((trapClass.newInstance()).reveal(), cell);
+						} catch (Exception e) {
+							LovecraftPixelDungeon.reportException(e);
+						}
+					}
+				}
 
 				state = State.MAZE;
 				break;
@@ -416,6 +438,12 @@ public class PrisonBossLevel extends Level {
 				state = State.WON;
 				break;
 		}
+	}
+
+	protected Class<?>[] trapClasses() {
+		return new Class[]{ ChillingTrap.class, ShockingTrap.class, ToxicTrap.class, BurningTrap.class, PoisonDartTrap.class,
+				AlarmTrap.class, OozeTrap.class, GrippingTrap.class,
+				ConfusionTrap.class, FlockTrap.class,};
 	}
 
 	@Override

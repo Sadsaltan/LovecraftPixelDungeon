@@ -27,11 +27,13 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.features.Maze;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
+import com.watabou.utils.Random;
 
 //TODO figure out where this should go, tunnel room type perhaps?
 public class MazeRoom extends Room {
 
 	public void paint( Level level ) {
+
 		Painter.fill(level, this, 1, Terrain.EMPTY);
 
 		//true = space, false = wall
@@ -42,6 +44,10 @@ public class MazeRoom extends Room {
 			for (int y = 0; y < maze[0].length; y++) {
 				if (maze[x][y] == Maze.FILLED) {
 					Painter.fill(level, x + left, y + top, 1, 1, Terrain.WALL);
+				} else {
+					if (Random.Int(0, 10) < 3) {
+						Painter.set(level, x + left, y + top, Terrain.TRAP);
+					}
 				}
 			}
 	}

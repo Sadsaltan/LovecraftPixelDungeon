@@ -152,6 +152,9 @@ public class SpecialRoom extends Room {
 				int newidx = Random.Int( floorSpecials.size() );
 				if (newidx < index) index = newidx;
 			}
+			if(floorSpecials.isEmpty()){
+				floorSpecials = (ArrayList<Class<?extends Room>>) runSpecials.clone();
+			}
 			try {
 				r = floorSpecials.get( index ).newInstance();
 			} catch (Exception e) {
