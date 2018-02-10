@@ -69,6 +69,11 @@ public class ItemSpriteSheet {
 	public static final int SANDBAG         = UNCOLLECTIBLE+3;
 	public static final int DBL_BOMB        = UNCOLLECTIBLE+4;
 	public static final int GUIDE_PAGE      = UNCOLLECTIBLE+5;
+	public static final int WATERBAG      	= UNCOLLECTIBLE+6;
+	public static final int MONEY_TINY      = UNCOLLECTIBLE+7;
+	public static final int MONEY_SMALL     = UNCOLLECTIBLE+8;
+	public static final int MONEY_MEDIUM    = UNCOLLECTIBLE+9;
+	public static final int MONEY_BIG     	= UNCOLLECTIBLE+10;
 	static{
 		assignItemRect(GOLD,        15, 13);
 		assignItemRect(DEWDROP,     10, 10);
@@ -76,6 +81,11 @@ public class ItemSpriteSheet {
 		assignItemRect(SANDBAG,     10, 10);
 		assignItemRect(DBL_BOMB,    14, 13);
 		assignItemRect(GUIDE_PAGE,  10, 11);
+		assignItemRect(WATERBAG,  	14, 13);
+		assignItemRect(MONEY_TINY,  12, 12);
+		assignItemRect(MONEY_SMALL, 15, 13);
+		assignItemRect(MONEY_MEDIUM,15, 14);
+		assignItemRect(MONEY_BIG,  	16, 15);
 	}
 
 	private static final int CONTAINERS     =                               xy(1, 3);   //16 slots
@@ -87,6 +97,9 @@ public class ItemSpriteSheet {
 	public static final int LOCKED_CHEST    = CONTAINERS+5;
 	public static final int CRYSTAL_CHEST   = CONTAINERS+6;
 	public static final int EBONY_CHEST     = CONTAINERS+7;
+	public static final int HOWARD_CHEST    = CONTAINERS+8;
+	public static final int EVAN_CHEST      = CONTAINERS+9;
+	public static final int GOLD_CHEST     	= CONTAINERS+10;
 	static{
 		assignItemRect(BONES,           14, 11);
 		assignItemRect(REMAINS,         14, 11);
@@ -96,6 +109,9 @@ public class ItemSpriteSheet {
 		assignItemRect(LOCKED_CHEST,    16, 14);
 		assignItemRect(CRYSTAL_CHEST,   16, 14);
 		assignItemRect(EBONY_CHEST,     16, 14);
+		assignItemRect(HOWARD_CHEST,    16, 14);
+		assignItemRect(EVAN_CHEST,      16, 14);
+		assignItemRect(GOLD_CHEST,      16, 14);
 	}
 
 	private static final int SINGLE_USE     =                               xy(1, 4);   //16 slots
@@ -137,23 +153,31 @@ public class ItemSpriteSheet {
 	private static final int TOOLS     			=                           xy(1, 5);   //16 slots
 	public static final int SCISSORS            = TOOLS+0;
 	public static final int TINCTUREBOTTLE      = TOOLS+1;
+	public static final int BLESSED_ANKH      	= TOOLS+2;
+	public static final int TNT      			= TOOLS+3;
+	public static final int TNT_BUNDLE      	= TOOLS+4;
 	static{
 		assignItemRect(SCISSORS,        11, 15);
 		assignItemRect(TINCTUREBOTTLE,  8,  13);
+		assignItemRect(BLESSED_ANKH,  	10,  16);
+		assignItemRect(TNT,  			12,  11);
+		assignItemRect(TNT_BUNDLE,  	15,  14);
 	}
 
 	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
 	public static final int WORN_SHORTSWORD = WEP_TIER1+0;
-	public static final int CUDGEL          = WEP_TIER1+1;
+	public static final int SHORT_SWORD     = WEP_TIER1+1;
 	public static final int KNUCKLEDUSTER   = WEP_TIER1+2;
-	public static final int RAPIER          = WEP_TIER1+3;
+	public static final int AXE          	= WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int MAGES_STAFF     = WEP_TIER1+5;
 	static{
 		assignItemRect(WORN_SHORTSWORD, 13, 13);
+		assignItemRect(SHORT_SWORD, 	13, 13);
 		assignItemRect(KNUCKLEDUSTER,   15, 10);
+		assignItemRect(AXE,          	12, 10);
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(MAGES_STAFF,     15, 16);
 	}
@@ -179,6 +203,7 @@ public class ItemSpriteSheet {
 	public static final int ROUND_SHIELD    = WEP_TIER3+3;
 	public static final int SAI             = WEP_TIER3+4;
 	public static final int WHIP            = WEP_TIER3+5;
+	public static final int KATANA          = WEP_TIER3+6;
 	static{
 		assignItemRect(SWORD,           14, 14);
 		assignItemRect(MACE,            15, 15);
@@ -186,6 +211,7 @@ public class ItemSpriteSheet {
 		assignItemRect(ROUND_SHIELD,    16, 16);
 		assignItemRect(SAI,             16, 16);
 		assignItemRect(WHIP,            14, 14);
+		assignItemRect(KATANA,          15, 16);
 	}
 
 	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots
@@ -208,12 +234,16 @@ public class ItemSpriteSheet {
 	public static final int GLAIVE          = WEP_TIER5+2;
 	public static final int GREATAXE        = WEP_TIER5+3;
 	public static final int GREATSHIELD     = WEP_TIER5+4;
+	public static final int HALBERD     	= WEP_TIER5+5;
+	public static final int SPIKEDSWORD     = WEP_TIER5+6;
 	static{
 		assignItemRect(GREATSWORD,  16, 16);
 		assignItemRect(WAR_HAMMER,  16, 16);
 		assignItemRect(GLAIVE,      16, 16);
 		assignItemRect(GREATAXE,    12, 16);
 		assignItemRect(GREATSHIELD, 12, 16);
+		assignItemRect(HALBERD,     16, 16);
+		assignItemRect(SPIKEDSWORD, 16, 16);
 	}
 
 	                                                                                    //8 free slots
@@ -464,25 +494,37 @@ public class ItemSpriteSheet {
 	                                                                                    //16 free slots
 
 	private static final int FOOD       =                                   xy(1, 25);  //16 slots
-	public static final int MEAT        = FOOD+0;
-	public static final int STEAK       = FOOD+1;
-	public static final int OVERPRICED  = FOOD+2;
-	public static final int CARPACCIO   = FOOD+3;
-	public static final int BLANDFRUIT  = FOOD+4;
-	public static final int RATION      = FOOD+5;
-	public static final int PASTY       = FOOD+6;
-	public static final int PUMPKIN_PIE = FOOD+7;
-	public static final int CANDY_CANE  = FOOD+8;
+	public static final int MEAT        	= FOOD+0;
+	public static final int STEAK       	= FOOD+1;
+	public static final int OVERPRICED  	= FOOD+2;
+	public static final int CARPACCIO   	= FOOD+3;
+	public static final int BLANDFRUIT  	= FOOD+4;
+	public static final int RATION      	= FOOD+5;
+	public static final int PASTY       	= FOOD+6;
+	public static final int PUMPKIN_PIE 	= FOOD+7;
+	public static final int CANDY_CANE  	= FOOD+8;
+	public static final int CHICKEN  		= FOOD+9;
+	public static final int SLICE_OF_CAKE	= FOOD+10;
+	public static final int ROTTEN_PASTY  	= FOOD+11;
+	public static final int ROTTEN_STEAK  	= FOOD+12;
+	public static final int ROTTEN_RATION  	= FOOD+13;
+	public static final int ROTTEN_CAKE  	= FOOD+14;
 	static{
-		assignItemRect(MEAT,        15, 11);
-		assignItemRect(STEAK,       15, 11);
-		assignItemRect(OVERPRICED,  14, 11);
-		assignItemRect(CARPACCIO,   15, 11);
-		assignItemRect(BLANDFRUIT,  9,  12);
-		assignItemRect(RATION,      16, 12);
-		assignItemRect(PASTY,       16, 11);
-		assignItemRect(PUMPKIN_PIE, 16, 12);
-		assignItemRect(CANDY_CANE,  13, 16);
+		assignItemRect(MEAT,        	15, 11);
+		assignItemRect(STEAK,       	15, 11);
+		assignItemRect(OVERPRICED,  	14, 11);
+		assignItemRect(CARPACCIO,   	15, 11);
+		assignItemRect(BLANDFRUIT,  	9,  12);
+		assignItemRect(RATION,      	16, 12);
+		assignItemRect(PASTY,       	16, 11);
+		assignItemRect(PUMPKIN_PIE, 	16, 12);
+		assignItemRect(CANDY_CANE,  	13, 16);
+		assignItemRect(CHICKEN,  		16, 16);
+		assignItemRect(SLICE_OF_CAKE,	14, 14);
+		assignItemRect(ROTTEN_PASTY,  	16, 12);
+		assignItemRect(ROTTEN_STEAK,  	15, 11);
+		assignItemRect(ROTTEN_RATION,  	16, 12);
+		assignItemRect(ROTTEN_CAKE,  	14, 14);
 	}
 
 	private static final int QUEST  =                                       xy(1, 26);  //32 slots
@@ -534,6 +576,11 @@ public class ItemSpriteSheet {
 	public static final int BANDOLIER   = BAGS+3;
 	public static final int HOLSTER     = BAGS+4;
 	public static final int FOODBAG     = BAGS+5;
+	public static final int POTION_BELT = BAGS+6;
+	public static final int BACK_PACK 	= BAGS+7;
+	public static final int VIAL_LITTLE = BAGS+8;
+	public static final int VIAL_MIDDLE = BAGS+9;
+	public static final int VIAL_FULL 	= BAGS+10;
 	static{
 		assignItemRect(VIAL,        12, 12);
 		assignItemRect(POUCH,       14, 15);
@@ -541,6 +588,11 @@ public class ItemSpriteSheet {
 		assignItemRect(BANDOLIER,   15, 16);
 		assignItemRect(HOLSTER,     15, 16);
 		assignItemRect(FOODBAG,     14, 15);
+		assignItemRect(POTION_BELT, 16, 13);
+		assignItemRect(BACK_PACK,   16, 16);
+		assignItemRect(VIAL_LITTLE, 12, 12);
+		assignItemRect(VIAL_MIDDLE, 12, 12);
+		assignItemRect(VIAL_FULL,   12, 12);
 	}
 
 	                                                                                    //64 free slots

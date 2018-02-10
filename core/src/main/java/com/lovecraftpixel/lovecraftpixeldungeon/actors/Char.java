@@ -144,10 +144,16 @@ public abstract class Char extends Actor {
 		boolean visibleFight = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[enemy.pos];
 		
 		if (hit( this, enemy, false )) {
-			
+
 			// FIXME
-			int dr = this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass ==
-				HeroSubClass.SNIPER ? 0 : enemy.drRoll();
+			int dr = 0;
+			if(this instanceof Hero && (((Hero)this).rangedWeapon != null || ((Hero)this).gunweapon != null) && ((Hero)this).subClass == HeroSubClass.SNIPER){
+				//do nothing dr is already 0
+			} else {
+				enemy.drRoll();
+			}
+			/**int dr = this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass ==
+				HeroSubClass.SNIPER ? 0 : enemy.drRoll();**/
 			
 			int dmg;
 			Preparation prep = buff(Preparation.class);

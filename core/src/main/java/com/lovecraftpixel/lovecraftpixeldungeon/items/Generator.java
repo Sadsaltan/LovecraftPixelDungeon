@@ -101,6 +101,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfTransfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfVenom;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.AssassinsBlade;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.BattleAxe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dirk;
@@ -109,7 +110,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Glaive;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greataxe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greatshield;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greatsword;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Halberd;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HandAxe;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HeroicShortsword;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Katana;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Longsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Mace;
@@ -121,6 +125,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Sai;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Scimitar;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Shortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Spear;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.SpikedGreatsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Sword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WarHammer;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Whip;
@@ -289,9 +294,11 @@ public class Generator {
 					Dagger.class,
 					MagesStaff.class,
 					Boomerang.class,
-					Dart.class
+					Dart.class,
+					HeroicShortsword.class,
+					Axe.class
 			};
-			WEP_T1.probs = new float[]{ 1, 1, 1, 0, 0, 1 };
+			WEP_T1.probs = new float[]{ 0, 1, 1, 0, 0, 1, 1, 1 };
 			
 			WEP_T2.classes = new Class<?>[]{
 					Shortsword.class,
@@ -311,9 +318,10 @@ public class Generator {
 					Sai.class,
 					Whip.class,
 					Shuriken.class,
-					CurareDart.class
+					CurareDart.class,
+					Katana.class,
 			};
-			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6 };
+			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6, 4 };
 			
 			WEP_T4.classes = new Class<?>[]{
 					Longsword.class,
@@ -331,9 +339,11 @@ public class Generator {
 					Glaive.class,
 					Greataxe.class,
 					Greatshield.class,
-					Tamahawk.class
+					Tamahawk.class,
+					SpikedGreatsword.class,
+					Halberd.class,
 			};
-			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6 };
+			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 5 };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{

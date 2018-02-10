@@ -97,6 +97,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInf
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Flail;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Notes;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
@@ -168,6 +169,7 @@ public class Hero extends Char {
 	public static String playername = LovecraftPixelDungeon.playerName();
 
 	public MissileWeapon rangedWeapon = null;
+	public GunWeapon gunweapon = null;
 	public Belongings belongings;
 	
 	public int STR;
@@ -350,6 +352,16 @@ public class Hero extends Char {
 
 		return result;
 	}
+
+	public boolean shoot( Char enemy, GunWeapon wep ) {
+
+		gunweapon = wep;
+		boolean result = attack( enemy );
+		Invisibility.dispel();
+		gunweapon = null;
+
+		return result;
+	}
 	
 	@Override
 	public int attackSkill( Char target ) {
@@ -358,7 +370,17 @@ public class Hero extends Char {
 			accuracy *= 0.5f;
 		}
 
-		KindOfWeapon wep = rangedWeapon != null ? rangedWeapon : belongings.weapon;
+		if (gunweapon != null && Dungeon.level.distance( pos, target.pos ) == 1) {
+			accuracy *= 1.5f;
+		}
+		KindOfWeapon wep;
+		if(rangedWeapon != null){
+			wep = rangedWeapon;
+		} else if(gunweapon != null){
+			wep = gunweapon;
+		} else {
+			wep = belongings.weapon;
+		}
 		if (wep != null) {
 			return (int)(attackSkill * accuracy * wep.accuracyFactor( this ));
 		} else {
@@ -413,7 +435,14 @@ public class Hero extends Char {
 	
 	@Override
 	public int damageRoll() {
-		KindOfWeapon wep = rangedWeapon != null ? rangedWeapon : belongings.weapon;
+		KindOfWeapon wep;
+		if(rangedWeapon != null){
+			wep = rangedWeapon;
+		} else if(gunweapon != null){
+			wep = gunweapon;
+		} else {
+			wep = belongings.weapon;
+		}
 		int dmg;
 
 		if (wep != null) {
@@ -499,7 +528,14 @@ public class Hero extends Char {
 	}
 	
 	public float attackDelay() {
-		KindOfWeapon wep = rangedWeapon != null ? rangedWeapon : belongings.weapon;
+		KindOfWeapon wep;
+		if(rangedWeapon != null){
+			wep = rangedWeapon;
+		} else if(gunweapon != null){
+			wep = gunweapon;
+		} else {
+			wep = belongings.weapon;
+		}
 		if (wep != null) {
 			
 			return wep.speedFactor( this );
@@ -979,7 +1015,14 @@ public class Hero extends Char {
 	
 	@Override
 	public int attackProc( Char enemy, int damage ) {
-		KindOfWeapon wep = rangedWeapon != null ? rangedWeapon : belongings.weapon;
+		KindOfWeapon wep;
+		if(rangedWeapon != null){
+			wep = rangedWeapon;
+		} else if(gunweapon != null){
+			wep = gunweapon;
+		} else {
+			wep = belongings.weapon;
+		}
 
 		if (wep != null) damage = wep.proc( this, enemy, damage );
 			
