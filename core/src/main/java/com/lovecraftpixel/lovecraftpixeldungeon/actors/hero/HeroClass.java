@@ -29,7 +29,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Challenges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.BrokenSeal;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.ClothArmor;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.MailArmor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.CloakOfShadows;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.FoodBag;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Food;
@@ -38,17 +37,21 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.FastFirePistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Rifle;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greataxe;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Halberd;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HeroicShortsword;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Katana;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MagesStaff;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.SpikedGreatsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
 import com.watabou.utils.Bundle;
 
 public enum HeroClass {
@@ -98,27 +101,14 @@ public enum HeroClass {
 			new Food().identify().collect();
 			new FoodBag().collect();
 
-
-		for(int i = 10; i > 0; i--) {
-			new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		}
-
-		for(int i = 10; i > 0; i--){
-			new ScrollOfMagicMapping().identify().collect();
-		}
-
-		Greataxe greataxe = new Greataxe();
-		greataxe.level(1000);
-		greataxe.enchant();
-		greataxe.collect();
-		greataxe.identify();
-
-		MailArmor mailArmor = new MailArmor();
-		mailArmor.level(1000);
-		mailArmor.identify();
-		mailArmor.collect();
-
+		new FastFirePistol().identify().collect();
 		new Pistol().identify().collect();
+		new Rifle().identify().collect();
+		new HeroicShortsword().identify().collect();
+		new Halberd().identify().collect();
+		new Katana().identify().collect();
+		new SpikedGreatsword().identify().collect();
+		new Axe().identify().collect();
 
 	}
 

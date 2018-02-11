@@ -163,8 +163,7 @@ public class GameScene extends PixelScene {
 	
 	@Override
 	public void create() {
-		
-		Music.INSTANCE.play( Assets.TUNE, true );
+
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol()/10f );
 
 		LovecraftPixelDungeon.lastClass(Dungeon.hero.heroClass.ordinal());

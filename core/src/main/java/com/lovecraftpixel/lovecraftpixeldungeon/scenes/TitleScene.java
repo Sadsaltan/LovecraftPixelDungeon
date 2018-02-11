@@ -24,8 +24,8 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
 import android.opengl.GLES20;
+
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.BannerSprites;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Fireball;
@@ -34,9 +34,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ChangesButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ExitButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.LanguageButton;
-import com.lovecraftpixel.lovecraftpixeldungeon.ui.PlayNameButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.PrefsButton;
-import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndTextInput;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
@@ -49,15 +47,13 @@ import com.watabou.noosa.ui.Button;
 import javax.microedition.khronos.opengles.GL10;
 
 public class TitleScene extends PixelScene {
-
-	public static String yourname;
 	
 	@Override
 	public void create() {
 		
 		super.create();
 
-		Music.INSTANCE.play( Assets.THEME, true );
+		Music.INSTANCE.play( Assets.PARASYTE, true );
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol() / 10f );
 
 		uiCamera.visible = false;
