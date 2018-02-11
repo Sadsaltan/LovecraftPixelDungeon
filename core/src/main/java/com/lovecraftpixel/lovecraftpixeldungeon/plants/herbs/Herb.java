@@ -63,21 +63,29 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.noosa.particles.Emitter;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Herb extends Item {
 
     public static final String AC_EAT = "EAT";
     public float energy = Hunger.HUNGRY;
 
-    ArrayList<Herb> herbs = new ArrayList<Herb>();
+    public Plant.Seed seed;
+
+    HashSet<Plant.Seed> seedArrayList = new HashSet<>();
 
     {
         stackable = false;
     }
 
-    public Plant.Seed seed;
+    public Herb setSeed(Plant.Seed seed){
+        this.seed = seed;
+        return this;
+    }
 
     @Override
     public boolean isUpgradable() {
@@ -94,6 +102,26 @@ public class Herb extends Item {
         ArrayList<String> actions = super.actions(hero);
         actions.add( AC_EAT );
         return actions;
+    }
+
+    private static final String SEED		= "seed";
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        seedArrayList.add(seed);
+        bundle.put(SEED, seedArrayList);
+        seedArrayList.clear();
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        for (Bundlable b : bundle.getCollection( SEED )) {
+            if (b != null) {
+                setSeed((Plant.Seed) b);
+            }
+        }
     }
 
     @Override

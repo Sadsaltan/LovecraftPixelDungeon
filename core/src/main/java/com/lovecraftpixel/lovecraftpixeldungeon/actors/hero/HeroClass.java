@@ -46,6 +46,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortswor
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
 import com.watabou.utils.Bundle;
 
 public enum HeroClass {
@@ -97,6 +99,8 @@ public enum HeroClass {
 
 		new Kusarigama().upgrade(100).identify().collect();
 		new LeatherArmor().upgrade(100).identify().collect();
+
+		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
 	}
 
 	public Badges.Badge masteryBadge() {

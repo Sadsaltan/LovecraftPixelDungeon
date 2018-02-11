@@ -29,18 +29,12 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Fadeleaf;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 
 public class FadeleafHerb extends Herb {
 
     {
         image = ItemSpriteSheet.FADELEAF_HERB;
-    }
-
-    public Herb setSeed(Plant.Seed seed){
-        this.seed = seed;
-        return this;
     }
 
     @Override
@@ -61,6 +55,6 @@ public class FadeleafHerb extends Herb {
 
     @Override
     public String desc() {
-        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", seed.name()) + "\n" + Messages.get(seed.alchemyClass, "herbdesc");
+        return Messages.get(this, "desc") + "\n\n" + Messages.get(Herb.class, "seed_used", this.seed.name()) + "\n" + Messages.get(this.seed.alchemyClass, "herbdesc");
     }
 }
