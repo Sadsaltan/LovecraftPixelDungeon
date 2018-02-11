@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class PillarsRoom extends StandardRoom {
@@ -104,13 +103,6 @@ public class PillarsRoom extends StandardRoom {
 			//bottom-left, skews up
 			Painter.fill(level, left + 1 + pillarInset, bottom - pillarSize - pillarInset - Math.round(percentSkew*ySpaces), pillarSize, pillarSize, Terrain.WALL);
 			
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
 		}
 	}
 }

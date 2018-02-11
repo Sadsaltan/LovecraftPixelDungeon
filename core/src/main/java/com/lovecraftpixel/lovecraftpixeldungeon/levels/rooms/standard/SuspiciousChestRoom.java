@@ -29,7 +29,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class SuspiciousChestRoom extends EmptyRoom {
@@ -62,13 +61,6 @@ public class SuspiciousChestRoom extends EmptyRoom {
 			level.drop(i, center).type = Heap.Type.MIMIC;
 		} else {
 			level.drop(i, center).type = Heap.Type.CHEST;
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
 		}
 	}
 }

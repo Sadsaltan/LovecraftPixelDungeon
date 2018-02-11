@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class StripedRoom extends StandardRoom {
@@ -59,13 +58,6 @@ public class StripedRoom extends StandardRoom {
 			int layers = (Math.min(width(), height())-1)/2;
 			for (int i = 1; i <= layers; i++){
 				Painter.fill(level, this, i, (i % 2 == 1) ? Terrain.EMPTY_SP : Terrain.HIGH_GRASS);
-			}
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
 			}
 		}
 	}

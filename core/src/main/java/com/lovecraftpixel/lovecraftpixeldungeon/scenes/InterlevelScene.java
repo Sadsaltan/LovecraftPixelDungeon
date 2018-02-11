@@ -183,11 +183,12 @@ public class InterlevelScene extends PixelScene {
 						}
 					} );
 					error = null;
-				} else if ((int)waitingTime == 100){
+				} else if ((int)waitingTime == 10){
 					waitingTime = 11f;
 					LovecraftPixelDungeon.reportException(
 							new RuntimeException("waited more than 10 seconds on levelgen. Seed:" + Dungeon.seed + " depth:" + Dungeon.depth)
 					);
+					LovecraftPixelDungeon.switchNoFade(TitleScene.class);
 				}
 				break;
 		}

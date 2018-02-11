@@ -29,7 +29,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class GrassyGraveRoom extends StandardRoom {
@@ -56,13 +55,6 @@ public class GrassyGraveRoom extends StandardRoom {
 					left + 1 + shift + i * 2 + (top + 2 + Random.Int( h-2 )) * level.width() :
 					(left + 2 + Random.Int( w-2 )) + (top + 1 + shift + i * 2) * level.width();
 			level.drop( i == index ? Generator.random() : new Gold().random(), pos ).type = Heap.Type.TOMB;
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
 		}
 	}
 }

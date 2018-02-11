@@ -31,7 +31,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -68,13 +67,6 @@ public class ArmoryRoom extends SpecialRoom {
 		
 		entrance.set( Door.Type.LOCKED );
 		level.addItemToSpawn( new IronKey( Dungeon.depth ) );
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
-		}
 	}
 	
 	private static Item prize( Level level ) {

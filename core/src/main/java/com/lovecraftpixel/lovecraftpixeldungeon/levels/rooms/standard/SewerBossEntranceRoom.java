@@ -27,7 +27,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Point;
 
 public class SewerBossEntranceRoom extends EntranceRoom {
@@ -82,13 +81,6 @@ public class SewerBossEntranceRoom extends EntranceRoom {
 			
 			if (door.y == top){
 				Painter.set( level, door.x, door.y+1, Terrain.WATER);
-			}
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
 			}
 		}
 		

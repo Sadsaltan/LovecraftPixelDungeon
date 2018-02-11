@@ -30,7 +30,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.WellWater;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
@@ -62,12 +61,5 @@ public class MagicWellRoom extends SpecialRoom {
 		WellWater.seed(c.x + level.width() * c.y, 1, waterClass, level);
 		
 		entrance().set( Door.Type.REGULAR );
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
-		}
 	}
 }

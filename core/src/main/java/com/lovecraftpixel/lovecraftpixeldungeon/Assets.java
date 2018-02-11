@@ -131,8 +131,8 @@ public class Assets {
 
 	public static final String WEAK_FLOOR   = "custom_tiles/weak_floor.png";
 	public static final String PRISON_QUEST = "custom_tiles/prison_quests.png";
-	public static final String ELDER_SIGN = "custom_tiles/elder_sign.png";
-	public static final String YELLOW_SIGN = "custom_tiles/yellow_sign.png";
+	public static final String ELDER_SIGN 	= "custom_tiles/elder_sign.png";
+	public static final String YELLOW_SIGN 	= "custom_tiles/yellow_sign.png";
 	public static final String PRISON_EXIT  = "custom_tiles/prison_exit.png";
 	
 	public static final String BUFFS_SMALL	= "ui/buffs.png";

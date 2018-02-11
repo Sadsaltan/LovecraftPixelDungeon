@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
 public class StatuesRoom extends StandardRoom {
 
@@ -75,13 +74,6 @@ public class StatuesRoom extends StandardRoom {
 				Painter.set(level, left + w-1, top, Terrain.STATUE_SP);
 				Painter.set(level, left, top + h-1, Terrain.STATUE_SP);
 				Painter.set(level, left + w-1, top + h-1, Terrain.STATUE_SP);
-			}
-		}
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
 			}
 		}
 

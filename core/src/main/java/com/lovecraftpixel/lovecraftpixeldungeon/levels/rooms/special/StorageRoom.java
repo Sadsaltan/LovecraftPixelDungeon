@@ -30,7 +30,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfLiquidFlam
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
 public class StorageRoom extends SpecialRoom {
@@ -59,13 +58,6 @@ public class StorageRoom extends SpecialRoom {
 		
 		entrance().set( Door.Type.BARRICADE );
 		level.addItemToSpawn( new PotionOfLiquidFlame() );
-
-		if(RandomL.randomBoolean()){
-			int cell = level.pointToCell(random());
-			if(level.map[cell] == Terrain.GRASS || level.map[cell] == Terrain.EMPTY){
-				level.plant( randomSeed(), cell);
-			}
-		}
 	}
 	
 	private static Item prize( Level level ) {

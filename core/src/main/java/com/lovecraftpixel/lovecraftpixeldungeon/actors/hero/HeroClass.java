@@ -44,6 +44,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortswor
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
 import com.watabou.utils.Bundle;
 
 public enum HeroClass {
@@ -92,6 +94,10 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
 			new FoodBag().collect();
+
+		for (int i = 10; i > 0; i--){
+			new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
+		}
 	}
 
 	public Badges.Badge masteryBadge() {
