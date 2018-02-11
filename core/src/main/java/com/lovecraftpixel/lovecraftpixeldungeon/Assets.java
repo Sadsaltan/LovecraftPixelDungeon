@@ -145,16 +145,12 @@ public class Assets {
 	public static final String PIXELFONT    = "fonts/pixel_font.png";
 	public static final String FONT1X       = "fonts/font1x.png";
 	public static final String FONT2X       = "fonts/font2x.png";
-	
-	public static final String THEME			= "music/theme.ogg";
-	public static final String TUNE				= "music/game.ogg";
-	public static final String HAPPY			= "music/surface.ogg";
 
 	/**public static final String ATTACKONTITAN	= "music/AttackOnTitan.ogg";
 	public static final String DEATHNOTE		= "music/DeathNote.ogg";
 	public static final String DEATHPARADE		= "music/DeathParade.ogg";
 	public static final String ERASED			= "music/Erased.ogg";
-	public static final String FULLMETALALCHMIST= "music/FullmetalAlchemist.ogg";
+	public static final String FULLMETALALCHMIST= "music/FullmetalAlchemist.ogg";**/
 	public static final String JOJOBLOODYSTREAM	= "music/JoJoBloodyStream.ogg";
 	public static final String JOJOPHANTOMBLOOD	= "music/JoJoPhantomBlood.ogg";
 	public static final String JOJOSTANDPROUD	= "music/JoJoStandProud.ogg";
@@ -162,7 +158,7 @@ public class Assets {
 	public static final String JOJODIAMOND1		= "music/JoJoDiamond1.ogg";
 	public static final String JOJODIAMOND2		= "music/JoJoDiamond2.ogg";
 	public static final String JOJODIAMOND3		= "music/JoJoDiamond3.ogg";
-	public static final String PARASYTE			= "music/Parasyte.ogg";
+	/**public static final String PARASYTE			= "music/Parasyte.ogg";
 	public static final String SOULEATER		= "music/SoulEater.ogg";
 	public static final String STEINSGATE		= "music/Steinsgate.ogg";
 	public static final String TOKYOGHOUL		= "music/TokyoGhoul.ogg";**/

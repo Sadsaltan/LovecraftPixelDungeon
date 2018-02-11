@@ -53,7 +53,7 @@ public class TitleScene extends PixelScene {
 		
 		super.create();
 
-		Music.INSTANCE.play( Assets.THEME, true );
+		Music.INSTANCE.play( Assets.JOJOENDOFTHEWORLD, true );
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol() / 10f );
 
 		uiCamera.visible = false;

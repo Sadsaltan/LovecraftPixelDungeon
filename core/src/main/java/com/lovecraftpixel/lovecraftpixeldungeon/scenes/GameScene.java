@@ -160,11 +160,47 @@ public class GameScene extends PixelScene {
 	private LootIndicator loot;
 	private ActionIndicator action;
 	private ResumeIndicator resume;
+
+	private String getTune(int depth){
+		switch (depth){
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+				return Assets.JOJOPHANTOMBLOOD;
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+				return Assets.JOJOBLOODYSTREAM;
+			case 11:
+			case 12:
+			case 13:
+			case 14:
+			case 15:
+				return Assets.JOJOSTANDPROUD;
+			case 16:
+			case 17:
+			case 18:
+			case 19:
+			case 20:
+				return Assets.JOJODIAMOND1;
+			case 21:
+			case 22:
+			case 23:
+			case 24:
+			case 25:
+				return Assets.JOJODIAMOND3;
+		}
+		return Assets.JOJOENDOFTHEWORLD;
+	}
 	
 	@Override
 	public void create() {
 
-		Music.INSTANCE.play( Assets.TUNE, true );
+		Music.INSTANCE.play( getTune(Dungeon.depth), true );
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol()/10f );
 
 		LovecraftPixelDungeon.lastClass(Dungeon.hero.heroClass.ordinal());

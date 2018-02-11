@@ -24,8 +24,8 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.Rankings;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.Rankings;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Flare;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
@@ -61,7 +61,7 @@ public class RankingsScene extends PixelScene {
 		
 		super.create();
 		
-		Music.INSTANCE.play( Assets.THEME, true );
+		Music.INSTANCE.play( Assets.JOJOENDOFTHEWORLD, true );
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol() / 10f );
 
 		uiCamera.visible = false;

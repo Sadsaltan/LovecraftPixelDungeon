@@ -75,7 +75,7 @@ public class SurfaceScene extends PixelScene {
 		
 		super.create();
 		
-		Music.INSTANCE.play( Assets.HAPPY, true );
+		Music.INSTANCE.play( Assets.JOJODIAMOND2, true );
 		Music.INSTANCE.volume( LovecraftPixelDungeon.musicVol() / 10f );
 		
 		uiCamera.visible = false;
