@@ -100,6 +100,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfRegrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfTransfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfVenom;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.AssassinsBlade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.BattleAxe;
@@ -306,7 +307,7 @@ public class Generator {
 					Spear.class,
 					Quarterstaff.class,
 					Dirk.class,
-					IncendiaryDart.class
+					IncendiaryDart.class,
 			};
 			WEP_T2.probs = new float[]{ 6, 5, 5, 4, 4, 6 };
 			
@@ -320,8 +321,9 @@ public class Generator {
 					Shuriken.class,
 					CurareDart.class,
 					Katana.class,
+					Pistol.class,
 			};
-			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6, 4 };
+			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6, 4, 3 };
 			
 			WEP_T4.classes = new Class<?>[]{
 					Longsword.class,

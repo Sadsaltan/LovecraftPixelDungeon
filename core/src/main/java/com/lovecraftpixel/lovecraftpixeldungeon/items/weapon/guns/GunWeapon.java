@@ -21,19 +21,26 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles;
+package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.HeroClass;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.Beam;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.mechanics.Ballistica;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CharSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.ItemsFlavourText;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
@@ -45,9 +52,12 @@ abstract public class GunWeapon extends Weapon {
 
 	public static final String AC_SHOOT = "SHOOT";
 
+	public static int LOADING_TIME = 1;
+
 	{
 		stackable = false;
 		levelKnown = true;
+		RCH = 10;
 
 		defaultAction = AC_SHOOT;
 		usesTargeting = true;
@@ -72,8 +82,9 @@ abstract public class GunWeapon extends Weapon {
 	@Override
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
-		actions.remove( AC_EQUIP );
-		actions.add( AC_SHOOT );
+		if(this.isEquipped(hero)){
+			actions.add( AC_SHOOT );
+		}
 		return actions;
 	}
 
@@ -87,16 +98,43 @@ abstract public class GunWeapon extends Weapon {
 		}
 	}
 
+	@Override
+	public int proc(Char attacker, Char defender, int damage) {
+		final Ballistica shot = new Ballistica(
+				attacker.pos,
+				defender.pos,
+				Ballistica.MAGIC_BOLT);
+		int shotcell = shot.collisionPos;
+		attacker.sprite.zap(shotcell);
+
+		fx(shot, defender, attacker);
+		onShoot(shot, (Hero) attacker);
+		return super.proc(attacker, defender, damage);
+	}
+
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect(Integer cell) {
 			if (cell != null) {
 				Char enemy = Actor.findChar( cell );
 				if (enemy == null || enemy == curUser) {
-					Messages.get(GunWeapon.class, "nothing_here");
+					GLog.i(Messages.get(GunWeapon.class, "nothing_here"));
 				} else {
 					if (!curUser.shoot( enemy, thisweapon)) {
-						Messages.get(GunWeapon.class, "missed");
+						GLog.i(Messages.get(GunWeapon.class, "missed"));
+						final Ballistica shot = new Ballistica( curUser.pos, cell, Ballistica.PROJECTILE);
+						int shotcell = shot.collisionPos;
+						curUser.sprite.zap(shotcell);
+
+						fx(shot);
+						onShoot(shot, curUser);
+					} else {
+						final Ballistica shot = new Ballistica( curUser.pos, cell, Ballistica.PROJECTILE);
+						int shotcell = shot.collisionPos;
+						curUser.sprite.zap(shotcell);
+
+						fx(shot);
+						onShoot(shot, curUser);
 					}
 				}
 			}
@@ -107,7 +145,30 @@ abstract public class GunWeapon extends Weapon {
 			return Messages.get(GunWeapon.class, "shoot_where");
 		}
 	};
-	
+
+	public static void fx( Ballistica bolt, Char defender, Char attacker) {
+		Char target;
+		if(Actor.findChar(bolt.collisionPos) != null){
+			target = Actor.findChar(bolt.collisionPos);
+		} else {
+			target = defender;
+		}
+		attacker.sprite.parent.add(new Beam.BulletTray(attacker.sprite.center(), target.sprite.center()));
+		Sample.INSTANCE.play( Assets.SND_ZAP );
+	}
+
+	public static void fx( Ballistica bolt) {
+		curUser.sprite.parent.add(new Beam.BulletTray(curUser.sprite.center(), Actor.findChar(bolt.collisionPos).sprite.center()));
+		Sample.INSTANCE.play( Assets.SND_ZAP );
+	}
+
+	public static void onShoot(Ballistica shot, Hero hero){
+		hero.spend(LOADING_TIME);
+		hero.busy();
+		(hero.sprite).operate(shot.collisionPos);
+		hero.sprite.showStatus(CharSprite.DEFAULT, Messages.get(GunWeapon.class, "loading"));
+	}
+
 	@Override
 	public Item random() {
 		return this;
@@ -149,7 +210,7 @@ abstract public class GunWeapon extends Weapon {
 
 		info += "\n\n" + flavourtext;
 
-		info += "\n\n" + Messages.get(GunWeapon.class, "distance");
+		info += "\n\n" + Messages.get(MissileWeapon.class, "distance");
 		
 		return info;
 	}

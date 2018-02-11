@@ -29,6 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.Artifact;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.Ring;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.stones.InventoryStone;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.Wand;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
@@ -87,6 +88,8 @@ public class ItemsFlavourText {
             return "stone";
         } else if(type instanceof Artifact){
             return "artifact";
+        } else if(type instanceof GunWeapon){
+            return "gun";
         } else {
             return null;
         }

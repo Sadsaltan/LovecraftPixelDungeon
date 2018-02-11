@@ -96,8 +96,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMappi
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Flail;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Notes;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
@@ -1136,6 +1136,10 @@ public class Hero extends Char {
 	
 	public int visibleEnemies() {
 		return visibleEnemies.size();
+	}
+
+	public ArrayList<Mob> visibleEnemiesArray() {
+		return visibleEnemies;
 	}
 	
 	public Mob visibleEnemy( int index ) {

@@ -36,8 +36,9 @@ public class Effects {
 		CHAIN,
 		DEATH_RAY,
 		LIGHT_RAY,
-		HEALTH_RAY
-	};
+		HEALTH_RAY,
+		BULLET_TRAY
+	}
 	
 	public static Image get( Type type ) {
 		Image icon = new Image( Assets.EFFECTS );
@@ -65,6 +66,9 @@ public class Effects {
 				break;
 			case HEALTH_RAY:
 				icon.frame(icon.texture.uvRect(16, 30, 32, 38));
+				break;
+			case BULLET_TRAY:
+				icon.frame(icon.texture.uvRect(16, 37, 32, 44));
 				break;
 		}
 		return icon;

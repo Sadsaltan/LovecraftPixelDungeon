@@ -256,6 +256,11 @@ public class ItemSpriteSheet {
 	public static final int CURARE_DART     = MISSILE_WEP+4;
 	public static final int JAVELIN         = MISSILE_WEP+5;
 	public static final int TOMAHAWK        = MISSILE_WEP+6;
+	public static final int BOW        		= MISSILE_WEP+7;
+	public static final int SHORT_CROSSBOW  = MISSILE_WEP+8;
+	public static final int PISTOL  		= MISSILE_WEP+9;
+	public static final int RIFLE  			= MISSILE_WEP+10;
+	public static final int CALIBER_PISTOL 	= MISSILE_WEP+11;
 	static{
 		assignItemRect(DART,            15, 15);
 		assignItemRect(BOOMERANG,       14, 14);
@@ -264,6 +269,11 @@ public class ItemSpriteSheet {
 		assignItemRect(CURARE_DART,     15, 15);
 		assignItemRect(JAVELIN,         16, 16);
 		assignItemRect(TOMAHAWK,        13, 13);
+		assignItemRect(BOW,        		14, 14);
+		assignItemRect(SHORT_CROSSBOW,  14, 14);
+		assignItemRect(PISTOL,       	11, 14);
+		assignItemRect(RIFLE,        	13, 16);
+		assignItemRect(CALIBER_PISTOL,  11, 16);
 	}
 
 	private static final int ARMOR          =                               xy(1, 11);  //16 slots

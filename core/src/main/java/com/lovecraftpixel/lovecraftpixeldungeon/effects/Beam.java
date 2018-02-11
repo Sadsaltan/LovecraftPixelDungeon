@@ -24,6 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.effects;
 
 import android.opengl.GLES20;
+
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
@@ -61,6 +62,12 @@ public class Beam extends Image {
 	public static class DeathRay extends Beam{
 		public DeathRay(PointF s, PointF e){
 			super(s, e, Effects.Type.DEATH_RAY, 0.5f);
+		}
+	}
+
+	public static class BulletTray extends Beam{
+		public BulletTray(PointF s, PointF e){
+			super(s, e, Effects.Type.BULLET_TRAY, 0.25f);
 		}
 	}
 
