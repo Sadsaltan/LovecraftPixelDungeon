@@ -373,8 +373,12 @@ public class Generator {
 					Pistol.class,
 					Rifle.class,
 					FastFirePistol.class,
+					Bow.class,
+					Crossbow.class,
+					Harpoon.class,
+					HeavyCrossbow.class,
 			};
-			WEP_GUN.probs = new float[]{ 5, 5, 5};
+			WEP_GUN.probs = new float[]{ 5, 5, 5, 5, 5, 5, 5};
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
