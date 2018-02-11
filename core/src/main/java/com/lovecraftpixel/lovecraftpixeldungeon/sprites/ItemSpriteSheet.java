@@ -236,14 +236,24 @@ public class ItemSpriteSheet {
 	public static final int GREATSHIELD     = WEP_TIER5+4;
 	public static final int HALBERD     	= WEP_TIER5+5;
 	public static final int SPIKEDSWORD     = WEP_TIER5+6;
+	public static final int PRIMITIVESPEAR  = WEP_TIER5+8;
+	public static final int CHAKRAM  		= WEP_TIER5+9;
+	public static final int HARPOON  		= WEP_TIER5+10;
+	public static final int HEAVY_CROSSBOW  = WEP_TIER5+11;
+	public static final int KUSARIGAMA  	= WEP_TIER5+12;
 	static{
-		assignItemRect(GREATSWORD,  16, 16);
-		assignItemRect(WAR_HAMMER,  16, 16);
-		assignItemRect(GLAIVE,      16, 16);
-		assignItemRect(GREATAXE,    12, 16);
-		assignItemRect(GREATSHIELD, 12, 16);
-		assignItemRect(HALBERD,     16, 16);
-		assignItemRect(SPIKEDSWORD, 16, 16);
+		assignItemRect(GREATSWORD,    16, 16);
+		assignItemRect(WAR_HAMMER,    16, 16);
+		assignItemRect(GLAIVE,        16, 16);
+		assignItemRect(GREATAXE,      12, 16);
+		assignItemRect(GREATSHIELD,   12, 16);
+		assignItemRect(HALBERD,       16, 16);
+		assignItemRect(SPIKEDSWORD,   16, 16);
+		assignItemRect(PRIMITIVESPEAR,14, 14);
+		assignItemRect(CHAKRAM,		  14, 14);
+		assignItemRect(HARPOON,		  14, 14);
+		assignItemRect(HEAVY_CROSSBOW,14, 14);
+		assignItemRect(KUSARIGAMA,	  13, 14);
 	}
 
 	                                                                                    //8 free slots
@@ -261,6 +271,7 @@ public class ItemSpriteSheet {
 	public static final int PISTOL  		= MISSILE_WEP+9;
 	public static final int RIFLE  			= MISSILE_WEP+10;
 	public static final int CALIBER_PISTOL 	= MISSILE_WEP+11;
+	public static final int THROWING_KNIVE 	= MISSILE_WEP+12;
 	static{
 		assignItemRect(DART,            15, 15);
 		assignItemRect(BOOMERANG,       14, 14);
@@ -274,6 +285,7 @@ public class ItemSpriteSheet {
 		assignItemRect(PISTOL,       	11, 14);
 		assignItemRect(RIFLE,        	13, 16);
 		assignItemRect(CALIBER_PISTOL,  11, 16);
+		assignItemRect(THROWING_KNIVE,  12, 12);
 	}
 
 	private static final int ARMOR          =                               xy(1, 11);  //16 slots

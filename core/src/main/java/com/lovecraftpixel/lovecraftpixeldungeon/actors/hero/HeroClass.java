@@ -37,7 +37,11 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Bow;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Crossbow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.FastFirePistol;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Harpoon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.HeavyCrossbow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Rifle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
@@ -46,11 +50,15 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Halberd;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HeroicShortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Katana;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Kusarigama;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MagesStaff;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.SpikedGreatsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Chakram;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.PrimitiveSpear;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.watabou.utils.Bundle;
 
@@ -109,6 +117,14 @@ public enum HeroClass {
 		new Katana().identify().collect();
 		new SpikedGreatsword().identify().collect();
 		new Axe().identify().collect();
+		new Bow().identify().collect();
+		new Crossbow().identify().collect();
+		new Harpoon().identify().collect();
+		new HeavyCrossbow().identify().collect();
+		new Chakram().identify().collect();
+		new PrimitiveSpear().identify().collect();
+		new ThrowingKnife().identify().collect();
+		new Kusarigama().identify().collect();
 
 	}
 
