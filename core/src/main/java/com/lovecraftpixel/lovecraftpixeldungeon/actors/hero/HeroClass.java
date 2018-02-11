@@ -39,11 +39,8 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Bow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Crossbow;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.FastFirePistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Harpoon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.HeavyCrossbow;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Rifle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Halberd;
@@ -109,9 +106,6 @@ public enum HeroClass {
 			new Food().identify().collect();
 			new FoodBag().collect();
 
-		new FastFirePistol().identify().collect();
-		new Pistol().identify().collect();
-		new Rifle().identify().collect();
 		new HeroicShortsword().identify().collect();
 		new Halberd().identify().collect();
 		new Katana().identify().collect();

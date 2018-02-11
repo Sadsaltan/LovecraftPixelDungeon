@@ -38,7 +38,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndStory;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.RenderedText;
-import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 
 import java.io.FileNotFoundException;
@@ -47,82 +46,82 @@ import java.io.IOException;
 public class InterlevelScene extends PixelScene {
 
 	private static final float TIME_TO_FADE = 0.3f;
-	
+
 	public enum Mode {
 		DESCEND, ASCEND, CONTINUE, RESURRECT, RETURN, FALL, RESET, NONE
 	}
 	public static Mode mode;
-	
+
 	public static int returnDepth;
 	public static int returnPos;
-	
+
 	public static boolean noStory = false;
 
 	public static boolean fallIntoPit;
-	
+
 	private enum Phase {
 		FADE_IN, STATIC, FADE_OUT
 	}
 	private Phase phase;
 	private float timeLeft;
-	
+
 	private RenderedText message;
-	
+
 	private Thread thread;
 	private Exception error = null;
 	private float waitingTime;
-	
+
 	@Override
 	public void create() {
 		super.create();
 
 		String text = Messages.get(Mode.class, mode.name());
-		
+
 		message = PixelScene.renderText( text, 9 );
 		message.x = (Camera.main.width - message.width()) / 2;
 		message.y = (Camera.main.height - message.height()) / 2;
 		align(message);
 		add( message );
-		
+
 		phase = Phase.FADE_IN;
 		timeLeft = TIME_TO_FADE;
 
 		thread = new Thread() {
 			@Override
 			public void run() {
-				
+
 				try {
 
 					switch (mode) {
-					case DESCEND:
-						descend();
-						break;
-					case ASCEND:
-						ascend();
-						break;
-					case CONTINUE:
-						restore();
-						break;
-					case RESURRECT:
-						resurrect();
-						break;
-					case RETURN:
-						returnTo();
-						break;
-					case FALL:
-						fall();
-						break;
-					case RESET:
-						reset();
-						break;
+						case DESCEND:
+							descend();
+							break;
+						case ASCEND:
+							ascend();
+							break;
+						case CONTINUE:
+							restore();
+							break;
+						case RESURRECT:
+							resurrect();
+							break;
+						case RETURN:
+							returnTo();
+							break;
+						case FALL:
+							fall();
+							break;
+						case RESET:
+							reset();
+							break;
 					}
-					
+
 					if ((Dungeon.depth % 5) == 0) {
 						Sample.INSTANCE.load( Assets.SND_BOSS );
 					}
-					
+
 				} catch (Exception e) {
-					
+
 					error = e;
 
 				}
@@ -136,71 +135,68 @@ public class InterlevelScene extends PixelScene {
 		thread.start();
 		waitingTime = 0f;
 	}
-	
+
 	@Override
 	public void update() {
 		super.update();
 
 		waitingTime += Game.elapsed;
-		
+
 		float p = timeLeft / TIME_TO_FADE;
-		
+
 		switch (phase) {
-		
-		case FADE_IN:
-			message.alpha( 1 - p );
-			if ((timeLeft -= Game.elapsed) <= 0) {
-				if (!thread.isAlive() && error == null) {
-					phase = Phase.FADE_OUT;
-					timeLeft = TIME_TO_FADE;
-				} else {
-					phase = Phase.STATIC;
-				}
-			}
-			break;
-			
-		case FADE_OUT:
-			message.alpha( p );
 
-			if (mode == Mode.CONTINUE || (mode == Mode.DESCEND && Dungeon.depth == 1)) {
-				Music.INSTANCE.volume( p * (LovecraftPixelDungeon.musicVol()/10f));
-			}
-			if ((timeLeft -= Game.elapsed) <= 0) {
-				Game.switchScene( GameScene.class );
-			}
-			break;
-			
-		case STATIC:
-			if (error != null) {
-				String errorMsg;
-				if (error instanceof FileNotFoundException)     errorMsg = Messages.get(this, "file_not_found");
-				else if (error instanceof IOException)          errorMsg = Messages.get(this, "io_error");
-				else if (error.getMessage() != null &&
-						error.getMessage().equals("old save")) errorMsg = Messages.get(this, "io_error");
-
-				else throw new RuntimeException("fatal error occured while moving between floors", error);
-
-				add( new WndError( errorMsg ) {
-					public void onBackPressed() {
-						super.onBackPressed();
-						Game.switchScene( StartScene.class );
+			case FADE_IN:
+				message.alpha( 1 - p );
+				if ((timeLeft -= Game.elapsed) <= 0) {
+					if (!thread.isAlive() && error == null) {
+						phase = Phase.FADE_OUT;
+						timeLeft = TIME_TO_FADE;
+					} else {
+						phase = Phase.STATIC;
 					}
-				} );
-				error = null;
-			} else if ((int)waitingTime == 10){
-				waitingTime = 11f;
-				LovecraftPixelDungeon.reportException(
-						new RuntimeException("waited more than 10 seconds on levelgen. Seed:" + Dungeon.seed + " depth:" + Dungeon.depth)
-				);
-			}
-			break;
+				}
+				break;
+
+			case FADE_OUT:
+				message.alpha( p );
+
+				if ((timeLeft -= Game.elapsed) <= 0) {
+					Game.switchScene( GameScene.class );
+				}
+				break;
+
+			case STATIC:
+				if (error != null) {
+					String errorMsg;
+					if (error instanceof FileNotFoundException)     errorMsg = Messages.get(this, "file_not_found");
+					else if (error instanceof IOException)          errorMsg = Messages.get(this, "io_error");
+					else if (error.getMessage() != null &&
+							error.getMessage().equals("old save")) errorMsg = Messages.get(this, "io_error");
+
+					else throw new RuntimeException("fatal error occured while moving between floors", error);
+
+					add( new WndError( errorMsg ) {
+						public void onBackPressed() {
+							super.onBackPressed();
+							Game.switchScene( StartScene.class );
+						}
+					} );
+					error = null;
+				} else if ((int)waitingTime == 100){
+					waitingTime = 11f;
+					LovecraftPixelDungeon.reportException(
+							new RuntimeException("waited more than 10 seconds on levelgen. Seed:" + Dungeon.seed + " depth:" + Dungeon.depth)
+					);
+				}
+				break;
 		}
 	}
 
 	private void descend() throws IOException {
 
 		Actor.fixTime();
-		
+
 		if (Dungeon.hero == null) {
 			DriedRose.clearHeldGhostHero();
 			Dungeon.init();
@@ -223,12 +219,12 @@ public class InterlevelScene extends PixelScene {
 		}
 		Dungeon.switchLevel( level, level.entrance );
 	}
-	
+
 	private void fall() throws IOException {
 
 		Actor.fixTime();
 		DriedRose.holdGhostHero( Dungeon.level );
-		
+
 		Dungeon.saveAll();
 
 		Level level;
@@ -240,9 +236,9 @@ public class InterlevelScene extends PixelScene {
 		}
 		Dungeon.switchLevel( level, level.fallCell( fallIntoPit ));
 	}
-	
+
 	private void ascend() throws IOException {
-		
+
 		Actor.fixTime();
 		DriedRose.holdGhostHero( Dungeon.level );
 
@@ -251,9 +247,9 @@ public class InterlevelScene extends PixelScene {
 		Level level = Dungeon.loadLevel( Dungeon.hero.heroClass );
 		Dungeon.switchLevel( level, level.exit );
 	}
-	
+
 	private void returnTo() throws IOException {
-		
+
 		Actor.fixTime();
 		DriedRose.holdGhostHero( Dungeon.level );
 
@@ -262,9 +258,9 @@ public class InterlevelScene extends PixelScene {
 		Level level = Dungeon.loadLevel( Dungeon.hero.heroClass );
 		Dungeon.switchLevel( level, returnPos );
 	}
-	
+
 	private void restore() throws IOException {
-		
+
 		Actor.fixTime();
 		DriedRose.clearHeldGhostHero();
 
@@ -279,12 +275,12 @@ public class InterlevelScene extends PixelScene {
 			Dungeon.switchLevel( level, Dungeon.hero.pos );
 		}
 	}
-	
+
 	private void resurrect() throws IOException {
-		
+
 		Actor.fixTime();
 		DriedRose.holdGhostHero( Dungeon.level );
-		
+
 		if (Dungeon.level.locked) {
 			Dungeon.hero.resurrect( Dungeon.depth );
 			Dungeon.depth--;
@@ -307,7 +303,7 @@ public class InterlevelScene extends PixelScene {
 		Level level = Dungeon.newLevel();
 		Dungeon.switchLevel( level, level.entrance );
 	}
-	
+
 	@Override
 	protected void onBackPressed() {
 		//Do nothing

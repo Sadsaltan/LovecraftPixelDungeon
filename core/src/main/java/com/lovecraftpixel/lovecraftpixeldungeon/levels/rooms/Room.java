@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
-import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Graph;
@@ -403,7 +402,6 @@ public class Room extends Rect implements Graph.Node, Bundlable {
 	}
 
 	public static Plant.Seed randomSeed(){
-		GLog.i("PLANT!");
 		return (Plant.Seed) Generator.random(Generator.Category.SEED);
 	}
 }
