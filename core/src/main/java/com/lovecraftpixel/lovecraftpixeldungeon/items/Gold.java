@@ -53,6 +53,21 @@ public class Gold extends Item {
 	
 	public Gold( int value ) {
 		this.quantity = value;
+		if(this.quantity < 5){
+			image = ItemSpriteSheet.MONEY_TINY;
+		}
+		if(this.quantity < 10){
+			image = ItemSpriteSheet.MONEY_SMALL;
+		}
+		if(this.quantity < 25){
+			image = ItemSpriteSheet.MONEY_MEDIUM;
+		}
+		if(this.quantity < 30){
+			image = ItemSpriteSheet.GOLD;
+		}
+		if(this.quantity < 50){
+			image = ItemSpriteSheet.MONEY_BIG;
+		}
 	}
 	
 	@Override
