@@ -38,6 +38,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Greataxe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
@@ -97,17 +98,14 @@ public enum HeroClass {
 			new Food().identify().collect();
 			new FoodBag().collect();
 
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
+
+		for(int i = 10; i > 0; i--) {
+			new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
+		}
+
+		for(int i = 10; i > 0; i--){
+			new ScrollOfMagicMapping().identify().collect();
+		}
 
 		Greataxe greataxe = new Greataxe();
 		greataxe.level(1000);
@@ -119,6 +117,8 @@ public enum HeroClass {
 		mailArmor.level(1000);
 		mailArmor.identify();
 		mailArmor.collect();
+
+		new Pistol().identify().collect();
 
 	}
 

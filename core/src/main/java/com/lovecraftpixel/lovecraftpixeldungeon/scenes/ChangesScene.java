@@ -169,6 +169,9 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton( new ItemSprite(new ElderSign().image, null), new ElderSign().name(),
 				"Opens a portal to Neu Schwabenland."));
 
+		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.WEP_GUN).image, null), "Guns",
+				"You can now also find guns in this Guneon."));
+
 		changes = new ChangeInfo("Blobs", false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);

@@ -100,6 +100,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfRegrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfTransfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfVenom;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.AssassinsBlade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
@@ -198,6 +199,7 @@ public class Generator {
 		WEP_T3	( 0,    Weapon.class),
 		WEP_T4	( 0,    Weapon.class),
 		WEP_T5	( 0,    Weapon.class),
+		WEP_GUN	( 0,    GunWeapon.class),
 		ARMOR	( 4,    Armor.class ),
 		POTION	( 20,   Potion.class ),
 		SCROLL	( 20,   Scroll.class ),
@@ -346,6 +348,11 @@ public class Generator {
 					Halberd.class,
 			};
 			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 5 };
+
+			WEP_GUN.classes = new Class<?>[]{
+					Pistol.class,
+			};
+			WEP_GUN.probs = new float[]{ 5, };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
