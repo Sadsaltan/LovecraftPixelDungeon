@@ -149,7 +149,8 @@ public class Assets {
 	public static final String THEME			= "music/theme.ogg";
 	public static final String TUNE				= "music/game.ogg";
 	public static final String HAPPY			= "music/surface.ogg";
-	public static final String ATTACKONTITAN	= "music/AttackOnTitan.ogg";
+
+	/**public static final String ATTACKONTITAN	= "music/AttackOnTitan.ogg";
 	public static final String DEATHNOTE		= "music/DeathNote.ogg";
 	public static final String DEATHPARADE		= "music/DeathParade.ogg";
 	public static final String ERASED			= "music/Erased.ogg";
@@ -164,7 +165,7 @@ public class Assets {
 	public static final String PARASYTE			= "music/Parasyte.ogg";
 	public static final String SOULEATER		= "music/SoulEater.ogg";
 	public static final String STEINSGATE		= "music/Steinsgate.ogg";
-	public static final String TOKYOGHOUL		= "music/TokyoGhoul.ogg";
+	public static final String TOKYOGHOUL		= "music/TokyoGhoul.ogg";**/
 
 	public static final String SND_CLICK	= "sound/snd_click.mp3";
 	public static final String SND_BADGE	= "sound/snd_badge.mp3";

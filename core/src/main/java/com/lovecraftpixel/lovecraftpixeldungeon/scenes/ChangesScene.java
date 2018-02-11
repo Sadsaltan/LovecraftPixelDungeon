@@ -32,6 +32,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.quest.ElderSign;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.quest.YellowSign;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.GardnerSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
@@ -169,7 +170,7 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton( new ItemSprite(new ElderSign().image, null), new ElderSign().name(),
 				"Opens a portal to Neu Schwabenland."));
 
-		changes.addButton( new ChangeButton( new ItemSprite(Generator.random(Generator.Category.WEP_GUN).image, null), "Guns",
+		changes.addButton( new ChangeButton( new ItemSprite(new Pistol().image, null), "Guns",
 				"You can now also find guns in this Guneon."));
 
 		changes = new ChangeInfo("Blobs", false, null);

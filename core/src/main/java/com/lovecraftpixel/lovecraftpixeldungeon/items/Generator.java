@@ -103,7 +103,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Bow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Crossbow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.FastFirePistol;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Harpoon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.HeavyCrossbow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
@@ -209,7 +208,6 @@ public class Generator {
 		WEP_T3	( 0,    Weapon.class),
 		WEP_T4	( 0,    Weapon.class),
 		WEP_T5	( 0,    Weapon.class),
-		WEP_GUN	( 0,    GunWeapon.class),
 		ARMOR	( 4,    Armor.class ),
 		POTION	( 20,   Potion.class ),
 		SCROLL	( 20,   Scroll.class ),
@@ -368,17 +366,6 @@ public class Generator {
 					HeavyCrossbow.class,
 			};
 			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 5, 2, 2 };
-
-			WEP_GUN.classes = new Class<?>[]{
-					Pistol.class,
-					Rifle.class,
-					FastFirePistol.class,
-					Bow.class,
-					Crossbow.class,
-					Harpoon.class,
-					HeavyCrossbow.class,
-			};
-			WEP_GUN.probs = new float[]{ 5, 5, 5, 5, 5, 5, 5};
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
