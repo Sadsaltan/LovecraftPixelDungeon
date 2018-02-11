@@ -39,6 +39,16 @@ public class GardenerRoom extends SpecialRoom {
 	@Override
 	public int minHeight() { return 3; }
 
+	@Override
+	public int maxHeight() {
+		return 3;
+	}
+
+	@Override
+	public int maxWidth() {
+		return 3;
+	}
+
 	public void paint(Level level ) {
 
 		Door entrance = entrance();
