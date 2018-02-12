@@ -42,7 +42,7 @@ public class Pistol extends GunWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return lvl+4;
+		return lvl+2;
 	}
 
 	@Override

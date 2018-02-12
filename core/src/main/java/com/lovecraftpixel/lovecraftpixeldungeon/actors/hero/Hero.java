@@ -1258,12 +1258,18 @@ public class Hero extends Char {
 		
 		Char ch;
 		Heap heap;
+
+		boolean isinrange = false;
+		for (int i : PathFinder.NEIGHBOURS9){
+			if(Dungeon.hero.pos+i == cell)
+				isinrange = true;
+		}
 		
 		if (Dungeon.level.map[cell] == Terrain.ALCHEMY && cell != pos) {
 			
 			curAction = new HeroAction.Alchemy( cell );
 			
-		} else if(Dungeon.level.map[cell] == Terrain.BOOKSHELF && cell != pos){
+		} else if(Dungeon.level.map[cell] == Terrain.BOOKSHELF && cell != pos && isinrange){
 			this.gainKnowl(1);
 
 			GLog.b(BookTitles.getRandomTitle());

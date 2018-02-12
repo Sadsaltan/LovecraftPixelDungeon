@@ -49,14 +49,56 @@ public class Gold extends Item {
 	
 	public Gold() {
 		this( 1 );
+		if(!(this.quantity > 5)){
+			this.image = ItemSpriteSheet.MONEY_TINY;
+		} else
+		if(!(this.quantity > 25)){
+			this.image = ItemSpriteSheet.MONEY_SMALL;
+		} else
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
+		} else {
+			this.image = ItemSpriteSheet.MONEY_BIG;
+		}
 	}
 	
 	public Gold( int value ) {
 		this.quantity = value;
+		if(!(this.quantity > 5)){
+			this.image = ItemSpriteSheet.MONEY_TINY;
+		} else
+		if(!(this.quantity > 25)){
+			this.image = ItemSpriteSheet.MONEY_SMALL;
+		} else
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
+		} else {
+			this.image = ItemSpriteSheet.MONEY_BIG;
+		}
 	}
 	
 	@Override
 	public ArrayList<String> actions( Hero hero ) {
+		if(!(this.quantity > 5)){
+			this.image = ItemSpriteSheet.MONEY_TINY;
+		} else
+		if(!(this.quantity > 25)){
+			this.image = ItemSpriteSheet.MONEY_SMALL;
+		} else
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
+		} else {
+			this.image = ItemSpriteSheet.MONEY_BIG;
+		}
 		return new ArrayList<String>();
 	}
 	
@@ -94,18 +136,18 @@ public class Gold extends Item {
 	public Item random() {
 		quantity = Random.Int( 30 + Dungeon.depth * 10, 60 + Dungeon.depth * 20 );
 		if(!(this.quantity > 5)){
-			image = ItemSpriteSheet.MONEY_TINY;
-		} else
-		if(!(this.quantity > 10)){
-			image = ItemSpriteSheet.MONEY_SMALL;
+			this.image = ItemSpriteSheet.MONEY_TINY;
 		} else
 		if(!(this.quantity > 25)){
-			image = ItemSpriteSheet.MONEY_MEDIUM;
+			this.image = ItemSpriteSheet.MONEY_SMALL;
 		} else
-		if(!(this.quantity > 30)){
-			image = ItemSpriteSheet.GOLD;
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
 		} else {
-			image = ItemSpriteSheet.MONEY_BIG;
+			this.image = ItemSpriteSheet.MONEY_BIG;
 		}
 		return this;
 	}
@@ -116,11 +158,39 @@ public class Gold extends Item {
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
 		bundle.put( VALUE, quantity );
+		if(!(this.quantity > 5)){
+			this.image = ItemSpriteSheet.MONEY_TINY;
+		} else
+		if(!(this.quantity > 25)){
+			this.image = ItemSpriteSheet.MONEY_SMALL;
+		} else
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
+		} else {
+			this.image = ItemSpriteSheet.MONEY_BIG;
+		}
 	}
 	
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		super.restoreFromBundle(bundle);
 		quantity = bundle.getInt( VALUE );
+		if(!(this.quantity > 5)){
+			this.image = ItemSpriteSheet.MONEY_TINY;
+		} else
+		if(!(this.quantity > 25)){
+			this.image = ItemSpriteSheet.MONEY_SMALL;
+		} else
+		if(!(this.quantity > 50)){
+			this.image = ItemSpriteSheet.MONEY_MEDIUM;
+		} else
+		if(!(this.quantity > 100)){
+			this.image = ItemSpriteSheet.GOLD;
+		} else {
+			this.image = ItemSpriteSheet.MONEY_BIG;
+		}
 	}
 }

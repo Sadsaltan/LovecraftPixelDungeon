@@ -183,7 +183,7 @@ public abstract class RegularLevel extends Level {
 	@Override
 	public int nMobs() {
 		switch(Dungeon.depth) {
-			case 2:
+			case 1:
 				//mobs are not randomly spawned on floor 1.
 				return 0;
 			default:
@@ -208,7 +208,7 @@ public abstract class RegularLevel extends Level {
 	
 	@Override
 	protected void createMobs() {
-		//on floor 2, 10 rats are created so the player can get level 2.
+		//on floor 1, 10 rats are created so the player can get level 2.
 		int mobsToSpawn = Dungeon.depth == 1 ? 10 : nMobs();
 
 		ArrayList<Room> stdRooms = new ArrayList<>();
@@ -259,8 +259,8 @@ public abstract class RegularLevel extends Level {
 		}
 
 		for (Mob m : mobs){
-			if (plants.get(map[m.pos]) != null) {
-				plants.get(map[m.pos]).trigger();
+			if (plants.get(m.pos) != null) {
+				plants.remove(m.pos);
 			}
 
 		}
@@ -343,8 +343,8 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
-			if(plants.get(map[cell]) != null){
-				plants.get(map[cell]).trigger();
+			if(plants.get(cell) != null){
+				plants.remove(cell);
 			}
 			
 			Item toDrop = Generator.random();
@@ -368,8 +368,8 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
-			if(plants.get(map[cell]) != null){
-				plants.get(map[cell]).trigger();
+			if(plants.get(cell) != null){
+				plants.remove(cell);
 			}
 		}
 		
@@ -380,8 +380,8 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
-			if(plants.get(map[cell]) != null){
-				plants.get(map[cell]).trigger();
+			if(plants.get(cell) != null){
+				plants.remove(cell);
 			}
 			drop( item, cell ).type = Heap.Type.REMAINS;
 		}
@@ -410,8 +410,8 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
-			if(plants.get(map[cell]) != null){
-				plants.get(map[cell]).trigger();
+			if(plants.get(cell) != null){
+				plants.remove(cell);
 			}
 			drop( p, cell );
 		}

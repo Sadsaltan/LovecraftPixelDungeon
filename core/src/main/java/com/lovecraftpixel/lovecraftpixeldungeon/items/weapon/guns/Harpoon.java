@@ -47,7 +47,7 @@ public class Harpoon extends GunWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return lvl+10;
+		return lvl+4;
 	}
 
 	@Override

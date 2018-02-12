@@ -42,12 +42,12 @@ public class Crossbow extends GunWeapon {
 
 	@Override
 	public int min(int lvl) {
-		return lvl+3;
+		return lvl+2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return lvl+6;
+		return lvl+3;
 	}
 
 	@Override
