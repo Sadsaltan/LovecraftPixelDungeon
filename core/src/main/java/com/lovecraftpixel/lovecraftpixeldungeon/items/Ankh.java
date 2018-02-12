@@ -66,6 +66,9 @@ public class Ankh extends Item {
 		DewVial vial = hero.belongings.getItem(DewVial.class);
 		if (vial != null && vial.isFull() && !blessed)
 			actions.add( AC_BLESS );
+
+		if(blessed)
+			this.image = ItemSpriteSheet.BLESSED_ANKH;
 		return actions;
 	}
 
@@ -79,6 +82,7 @@ public class Ankh extends Item {
 			DewVial vial = hero.belongings.getItem(DewVial.class);
 			if (vial != null){
 				blessed = true;
+				this.image = ItemSpriteSheet.BLESSED_ANKH;
 				vial.empty();
 				GLog.p( Messages.get(this, "bless") );
 				hero.spend( 1f );
@@ -117,12 +121,16 @@ public class Ankh extends Item {
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
 		bundle.put( BLESSED, blessed );
+		if(blessed)
+			this.image = ItemSpriteSheet.BLESSED_ANKH;
 	}
 
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		super.restoreFromBundle( bundle );
 		blessed	= bundle.getBoolean( BLESSED );
+		if(blessed)
+			this.image = ItemSpriteSheet.BLESSED_ANKH;
 	}
 	
 	@Override
