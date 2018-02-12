@@ -37,12 +37,12 @@ public class FastFirePistol extends GunWeapon {
 
 	@Override
 	public int min(int lvl) {
-		return 3;
+		return lvl+2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return 13;
+		return lvl+8;
 	}
 
 	@Override

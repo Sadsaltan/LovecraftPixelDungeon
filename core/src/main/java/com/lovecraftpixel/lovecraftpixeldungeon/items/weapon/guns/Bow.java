@@ -37,12 +37,12 @@ public class Bow extends GunWeapon {
 
 	@Override
 	public int min(int lvl) {
-		return 2;
+		return lvl+1;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return 6;
+		return  4 + lvl;
 	}
 
 	@Override

@@ -38,12 +38,12 @@ public class Rifle extends GunWeapon {
 
 	@Override
 	public int min(int lvl) {
-		return 5;
+		return lvl+2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return 15;
+		return lvl+8;
 	}
 
 	@Override
