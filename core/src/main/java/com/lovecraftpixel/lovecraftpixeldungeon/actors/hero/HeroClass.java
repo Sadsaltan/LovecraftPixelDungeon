@@ -29,7 +29,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Challenges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.BrokenSeal;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.ClothArmor;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.LeatherArmor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.CloakOfShadows;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.FoodBag;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.Food;
@@ -40,14 +39,11 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Kusarigama;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MagesStaff;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.WornShortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Boomerang;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
-import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.FadeleafHerb;
 import com.watabou.utils.Bundle;
 
 public enum HeroClass {
@@ -96,11 +92,6 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
 			new FoodBag().collect();
-
-		new Kusarigama().upgrade(100).identify().collect();
-		new LeatherArmor().upgrade(100).identify().collect();
-
-		new FadeleafHerb().setSeed(new Sungrass.Seed()).collect();
 	}
 
 	public Badges.Badge masteryBadge() {

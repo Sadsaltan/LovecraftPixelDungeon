@@ -32,7 +32,7 @@ public class Kusarigama extends MeleeWeapon {
 
 		tier = 3;
 		DLY = 0.8f; //1.25x speed
-		RCH = 3;
+		RCH = 2;
 	}
 
 	@Override

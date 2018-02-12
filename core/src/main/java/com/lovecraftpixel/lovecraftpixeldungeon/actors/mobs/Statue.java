@@ -32,7 +32,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon.Enchantment;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Grim;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Vampiric;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Notes;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
@@ -58,7 +57,7 @@ public class Statue extends Mob {
 		
 		do {
 			weapon = (Weapon)Generator.random( Generator.Category.WEAPON );
-		} while (!(weapon instanceof MeleeWeapon) || !(weapon instanceof GunWeapon)|| weapon.cursed);
+		} while (!(weapon instanceof MeleeWeapon) || weapon.cursed);
 		
 		weapon.enchant( Enchantment.random() );
 		
