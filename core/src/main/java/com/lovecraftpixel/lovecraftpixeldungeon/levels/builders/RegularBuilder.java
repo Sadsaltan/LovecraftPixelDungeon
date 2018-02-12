@@ -27,13 +27,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.connection.ConnectionRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.connection.MazeConnectionRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.secret.SecretRoom;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.GardenerRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.ShopRoom;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ElderSignRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.EntranceRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.ExitRoom;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.StandardRoom;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard.YellowSignRoom;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -85,9 +82,6 @@ public abstract class RegularBuilder extends Builder {
 	protected Room entrance = null;
 	protected Room exit = null;
 	protected Room shop = null;
-	protected Room garden = null;
-	protected Room eldersign = null;
-	protected Room yellowsign = null;
 	
 	protected ArrayList<Room> multiConnections = new ArrayList<>();
 	protected ArrayList<Room> singleConnections = new ArrayList<>();
@@ -97,7 +91,7 @@ public abstract class RegularBuilder extends Builder {
 			r.setEmpty();
 		}
 		
-		entrance = exit = shop = garden = eldersign = yellowsign = null;
+		entrance = exit = shop = null;
 		singleConnections.clear();
 		multiConnections.clear();
 		for (Room r : rooms){
@@ -107,12 +101,6 @@ public abstract class RegularBuilder extends Builder {
 				exit = r;
 			} else if (r instanceof ShopRoom && r.maxConnections(Room.ALL) == 1){
 				shop = r;
-			} else if (r instanceof GardenerRoom && r.maxConnections(Room.ALL) == 1){
-				garden = r;
-			} else if (r instanceof YellowSignRoom && r.maxConnections(Room.ALL) == 1){
-				yellowsign = r;
-			} else if (r instanceof ElderSignRoom && r.maxConnections(Room.ALL) == 1){
-				eldersign = r;
 			} else if (r.maxConnections(Room.ALL) > 1){
 				multiConnections.add(r);
 			} else if (r.maxConnections(Room.ALL) == 1){

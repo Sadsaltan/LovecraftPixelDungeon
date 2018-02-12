@@ -34,19 +34,19 @@ import com.watabou.utils.Random;
 public class GardenerRoom extends SpecialRoom {
 	
 	@Override
-	public int minWidth() { return 3; }
+	public int minWidth() { return 4; }
 	
 	@Override
-	public int minHeight() { return 3; }
+	public int minHeight() { return 4; }
 
 	@Override
 	public int maxHeight() {
-		return 3;
+		return 4;
 	}
 
 	@Override
 	public int maxWidth() {
-		return 3;
+		return 4;
 	}
 
 	public void paint(Level level ) {

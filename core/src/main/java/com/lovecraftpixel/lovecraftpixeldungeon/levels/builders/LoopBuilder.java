@@ -156,36 +156,6 @@ public class LoopBuilder extends RegularBuilder {
 			} while (angle == -1 && tries >= 0);
 			if (angle == -1) return null;
 		}
-
-		if (garden != null) {
-			float angle;
-			int tries = 10;
-			do {
-				angle = placeRoom(loop, entrance, garden, Random.Float(360f));
-				tries--;
-			} while (angle == -1 && tries >= 0);
-			if (angle == -1) return null;
-		}
-
-		if (eldersign != null) {
-			float angle;
-			int tries = 10;
-			do {
-				angle = placeRoom(loop, exit, eldersign, Random.Float(360f));
-				tries--;
-			} while (angle == -1 && tries >= 0);
-			if (angle == -1) return null;
-		}
-
-		if (yellowsign != null) {
-			float angle;
-			int tries = 10;
-			do {
-				angle = placeRoom(loop, exit, yellowsign, Random.Float(360f));
-				tries--;
-			} while (angle == -1 && tries >= 0);
-			if (angle == -1) return null;
-		}
 		
 		ArrayList<Room> branchable = new ArrayList<>(loop);
 		

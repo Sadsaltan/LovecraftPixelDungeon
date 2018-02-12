@@ -75,7 +75,7 @@ public abstract class RegularLevel extends Level {
 	protected Room roomExit;
 	
 	public int secretDoors;
-	
+
 	@Override
 	protected boolean build() {
 		

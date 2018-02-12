@@ -69,7 +69,7 @@ public class CavesLevel extends RegularLevel {
 	@Override
 	protected int standardRooms() {
 		//6 to 9, average 7.333
-		return 6+Random.chances(new float[]{2, 3, 3, 1});
+		return 5+Random.chances(new float[]{2, 3, 3, 1});
 	}
 	
 	@Override

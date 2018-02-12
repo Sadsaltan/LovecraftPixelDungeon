@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 
 //other rooms should only extend emptyRoom if they do not add significant terrain
 public class EmptyRoom extends StandardRoom {
@@ -39,15 +38,5 @@ public class EmptyRoom extends StandardRoom {
 		for (Door door : connected.values()) {
 			door.set( Door.Type.REGULAR );
 		}
-
-		level.plant(Room.randomSeed(), plantPos( level ));
-	}
-
-	private int plantPos( Level level ){
-		int pos;
-		do{
-			pos = level.pointToCell(random());
-		} while (level.plants.get(pos) != null);
-		return pos;
 	}
 }
