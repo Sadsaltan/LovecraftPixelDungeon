@@ -1580,7 +1580,7 @@ public class Hero extends Char {
 
 	@Override
 	public void move( int step ) {
-		if(isInsane()){
+		if(isInsane() && this.isAlive()){
 			if(RandomL.randomBoolean()){
 				damage(1, this);
 			} else {

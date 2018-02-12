@@ -66,10 +66,14 @@ public class LivingPlant extends Mob {
         super.move(step);
         if(this.pos == Terrain.EMBERS ||
                 this.pos == Terrain.EMPTY_DECO ||
-                this.pos == Terrain.EMPTY){
+                this.pos == Terrain.EMPTY ||
+                this.pos == Terrain.HIGH_GRASS){
             Dungeon.level.map[this.pos] = Terrain.GRASS;
-            GameScene.updateMap(pos);
         }
+        if(Dungeon.level.plants.get(this.pos) != null){
+            Dungeon.level.plants.get(this.pos).trigger();
+        }
+        GameScene.updateMap(pos);
     }
 
     @Override

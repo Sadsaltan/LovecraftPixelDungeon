@@ -114,6 +114,16 @@ public class DewVial extends Item {
 				Sample.INSTANCE.play( Assets.SND_DRINK );
 				hero.sprite.operate( hero.pos );
 
+				if(isFull()){
+					image = ItemSpriteSheet.VIAL_FULL;
+				} else if(volume == 0){
+					image = ItemSpriteSheet.VIAL;
+				} else if(volume <= MAX_VOLUME/2){
+					image = ItemSpriteSheet.VIAL_LITTLE;
+				} else {
+					image = ItemSpriteSheet.VIAL_MIDDLE;
+				}
+
 				updateQuickslot();
 
 
@@ -124,7 +134,19 @@ public class DewVial extends Item {
 		}
 	}
 
-	public void empty() {volume = 0; updateQuickslot();}
+	public void empty() {
+		volume = 0;
+		if(isFull()){
+			image = ItemSpriteSheet.VIAL_FULL;
+		} else if(volume == 0){
+			image = ItemSpriteSheet.VIAL;
+		} else if(volume <= MAX_VOLUME/2){
+			image = ItemSpriteSheet.VIAL_LITTLE;
+		} else {
+			image = ItemSpriteSheet.VIAL_MIDDLE;
+		}
+		updateQuickslot();
+	}
 
 	@Override
 	public boolean isUpgradable() {
@@ -149,11 +171,30 @@ public class DewVial extends Item {
 			GLog.p( Messages.get(this, "full") );
 		}
 
+		if(isFull()){
+			image = ItemSpriteSheet.VIAL_FULL;
+		} else if(volume == 0){
+			image = ItemSpriteSheet.VIAL;
+		} else if(volume <= (MAX_VOLUME/2)){
+			image = ItemSpriteSheet.VIAL_LITTLE;
+		} else {
+			image = ItemSpriteSheet.VIAL_MIDDLE;
+		}
+
 		updateQuickslot();
 	}
 
 	public void fill() {
 		volume = MAX_VOLUME;
+		if(isFull()){
+			image = ItemSpriteSheet.VIAL_FULL;
+		} else if(volume == 0){
+			image = ItemSpriteSheet.VIAL;
+		} else if(volume <= MAX_VOLUME/2){
+			image = ItemSpriteSheet.VIAL_LITTLE;
+		} else {
+			image = ItemSpriteSheet.VIAL_MIDDLE;
+		}
 		updateQuickslot();
 	}
 

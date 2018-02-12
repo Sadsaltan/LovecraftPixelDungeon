@@ -51,10 +51,6 @@ public class PrimitiveSpear extends MissileWeapon {
 		return 12;
 	}
 
-	public PrimitiveSpear() {
-		this( 1 );
-	}
-
 	public PrimitiveSpear(int number ) {
 		super();
 		quantity = number;

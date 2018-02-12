@@ -139,6 +139,16 @@ public abstract class Plant implements Bundlable {
 			if (Dungeon.level.heroFOV[livingPlantMob.pos]) {
 				CellEmitter.get( livingPlantMob.pos ).burst( Speck.factory( Speck.LIGHT ), 4 );
 			}
+			if(livingPlant.pos == Terrain.EMBERS ||
+					livingPlant.pos == Terrain.EMPTY_DECO ||
+					livingPlant.pos == Terrain.EMPTY ||
+					livingPlant.pos == Terrain.HIGH_GRASS){
+				Dungeon.level.map[livingPlant.pos] = Terrain.GRASS;
+			}
+			if(Dungeon.level.plants.get(livingPlant.pos) != null){
+				Dungeon.level.plants.get(livingPlant.pos).trigger();
+			}
+			GameScene.updateMap(pos);
 		}
 	}
 	

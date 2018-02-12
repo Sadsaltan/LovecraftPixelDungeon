@@ -56,7 +56,6 @@ abstract public class GunWeapon extends Weapon {
 
 	{
 		stackable = false;
-		levelKnown = true;
 		RCH = 10;
 
 		defaultAction = AC_SHOOT;
@@ -176,12 +175,12 @@ abstract public class GunWeapon extends Weapon {
 	
 	@Override
 	public boolean isUpgradable() {
-		return false;
+		return true;
 	}
 	
 	@Override
 	public boolean isIdentified() {
-		return true;
+		return false;
 	}
 	
 	@Override
