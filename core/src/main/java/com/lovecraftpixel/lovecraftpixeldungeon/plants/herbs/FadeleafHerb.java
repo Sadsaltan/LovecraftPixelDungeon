@@ -25,10 +25,13 @@ package com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ConfusionGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Fadeleaf;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 
 public class FadeleafHerb extends Herb {
@@ -46,6 +49,7 @@ public class FadeleafHerb extends Herb {
     private void effectChar(Char ch){
         ScrollOfTeleportation.teleportToLocation( (Hero)ch, Dungeon.level.exit );
         ((Hero)ch).curAction = null;
+        GameScene.add(Blob.seed(Dungeon.level.exit, 100, ConfusionGas.class));
     }
 
     @Override
