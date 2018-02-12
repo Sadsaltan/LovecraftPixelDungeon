@@ -258,6 +258,13 @@ public abstract class RegularLevel extends Level {
 
 		}
 
+		for (Mob m : mobs){
+			if (plants.get(map[m.pos]) != null) {
+				plants.get(map[m.pos]).trigger();
+			}
+
+		}
+
 	}
 	
 	@Override
@@ -336,6 +343,9 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
+			if(plants.get(map[cell]) != null){
+				plants.get(map[cell]).trigger();
+			}
 			
 			Item toDrop = Generator.random();
 			if ((toDrop instanceof Artifact && Random.Int(2) == 0) ||
@@ -358,6 +368,9 @@ public abstract class RegularLevel extends Level {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
 			}
+			if(plants.get(map[cell]) != null){
+				plants.get(map[cell]).trigger();
+			}
 		}
 		
 		Item item = Bones.get();
@@ -366,6 +379,9 @@ public abstract class RegularLevel extends Level {
 			if (map[cell] == Terrain.HIGH_GRASS) {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
+			}
+			if(plants.get(map[cell]) != null){
+				plants.get(map[cell]).trigger();
 			}
 			drop( item, cell ).type = Heap.Type.REMAINS;
 		}
@@ -393,6 +409,9 @@ public abstract class RegularLevel extends Level {
 			if (map[cell] == Terrain.HIGH_GRASS) {
 				map[cell] = Terrain.GRASS;
 				losBlocking[cell] = false;
+			}
+			if(plants.get(map[cell]) != null){
+				plants.get(map[cell]).trigger();
 			}
 			drop( p, cell );
 		}

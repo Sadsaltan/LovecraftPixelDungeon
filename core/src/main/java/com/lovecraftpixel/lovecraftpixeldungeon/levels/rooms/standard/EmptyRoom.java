@@ -38,5 +38,7 @@ public class EmptyRoom extends StandardRoom {
 		for (Door door : connected.values()) {
 			door.set( Door.Type.REGULAR );
 		}
+
+		level.plant(randomSeed(), level.pointToCell(random()));
 	}
 }
