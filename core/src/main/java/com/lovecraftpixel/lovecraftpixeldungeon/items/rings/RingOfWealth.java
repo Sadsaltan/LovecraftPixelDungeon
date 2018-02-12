@@ -24,11 +24,11 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.items.rings;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Bomb;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Gold;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Honeypot;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.TntBundle;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -107,7 +107,7 @@ public class RingOfWealth extends Ring {
 					items.add(Generator.random(Random.Int(2) == 0 ? Generator.Category.POTION : Generator.Category.SCROLL ));
 					break;
 				case 2:
-					items.add(new Bomb().random());
+					items.add(new TntBundle().random());
 					items.add(new Honeypot());
 					break;
 			}

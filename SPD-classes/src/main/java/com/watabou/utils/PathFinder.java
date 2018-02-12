@@ -47,6 +47,7 @@ public class PathFinder {
 	//similar to their equivalent neighbour arrays, but the order is clockwise.
 	//Useful for some logic functions, but is slower due to lack of array-access order.
 	public static int[] CIRCLE4;
+	public static int[] CIRCLE5;
 	public static int[] CIRCLE8;
 	
 	public static void setMapSize( int width, int height ) {
@@ -69,6 +70,7 @@ public class PathFinder {
 		NEIGHBOURS9 = new int[]{-width-1, -width, -width+1, -1, 0, +1, +width-1, +width, +width+1};
 
 		CIRCLE4 = new int[]{-width, +1, +width, -1};
+		CIRCLE5 = new int[]{-width, +1, 0, +width, -1};
 		CIRCLE8 = new int[]{-width-1, -width, -width+1, +1, +width+1, +width, +width-1, -1};
 	}
 

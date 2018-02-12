@@ -348,8 +348,7 @@ public abstract class RegularLevel extends Level {
 			}
 			
 			Item toDrop = Generator.random();
-			if ((toDrop instanceof Artifact && Random.Int(2) == 0) ||
-					(toDrop.isUpgradable() && Random.Int(4 - toDrop.level()) == 0)){
+			if ((toDrop instanceof Artifact && Random.Int(2) == 0) || (toDrop.isUpgradable() && Random.Int(4 - toDrop.level()) == 0)){
 				Heap dropped = drop( toDrop, cell );
 				if (heaps.get(cell) == dropped) {
 					dropped.type = Heap.Type.LOCKED_CHEST;

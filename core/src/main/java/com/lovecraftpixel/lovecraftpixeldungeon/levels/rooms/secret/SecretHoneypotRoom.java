@@ -28,6 +28,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Bee;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Bomb;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Honeypot;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.Tnt;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;
@@ -63,7 +64,7 @@ public class SecretHoneypotRoom extends SecretRoom {
 		placeItem( Random.Int(3) == 0 ? new Bomb.DoubleBomb() : new Bomb(), level);
 		
 		if (Random.Int(2) == 0){
-			placeItem( new Bomb(), level);
+			placeItem( new Tnt(), level);
 		}
 		
 		entrance().set(Door.Type.HIDDEN);
