@@ -25,9 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Badges;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.journal.GuidePage;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Document;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
@@ -73,11 +71,6 @@ public class EntranceRoom extends StandardRoom {
 			p.page(Document.GUIDE_INTRO_PAGE);
 			level.drop( p, pos );
 		}
-
-		level.drop(new Pistol(), level.pointToCell(random())).type = Heap.Type.EBONY_CHEST;
-		level.drop(new Pistol(), level.pointToCell(random())).type = Heap.Type.HOWARD_CHEST;
-		level.drop(new Pistol(), level.pointToCell(random())).type = Heap.Type.EVAN_CHEST;
-		level.drop(new Pistol(), level.pointToCell(random())).type = Heap.Type.GOLD_CHEST;
 
 		if (Dungeon.depth == 2){
 			if (!Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_1)){
