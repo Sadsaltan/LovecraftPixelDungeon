@@ -25,6 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.effects;
 
 import android.annotation.SuppressLint;
 import android.util.SparseArray;
+
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
@@ -51,6 +52,7 @@ public class Speck extends Image {
 	public static final int BUBBLE		= 12;
 	public static final int STEAM		= 13;
 	public static final int COIN		= 14;
+	public static final int GO			= 15;
 	
 	public static final int DISCOVER	= 101;
 	public static final int EVOKE		= 102;
@@ -321,6 +323,10 @@ public class Speck extends Image {
 			acc.y = 256;
 			lifespan = -speed.y / acc.y * 2;
 			break;
+
+			case GO:
+				lifespan = 0.8f;
+				break;
 		}
 		
 		left = lifespan;
@@ -370,6 +376,7 @@ public class Speck extends Image {
 				break;
 				
 			case QUESTION:
+				case GO:
 				scale.set( (float)(Math.sqrt( p < 0.5f ? p : 1 - p ) * 3) );
 				break;
 				

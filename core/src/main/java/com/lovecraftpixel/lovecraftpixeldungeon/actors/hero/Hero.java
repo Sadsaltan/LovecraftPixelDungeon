@@ -96,6 +96,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMappi
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.TimeFreezing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.GunWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Flail;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.MissileWeapon;
@@ -551,8 +552,11 @@ public class Hero extends Char {
 	@Override
 	public void spend( float time ) {
 		TimekeepersHourglass.timeFreeze buff = buff(TimekeepersHourglass.timeFreeze.class);
+		TimeFreezing.timeFreeze enchantment = buff(TimeFreezing.timeFreeze.class);
 		if (buff != null){
 			buff.processTime(time);
+		} else if(enchantment != null){
+			enchantment.processTime(time);
 		} else {
 			super.spend(time);
 		}

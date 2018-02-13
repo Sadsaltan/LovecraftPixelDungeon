@@ -60,6 +60,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfStrength;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.Scroll;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.TimeFreezing;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.features.Chasm;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.features.Door;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.features.HighGrass;
@@ -801,9 +802,10 @@ public abstract class Level implements Bundlable {
 		}
 
 		TimekeepersHourglass.timeFreeze timeFreeze = Dungeon.hero.buff(TimekeepersHourglass.timeFreeze.class);
+		TimeFreezing.timeFreeze timeFreezeEnchantment = Dungeon.hero.buff(TimeFreezing.timeFreeze.class);
 
 		if (trap != null) {
-			if (timeFreeze == null) {
+			if (timeFreeze == null && timeFreezeEnchantment == null) {
 
 				if (ch == Dungeon.hero)
 					Dungeon.hero.interrupt();
@@ -815,8 +817,12 @@ public abstract class Level implements Bundlable {
 				Sample.INSTANCE.play(Assets.SND_TRAP);
 
 				discover(cell);
-
-				timeFreeze.setDelayedPress(cell);
+				if(timeFreeze != null){
+					timeFreeze.setDelayedPress(cell);
+				}
+				if(timeFreezeEnchantment != null){
+					timeFreezeEnchantment.setDelayedPress(cell);
+				}
 
 			}
 		}
