@@ -80,7 +80,11 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.CrystalKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.GoldenKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.Key;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.LeadKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.PlatinKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.SkeletonKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.TitaniumKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.WoodenKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.Potion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMight;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfStrength;
@@ -834,8 +838,14 @@ public class Hero extends Char {
 			Heap heap = Dungeon.level.heaps.get( dst );
 			if (heap != null && (heap.type != Type.HEAP && heap.type != Type.FOR_SALE)) {
 				
-				if ((heap.type == Type.LOCKED_CHEST && Notes.keyCount(new GoldenKey(Dungeon.depth)) < 1)
-					|| (heap.type == Type.CRYSTAL_CHEST && Notes.keyCount(new CrystalKey(Dungeon.depth)) < 1)){
+				if (
+						(heap.type == Type.LOCKED_CHEST && Notes.keyCount(new GoldenKey(Dungeon.depth)) < 1)
+					|| (heap.type == Type.CRYSTAL_CHEST && Notes.keyCount(new CrystalKey(Dungeon.depth)) < 1)
+								|| (heap.type == Type.EBONY_CHEST && Notes.keyCount(new WoodenKey(Dungeon.depth)) < 1)
+								|| (heap.type == Type.HOWARD_CHEST && Notes.keyCount(new LeadKey(Dungeon.depth)) < 1)
+								|| (heap.type == Type.EVAN_CHEST && Notes.keyCount(new TitaniumKey(Dungeon.depth)) < 1)
+								|| (heap.type == Type.GOLD_CHEST && Notes.keyCount(new PlatinKey(Dungeon.depth)) < 1)
+						){
 
 						GLog.w( Messages.get(this, "locked_chest") );
 						ready();
@@ -1724,6 +1734,14 @@ public class Hero extends Char {
 				Notes.remove(new GoldenKey(Dungeon.depth));
 			} else if (heap.type == Type.CRYSTAL_CHEST){
 				Notes.remove(new CrystalKey(Dungeon.depth));
+			} else if (heap.type == Type.EBONY_CHEST){
+				Notes.remove(new WoodenKey(Dungeon.depth));
+			} else if (heap.type == Type.HOWARD_CHEST){
+				Notes.remove(new LeadKey(Dungeon.depth));
+			} else if (heap.type == Type.EVAN_CHEST){
+				Notes.remove(new TitaniumKey(Dungeon.depth));
+			} else if (heap.type == Type.GOLD_CHEST){
+				Notes.remove(new PlatinKey(Dungeon.depth));
 			}
 			GameScene.updateKeyDisplay();
 			heap.open( this );

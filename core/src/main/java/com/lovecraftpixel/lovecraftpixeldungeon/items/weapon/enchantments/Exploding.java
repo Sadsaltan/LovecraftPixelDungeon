@@ -52,7 +52,7 @@ public class Exploding extends Weapon.Enchantment {
 		if (Random.Int( level + 3 ) >= 2) {
 			
 			if (Random.Int( 2 ) == 0) {
-				explode(defender.pos);
+				explode(defender.pos, attacker);
 			}
 			defender.damage( Random.Int( 1, level + 2 ), this );
 			
@@ -64,7 +64,7 @@ public class Exploding extends Weapon.Enchantment {
 
 	}
 
-	public void explode(int cell){
+	public void explode(int cell, Char character){
 		Sample.INSTANCE.play( Assets.SND_BLAST );
 
 		if (Dungeon.level.heroFOV[cell]) {
@@ -91,7 +91,7 @@ public class Exploding extends Weapon.Enchantment {
 					heap.explode();
 
 				Char ch = Actor.findChar( c );
-				if (ch != null && ch != Dungeon.hero) {
+				if (ch != null && ch != character) {
 					//those not at the center of the blast take damage less consistently.
 					int minDamage = c == cell ? Dungeon.depth+5 : 1;
 					int maxDamage = 10 + Dungeon.depth * 2;

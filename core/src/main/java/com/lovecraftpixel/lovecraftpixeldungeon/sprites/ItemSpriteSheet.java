@@ -156,6 +156,10 @@ public class ItemSpriteSheet {
 	public static final int BLESSED_ANKH      	= TOOLS+2;
 	public static final int TNT      			= TOOLS+3;
 	public static final int TNT_BUNDLE      	= TOOLS+4;
+	public static final int PLATIN_KEY      	= TOOLS+5;
+	public static final int LEAD_KEY      		= TOOLS+6;
+	public static final int TITANIUM_KEY      	= TOOLS+7;
+	public static final int WOODEN_KEY      	= TOOLS+8;
 	static{
 		assignItemRect(SCISSORS,        11, 15);
 		assignItemRect(TINCTUREBOTTLE,  8,  13);

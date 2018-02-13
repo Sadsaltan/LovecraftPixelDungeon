@@ -31,7 +31,11 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.CrystalKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.GoldenKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.Key;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.LeadKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.PlatinKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.SkeletonKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.TitaniumKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.WoodenKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Notes;
 import com.watabou.gltextures.SmartTexture;
 import com.watabou.gltextures.TextureCache;
@@ -60,9 +64,13 @@ public class KeyDisplay extends Visual {
 	private static final LinkedHashMap<Class<? extends Key>, Integer> keyMap = new LinkedHashMap<>();
 	static {
 		keyMap.put(SkeletonKey.class, 1);
-		keyMap.put(CrystalKey.class, 2);
-		keyMap.put(GoldenKey.class, 3);
-		keyMap.put(IronKey.class, 4);
+		keyMap.put(PlatinKey.class, 2);
+		keyMap.put(LeadKey.class, 3);
+		keyMap.put(TitaniumKey.class, 4);
+		keyMap.put(WoodenKey.class, 5);
+		keyMap.put(CrystalKey.class, 6);
+		keyMap.put(GoldenKey.class, 7);
+		keyMap.put(IronKey.class, 8);
 	}
 	
 	private int totalKeys = 0;

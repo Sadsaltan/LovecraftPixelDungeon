@@ -35,6 +35,9 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.Artifact;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.journal.GuidePage;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.GoldenKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.PlatinKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.TitaniumKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.WoodenKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.journal.Document;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.builders.Builder;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.builders.LoopBuilder;
@@ -351,8 +354,32 @@ public abstract class RegularLevel extends Level {
 			if ((toDrop instanceof Artifact && Random.Int(2) == 0) || (toDrop.isUpgradable() && Random.Int(4 - toDrop.level()) == 0)){
 				Heap dropped = drop( toDrop, cell );
 				if (heaps.get(cell) == dropped) {
-					dropped.type = Heap.Type.LOCKED_CHEST;
-					addItemToSpawn(new GoldenKey(Dungeon.depth));
+					switch (Random.Int(1, 5)){
+						case 1:
+							dropped.type = Heap.Type.LOCKED_CHEST;
+							addItemToSpawn(new GoldenKey(Dungeon.depth));
+							break;
+						case 2:
+							dropped.type = Heap.Type.EBONY_CHEST;
+							addItemToSpawn(new WoodenKey(Dungeon.depth));
+							break;
+						case 3:
+							dropped.type = Heap.Type.HOWARD_CHEST;
+							addItemToSpawn(new GoldenKey(Dungeon.depth));
+							break;
+						case 4:
+							dropped.type = Heap.Type.EVAN_CHEST;
+							addItemToSpawn(new TitaniumKey(Dungeon.depth));
+							break;
+						case 5:
+							dropped.type = Heap.Type.GOLD_CHEST;
+							addItemToSpawn(new PlatinKey(Dungeon.depth));
+							break;
+						default:
+							dropped.type = Heap.Type.LOCKED_CHEST;
+							addItemToSpawn(new GoldenKey(Dungeon.depth));
+							break;
+					}
 				}
 			} else {
 				drop( toDrop, cell ).type = type;

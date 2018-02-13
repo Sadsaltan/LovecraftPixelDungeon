@@ -103,6 +103,10 @@ public class Heap implements Bundlable {
 		CHEST,
 		LOCKED_CHEST,
 		CRYSTAL_CHEST,
+		EBONY_CHEST,
+		HOWARD_CHEST,
+		EVAN_CHEST,
+		GOLD_CHEST,
 		TOMB,
 		SKELETON,
 		REMAINS,
@@ -129,6 +133,14 @@ public class Heap implements Bundlable {
 			return ItemSpriteSheet.LOCKED_CHEST;
 		case CRYSTAL_CHEST:
 			return ItemSpriteSheet.CRYSTAL_CHEST;
+			case EBONY_CHEST:
+				return ItemSpriteSheet.EBONY_CHEST;
+			case HOWARD_CHEST:
+				return ItemSpriteSheet.HOWARD_CHEST;
+			case EVAN_CHEST:
+				return ItemSpriteSheet.EVAN_CHEST;
+			case GOLD_CHEST:
+				return ItemSpriteSheet.GOLD_CHEST;
 		case TOMB:
 			return ItemSpriteSheet.TOMB;
 		case SKELETON:
@@ -448,6 +460,10 @@ public class Heap implements Bundlable {
 			case MIMIC:
 				return Messages.get(this, "chest");
 			case LOCKED_CHEST:
+			case EBONY_CHEST:
+			case HOWARD_CHEST:
+			case EVAN_CHEST:
+			case GOLD_CHEST:
 				return Messages.get(this, "locked_chest");
 			case CRYSTAL_CHEST:
 				return Messages.get(this, "crystal_chest");
@@ -468,6 +484,10 @@ public class Heap implements Bundlable {
 			case MIMIC:
 				return Messages.get(this, "chest_desc");
 			case LOCKED_CHEST:
+			case EBONY_CHEST:
+			case HOWARD_CHEST:
+			case EVAN_CHEST:
+			case GOLD_CHEST:
 				return Messages.get(this, "locked_chest_desc");
 			case CRYSTAL_CHEST:
 				if (peek() instanceof Artifact)

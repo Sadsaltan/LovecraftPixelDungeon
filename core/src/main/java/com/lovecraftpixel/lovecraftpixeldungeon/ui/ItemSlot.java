@@ -76,6 +76,18 @@ public class ItemSlot extends Button {
 	public static final Item CRYSTAL_CHEST = new Item() {
 		public int image() { return ItemSpriteSheet.CRYSTAL_CHEST; };
 	};
+	public static final Item EBONY_CHEST = new Item() {
+		public int image() { return ItemSpriteSheet.EBONY_CHEST; };
+	};
+	public static final Item HOWARD_CHEST = new Item() {
+		public int image() { return ItemSpriteSheet.HOWARD_CHEST; };
+	};
+	public static final Item EVAN_CHEST = new Item() {
+		public int image() { return ItemSpriteSheet.EVAN_CHEST; };
+	};
+	public static final Item GOLD_CHEST = new Item() {
+		public int image() { return ItemSpriteSheet.GOLD_CHEST; };
+	};
 	public static final Item TOMB = new Item() {
 		public int image() { return ItemSpriteSheet.TOMB; };
 	};

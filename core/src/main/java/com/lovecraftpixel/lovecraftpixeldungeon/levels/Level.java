@@ -682,7 +682,7 @@ public abstract class Level implements Bundlable {
 				GameScene.add( heap );
 			}
 			
-		} else if (heap.type == Heap.Type.LOCKED_CHEST || heap.type == Heap.Type.CRYSTAL_CHEST) {
+		} else if (heap.type == Heap.Type.LOCKED_CHEST || heap.type == Heap.Type.CRYSTAL_CHEST || heap.type == Heap.Type.EBONY_CHEST || heap.type == Heap.Type.HOWARD_CHEST || heap.type == Heap.Type.EVAN_CHEST || heap.type == Heap.Type.GOLD_CHEST ) {
 			
 			int n;
 			do {
