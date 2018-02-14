@@ -166,6 +166,10 @@ public class ItemSpriteSheet {
 		assignItemRect(BLESSED_ANKH,  	10,  16);
 		assignItemRect(TNT,  			12,  11);
 		assignItemRect(TNT_BUNDLE,  	15,  14);
+		assignItemRect(PLATIN_KEY,      8,  14);
+		assignItemRect(LEAD_KEY,        8,  14);
+		assignItemRect(TITANIUM_KEY,    8,  14);
+		assignItemRect(WOODEN_KEY,      8,  14);
 	}
 
 	                                                                                    //32 free slots

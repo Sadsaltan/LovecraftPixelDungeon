@@ -26,7 +26,6 @@ package com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
-import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
@@ -77,7 +76,7 @@ public class PlantItem extends Item {
         @Override
         public void onSelect( Integer cell ) {
             if(cell != null){
-                if(Dungeon.level.map[cell] == Terrain.ALCHEMY || Dungeon.level.pit[cell] || Dungeon.level.traps.get(cell) != null){
+                if(Dungeon.level.passable[cell] || !Dungeon.level.pit[cell] || Dungeon.level.traps.get(cell) == null){
                     Dungeon.level.plant(seed, cell);
                     curItem.detach(curUser.belongings.backpack);
                 }

@@ -64,12 +64,12 @@ public class KeyDisplay extends Visual {
 	private static final LinkedHashMap<Class<? extends Key>, Integer> keyMap = new LinkedHashMap<>();
 	static {
 		keyMap.put(SkeletonKey.class, 1);
-		keyMap.put(PlatinKey.class, 2);
-		keyMap.put(LeadKey.class, 3);
-		keyMap.put(TitaniumKey.class, 4);
-		keyMap.put(WoodenKey.class, 5);
-		keyMap.put(CrystalKey.class, 6);
-		keyMap.put(GoldenKey.class, 7);
+		keyMap.put(CrystalKey.class, 2);
+		keyMap.put(GoldenKey.class, 3);
+		keyMap.put(PlatinKey.class, 4);
+		keyMap.put(LeadKey.class, 5);
+		keyMap.put(WoodenKey.class, 6);
+		keyMap.put(TitaniumKey.class, 7);
 		keyMap.put(IronKey.class, 8);
 	}
 	
