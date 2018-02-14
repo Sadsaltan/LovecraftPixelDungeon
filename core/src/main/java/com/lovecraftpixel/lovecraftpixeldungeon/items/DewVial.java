@@ -88,7 +88,7 @@ public class DewVial extends Item {
 		if (volume > 0) {
 			actions.add( AC_DRINK );
 		}
-		if (this.isUpgradable()) {
+		if (this.isACUpgradeable()) {
 			actions.add( AC_UPGRADE );
 		}
 		return actions;
@@ -147,7 +147,7 @@ public class DewVial extends Item {
 
 		}
 		if(action.equals(AC_UPGRADE)){
-			GameScene.selectItem( itemSelector, WndBag.Mode.PLANTITEM, Messages.get(this, "upgrade") );
+			GameScene.selectItem( itemSelector, WndBag.Mode.UPGRADEABLE, Messages.get(this, "upgrade") );
 		}
 	}
 
@@ -169,6 +169,7 @@ public class DewVial extends Item {
 					boolean hadGoodEnchant = w.hasGoodEnchant();
 
 					w.upgrade();
+					withdrawBlessOrUpgrade();
 
 					if (hadCursedEnchant && !w.hasCurseEnchant()){
 						removeCurse( Dungeon.hero );
@@ -186,6 +187,7 @@ public class DewVial extends Item {
 					boolean hadGoodGlyph = a.hasGoodGlyph();
 
 					a.upgrade();
+					withdrawBlessOrUpgrade();
 
 					if (hadCursedGlyph && !a.hasCurseGlyph()){
 						removeCurse( Dungeon.hero );
@@ -200,6 +202,7 @@ public class DewVial extends Item {
 					boolean wasCursed = item.cursed;
 
 					item.upgrade();
+					withdrawBlessOrUpgrade();
 
 					if (wasCursed && !item.cursed){
 						removeCurse( Dungeon.hero );
@@ -207,6 +210,7 @@ public class DewVial extends Item {
 
 				} else {
 					item.upgrade();
+					withdrawBlessOrUpgrade();
 				}
 
 				Badges.validateItemLevelAquired( item );
@@ -274,7 +278,7 @@ public class DewVial extends Item {
 		return volume >= MAX_VOLUME/2;
 	}
 
-	public boolean isUpgradeable() {
+	public boolean isACUpgradeable() {
 		return volume >= MAX_VOLUME/2;
 	}
 
