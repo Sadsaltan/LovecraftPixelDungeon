@@ -64,7 +64,7 @@ public class Ankh extends Item {
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions(hero);
 		DewVial vial = hero.belongings.getItem(DewVial.class);
-		if (vial != null && vial.isFull() && !blessed)
+		if (vial != null && vial.isBlessable() && !blessed)
 			actions.add( AC_BLESS );
 
 		if(blessed)
@@ -83,7 +83,7 @@ public class Ankh extends Item {
 			if (vial != null){
 				blessed = true;
 				this.image = ItemSpriteSheet.BLESSED_ANKH;
-				vial.empty();
+				vial.withdrawBlessOrUpgrade();
 				GLog.p( Messages.get(this, "bless") );
 				hero.spend( 1f );
 				hero.busy();

@@ -50,6 +50,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Stylus;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Torch;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.FreezeTime;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.DriedRose;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.TimekeepersHourglass;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.ScrollHolder;
@@ -803,6 +804,7 @@ public abstract class Level implements Bundlable {
 
 		TimekeepersHourglass.timeFreeze timeFreeze = Dungeon.hero.buff(TimekeepersHourglass.timeFreeze.class);
 		TimeFreezing.timeFreeze timeFreezeEnchantment = Dungeon.hero.buff(TimeFreezing.timeFreeze.class);
+		FreezeTime.timeFreeze timeFreezeGlyph = Dungeon.hero.buff(FreezeTime.timeFreeze.class);
 
 		if (trap != null) {
 			if (timeFreeze == null && timeFreezeEnchantment == null) {
@@ -822,6 +824,9 @@ public abstract class Level implements Bundlable {
 				}
 				if(timeFreezeEnchantment != null){
 					timeFreezeEnchantment.setDelayedPress(cell);
+				}
+				if(timeFreezeGlyph != null){
+					timeFreezeGlyph.setDelayedPress(cell);
 				}
 
 			}

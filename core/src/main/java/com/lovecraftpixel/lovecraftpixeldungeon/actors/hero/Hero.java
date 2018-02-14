@@ -66,6 +66,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.KindOfWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.AntiMagic;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Flow;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.FreezeTime;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Obfuscation;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Stone;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Swiftness;
@@ -557,10 +558,13 @@ public class Hero extends Char {
 	public void spend( float time ) {
 		TimekeepersHourglass.timeFreeze buff = buff(TimekeepersHourglass.timeFreeze.class);
 		TimeFreezing.timeFreeze enchantment = buff(TimeFreezing.timeFreeze.class);
+		FreezeTime.timeFreeze glyph = buff(FreezeTime.timeFreeze.class);
 		if (buff != null){
 			buff.processTime(time);
 		} else if(enchantment != null){
 			enchantment.processTime(time);
+		} else if(glyph != null){
+			glyph.processTime(time);
 		} else {
 			super.spend(time);
 		}
