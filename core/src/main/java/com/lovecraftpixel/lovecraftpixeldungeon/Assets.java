@@ -150,11 +150,11 @@ public class Assets {
 	public static final String FONT1X       = "fonts/font1x.png";
 	public static final String FONT2X       = "fonts/font2x.png";
 
-	/**public static final String ATTACKONTITAN	= "music/AttackOnTitan.ogg";
+	/***public static final String ATTACKONTITAN	= "music/AttackOnTitan.ogg";
 	public static final String DEATHNOTE		= "music/DeathNote.ogg";
 	public static final String DEATHPARADE		= "music/DeathParade.ogg";
 	public static final String ERASED			= "music/Erased.ogg";
-	public static final String FULLMETALALCHMIST= "music/FullmetalAlchemist.ogg";**/
+	public static final String FULLMETALALCHMIST= "music/FullmetalAlchemist.ogg";***/
 	public static final String JOJOBLOODYSTREAM	= "music/JoJoBloodyStream.ogg";
 	public static final String JOJOPHANTOMBLOOD	= "music/JoJoPhantomBlood.ogg";
 	public static final String JOJOSTANDPROUD	= "music/JoJoStandProud.ogg";
