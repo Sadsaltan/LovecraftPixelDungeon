@@ -23,6 +23,8 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Pepe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
@@ -79,15 +81,24 @@ public class StudyRoom extends StandardRoom {
 		
 		Point center = center();
 		Painter.set( level, center, Terrain.PEDESTAL );
-		
-		Item prize = (Random.Int(2) == 0) ? level.findPrizeItem() : null;
-		
-		if (prize != null) {
-			level.drop(prize, (center.x + center.y * level.width()));
+
+		if(Random.Int(0, 7) == 7 && Random.Int(0, 7) == 7 && Random.Int(0, 7) == 7){
+			placePepe(level, level.pointToCell(center), new Pepe());
 		} else {
-			level.drop(Generator.random( Random.oneOf(
-					Generator.Category.POTION,
-					Generator.Category.SCROLL)), (center.x + center.y * level.width()));
+			Item prize = (Random.Int(2) == 0) ? level.findPrizeItem() : null;
+
+			if (prize != null) {
+				level.drop(prize, (center.x + center.y * level.width()));
+			} else {
+				level.drop(Generator.random( Random.oneOf(
+						Generator.Category.POTION,
+						Generator.Category.SCROLL)), (center.x + center.y * level.width()));
+			}
 		}
+	}
+
+	private static void placePepe(Level level, int pos, Mob pepe){
+		pepe.pos = pos;
+		level.mobs.add( pepe );
 	}
 }

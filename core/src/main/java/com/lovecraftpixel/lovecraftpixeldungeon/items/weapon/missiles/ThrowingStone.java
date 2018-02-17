@@ -27,10 +27,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class Dart extends MissileWeapon {
+public class ThrowingStone extends MissileWeapon {
 
 	{
-		image = ItemSpriteSheet.DART_FIREBLOOM;
+		image = ItemSpriteSheet.THROWING_STONE;
 
 		bones = false; //Finding them in bones would be semi-frequent and disappointing.
 	}
@@ -42,31 +42,31 @@ public class Dart extends MissileWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return 4;
+		return 3;
 	}
 
 	@Override
 	public int STRReq(int lvl) {
-		return 10;
+		return 9;
 	}
 
-	public Dart() {
+	public ThrowingStone() {
 		this( 1 );
 	}
-	
-	public Dart( int number ) {
+
+	public ThrowingStone(int number ) {
 		super();
 		quantity = number;
 	}
 	
 	@Override
 	public Item random() {
-		quantity = Random.Int( 5, 15 );
+		quantity = Random.Int( 10, 20 );
 		return this;
 	}
 	
 	@Override
 	public int price() {
-		return quantity * 2;
+		return quantity * 1;
 	}
 }

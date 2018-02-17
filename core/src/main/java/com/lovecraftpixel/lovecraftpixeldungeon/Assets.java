@@ -61,6 +61,7 @@ public class Assets {
 	public static final String HUNTRESS	= "hero/ranger.png";
 	public static final String AVATARS	= "hero/avatars.png";
 	public static final String PET		= "mobs/pet.png";
+	public static final String PEPE		= "npcs/pepe.png";
 	
 	public static final String SURFACE	= "ui/surface.png";
 	

@@ -267,7 +267,7 @@ public class ItemSpriteSheet {
 	                                                                                    //8 free slots
 
 	private static final int MISSILE_WEP    =                               xy(1, 10);  //16 slots
-	public static final int DART            = MISSILE_WEP+0;
+	public static final int DART_FIREBLOOM  = MISSILE_WEP+0;
 	public static final int BOOMERANG       = MISSILE_WEP+1;
 	public static final int INCENDIARY_DART = MISSILE_WEP+2;
 	public static final int SHURIKEN        = MISSILE_WEP+3;
@@ -281,7 +281,7 @@ public class ItemSpriteSheet {
 	public static final int CALIBER_PISTOL 	= MISSILE_WEP+11;
 	public static final int THROWING_KNIVE 	= MISSILE_WEP+12;
 	static{
-		assignItemRect(DART,            15, 15);
+		assignItemRect(DART_FIREBLOOM,  15, 15);
 		assignItemRect(BOOMERANG,       14, 14);
 		assignItemRect(INCENDIARY_DART, 15, 15);
 		assignItemRect(SHURIKEN,        12, 12);
@@ -306,6 +306,8 @@ public class ItemSpriteSheet {
 	public static final int ARMOR_MAGE      = ARMOR+6;
 	public static final int ARMOR_ROGUE     = ARMOR+7;
 	public static final int ARMOR_HUNTRESS  = ARMOR+8;
+	public static final int BOLAS  			= ARMOR+9;
+	public static final int FISHING_SPEAR  	= ARMOR+10;
 	static{
 		assignItemRect(ARMOR_CLOTH,     15, 12);
 		assignItemRect(ARMOR_LEATHER,   14, 13);
@@ -316,6 +318,18 @@ public class ItemSpriteSheet {
 		assignItemRect(ARMOR_MAGE,      15, 15);
 		assignItemRect(ARMOR_ROGUE,     14, 12);
 		assignItemRect(ARMOR_HUNTRESS,  13, 15);
+		assignItemRect(BOLAS,  			15, 14);
+		assignItemRect(FISHING_SPEAR,   16, 16);
+	}
+
+	private static final int DARTS          =                               xy(1, 12);  //16 slots
+	public static final int THROWING_STONE   = DARTS+0;
+	public static final int TRIDENT   		 = DARTS+11;
+	public static final int THROWING_HAMMER  = DARTS+12;
+	static{
+		assignItemRect(THROWING_STONE,      9, 9);
+		assignItemRect(TRIDENT,     	 	16, 16);
+		assignItemRect(THROWING_HAMMER,     12, 12);
 	}
 
 	                                                                                    //32 free slots

@@ -23,50 +23,57 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Cripple;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class Dart extends MissileWeapon {
+public class Bolas extends MissileWeapon {
 
 	{
-		image = ItemSpriteSheet.DART_FIREBLOOM;
-
-		bones = false; //Finding them in bones would be semi-frequent and disappointing.
+		image = ItemSpriteSheet.BOLAS;
 	}
 
 	@Override
 	public int min(int lvl) {
-		return 1;
-	}
-
-	@Override
-	public int max(int lvl) {
 		return 4;
 	}
 
 	@Override
-	public int STRReq(int lvl) {
-		return 10;
+	public int max(int lvl) {
+		return 6;
 	}
 
-	public Dart() {
+	@Override
+	public int STRReq(int lvl) {
+		return 15;
+	}
+
+	public Bolas() {
 		this( 1 );
 	}
-	
-	public Dart( int number ) {
+
+	public Bolas(int number ) {
 		super();
 		quantity = number;
 	}
-	
+
+	@Override
+	public int proc(Char attacker, Char defender, int damage) {
+		Buff.prolong(defender, Cripple.class, Cripple.DURATION);
+		return super.proc(attacker, defender, damage);
+	}
+
 	@Override
 	public Item random() {
-		quantity = Random.Int( 5, 15 );
+		quantity = Random.Int( 1, 2 );
 		return this;
 	}
 	
 	@Override
 	public int price() {
-		return quantity * 2;
+		return 10 * quantity;
 	}
 }

@@ -23,16 +23,16 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Piranha;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class Dart extends MissileWeapon {
+public class FishingSpear extends MissileWeapon {
 
 	{
-		image = ItemSpriteSheet.DART_FIREBLOOM;
-
-		bones = false; //Finding them in bones would be semi-frequent and disappointing.
+		image = ItemSpriteSheet.FISHING_SPEAR;
 	}
 
 	@Override
@@ -42,31 +42,39 @@ public class Dart extends MissileWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return 4;
+		return 5;
 	}
 
 	@Override
 	public int STRReq(int lvl) {
-		return 10;
+		return 9;
 	}
 
-	public Dart() {
-		this( 1 );
+	public FishingSpear(){
+		this(1);
 	}
-	
-	public Dart( int number ) {
+
+	public FishingSpear(int number ) {
 		super();
 		quantity = number;
 	}
 	
 	@Override
+	public int proc( Char attacker, Char defender, int damage ) {
+		if(defender instanceof Piranha){
+			damage = damage*2;
+		}
+		return super.proc( attacker, defender, damage );
+	}
+	
+	@Override
 	public Item random() {
-		quantity = Random.Int( 5, 15 );
+		quantity = Random.Int( 3, 5 );
 		return this;
 	}
 	
 	@Override
 	public int price() {
-		return quantity * 2;
+		return 3 * quantity;
 	}
 }

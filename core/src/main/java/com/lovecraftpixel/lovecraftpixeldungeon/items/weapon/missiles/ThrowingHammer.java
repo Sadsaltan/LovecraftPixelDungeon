@@ -25,48 +25,45 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
 
-public class Dart extends MissileWeapon {
+public class ThrowingHammer extends MissileWeapon {
 
 	{
-		image = ItemSpriteSheet.DART_FIREBLOOM;
-
-		bones = false; //Finding them in bones would be semi-frequent and disappointing.
+		image = ItemSpriteSheet.THROWING_HAMMER;
 	}
 
 	@Override
 	public int min(int lvl) {
-		return 1;
+		return 8;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return 4;
+		return 20;
 	}
 
 	@Override
 	public int STRReq(int lvl) {
-		return 10;
+		return 17;
 	}
 
-	public Dart() {
-		this( 1 );
+	public ThrowingHammer(){
+		this(1);
 	}
-	
-	public Dart( int number ) {
+
+	public ThrowingHammer(int number ) {
 		super();
 		quantity = number;
 	}
 	
 	@Override
 	public Item random() {
-		quantity = Random.Int( 5, 15 );
+		quantity = 1;
 		return this;
 	}
 	
 	@Override
 	public int price() {
-		return quantity * 2;
+		return 30 * quantity;
 	}
 }
