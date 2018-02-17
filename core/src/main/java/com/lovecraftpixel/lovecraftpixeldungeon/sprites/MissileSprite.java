@@ -77,7 +77,7 @@ public class MissileSprite extends ItemSprite implements Tweener.Listener {
 		PointF d = PointF.diff( to, from );
 		speed.set( d ).normalize().scale( SPEED );
 
-		if (image == ItemSpriteSheet.DART || image == ItemSpriteSheet.INCENDIARY_DART
+		if (image == ItemSpriteSheet.DART_FIREBLOOM || image == ItemSpriteSheet.INCENDIARY_DART
 				|| image == ItemSpriteSheet.CURARE_DART  || image == ItemSpriteSheet.JAVELIN) {
 
 			angularSpeed = 0;
