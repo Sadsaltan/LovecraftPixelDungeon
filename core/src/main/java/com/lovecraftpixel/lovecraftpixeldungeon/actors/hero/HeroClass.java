@@ -185,15 +185,30 @@ public enum HeroClass {
 	public String title() {
 		return Messages.get(HeroClass.class, title);
 	}
+
+	private static String lastChar(String string){
+		int lastindexnumber = string.length()-1;
+		char value = string.charAt(lastindexnumber);
+		return ""+value;
+	}
 	
 	public String spritesheet() {
 		
 		switch (this) {
 		case WARRIOR:
+			if(lastChar(Dungeon.hero.playername).equals("a")){
+				return Assets.FWARRIOR;
+			}
 			return Assets.WARRIOR;
 		case MAGE:
+			if(lastChar(Dungeon.hero.playername).equals("a")){
+				return Assets.FMAGE;
+			}
 			return Assets.MAGE;
 		case ROGUE:
+			if(lastChar(Dungeon.hero.playername).equals("a")){
+				return Assets.FROGUE;
+			}
 			return Assets.ROGUE;
 		case HUNTRESS:
 			return Assets.HUNTRESS;
