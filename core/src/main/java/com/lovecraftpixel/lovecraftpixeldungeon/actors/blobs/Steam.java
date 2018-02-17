@@ -29,7 +29,9 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Dewdrop;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
 
 public class Steam extends Blob {
 	
@@ -52,7 +54,7 @@ public class Steam extends Blob {
 						int pos = cell+n;
 						GameScene.updateMap(pos);
 					}
-					Dungeon.level.drop(new Dewdrop(), cell).sprite.drop();
+					if(RandomL.randomBoolean()) Dungeon.level.drop(new Dewdrop().quantity(Random.Int(1, 10)), cell).sprite.drop();
 				}
 				if(Dungeon.level.map[cell] == Terrain.SECRET_TRAP){
 					Dungeon.level.disarmTrap(Dungeon.level.map[cell]);
