@@ -121,6 +121,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Halberd;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HandAxe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.HeroicShortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Katana;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.KnifeGlove;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Kusarigama;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Longsword;
@@ -131,6 +132,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.RoundShield;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.RunicBlade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Sai;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Scimitar;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Scythe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Shortsword;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Spear;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.SpikedGreatsword;
@@ -144,6 +146,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Chakram;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.CurareDart;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Dart;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.FishingSpear;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.GiantShuriken;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.IncendiaryDart;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.Javelin;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles.PrimitiveSpear;
@@ -328,8 +331,9 @@ public class Generator {
 					IncendiaryDart.class,
 					PrimitiveSpear.class,
 					Bow.class,
+					KnifeGlove.class
 			};
-			WEP_T2.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 2 };
+			WEP_T2.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 2, 1 };
 			
 			WEP_T3.classes = new Class<?>[]{
 					Sword.class,
@@ -344,8 +348,10 @@ public class Generator {
 					Pistol.class,
 					Kusarigama.class,
 					Chakram.class,
+					GiantShuriken.class,
+					Scythe.class,
 			};
-			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6, 4, 3, 3, 2 };
+			WEP_T3.probs = new float[]{ 6, 5, 5, 4, 4, 4, 6, 6, 4, 3, 3, 2, 1, 1 };
 			
 			WEP_T4.classes = new Class<?>[]{
 					Longsword.class,

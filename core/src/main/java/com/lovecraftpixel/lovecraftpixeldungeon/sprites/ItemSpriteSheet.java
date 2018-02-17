@@ -308,6 +308,9 @@ public class ItemSpriteSheet {
 	public static final int ARMOR_HUNTRESS  = ARMOR+8;
 	public static final int BOLAS  			= ARMOR+9;
 	public static final int FISHING_SPEAR  	= ARMOR+10;
+	public static final int SCYTHE  		= ARMOR+11;
+	public static final int KNIFEGLOVE  	= ARMOR+12;
+	public static final int GIANT_SHURIKEN  = ARMOR+13;
 	static{
 		assignItemRect(ARMOR_CLOTH,     15, 12);
 		assignItemRect(ARMOR_LEATHER,   14, 13);
