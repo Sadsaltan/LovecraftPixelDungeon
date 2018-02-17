@@ -167,6 +167,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Rotberry;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Steamweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.BlandfruitHerb;
@@ -182,6 +183,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.RotberryHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SeedpodHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SorrowmossHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StarflowerHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SteamweedHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StormvineHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SungrassHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
@@ -197,6 +199,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SteamWeedItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.watabou.utils.Bundle;
@@ -412,8 +415,9 @@ public class Generator {
 					SorrowmossItem.class,
 					StarflowerItem.class,
 					StormvineItem.class,
-					SungrassItem.class};
-			PLANT.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
+					SungrassItem.class,
+					SteamWeedItem.class};
+			PLANT.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
 
 			HERBS.classes = new Class<?>[]{
 					BlandfruitHerb.class,
@@ -429,8 +433,9 @@ public class Generator {
 					SorrowmossHerb.class,
 					StarflowerHerb.class,
 					StormvineHerb.class,
-					SungrassHerb.class};
-			HERBS.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
+					SungrassHerb.class,
+					SteamweedHerb.class};
+			HERBS.probs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  };
 			
 			RING.classes = new Class<?>[]{
 					RingOfAccuracy.class,
@@ -475,8 +480,9 @@ public class Generator {
 					BlandfruitBush.Seed.class,
 					Dreamfoil.Seed.class,
 					Stormvine.Seed.class,
-					Starflower.Seed.class};
-			SEED.probs = new float[]{ 12, 12, 12, 12, 12, 12, 12, 0, 3, 12, 12, 1 };
+					Starflower.Seed.class,
+					Steamweed.Seed.class,};
+			SEED.probs = new float[]{ 12, 12, 12, 12, 12, 12, 12, 0, 3, 12, 12, 1, 6 };
 		}
 	}
 

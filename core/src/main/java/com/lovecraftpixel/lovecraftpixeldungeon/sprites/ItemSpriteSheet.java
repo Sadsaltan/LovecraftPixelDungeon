@@ -495,6 +495,7 @@ public class ItemSpriteSheet {
 	public static final int POTION_CHARCOAL = POTIONS+9;
 	public static final int POTION_SILVER   = POTIONS+10;
 	public static final int POTION_IVORY    = POTIONS+11;
+	public static final int POTION_YELLOW   = POTIONS+12;
 	static {
 		for (int i = POTIONS; i < POTIONS+16; i++)
 			assignItemRect(i, 10, 14);
@@ -513,6 +514,7 @@ public class ItemSpriteSheet {
 	public static final int SEED_EARTHROOT  = SEEDS+9;
 	public static final int SEED_FADELEAF   = SEEDS+10;
 	public static final int SEED_BLANDFRUIT = SEEDS+11;
+	public static final int SEED_STEAMWEED  = SEEDS+12;
 	static{
 		for (int i = SEEDS; i < SEEDS+16; i++)
 			assignItemRect(i, 10, 10);
@@ -533,6 +535,7 @@ public class ItemSpriteSheet {
 	public static final int PLANT_ITEMS_STARFLOWER  = PLANT_ITEMS+11;
 	public static final int PLANT_ITEMS_DEWCATCHER  = PLANT_ITEMS+12;
 	public static final int PLANT_ITEMS_SEEDPOD  	= PLANT_ITEMS+13;
+	public static final int PLANT_ITEMS_STEAMWEED  	= PLANT_ITEMS+14;
 	static{
 		for (int i = PLANT_ITEMS; i < PLANT_ITEMS+16; i++)
 			assignItemRect(i, 16, 16);
@@ -611,6 +614,7 @@ public class ItemSpriteSheet {
 	public static final int STARFLOWER_HERB   	= HERBS+11;
 	public static final int DEWCATCHER_HERB   	= HERBS+12;
 	public static final int SEEDPOD_HERB   		= HERBS+13;
+	public static final int STEAMWEED_HERB   	= HERBS+14;
 	static{
 		for (int i = HERBS; i < HERBS+16; i++)
 			assignItemRect(i, 15, 12);

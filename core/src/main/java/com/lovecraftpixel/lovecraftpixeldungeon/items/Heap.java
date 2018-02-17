@@ -33,6 +33,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Freezing;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ParalyticGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Regrowth;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Spores;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Steam;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.StenchGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Storm;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Sunlight;
@@ -78,6 +79,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SteamWeedItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
@@ -320,6 +322,8 @@ public class Heap implements Bundlable {
 					GameScene.add( Blob.seed( pos, 10, Storm.class ) );
 				} else if(item instanceof SungrassItem){
 					GameScene.add( Blob.seed( pos, 10, Sunlight.class ) );
+				} else if(item instanceof SteamWeedItem){
+					GameScene.add( Blob.seed( pos, 10, Steam.class ) );
 				}
 					items.remove(item);
 				burnt = true;

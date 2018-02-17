@@ -40,6 +40,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.IceCapPoisonPa
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.RotBerryPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.SorrowMossPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.StarFlowerPoisonParticle;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.SteamweedPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.StormVinePoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.SunGrassPoisonParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
@@ -59,6 +60,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Rotberry;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Steamweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
@@ -201,6 +203,8 @@ public class Herb extends Item {
             emitter.pour(SunGrassPoisonParticle.FACTORY, 1f);
         } else if(seed instanceof BlandfruitBush.Seed){
             emitter.pour(BlandFruitBushPoisonParticle.FACTORY, 1f);
+        } else if(seed instanceof Steamweed.Seed){
+            emitter.pour(SteamweedPoisonParticle.FACTORY, 1f);
         }
         return emitter;
     }

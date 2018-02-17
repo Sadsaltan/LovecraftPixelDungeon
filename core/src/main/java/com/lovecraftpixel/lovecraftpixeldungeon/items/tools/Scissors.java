@@ -45,6 +45,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.Plant;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Rotberry;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sorrowmoss;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Starflower;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Steamweed;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Stormvine;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Sungrass;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
@@ -59,6 +60,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SteamWeedItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.CellSelector;
@@ -158,6 +160,8 @@ public class Scissors extends Item {
 							Dungeon.level.drop(new StormvineItem(), cell);
 						} else if(plant instanceof Sungrass){
 							Dungeon.level.drop(new SungrassItem(), cell);
+						} else if(plant instanceof Steamweed){
+							Dungeon.level.drop(new SteamWeedItem(), cell);
 						}
 					} else if(Actor.findChar(cell) != null){
 						Buff.affect(Actor.findChar(cell), Bleeding.class).set(1);

@@ -70,7 +70,8 @@ public class Potion extends Item {
 			PotionOfPurity.class,
 			PotionOfInvisibility.class,
 			PotionOfMight.class,
-			PotionOfFrost.class
+			PotionOfFrost.class,
+			PotionOfSteam.class
 	};
 
 	private static final HashMap<String, Integer> colors = new HashMap<String, Integer>() {
@@ -87,6 +88,7 @@ public class Potion extends Item {
 			put("charcoal",ItemSpriteSheet.POTION_CHARCOAL);
 			put("silver",ItemSpriteSheet.POTION_SILVER);
 			put("ivory",ItemSpriteSheet.POTION_IVORY);
+			put("yellow",ItemSpriteSheet.POTION_YELLOW);
 		}
 	};
 	

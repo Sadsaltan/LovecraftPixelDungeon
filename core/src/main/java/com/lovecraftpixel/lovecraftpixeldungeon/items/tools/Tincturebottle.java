@@ -39,6 +39,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.RotberryHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SeedpodHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SorrowmossHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StarflowerHerb;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SteamweedHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.StormvineHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.herbs.SungrassHerb;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.BlandfruitItem;
@@ -54,6 +55,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.RotberryItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SeedpodItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SorrowmossItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StarflowerItem;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SteamWeedItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.StormvineItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SungrassItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
@@ -144,6 +146,9 @@ public class Tincturebottle extends Item {
 		}
 		if(plant instanceof SungrassItem){
 			new SungrassHerb().setSeed(seed).collect();
+		}
+		if(plant instanceof SteamWeedItem){
+			new SteamweedHerb().setSeed(seed).collect();
 		}
 	}
 

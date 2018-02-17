@@ -76,7 +76,7 @@ public class PlantItem extends Item {
         @Override
         public void onSelect( Integer cell ) {
             if(cell != null){
-                if(Dungeon.level.passable[cell] || !Dungeon.level.pit[cell] || Dungeon.level.traps.get(cell) == null){
+                if(Dungeon.level.passable[cell] && !Dungeon.level.pit[cell] && Dungeon.level.traps.get(cell) == null){
                     Dungeon.level.plant(seed, cell);
                     curItem.detach(curUser.belongings.backpack);
                 }
