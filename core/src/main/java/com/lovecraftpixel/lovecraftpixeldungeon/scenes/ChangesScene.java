@@ -26,6 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.scenes;
 import com.lovecraftpixel.lovecraftpixeldungeon.Chrome;
 import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Gardner;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Pepe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.quest.ElderSign;
@@ -34,10 +35,13 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Scissors;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.tools.Tincturebottle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.Steamweed;
+import com.lovecraftpixel.lovecraftpixeldungeon.plants.itemplants.SteamWeedItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.GardnerSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.LivingFirebloomPlantSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.PepeSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Archs;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.ExitButton;
 import com.lovecraftpixel.lovecraftpixeldungeon.ui.Icons;
@@ -142,6 +146,8 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new GardnerSprite(), new Gardner().name, new Gardner().description()));
 
+		changes.addButton( new ChangeButton(new PepeSprite(), new Pepe().name, new Pepe().description()));
+
 		changes = new ChangeInfo("Items", false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
@@ -173,6 +179,9 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton( new ItemSprite(new Pistol().image, null), "Guns",
 				"You can now also find guns in this Guneon."));
 
+		changes.addButton( new ChangeButton( new ItemSprite(new SteamWeedItem().image, null), new Steamweed().plantName,
+				new Steamweed().desc()));
+
 		changes = new ChangeInfo("Blobs", false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
@@ -185,6 +194,9 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton( Icons.get(Icons.BUSY), "Spores",
 				"Spores reduce your mental health."));
+
+		changes.addButton( new ChangeButton( Icons.get(Icons.BUSY), "Steam",
+				"Steam drops Dewdrops."));
 
 		Component content = list.content();
 		content.clear();
