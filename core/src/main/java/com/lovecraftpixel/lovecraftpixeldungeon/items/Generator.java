@@ -105,8 +105,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Crossbow;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.FastFirePistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Harpoon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.HeavyCrossbow;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Luger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Pistol;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Rifle;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns.Shotgun;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.AssassinsBlade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Axe;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.BattleAxe;
@@ -367,8 +369,9 @@ public class Generator {
 					Harpoon.class,
 					Crossbow.class,
 					Bolas.class,
+					Luger.class,
 			};
-			WEP_T4.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 2, 2, 1 };
+			WEP_T4.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 2, 2, 1, 2 };
 			
 			WEP_T5.classes = new Class<?>[]{
 					Greatsword.class,
@@ -382,9 +385,10 @@ public class Generator {
 					FastFirePistol.class,
 					HeavyCrossbow.class,
 					ThrowingHammer.class,
-					Trident.class
+					Trident.class,
+					Shotgun.class,
 			};
-			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 5, 2, 2, 1, 1 };
+			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 6, 3, 5, 2, 2, 1, 1, 2 };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{

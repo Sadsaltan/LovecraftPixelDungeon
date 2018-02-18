@@ -181,6 +181,8 @@ public class ItemSpriteSheet {
 	public static final int AXE          	= WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int MAGES_STAFF     = WEP_TIER1+5;
+	public static final int LUGER     		= WEP_TIER1+6;
+	public static final int LONG_RIFLE     	= WEP_TIER1+7;
 	static{
 		assignItemRect(WORN_SHORTSWORD, 13, 13);
 		assignItemRect(SHORT_SWORD, 	13, 13);
@@ -188,6 +190,8 @@ public class ItemSpriteSheet {
 		assignItemRect(AXE,          	12, 10);
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(MAGES_STAFF,     15, 16);
+		assignItemRect(LUGER,     		10, 13);
+		assignItemRect(LONG_RIFLE,     	13, 16);
 	}
 
 	private static final int WEP_TIER2      =                               xy(9, 7);   //8 slots
@@ -212,6 +216,7 @@ public class ItemSpriteSheet {
 	public static final int SAI             = WEP_TIER3+4;
 	public static final int WHIP            = WEP_TIER3+5;
 	public static final int KATANA          = WEP_TIER3+6;
+	public static final int SILVER_PISTOL   = WEP_TIER3+7;
 	static{
 		assignItemRect(SWORD,           14, 14);
 		assignItemRect(MACE,            15, 15);
@@ -220,6 +225,7 @@ public class ItemSpriteSheet {
 		assignItemRect(SAI,             16, 16);
 		assignItemRect(WHIP,            14, 14);
 		assignItemRect(KATANA,          15, 16);
+		assignItemRect(SILVER_PISTOL,   13, 16);
 	}
 
 	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots
@@ -244,6 +250,7 @@ public class ItemSpriteSheet {
 	public static final int GREATSHIELD     = WEP_TIER5+4;
 	public static final int HALBERD     	= WEP_TIER5+5;
 	public static final int SPIKEDSWORD     = WEP_TIER5+6;
+	public static final int GOLDEN_PISTOL   = WEP_TIER5+7;
 	public static final int PRIMITIVESPEAR  = WEP_TIER5+8;
 	public static final int CHAKRAM  		= WEP_TIER5+9;
 	public static final int HARPOON  		= WEP_TIER5+10;
@@ -257,6 +264,7 @@ public class ItemSpriteSheet {
 		assignItemRect(GREATSHIELD,   12, 16);
 		assignItemRect(HALBERD,       16, 16);
 		assignItemRect(SPIKEDSWORD,   16, 16);
+		assignItemRect(GOLDEN_PISTOL, 12, 16);
 		assignItemRect(PRIMITIVESPEAR,14, 14);
 		assignItemRect(CHAKRAM,		  14, 14);
 		assignItemRect(HARPOON,		  14, 14);
@@ -280,6 +288,7 @@ public class ItemSpriteSheet {
 	public static final int RIFLE  			= MISSILE_WEP+10;
 	public static final int CALIBER_PISTOL 	= MISSILE_WEP+11;
 	public static final int THROWING_KNIVE 	= MISSILE_WEP+12;
+	public static final int SHOTGUN 		= MISSILE_WEP+13;
 	static{
 		assignItemRect(DART_FIREBLOOM,  15, 15);
 		assignItemRect(BOOMERANG,       14, 14);
@@ -294,6 +303,7 @@ public class ItemSpriteSheet {
 		assignItemRect(RIFLE,        	13, 16);
 		assignItemRect(CALIBER_PISTOL,  11, 16);
 		assignItemRect(THROWING_KNIVE,  12, 12);
+		assignItemRect(SHOTGUN,			16, 16);
 	}
 
 	private static final int ARMOR          =                               xy(1, 11);  //16 slots

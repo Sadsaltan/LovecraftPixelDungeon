@@ -23,39 +23,23 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.guns;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Cripple;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
 
-public class Pistol extends GunWeapon {
+public class Luger extends GunWeapon {
 
 	{
-		image = getImage();
-		LOADING_TIME = 3;
-	}
-
-	private static int getImage(){
-		switch (Random.Int(1, 3)){
-			case 1:
-				return ItemSpriteSheet.PISTOL;
-			case 2:
-				return ItemSpriteSheet.SILVER_PISTOL;
-			case 3:
-				return ItemSpriteSheet.GOLDEN_PISTOL;
-		}
-		return ItemSpriteSheet.PISTOL;
+		image = ItemSpriteSheet.LUGER;
+		LOADING_TIME = 5;
 	}
 
 	@Override
 	public int min(int lvl) {
-		return lvl+1;
+		return lvl+3;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return lvl+2;
+		return lvl+4;
 	}
 
 	@Override
@@ -64,13 +48,7 @@ public class Pistol extends GunWeapon {
 	}
 	
 	@Override
-	public int proc( Char attacker, Char defender, int damage ) {
-		Buff.prolong( defender, Cripple.class, Cripple.DURATION );
-		return super.proc( attacker, defender, damage );
-	}
-	
-	@Override
 	public int price() {
-		return 100 * quantity;
+		return 1488 * quantity;
 	}
 }

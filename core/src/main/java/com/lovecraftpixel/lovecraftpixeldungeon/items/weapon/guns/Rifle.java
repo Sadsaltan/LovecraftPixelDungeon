@@ -28,12 +28,23 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Bleeding;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Cripple;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.utils.Random;
 
 public class Rifle extends GunWeapon {
 
 	{
-		image = ItemSpriteSheet.RIFLE;
+		image = getImage();
 		LOADING_TIME = 2;
+	}
+
+	private static int getImage(){
+		switch (Random.Int(1, 2)){
+			case 1:
+				return ItemSpriteSheet.RIFLE;
+			case 2:
+				return ItemSpriteSheet.LONG_RIFLE;
+		}
+		return ItemSpriteSheet.RIFLE;
 	}
 
 	@Override
