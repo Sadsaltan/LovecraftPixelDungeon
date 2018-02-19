@@ -35,7 +35,6 @@ import com.watabou.noosa.Camera;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.utils.Callback;
-import com.watabou.utils.PointF;
 
 public class HeroSprite extends CharSprite {
 	
@@ -130,18 +129,6 @@ public class HeroSprite extends CharSprite {
 			}
 		};
 		play( read );
-	}
-
-	@Override
-	public void bloodBurstA(PointF from, int damage) {
-		//Does nothing.
-
-		/*
-		 * This is both for visual clarity, and also for content ratings regarding violence
-		 * towards human characters. The heroes are the only human or human-like characters which
-		 * participate in combat, so removing all blood associated with them is a simple way to
-		 * reduce the violence rating of the game.
-		 */
 	}
 
 	@Override
