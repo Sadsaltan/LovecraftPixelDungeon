@@ -55,6 +55,13 @@ public class HeroSprite extends CharSprite {
 		link( Dungeon.hero );
 		
 		texture( Dungeon.hero.heroClass.spritesheet() );
+		if(Dungeon.hero.heroClass.spritesheet().equals(Assets.FMAGE) ||
+				Dungeon.hero.heroClass.spritesheet().equals(Assets.FWARRIOR) ||
+				Dungeon.hero.heroClass.spritesheet().equals(Assets.FROGUE)){
+
+		} else {
+
+		}
 		updateArmor();
 
 		if (ch.isAlive())

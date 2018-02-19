@@ -37,13 +37,34 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.food.MysteryMeat;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.RegularLevel;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.Room;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special.PoolRoom;
-import com.lovecraftpixel.lovecraftpixeldungeon.sprites.PiranhaSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas.PiranhaSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas.PiranhaSprite1;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas.PiranhaSprite2;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas.PiranhaSprite3;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas.PiranhaSprite4;
 import com.watabou.utils.Random;
 
 public class Piranha extends Mob {
 	
 	{
-		spriteClass = PiranhaSprite.class;
+		switch (Random.Int(0, 4)){
+			case 0:
+				spriteClass = PiranhaSprite.class;
+				break;
+			case 1:
+				spriteClass = PiranhaSprite1.class;
+				break;
+			case 2:
+				spriteClass = PiranhaSprite2.class;
+				break;
+			case 3:
+				spriteClass = PiranhaSprite3.class;
+				break;
+			case 4:
+				spriteClass = PiranhaSprite4.class;
+				break;
+
+		}
 
 		baseSpeed = 2f;
 		

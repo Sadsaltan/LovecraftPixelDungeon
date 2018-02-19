@@ -98,6 +98,10 @@ public class Assets {
 	public static final String KING			= "mobs/king.png";
 	public static final String STATUE		= "mobs/statue.png";
 	public static final String PIRANHA		= "mobs/piranha.png";
+	public static final String PIRANHA1		= "mobs/piranha1.png";
+	public static final String PIRANHA2		= "mobs/piranha2.png";
+	public static final String PIRANHA3		= "mobs/piranha3.png";
+	public static final String PIRANHA4		= "mobs/piranha4.png";
 	public static final String EYE			= "mobs/eye.png";
 	public static final String SUCCUBUS		= "mobs/succubus.png";
 	public static final String SCORPIO		= "mobs/scorpio.png";

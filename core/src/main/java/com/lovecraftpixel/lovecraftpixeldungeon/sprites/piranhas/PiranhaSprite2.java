@@ -21,22 +21,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.sprites;
+package com.lovecraftpixel.lovecraftpixeldungeon.sprites.piranhas;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.MobSprite;
 import com.watabou.noosa.TextureFilm;
 
-public class PiranhaSprite extends MobSprite {
-	
-	public PiranhaSprite() {
+public class PiranhaSprite2 extends MobSprite {
+
+	public PiranhaSprite2() {
 		super();
 
 		renderShadow = false;
 		perspectiveRaise = 0.2f;
 		
-		texture( Assets.PIRANHA );
+		texture( Assets.PIRANHA2 );
 		
 		TextureFilm frames = new TextureFilm( texture, 12, 16 );
 		
