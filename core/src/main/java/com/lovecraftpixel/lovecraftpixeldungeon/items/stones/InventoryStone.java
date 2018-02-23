@@ -93,7 +93,7 @@ public abstract class InventoryStone extends Runestone {
 
 	@Override
 	public String desc() {
-		String info = desc();
+		String info = super.desc();
 
 		info += "\n\n" + flavourtext;
 

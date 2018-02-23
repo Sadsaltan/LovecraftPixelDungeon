@@ -44,6 +44,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.AntiMagic;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Brimstone;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Camouflage;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Chaotic;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Cloning;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Entanglement;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Explosion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Flow;
@@ -438,11 +439,11 @@ public class Armor extends EquipableItem {
 		private static final Class<?>[] glyphs = new Class<?>[]{
 				Obfuscation.class, Swiftness.class, Stone.class, Potential.class,
 				Brimstone.class, Viscosity.class, Entanglement.class, Repulsion.class, Camouflage.class, Flow.class,
-				Affection.class, AntiMagic.class, Thorns.class, Chaotic.class, Explosion.class, FreezeTime.class};
+				Affection.class, AntiMagic.class, Thorns.class, Chaotic.class, Explosion.class, FreezeTime.class, Cloning.class};
 		private static final float[] chances= new float[]{
 				10, 10, 10, 10,
 				5, 5, 5, 5, 5, 5,
-				2, 2, 2, 2, 2, 1 };
+				2, 2, 2, 2, 2, 1, 2 };
 
 		private static final Class<?>[] curses = new Class<?>[]{
 				AntiEntropy.class, Corrosion.class, Displacement.class, Metabolism.class, Multiplicity.class, Stench.class

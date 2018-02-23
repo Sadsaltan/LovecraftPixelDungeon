@@ -35,7 +35,7 @@ public class Chaotic extends Armor.Glyph {
 	private static Class<?extends Armor.Glyph>[] randomGlyphs = new Class[]{
 			Affection.class, AntiMagic.class, Brimstone.class, Camouflage.class,
 			Entanglement.class, Explosion.class, Flow.class, FreezeTime.class, Obfuscation.class, Potential.class,
-			Repulsion.class, Stone.class, Swiftness.class, Thorns.class, Viscosity.class
+			Repulsion.class, Stone.class, Swiftness.class, Thorns.class, Viscosity.class, Cloning.class
 	};
 	
 	@Override

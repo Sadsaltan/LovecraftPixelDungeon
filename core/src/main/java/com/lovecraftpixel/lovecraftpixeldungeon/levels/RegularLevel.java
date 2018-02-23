@@ -35,6 +35,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.Artifact;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.journal.GuidePage;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.GoldenKey;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.LeadKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.PlatinKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.TitaniumKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.WoodenKey;
@@ -365,7 +366,7 @@ public abstract class RegularLevel extends Level {
 							break;
 						case 3:
 							dropped.type = Heap.Type.HOWARD_CHEST;
-							addItemToSpawn(new GoldenKey(Dungeon.depth));
+							addItemToSpawn(new LeadKey(Dungeon.depth));
 							break;
 						case 4:
 							dropped.type = Heap.Type.EVAN_CHEST;

@@ -68,6 +68,7 @@ public class MirrorImage extends NPC {
 	}
 	
 	public void duplicate( Hero hero ) {
+		hero.reduceMentalHealth(1);
 		tier = hero.tier();
 		attack = hero.attackSkill( hero );
 		damage = hero.damageRoll();

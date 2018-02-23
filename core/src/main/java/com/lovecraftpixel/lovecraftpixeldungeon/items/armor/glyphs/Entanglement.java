@@ -23,18 +23,28 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Corruption;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Roots;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.RotLasher;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.EarthParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor.Glyph;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.lovecraftpixel.lovecraftpixeldungeon.plants.Earthroot;
+import com.lovecraftpixel.lovecraftpixeldungeon.scenes.GameScene;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite.Glowing;
 import com.watabou.noosa.Camera;
+import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class Entanglement extends Glyph {
 	
@@ -51,6 +61,28 @@ public class Entanglement extends Glyph {
 			Buff.affect( defender, Earthroot.Armor.class ).level( 5 + 2*level );
 			CellEmitter.bottom( defender.pos ).start( EarthParticle.FACTORY, 0.05f, 8 );
 			Camera.main.shake( 1, 0.4f );
+
+			if(Random.Int(2) == 0){
+				ArrayList<Integer> spawnPoints = new ArrayList<>();
+
+				for (int i = 0; i < PathFinder.NEIGHBOURS8.length; i++) {
+					int p = defender.pos + PathFinder.NEIGHBOURS8[i];
+					if (Actor.findChar(p) == null && (Dungeon.level.passable[p] || Dungeon.level.avoid[p])) {
+						spawnPoints.add(p);
+					}
+				}
+
+				if (spawnPoints.size() > 0) {
+					Mob m;
+					m = new RotLasher();
+					m.HP = m.HT = attacker.HT;
+					m.buffs().add(new Corruption());
+					if (m != null) {
+						GameScene.add(m);
+						ScrollOfTeleportation.appear(m, Random.element(spawnPoints));
+					}
+				}
+			}
 			
 		}
 
