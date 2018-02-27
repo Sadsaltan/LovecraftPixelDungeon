@@ -49,7 +49,8 @@ public class Steam extends Blob {
 						Dungeon.level.map[cell] == Terrain.EMPTY_SP ||
 						Dungeon.level.map[cell] == Terrain.GRASS ||
 						Dungeon.level.map[cell] == Terrain.INACTIVE_TRAP){
-					Dungeon.level.map[cell] = Terrain.WATER;
+					Dungeon.level.discover(cell);
+					Dungeon.level.set(cell, Terrain.WATER);
 					for (int n : PathFinder.NEIGHBOURS8) {
 						int pos = cell+n;
 						GameScene.updateMap(pos);
