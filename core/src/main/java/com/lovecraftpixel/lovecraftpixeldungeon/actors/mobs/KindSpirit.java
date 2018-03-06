@@ -37,6 +37,8 @@ import com.watabou.noosa.tweeners.AlphaTweener;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
+import java.util.HashSet;
+
 public class KindSpirit extends Mob {
 
 	private static final float SPAWN_DELAY	= 2f;
@@ -85,6 +87,20 @@ public class KindSpirit extends Mob {
 		this.level = level;
 		defenseSkill = attackSkill( null ) * 5;
 		enemySeen = true;
+	}
+
+	@Override
+	protected Char chooseEnemy() {
+		HashSet<Char> enemies = new HashSet<>();
+		for (Mob mob : Dungeon.level.mobs){
+			if (mob != this && fieldOfView[mob.pos] && mob.alignment == Alignment.ENEMY){
+				enemies.add(mob);
+			}
+		}
+		if (enemies.size() > 0){
+			return Random.element(enemies);
+		}
+		return null;
 	}
 
 	@Override

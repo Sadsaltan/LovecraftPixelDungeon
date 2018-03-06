@@ -37,14 +37,6 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.potions.PotionOfMindVision
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.wands.WandOfMagicMissile;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Exploding;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Friendship;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Glowing;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Holy;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Hunting;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Midas;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Sting;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.TimeFreezing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Dagger;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.Knuckles;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.melee.MagesStaff;
@@ -100,16 +92,6 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
 			new FoodBag().collect();
-
-
-		new Knuckles().enchant(new Exploding()).identify().collect();
-		new Knuckles().enchant(new Friendship()).identify().collect();
-		new Knuckles().enchant(new Glowing()).identify().collect();
-		new Knuckles().enchant(new Holy()).identify().collect();
-		new Knuckles().enchant(new Hunting()).identify().collect();
-		new Knuckles().enchant(new Midas()).identify().collect();
-		new Knuckles().enchant(new Sting()).identify().collect();
-		new Knuckles().enchant(new TimeFreezing()).identify().collect();
 	}
 
 	public Badges.Badge masteryBadge() {
