@@ -34,6 +34,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.BrokenSeal;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.EquipableItem;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses.AntiEntropy;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses.Clumsy;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses.Corrosion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses.Displacement;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses.Metabolism;
@@ -45,6 +46,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Brimstone;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Camouflage;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Chaotic;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Cloning;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Deflection;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Entanglement;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Explosion;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Flow;
@@ -52,10 +54,13 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.FreezeTime;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Obfuscation;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Potential;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Repulsion;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Stealth;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Stone;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Swiftness;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Teleport;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Thorns;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Viscosity;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs.Weight;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.HeroSprite;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
@@ -437,16 +442,20 @@ public class Armor extends EquipableItem {
 	public static abstract class Glyph implements Bundlable {
 		
 		private static final Class<?>[] glyphs = new Class<?>[]{
-				Obfuscation.class, Swiftness.class, Stone.class, Potential.class,
-				Brimstone.class, Viscosity.class, Entanglement.class, Repulsion.class, Camouflage.class, Flow.class,
-				Affection.class, AntiMagic.class, Thorns.class, Chaotic.class, Explosion.class, FreezeTime.class, Cloning.class};
+				Obfuscation.class, Swiftness.class, Stone.class, Potential.class, Brimstone.class,
+				Viscosity.class, Entanglement.class, Repulsion.class, Camouflage.class, Flow.class,
+				Affection.class, AntiMagic.class, Thorns.class, Chaotic.class, Explosion.class,
+				FreezeTime.class, Cloning.class, Deflection.class, Stealth.class, Teleport.class,
+				Weight.class};
 		private static final float[] chances= new float[]{
-				10, 10, 10, 10,
-				5, 5, 5, 5, 5, 5,
-				2, 2, 2, 2, 2, 1, 2 };
+				10, 10, 10, 10, 5,
+				5, 5, 5, 5, 5,
+				2, 2, 2, 2, 2,
+				1, 2, 2, 2, 2,
+				1};
 
 		private static final Class<?>[] curses = new Class<?>[]{
-				AntiEntropy.class, Corrosion.class, Displacement.class, Metabolism.class, Multiplicity.class, Stench.class
+				AntiEntropy.class, Corrosion.class, Displacement.class, Metabolism.class, Multiplicity.class, Stench.class, Clumsy.class
 		};
 			
 		public abstract int proc( Armor armor, Char attacker, Char defender, int damage );

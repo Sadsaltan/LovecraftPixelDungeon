@@ -69,6 +69,8 @@ public class Piranha extends Mob {
 		baseSpeed = 2f;
 		
 		EXP = 0;
+
+		properties.add(Property.ANIMAL);
 		
 		HUNTING = new Hunting();
 

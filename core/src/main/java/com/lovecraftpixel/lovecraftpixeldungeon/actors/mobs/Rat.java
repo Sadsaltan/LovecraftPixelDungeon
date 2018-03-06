@@ -38,6 +38,8 @@ public class Rat extends Mob {
 		maxLvl = 5;
 
 		horrorlvl = 1;
+
+		properties.add(Property.ANIMAL);
 	}
 	
 	@Override

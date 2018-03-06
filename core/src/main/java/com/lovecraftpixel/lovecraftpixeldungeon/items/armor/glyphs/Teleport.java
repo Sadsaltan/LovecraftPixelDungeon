@@ -21,50 +21,34 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments;
+package com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
+import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.watabou.utils.Random;
 
-public class Unstable extends Weapon.Enchantment {
+public class Teleport extends Armor.Glyph {
 
-	private static ItemSprite.Glowing WHITE = new ItemSprite.Glowing( 0xFFFFFF );
-
-	private static Class<?extends Weapon.Enchantment>[] randomEnchants = new Class[]{
-			Blazing.class,
-			Chilling.class,
-			Dazzling.class,
-			Eldritch.class,
-			Grim.class,
-			Lucky.class,
-			Shocking.class,
-			Stunning.class,
-			Vampiric.class,
-			Vorpal.class,
-			Glowing.class,
-			Holy.class,
-			Hunting.class,
-			Midas.class,
-			Friendship.class,
-			Sting.class,
-			Dividing.class,
-	};
+	private static ItemSprite.Glowing LILAC = new ItemSprite.Glowing( 0x9C6393 );
 
 	@Override
-	public int proc( Weapon weapon, Char attacker, Char defender, int damage ) {
-		try {
-			return Random.oneOf(randomEnchants).newInstance().proc( weapon, attacker, defender, damage );
-		} catch (Exception e) {
-			LovecraftPixelDungeon.reportException(e);
-			return damage;
+	public int proc(Armor armor, Char attacker, Char defender, int damage) {
+
+		int level = Math.max(0, armor.level());
+
+		if (defender == Dungeon.hero &&  Random.Int( level/2 + 5) >= 4){
+			ScrollOfTeleportation.teleportMob(attacker);
+			return 0;
 		}
+
+		return damage;
 	}
 
 	@Override
 	public ItemSprite.Glowing glowing() {
-		return WHITE;
+		return LILAC;
 	}
 }

@@ -21,50 +21,37 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments;
+package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Invisibility;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.watabou.utils.Random;
 
-public class Unstable extends Weapon.Enchantment {
+public class Blowback extends Weapon.Enchantment {
 
-	private static ItemSprite.Glowing WHITE = new ItemSprite.Glowing( 0xFFFFFF );
-
-	private static Class<?extends Weapon.Enchantment>[] randomEnchants = new Class[]{
-			Blazing.class,
-			Chilling.class,
-			Dazzling.class,
-			Eldritch.class,
-			Grim.class,
-			Lucky.class,
-			Shocking.class,
-			Stunning.class,
-			Vampiric.class,
-			Vorpal.class,
-			Glowing.class,
-			Holy.class,
-			Hunting.class,
-			Midas.class,
-			Friendship.class,
-			Sting.class,
-			Dividing.class,
-	};
+	private static ItemSprite.Glowing BLACK = new ItemSprite.Glowing( 0x000000 );
 
 	@Override
 	public int proc( Weapon weapon, Char attacker, Char defender, int damage ) {
-		try {
-			return Random.oneOf(randomEnchants).newInstance().proc( weapon, attacker, defender, damage );
-		} catch (Exception e) {
-			LovecraftPixelDungeon.reportException(e);
-			return damage;
+
+		if (Random.Int(10) == 0) {
+			attacker.damage(damage/2, weapon);
+			Invisibility.dispel();
 		}
+
+		return damage;
+	}
+
+	@Override
+	public boolean curse() {
+		return true;
 	}
 
 	@Override
 	public ItemSprite.Glowing glowing() {
-		return WHITE;
+		return BLACK;
 	}
+
 }

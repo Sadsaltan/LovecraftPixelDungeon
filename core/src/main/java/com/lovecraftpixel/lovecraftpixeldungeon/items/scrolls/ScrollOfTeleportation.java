@@ -129,6 +129,23 @@ public class ScrollOfTeleportation extends Scroll {
 		}
 	}
 
+	public static void teleportMob(Char mob ) {
+
+		int count = 10;
+		int pos;
+		do {
+			pos = Dungeon.level.randomRespawnCell();
+			if (count-- <= 0) {
+				break;
+			}
+		} while (pos == -1);
+
+		appear( mob, pos );
+		Dungeon.level.press( pos, mob );
+		Dungeon.observe();
+		GameScene.updateFog();
+	}
+
 	public static void appear( Char ch, int pos ) {
 
 		ch.sprite.interruptMotion();

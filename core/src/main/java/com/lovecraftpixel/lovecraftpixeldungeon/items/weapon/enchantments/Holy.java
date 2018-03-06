@@ -23,48 +23,38 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
 import com.watabou.utils.Random;
 
-public class Unstable extends Weapon.Enchantment {
+public class Holy extends Weapon.Enchantment {
 
-	private static ItemSprite.Glowing WHITE = new ItemSprite.Glowing( 0xFFFFFF );
-
-	private static Class<?extends Weapon.Enchantment>[] randomEnchants = new Class[]{
-			Blazing.class,
-			Chilling.class,
-			Dazzling.class,
-			Eldritch.class,
-			Grim.class,
-			Lucky.class,
-			Shocking.class,
-			Stunning.class,
-			Vampiric.class,
-			Vorpal.class,
-			Glowing.class,
-			Holy.class,
-			Hunting.class,
-			Midas.class,
-			Friendship.class,
-			Sting.class,
-			Dividing.class,
-	};
-
+	private static ItemSprite.Glowing GLOW = new ItemSprite.Glowing( 0xFAE705 );
+	
 	@Override
 	public int proc( Weapon weapon, Char attacker, Char defender, int damage ) {
-		try {
-			return Random.oneOf(randomEnchants).newInstance().proc( weapon, attacker, defender, damage );
-		} catch (Exception e) {
-			LovecraftPixelDungeon.reportException(e);
-			return damage;
-		}
-	}
+		if(defender.properties().contains(Char.Property.UNDEAD) || defender.properties().contains(Char.Property.DEMONIC)) {
+			if(defender instanceof Mob){
+				((Mob) defender).horrorlvl = 0;
+			}
+			// lvl 0 - 20%
+			// lvl 1 - 33%
+			// lvl 2 - 43%
+			int level = Math.max( 0, weapon.level() );
 
+			if (Random.Int( level + 5 ) >= 4) {
+				damage = damage * 2;
+			}
+		}
+
+		return damage;
+	}
+	
 	@Override
 	public ItemSprite.Glowing glowing() {
-		return WHITE;
+		return GLOW;
 	}
+
 }

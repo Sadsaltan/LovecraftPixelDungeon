@@ -41,6 +41,8 @@ public class Bandit extends Thief {
 	{
 		spriteClass = BanditSprite.class;
 
+		properties.add(Property.HUMANOID);
+
 		//1 in 30 chance to be a crazy bandit, equates to overall 1/90 chance.
 		lootChance = 0.333f;
 	}

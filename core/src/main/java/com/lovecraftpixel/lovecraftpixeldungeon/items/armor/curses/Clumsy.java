@@ -21,50 +21,43 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments;
+package com.lovecraftpixel.lovecraftpixeldungeon.items.armor.curses;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 import com.watabou.utils.Random;
 
-public class Unstable extends Weapon.Enchantment {
+public class Clumsy extends Armor.Glyph {
 
-	private static ItemSprite.Glowing WHITE = new ItemSprite.Glowing( 0xFFFFFF );
-
-	private static Class<?extends Weapon.Enchantment>[] randomEnchants = new Class[]{
-			Blazing.class,
-			Chilling.class,
-			Dazzling.class,
-			Eldritch.class,
-			Grim.class,
-			Lucky.class,
-			Shocking.class,
-			Stunning.class,
-			Vampiric.class,
-			Vorpal.class,
-			Glowing.class,
-			Holy.class,
-			Hunting.class,
-			Midas.class,
-			Friendship.class,
-			Sting.class,
-			Dividing.class,
-	};
+	private static ItemSprite.Glowing BLACK = new ItemSprite.Glowing( 0x000000 );
 
 	@Override
-	public int proc( Weapon weapon, Char attacker, Char defender, int damage ) {
-		try {
-			return Random.oneOf(randomEnchants).newInstance().proc( weapon, attacker, defender, damage );
-		} catch (Exception e) {
-			LovecraftPixelDungeon.reportException(e);
-			return damage;
+	public int proc(Armor armor, Char attacker, Char defender, int damage) {
+
+		if ( Random.Int( 4 ) == 0) {
+			if(RandomL.randomBoolean()){
+				attacker.damage(damage/2, defender);
+				return 0;
+			} else {
+				attacker.HT = attacker.HP = (attacker.HT+damage);
+				attacker.sprite.centerEmitter().start(Speck.factory(Speck.GO), 2f, 6);
+				return 0;
+			}
 		}
+
+		return damage;
 	}
 
 	@Override
 	public ItemSprite.Glowing glowing() {
-		return WHITE;
+		return BLACK;
+	}
+
+	@Override
+	public boolean curse() {
+		return true;
 	}
 }

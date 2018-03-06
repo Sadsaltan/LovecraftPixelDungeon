@@ -46,6 +46,8 @@ public class Spinner extends Mob {
 		EXP = 9;
 		maxLvl = 16;
 
+		properties.add(Property.ANIMAL);
+
 		loot = new MysteryMeat();
 		lootChance = 0.125f;
 

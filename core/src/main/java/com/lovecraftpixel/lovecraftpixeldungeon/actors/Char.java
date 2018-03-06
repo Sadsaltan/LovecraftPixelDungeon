@@ -514,7 +514,11 @@ public abstract class Char extends Actor {
 		MINIBOSS,
 		UNDEAD,
 		DEMONIC,
-		IMMOVABLE;
+		IMMOVABLE,
+		GOD,
+		ELDER,
+		ANIMAL,
+		HUMANOID;
 		
 		private HashSet<Class> resistances;
 		private HashSet<Class> immunities;

@@ -43,6 +43,8 @@ public class Brute extends Mob {
 		
 		EXP = 8;
 		maxLvl = 15;
+
+		properties.add(Property.HUMANOID);
 		
 		loot = Gold.class;
 		lootChance = 0.5f;

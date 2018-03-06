@@ -24,6 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.items.scrolls;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
+import com.lovecraftpixel.lovecraftpixeldungeon.LovecraftPixelDungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Invisibility;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Weakness;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
@@ -33,6 +34,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.Bag;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Heavy;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.utils.GLog;
 import com.lovecraftpixel.lovecraftpixeldungeon.windows.WndBag;
@@ -84,6 +86,14 @@ public class ScrollOfRemoveCurse extends InventoryScroll {
 			if (item instanceof Weapon){
 				Weapon w = (Weapon) item;
 				if (w.hasCurseEnchant()){
+					if(w.hasEnchant(Heavy.class)){
+						try {
+							w.ACC = w.getClass().newInstance().ACC;
+							w.DLY = w.getClass().newInstance().DLY;
+						} catch (Exception e) {
+							LovecraftPixelDungeon.reportException(e);
+						}
+					}
 					w.enchant(null);
 					w.cursed = false;
 					procced = true;

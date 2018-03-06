@@ -21,45 +21,28 @@
  * along with this program. If not, see <http://www.gnu.org/licenses>
  */
 
-package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs;
+package com.lovecraftpixel.lovecraftpixeldungeon.items.armor.glyphs;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.items.food.MysteryMeat;
-import com.lovecraftpixel.lovecraftpixeldungeon.sprites.CrabSprite;
-import com.watabou.utils.Random;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;
+import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
+import com.lovecraftpixel.lovecraftpixeldungeon.utils.RandomL;
 
-public class Crab extends Mob {
+public class Stealth extends Armor.Glyph {
 
-	{
-		spriteClass = CrabSprite.class;
-		
-		HP = HT = 15;
-		defenseSkill = 5;
-		baseSpeed = 2f;
-		
-		EXP = 4;
-		maxLvl = 9;
+	private static ItemSprite.Glowing GREEN = new ItemSprite.Glowing( 0x777542 );
 
-		properties.add(Property.ANIMAL);
-		
-		loot = new MysteryMeat();
-		lootChance = 0.167f;
-
-		horrorlvl = 2;
-	}
-	
 	@Override
-	public int damageRoll() {
-		return Random.NormalIntRange( 1, 8 );
+	public int proc(Armor armor, Char attacker, Char defender, int damage) {
+		if(RandomL.randomBoolean()) Buff.affect(defender, Camouflage.Camo.class).set(1+armor.level());
+		return damage;
 	}
-	
+
 	@Override
-	public int attackSkill( Char target ) {
-		return 12;
+	public ItemSprite.Glowing glowing() {
+		return GREEN;
 	}
-	
-	@Override
-	public int drRoll() {
-		return Random.NormalIntRange(0, 4);
-	}
+
 }
+

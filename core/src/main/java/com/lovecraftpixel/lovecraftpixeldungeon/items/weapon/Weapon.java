@@ -33,21 +33,31 @@ import com.lovecraftpixel.lovecraftpixeldungeon.items.KindOfWeapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfFuror;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.rings.RingOfSharpshooting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Annoying;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Blowback;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Cowardice;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Displacing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Exhausting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Fragile;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Heavy;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Menacing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Sacrificial;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.curses.Wayward;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Blazing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Chilling;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Dazzling;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Dividing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Eldritch;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Exploding;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Friendship;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Glowing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Grim;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Holy;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Hunting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Lucky;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Midas;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Projecting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Shocking;
+import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Sting;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Stunning;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.TimeFreezing;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments.Unstable;
@@ -290,16 +300,21 @@ abstract public class Weapon extends KindOfWeapon {
 	public static abstract class Enchantment implements Bundlable {
 
 		private static final Class<?>[] enchants = new Class<?>[]{
-			Blazing.class, Venomous.class, Vorpal.class, Shocking.class,
-			Chilling.class, Eldritch.class, Lucky.class, Projecting.class, Unstable.class, Dazzling.class,
-			Grim.class, Stunning.class, Vampiric.class, Exploding.class, TimeFreezing.class};
+				Blazing.class, Venomous.class, Vorpal.class, Shocking.class,
+				Chilling.class, Eldritch.class, Lucky.class, Projecting.class, Unstable.class, Dazzling.class,
+				Grim.class, Stunning.class, Vampiric.class, Exploding.class, TimeFreezing.class,
+				Dividing.class, Friendship.class, Glowing.class, Holy.class, Hunting.class,
+				Midas.class, Sting.class};
 		private static final float[] chances= new float[]{
 			10, 10, 10, 10,
 			5, 5, 5, 5, 5, 5,
-			2, 2, 2, 2, 1 };
+			2, 2, 2, 2, 1,
+			1, 1, 1, 2, 2,
+			2, 1};
 
 		private static final Class<?>[] curses = new Class<?>[]{
-				Annoying.class, Displacing.class, Exhausting.class, Fragile.class, Sacrificial.class, Wayward.class, Menacing.class
+				Annoying.class, Displacing.class, Exhausting.class, Fragile.class, Sacrificial.class,
+				Wayward.class, Menacing.class, Blowback.class, Cowardice.class, Heavy.class
 		};
 			
 		public abstract int proc( Weapon weapon, Char attacker, Char defender, int damage );

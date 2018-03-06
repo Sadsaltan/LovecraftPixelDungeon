@@ -59,6 +59,7 @@ public class Guard extends Mob {
 		lootChance = 0.25f;
 
 		properties.add(Property.DEMONIC);
+		properties.add(Property.HUMANOID);
 		
 		HUNTING = new Hunting();
 
