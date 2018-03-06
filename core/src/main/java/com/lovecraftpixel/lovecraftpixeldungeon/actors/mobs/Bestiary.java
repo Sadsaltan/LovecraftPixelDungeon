@@ -37,6 +37,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.guards.Guard
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.monks.Monk;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.monks.Senior;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Albino;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.GreyRat;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Rat;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Acidic;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Scorpio;
@@ -71,14 +72,14 @@ public class Bestiary {
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
 						Rat.class));
 			case 2:
-				//10x rat
+				//7x rat, 3x grey rat
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+						Rat.class, GreyRat.class, Rat.class, Rat.class, Rat.class,
+						Rat.class, Rat.class, GreyRat.class, Rat.class, GreyRat.class));
 			case 3:
-				//4x rat, 3x gnoll, 1x swarm
+				//3x rat, 1x grey rat 3x gnoll, 1x swarm
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class,
-						Rat.class, Rat.class, Gnoll.class, Gnoll.class, Gnoll.class,
+						Rat.class, GreyRat.class, Gnoll.class, Gnoll.class, Gnoll.class,
 						Swarm.class));
 			case 4:
 				//1x rat, 2x gnoll, 2x crab, 2x swarm
