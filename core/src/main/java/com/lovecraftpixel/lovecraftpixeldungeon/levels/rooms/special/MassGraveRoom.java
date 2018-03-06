@@ -24,7 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Skeleton;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.skeletons.Skeleton;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Gold;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;

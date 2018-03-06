@@ -28,10 +28,10 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.ToxicGas;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Poison;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Venom;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Eye;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Shaman;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Warlock;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Yog;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.bosses.Yog;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.eyes.Eye;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.shamans.Shaman;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.warlocks.Warlock;
 import com.watabou.utils.Random;
 
 import java.util.HashSet;

@@ -34,7 +34,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Burning;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.LockedFloor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Wraith;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.wraiths.Wraith;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.Ghost;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.npcs.NPC;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;

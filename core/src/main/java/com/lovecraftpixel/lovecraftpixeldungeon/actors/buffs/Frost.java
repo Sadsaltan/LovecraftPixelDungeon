@@ -26,7 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Thief;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Thief;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.FrozenCarpaccio;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.food.MysteryMeat;

@@ -27,7 +27,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Rat;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Rat;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Effects;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Speck;

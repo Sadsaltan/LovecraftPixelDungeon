@@ -29,7 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Yog;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.bosses.Yog;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.FlameParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;

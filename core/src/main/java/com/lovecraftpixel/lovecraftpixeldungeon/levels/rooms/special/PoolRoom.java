@@ -24,7 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Piranha;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.piranhas.Piranha;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Generator;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;

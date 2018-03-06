@@ -23,12 +23,12 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Acidic;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Albino;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Bandit;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Senior;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Shielded;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.brutes.Shielded;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Bandit;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.monks.Senior;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Albino;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Acidic;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.artifacts.Artifact;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.bags.PotionBandolier;

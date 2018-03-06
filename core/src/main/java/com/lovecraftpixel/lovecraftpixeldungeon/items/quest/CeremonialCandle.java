@@ -28,7 +28,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.NewbornElemental;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.minibosses.NewbornElemental;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.ElmoParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;

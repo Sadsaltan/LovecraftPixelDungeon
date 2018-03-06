@@ -25,8 +25,8 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.special;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Dungeon;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.RotHeart;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.RotLasher;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.minibosses.RotHeart;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.minibosses.RotLasher;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.keys.IronKey;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;

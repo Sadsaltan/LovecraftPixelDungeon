@@ -29,7 +29,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Blob;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.blobs.Fire;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Thief;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Thief;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.ElmoParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;

@@ -24,7 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.sprites;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Shaman;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.shamans.Shaman;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Lightning;
 import com.watabou.noosa.TextureFilm;
 

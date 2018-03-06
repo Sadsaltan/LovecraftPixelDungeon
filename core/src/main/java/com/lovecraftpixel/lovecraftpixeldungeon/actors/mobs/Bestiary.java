@@ -23,6 +23,29 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs;
 
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.bats.Bat;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.brutes.Brute;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.brutes.Shielded;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.crabs.Crab;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Bandit;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Thief;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.elementals.Elemental;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.eyes.Eye;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.gnolls.Gnoll;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.golems.Golem;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.guards.Guard;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.monks.Monk;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.monks.Senior;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Albino;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Rat;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Acidic;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Scorpio;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.shamans.Shaman;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.skeletons.Skeleton;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.spinners.Spinner;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.succubi.Succubus;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.swarms.Swarm;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.warlocks.Warlock;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -30,7 +53,7 @@ import java.util.Arrays;
 
 public class Bestiary {
 	
-	public static ArrayList<Class<? extends Mob>> getMobRotation( int depth ){
+	public static ArrayList<Class<? extends Mob>> getMobRotation(int depth ){
 		ArrayList<Class<? extends Mob>> mobs = standardMobRotation( depth );
 		addRareMobs(depth, mobs);
 		swapMobAlts(mobs);

@@ -24,7 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.missiles;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Piranha;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.piranhas.Piranha;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;

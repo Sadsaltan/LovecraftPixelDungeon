@@ -23,7 +23,7 @@
 
 package com.lovecraftpixel.lovecraftpixeldungeon.levels.rooms.standard;
 
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Piranha;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.piranhas.Piranha;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Level;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.Terrain;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.painters.Painter;

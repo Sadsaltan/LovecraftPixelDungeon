@@ -25,7 +25,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.levels;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Bones;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Goo;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.bosses.Goo;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Heap;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.Item;
 import com.lovecraftpixel.lovecraftpixeldungeon.levels.builders.Builder;

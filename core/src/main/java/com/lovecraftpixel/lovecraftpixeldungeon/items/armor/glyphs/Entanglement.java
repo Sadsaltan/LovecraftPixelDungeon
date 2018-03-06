@@ -30,7 +30,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Corruption;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Roots;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Mob;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.RotLasher;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.minibosses.RotLasher;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.CellEmitter;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.particles.EarthParticle;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.armor.Armor;

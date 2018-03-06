@@ -26,7 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.sprites;
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Actor;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Eye;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.eyes.Eye;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.Beam;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.MagicMissile;
 import com.lovecraftpixel.lovecraftpixeldungeon.tiles.DungeonTilemap;

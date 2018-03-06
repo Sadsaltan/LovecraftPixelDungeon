@@ -24,7 +24,7 @@
 package com.lovecraftpixel.lovecraftpixeldungeon.sprites;
 
 import com.lovecraftpixel.lovecraftpixeldungeon.Assets;
-import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.Warlock;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.warlocks.Warlock;
 import com.lovecraftpixel.lovecraftpixeldungeon.effects.MagicMissile;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.audio.Sample;
