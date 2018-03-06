@@ -44,7 +44,7 @@ public class Sting extends Weapon.Enchantment {
 		int level = Math.max( 0, weapon.level() );
 
 		Buff.affect( defender, Light.class, (level * 10f) );
-		if (Random.Int( level + 5 ) >= 4) {
+		if (Random.Int( level + 8 ) >= 4) {
 			if(attacker instanceof Hero){
 				Buff.affect(attacker, MindVision.class, MindVision.DURATION);
 			}

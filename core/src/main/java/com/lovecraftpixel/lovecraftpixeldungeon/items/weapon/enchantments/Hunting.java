@@ -42,9 +42,9 @@ public class Hunting extends Weapon.Enchantment {
 			// lvl 2 - 43%
 			int level = Math.max( 0, weapon.level() );
 
-			if (Random.Int( level + 20 ) <= 4) {
-				if(damage >= defender.HP){
-					Dungeon.level.drop(new MysteryMeat(), defender.pos).sprite.drop();
+			if (Random.Int( level + 5 ) >= 4) {
+				if(damage >= defender.HT){
+					Dungeon.level.drop(new MysteryMeat(), defender.pos).sprite.drop(defender.pos);
 				}
 			}
 		}
