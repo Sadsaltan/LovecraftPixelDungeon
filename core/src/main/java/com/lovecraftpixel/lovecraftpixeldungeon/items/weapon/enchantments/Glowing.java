@@ -26,6 +26,7 @@ package com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.enchantments;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.Char;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Buff;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.buffs.Light;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.hero.Hero;
 import com.lovecraftpixel.lovecraftpixeldungeon.items.weapon.Weapon;
 import com.lovecraftpixel.lovecraftpixeldungeon.messages.Messages;
 import com.lovecraftpixel.lovecraftpixeldungeon.sprites.ItemSprite;
@@ -45,7 +46,9 @@ public class Glowing extends Weapon.Enchantment {
 		
 		if (Random.Int( level + 5 ) >= 4) {
 			Buff.affect( attacker, Light.class, (level + 5f) );
-			GLog.i(Messages.get(this, "ignited"));
+			if(attacker instanceof Hero){
+				GLog.i(Messages.get(this, "ignited"));
+			}
 		}
 
 		return damage;

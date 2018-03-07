@@ -28,6 +28,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.brutes.Brute
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.brutes.Shielded;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.crabs.Crab;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Bandit;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Murderer;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.criminals.Thief;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.elementals.Elemental;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.eyes.Eye;
@@ -40,6 +41,7 @@ import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Albino;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.GreyRat;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.rats.Rat;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Acidic;
+import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.RedScorpion;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.scorpions.Scorpio;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.shamans.Shaman;
 import com.lovecraftpixel.lovecraftpixeldungeon.actors.mobs.hostile.skeletons.Skeleton;
@@ -68,9 +70,9 @@ public class Bestiary {
 			
 			// Sewers
 			case 1: default:
-				//1x rat
+				//1x rat, 1 grey rat
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-						Rat.class));
+						GreyRat.class, Rat.class));
 			case 2:
 				//7x rat, 3x grey rat
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
@@ -87,7 +89,6 @@ public class Bestiary {
 						Gnoll.class, Gnoll.class,
 						Crab.class, Crab.class, Swarm.class,
 						Swarm.class));
-				
 			// Prison
 			case 6:
 				//3x skeleton, 1x thief, 1x swarm
@@ -97,7 +98,7 @@ public class Bestiary {
 			case 7:
 				//3x skeleton, 1x thief, 1x shaman, 1x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
+						Murderer.class,
 						Shaman.class,
 						Guard.class));
 			case 8:
@@ -109,7 +110,7 @@ public class Bestiary {
 			case 9:
 				//3x skeleton, 1x thief, 2x shaman, 3x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
+						Murderer.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class, Guard.class));
 				
@@ -179,13 +180,13 @@ public class Bestiary {
 				return new ArrayList<>(Arrays.asList(
 						Succubus.class, Succubus.class,
 						Eye.class, Eye.class, Eye.class, Eye.class,
-						Scorpio.class, Scorpio.class));
+						Scorpio.class, RedScorpion.class));
 			case 24:
 				//1x succubus, 2x evil eye, 3x scorpio
 				return new ArrayList<>(Arrays.asList(
 						Succubus.class,
 						Eye.class, Eye.class,
-						Scorpio.class, Scorpio.class, Scorpio.class));
+						Scorpio.class, RedScorpion.class, Scorpio.class));
 		}
 		
 	}

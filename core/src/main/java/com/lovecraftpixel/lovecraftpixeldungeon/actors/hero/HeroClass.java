@@ -89,9 +89,10 @@ public enum HeroClass {
 		if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
 			(hero.belongings.armor = new ClothArmor()).identify();
 
-		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
+		if (!Dungeon.isChallenged(Challenges.NO_FOOD)){
 			new Food().identify().collect();
 			new FoodBag().collect();
+		}
 	}
 
 	public Badges.Badge masteryBadge() {
